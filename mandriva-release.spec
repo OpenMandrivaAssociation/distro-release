@@ -1,7 +1,7 @@
 %define am_i_cooker 0
-%define distrib Official
-%define version 2007.1
-%define rel 3
+%define distrib Cooker
+%define version 2008.0
+%define rel 0.1
 %define distname China
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -10,7 +10,7 @@
 %define product_distribution %distribution
 %define product_type Basic
 %define product_version %version
-%define product_branch Official
+%define product_branch Devel
 %define product_release 1
 %define product_arch %{_target_cpu}
 
