@@ -84,7 +84,7 @@ Mandriva Linux release file. \
 
 %define release_post(s) \
 %post %{-s:%1} \
-ln -fs /etc/product.id.%1 /etc/product.id
+ln -fs product.id.%1 /etc/product.id
 
 
 %define release_install(s) \
