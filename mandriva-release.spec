@@ -1,7 +1,7 @@
 %define am_i_cooker 0
 %define distrib Cooker
 %define version 2008.0
-%define rel 0.2
+%define rel 0.3
 %define distname China
 %define distsuffix mdv
 %define distribution Mandriva Linux
