@@ -66,7 +66,7 @@ Group: System/Configuration/Other
 Conflicts: %name < %version-%release
 
 %description common
-Mandriva Linux release file.
+Common files for Mandriva Linux release packages.
 
 %define release_package(s) \
 %{-s:%package %1} \
@@ -79,7 +79,7 @@ Obsoletes: %name < %version-%release rawhide-release redhat-release mandrake-rel
 
 %define release_descr(s) \
 %description %{-s:%1} \
-Mandriva Linux release file. \
+Mandriva Linux release file for %1 flavor. \
 
 
 %define release_post(s) \
