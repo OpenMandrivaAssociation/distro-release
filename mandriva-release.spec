@@ -128,7 +128,6 @@ META_CLASS=download\
 EOF\
 
 
-%release_package default
 %release_package -s One
 Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-Free mandriva-release-Powerpack mandriva-release-Powerpack+
 %release_package -s Flash
@@ -142,7 +141,6 @@ Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-Fr
 %release_package -s Powerpack+
 Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Powerpack
 
-%release_descr default
 %release_descr -s Flash
 %release_descr -s One
 %release_descr -s Free
