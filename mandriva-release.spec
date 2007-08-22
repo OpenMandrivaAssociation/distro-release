@@ -1,7 +1,7 @@
 %define am_i_cooker 0
 %define distrib Cooker
 %define version 2008.0
-%define rel 0.4
+%define rel 0.5
 %define distname China
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -74,7 +74,7 @@ Group: System/Configuration/Other \
 Requires:	mandriva-release-common \
 Provides:	redhat-release rawhide-release mandrake-release mandrakelinux-release \
 Provides:	%name = %version-%release \
-Obsoletes: %name < %version-%release rawhide-release redhat-release mandrake-release mandrakelinux-release
+Obsoletes: rawhide-release redhat-release mandrake-release mandrakelinux-release
 
 %define release_descr(s) \
 %description %{-s:%1} \
@@ -133,6 +133,7 @@ Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-Fr
 Conflicts: mandriva-release-Discovery mandriva-release-Free mandriva-release-One mandriva-release-Powerpack mandriva-release-Powerpack+
 %release_package -s Free
 Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-One mandriva-release-Powerpack mandriva-release-Powerpack+
+Obsoletes: %name < %version-%release
 %release_package -s Discovery
 Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Powerpack mandriva-release-Powerpack+
 %release_package -s Powerpack
