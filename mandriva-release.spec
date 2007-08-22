@@ -54,7 +54,6 @@ Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
 Source5:	README.urpmi
-Obsoletes:	rawhide-release redhat-release mandrake-release mandrakelinux-release
 BuildRoot:	%{_tmppath}/%{name}-root
 
 %description
