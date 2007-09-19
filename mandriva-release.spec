@@ -1,7 +1,7 @@
 %define am_i_cooker 0
 %define distrib Cooker
 %define version 2008.0
-%define rel 0.8
+%define rel 0.9
 %define distname China
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -64,7 +64,7 @@ Summary: Mandriva release common files
 Group: System/Configuration/Other
 Conflicts: %name < %version-%release
 Obsoletes: %name < %version-%release
-Obsoletes: rawhide-release redhat-release Mandriva-release Mandriva Linux-release
+Obsoletes: rawhide-release redhat-release mandrake-release mandrakelinux-release
 
 %description common
 Common files for Mandriva Linux release packages.
@@ -74,7 +74,7 @@ Common files for Mandriva Linux release packages.
 Summary: Mandriva release file%{?1: for %1} \
 Group: System/Configuration/Other \
 Requires:	mandriva-release-common \
-Provides:	redhat-release rawhide-release Mandriva-release Mandriva Linux-release \
+Provides:	redhat-release rawhide-release mandrake-release mandrakelinux-release \
 Provides:	%name = %version-%release \
 
 %define release_descr(s) \
@@ -169,9 +169,9 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p %buildroot/etc
 echo "Mandriva Linux release %{realversion} (%{distrib}) for %{_target_cpu}" > $RPM_BUILD_ROOT/etc/mandriva-release
 ln -sf mandriva-release $RPM_BUILD_ROOT/etc/redhat-release
-ln -sf mandriva-release $RPM_BUILD_ROOT/etc/mandriva-release
+ln -sf mandriva-release $RPM_BUILD_ROOT/etc/mandrake-release
 ln -sf mandriva-release $RPM_BUILD_ROOT/etc/release
-ln -sf mandriva-release $RPM_BUILD_ROOT/etc/Mandriva Linux-release
+ln -sf mandriva-release $RPM_BUILD_ROOT/etc/mandrakelinux-release
 echo "%{version}.0 %{rel} %{distname}" > $RPM_BUILD_ROOT/etc/version
 
 mkdir -p %buildroot%_sysconfdir/profile.d
@@ -227,8 +227,8 @@ rm -rf $RPM_BUILD_ROOT
 %files common
 %defattr(-,root,root)
 %doc CREDITS distro.txt README.urpmi release-notes.txt
-/etc/mandriva-release
-/etc/Mandriva Linux-release
+/etc/mandrake-release
+/etc/mandrakelinux-release
 /etc/redhat-release
 /etc/mandriva-release
 /etc/release
