@@ -53,7 +53,6 @@ Source2:	10mandriva-release.csh
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
-Source5:	README.urpmi
 BuildRoot:	%{_tmppath}/%{name}-root
 
 %description
@@ -152,7 +151,13 @@ Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-Fr
 %setup -q -n %{name}
 cp -a %SOURCE3 CREDITS
 cp -a %SOURCE4 release-notes.txt
-cp -a %SOURCE5 README.urpmi
+cat > README.urpmi <<EOF
+This is Mandriva Linux %version
+
+You can find the release notes in %_docdir/%name-common/release-notes.txt
+
+or on the web at http://wiki.mandriva.com/en/Releases/Mandriva/%version/Notes
+EOF
 
 # check that CREDITS file is in UTF-8, fail otherwise
 if iconv -f utf-8 -t utf-8 < CREDITS > /dev/null
