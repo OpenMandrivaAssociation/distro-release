@@ -1,7 +1,7 @@
 %define am_i_cooker 0
 %define distrib Cooker
 %define version 2008.0
-%define rel 0.13
+%define rel 0.14
 %define distname China
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -53,6 +53,7 @@ Source2:	10mandriva-release.csh
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
+Source5:	release-notes.txt
 BuildRoot:	%{_tmppath}/%{name}-root
 
 %description
@@ -151,6 +152,7 @@ Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-Fr
 %setup -q -n %{name}
 cp -a %SOURCE3 CREDITS
 cp -a %SOURCE4 release-notes.txt
+cp -a %SOURCE5 release-notes.html
 cat > README.urpmi <<EOF
 This is Mandriva Linux %version
 
@@ -231,7 +233,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files common
 %defattr(-,root,root)
-%doc CREDITS distro.txt README.urpmi release-notes.txt
+%doc CREDITS distro.txt README.urpmi release-notes.*
 /etc/mandrake-release
 /etc/mandrakelinux-release
 /etc/redhat-release
