@@ -1,7 +1,7 @@
 %define am_i_cooker 0
 %define distrib Cooker
 %define version 2008.0
-%define rel 0.14
+%define rel 0.15
 %define distname China
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -129,24 +129,22 @@ EOF\
 
 
 %release_package -s One
-Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-Free mandriva-release-Powerpack mandriva-release-Powerpack+
+Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-Powerpack 
+Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
 %release_package -s Flash
-Conflicts: mandriva-release-Discovery mandriva-release-Free mandriva-release-One mandriva-release-Powerpack mandriva-release-Powerpack+
+Conflicts: mandriva-release-Free mandriva-release-One mandriva-release-Powerpack 
+Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
 %release_package -s Free
-Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-One mandriva-release-Powerpack mandriva-release-Powerpack+
-%release_package -s Discovery
-Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Powerpack mandriva-release-Powerpack+
+Conflicts: mandriva-release-Flash mandriva-release-One mandriva-release-Powerpack 
+Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
 %release_package -s Powerpack
-Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Powerpack+
-%release_package -s Powerpack+
-Conflicts: mandriva-release-Discovery mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Powerpack
+Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-One 
+Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
 
 %release_descr -s Flash
 %release_descr -s One
 %release_descr -s Free
-%release_descr -s Discovery
 %release_descr -s Powerpack
-%release_descr -s Powerpack+
 
 %prep
 %setup -q -n %{name}
@@ -185,11 +183,9 @@ mkdir -p %buildroot%_sysconfdir/profile.d
 install -m755 %SOURCE1 %SOURCE2 %buildroot%_sysconfdir/profile.d
 
 %release_install Free
-%release_install Discovery Discovery
 %release_install Flash Flash
 %release_install One One
 %release_install Powerpack Powerpack
-%release_install Powerpack+ Powerpack+
 
 touch %buildroot%_sysconfdir/product.id
 
@@ -210,10 +206,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %release_post -s Flash
 %release_post -s Free
-%release_post -s Discovery
 %release_post -s One 
 %release_post -s Powerpack
-%release_post -s Powerpack+ Powerpack+
 
 %define release_files(s:) \
 %files %{-s:%{-s*}} \
@@ -225,10 +219,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %release_files -s Flash Flash
 %release_files -s Free Free
-%release_files -s Discovery Discovery
 %release_files -s One One
 %release_files -s Powerpack Powerpack
-%release_files -s Powerpack+ Powerpack+
 
 
 %files common
