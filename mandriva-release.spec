@@ -63,6 +63,7 @@ Mandriva Linux release file.
 Summary: Mandriva release common files
 Group: System/Configuration/Other
 Conflicts: %name < %version-%release
+Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
 Obsoletes: %name < %version-%release
 Obsoletes: rawhide-release redhat-release mandrake-release mandrakelinux-release
 
@@ -130,16 +131,12 @@ EOF\
 
 %release_package -s One
 Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-Powerpack 
-Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
 %release_package -s Flash
 Conflicts: mandriva-release-Free mandriva-release-One mandriva-release-Powerpack 
-Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
 %release_package -s Free
 Conflicts: mandriva-release-Flash mandriva-release-One mandriva-release-Powerpack 
-Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
 %release_package -s Powerpack
 Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-One 
-Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
 
 %release_descr -s Flash
 %release_descr -s One
