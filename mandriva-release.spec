@@ -1,7 +1,7 @@
 %define am_i_cooker 0
 %define distrib Cooker
 %define version 2008.0
-%define rel 0.16
+%define rel 0.17
 %define distname China
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -142,6 +142,12 @@ Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-One
 %release_descr -s One
 %release_descr -s Free
 %release_descr -s Powerpack
+
+%triggerpostun -n mandriva-release-common -- mandriva-release < 2007.1
+perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %_sysconfdir/sysconfig/system
+
+%triggerpostun -n mandriva-release-common -- mandriva-release-common < 2008.0-0.17
+perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %_sysconfdir/sysconfig/system
 
 %prep
 %setup -q -n %{name}
