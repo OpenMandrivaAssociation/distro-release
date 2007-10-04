@@ -5,7 +5,7 @@
 %define am_i_cooker 0
 %define distrib Official
 %define version 2008.0
-%define rel 3
+%define rel 4
 %define distname Tycho
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -57,7 +57,7 @@ Source2:	10mandriva-release.csh
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
-Source5:	release-notes.txt
+Source5:	release-notes.html
 BuildRoot:	%{_tmppath}/%{name}-root
 
 %description
