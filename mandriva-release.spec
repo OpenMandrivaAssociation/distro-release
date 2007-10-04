@@ -1,7 +1,7 @@
 %define am_i_cooker 0
 %define distrib Official
 %define version 2008.0
-%define rel 1
+%define rel 2
 %define distname Tycho
 %define distsuffix mdv
 %define distribution Mandriva Linux
