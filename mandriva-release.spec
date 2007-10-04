@@ -1,7 +1,11 @@
+# Please update release notes:
+# make -C SOURCES release-notes.{html,txt}
+#
+
 %define am_i_cooker 0
 %define distrib Official
 %define version 2008.0
-%define rel 2
+%define rel 3
 %define distname Tycho
 %define distsuffix mdv
 %define distribution Mandriva Linux
