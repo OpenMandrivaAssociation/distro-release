@@ -2,8 +2,12 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
-%define am_i_cooker 0
+%define am_i_cooker 1
+%if %am_i_cooker
 %define distrib Cooker
+%else
+%define distrib Official
+%endif
 %define version 2008.1
 %define rel 0.1
 %define distname Tycho
@@ -14,14 +18,17 @@
 %define product_distribution %distribution
 %define product_type Basic
 %define product_version %version
+%if %am_i_cooker
 %define product_branch Devel
+%else
+%define distrib Official
+%endif
 %define product_release 1
 %define product_arch %{_target_cpu}
 
 %define product_id_base vendor=%product_vendor,distribution=%product_distribution,type=%product_type,version=%product_version,branch=%product_branch,release=%product_release,arch=%product_arch
 
 %if %am_i_cooker
-    %define distrib Cooker
     %define unstable %%_with_unstable --with-unstable
 %endif
 
