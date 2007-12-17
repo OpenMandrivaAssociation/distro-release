@@ -65,7 +65,6 @@ Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
 Source5:	release-notes.html
-BuildRoot:	%{_tmppath}/%{name}-root
 
 %description
 Mandriva Linux release file.
