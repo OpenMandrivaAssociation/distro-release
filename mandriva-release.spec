@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2008.1
-%define rel 0.1
+%define rel 0.2
 %define distname Tycho
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -85,6 +85,7 @@ Common files for Mandriva Linux release packages.
 Summary: Mandriva release file%{?1: for %1} \
 Group: System/Configuration/Other \
 Requires:	mandriva-release-common \
+Requires(post):	coreutils \
 Provides:	redhat-release rawhide-release mandrake-release mandrakelinux-release \
 Provides:	%name = %version-%release \
 
