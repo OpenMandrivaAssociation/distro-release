@@ -192,7 +192,7 @@ ln -sf mandriva-release $RPM_BUILD_ROOT/etc/mandrakelinux-release
 echo "%{version}.0 %{rel} %{distname}" > $RPM_BUILD_ROOT/etc/version
 
 mkdir -p %buildroot%_sysconfdir/profile.d
-cat > %buildroot%_sysconfdir/profile.d/10mandriva-release.csh<<EOF
+cat > %buildroot%_sysconfdir/profile.d/10mandriva-release.csh<<'EOF'
 if ( -r /etc/sysconfig/system ) then
 	eval `sed 's|^#.*||' /etc/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
 	setenv META_CLASS $META_CLASS
@@ -201,7 +201,7 @@ else
 endif
 EOF
 
-cat > %buildroot%_sysconfdir/profile.d/10mandriva-release.sh<<EOF
+cat > %buildroot%_sysconfdir/profile.d/10mandriva-release.sh<<'EOF'
 if [ -r /etc/sysconfig/system ]; then
 	. /etc/sysconfig/system
 	export META_CLASS
