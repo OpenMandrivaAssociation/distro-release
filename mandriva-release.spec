@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2008.1
-%define rel 0.2
+%define rel 0.3
 %define distname Tycho
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -59,8 +59,6 @@ License:	GPL
 URL:		http://www.mandrivalinux.com/
 Group:		System/Configuration/Other
 Source:		%name.tar.bz2
-Source1:	10mandriva-release.sh
-Source2:	10mandriva-release.csh
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
@@ -194,7 +192,23 @@ ln -sf mandriva-release $RPM_BUILD_ROOT/etc/mandrakelinux-release
 echo "%{version}.0 %{rel} %{distname}" > $RPM_BUILD_ROOT/etc/version
 
 mkdir -p %buildroot%_sysconfdir/profile.d
-install -m755 %SOURCE1 %SOURCE2 %buildroot%_sysconfdir/profile.d
+cat > %buildroot%_sysconfdir/profile.d/10mandriva-release.csh<<EOF
+if ( -r /etc/sysconfig/system ) then
+	eval `sed 's|^#.*||' /etc/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
+	setenv META_CLASS $META_CLASS
+else
+	setenv META_CLASS unknown
+endif
+EOF
+
+cat > %buildroot%_sysconfdir/profile.d/10mandriva-release.sh<<EOF
+if [ -r /etc/sysconfig/system ]; then
+	. /etc/sysconfig/system
+	export META_CLASS
+else
+	export META_CLASS=unknown
+fi
+EOF
 
 %release_install Free
 %release_install Flash Flash
