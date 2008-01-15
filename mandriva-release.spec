@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2008.1
-%define rel 0.3
+%define rel 0.4
 %define distname Tycho
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -75,6 +75,9 @@ Conflicts: %name < %version-%release
 Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
 Obsoletes: %name < %version-%release
 Obsoletes: rawhide-release redhat-release mandrake-release mandrakelinux-release
+
+# cf mdvbz#32631
+Provides: arch(%_target_cpu)
 
 %description common
 Common files for Mandriva Linux release packages.
