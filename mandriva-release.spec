@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2008.1
-%define rel 0.4
+%define rel 0.5
 %define distname Tycho
 %define distsuffix mdv
 %define distribution Mandriva Linux
