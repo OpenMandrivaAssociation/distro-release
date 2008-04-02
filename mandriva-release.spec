@@ -9,8 +9,8 @@
 %define distrib Official
 %endif
 %define version 2008.1
-%define rel 0.9
-%define distname aceras
+%define rel 0.10
+%define distname cambria
 %define distsuffix mdv
 %define distribution Mandriva Linux
 
