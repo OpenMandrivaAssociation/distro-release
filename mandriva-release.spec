@@ -2,14 +2,14 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
-%define am_i_cooker 1
+%define am_i_cooker 0
 %if %am_i_cooker
 %define distrib Cooker
 %else
 %define distrib Official
 %endif
 %define version 2008.1
-%define rel 0.10
+%define rel 0.11
 %define distname cambria
 %define distsuffix mdv
 %define distribution Mandriva Linux
