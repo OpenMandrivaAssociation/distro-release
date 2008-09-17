@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2009.0
-%define rel 0.6
+%define rel 0.7
 %define distname cooker
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -172,7 +172,7 @@ This is Mandriva Linux %version
 
 You can find the release notes in %_docdir/%name-common/release-notes.txt
 
-or on the web at http://wiki.mandriva.com/en/Releases/Mandriva/%version/Notes
+or on the web at http://wiki.mandriva.com/en/%{version}_Notes
 EOF
 
 # check that CREDITS file is in UTF-8, fail otherwise
