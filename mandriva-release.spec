@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2009.0
-%define rel 0.8
+%define rel 0.9
 %define distname cooker
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -21,7 +21,7 @@
 %if %am_i_cooker
 %define product_branch Devel
 %else
-%define distrib Official
+%define product_branch Official
 %endif
 %define product_release 1
 %define product_arch %{_target_cpu}
