@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2009.1
-%define rel 0.1
+%define rel 0.2
 %define distname cooker
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -78,6 +78,7 @@ Obsoletes: rawhide-release redhat-release mandrake-release mandrakelinux-release
 
 # cf mdvbz#32631
 Provides: arch(%_target_cpu)
+Provides: %arch_tagged mandriva-release-common
 
 %description common
 Common files for Mandriva Linux release packages.
@@ -86,7 +87,7 @@ Common files for Mandriva Linux release packages.
 %{-s:%package %1} \
 Summary: Mandriva release file%{?1: for %1} \
 Group: System/Configuration/Other \
-Requires:	mandriva-release-common \
+Requires:	%{arch_tagged mandriva-release-common} \
 Requires(post):	coreutils \
 Provides:	redhat-release rawhide-release mandrake-release mandrakelinux-release \
 Provides:	%name = %version-%release \
