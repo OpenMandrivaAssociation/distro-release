@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2009.1
-%define rel 0.2
+%define rel 0.3
 %define distname cooker
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -144,18 +144,21 @@ EOF\
 
 
 %release_package -s One
-Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-Powerpack 
+Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-Powerpack mandriva-release-Mini
 %release_package -s Flash
-Conflicts: mandriva-release-Free mandriva-release-One mandriva-release-Powerpack 
+Conflicts: mandriva-release-Free mandriva-release-One mandriva-release-Powerpack mandriva-release-Mini
 %release_package -s Free
-Conflicts: mandriva-release-Flash mandriva-release-One mandriva-release-Powerpack 
+Conflicts: mandriva-release-Flash mandriva-release-One mandriva-release-Powerpack mandriva-release-Mini
 %release_package -s Powerpack
-Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-One 
+Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Mini
+%release_package -s Mini
+Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Powerpack
 
 %release_descr -s Flash
 %release_descr -s One
 %release_descr -s Free
 %release_descr -s Powerpack
+%release_descr -s Mini
 
 %triggerpostun -n mandriva-release-common -- mandriva-release < 2007.1
 perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %_sysconfdir/sysconfig/system
@@ -219,6 +222,7 @@ EOF
 %release_install Flash Flash
 %release_install One One
 %release_install Powerpack Powerpack
+%release_install Mini Mini
 
 touch %buildroot%_sysconfdir/product.id
 
@@ -241,6 +245,7 @@ rm -rf $RPM_BUILD_ROOT
 %release_post -s Free
 %release_post -s One 
 %release_post -s Powerpack
+%release_post -s Mini
 
 %define release_files(s:) \
 %files %{-s:%{-s*}} \
@@ -254,6 +259,7 @@ rm -rf $RPM_BUILD_ROOT
 %release_files -s Free Free
 %release_files -s One One
 %release_files -s Powerpack Powerpack
+%release_files -s Mini Mini
 
 
 %files common
