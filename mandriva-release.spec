@@ -2,7 +2,7 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
-%define am_i_cooker 1
+%define am_i_cooker 0
 %if %am_i_cooker
 %define distrib Cooker
 %else
