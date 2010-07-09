@@ -2,14 +2,14 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
-%define am_i_cooker 0
+%define am_i_cooker 1
 %if %am_i_cooker
 %define distrib Cooker
 %else
 %define distrib Official
 %endif
-%define version 2010.1
-%define rel 0.10
+%define version 2011.0
+%define rel 0.1
 %define distname cooker
 %define distsuffix mdv
 %define distribution Mandriva Linux
