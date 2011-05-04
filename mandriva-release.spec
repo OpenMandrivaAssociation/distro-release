@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2011.0
-%define rel 0.1
+%define rel 0.2
 %define distname cooker
 %define distsuffix mdv
 %define distribution Mandriva Linux
