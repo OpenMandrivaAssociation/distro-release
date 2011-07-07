@@ -8,8 +8,8 @@
 %else
 %define distrib Official
 %endif
-%define version 2011.0
-%define rel 0.2
+%define version 2012.0
+%define rel 0.1
 %define distname cooker
 %define distsuffix mdv
 %define distribution Mandriva Linux
