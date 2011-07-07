@@ -8,7 +8,7 @@
 %else
 %define distrib Official
 %endif
-%define version 2012.0
+%define version 2011.0
 %define rel 0.2
 %define distname cooker
 %define distsuffix mdv
@@ -55,6 +55,7 @@ Summary:	Mandriva release file
 Name:		mandriva-release
 Version:	%version
 Release:	%rel
+Epoch:		1
 License:	GPL
 URL:		http://www.mandrivalinux.com/
 Group:		System/Configuration/Other
