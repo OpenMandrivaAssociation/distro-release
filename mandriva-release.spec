@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2012.0
-%define rel 0.1
+%define rel 0.2
 %define distname cooker
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -54,7 +54,7 @@
 Summary:	Mandriva release file
 Name:		mandriva-release
 Version:	%version
-Release:	%mkrel %rel
+Release:	%rel
 License:	GPL
 URL:		http://www.mandrivalinux.com/
 Group:		System/Configuration/Other
@@ -238,9 +238,6 @@ case %release in
 esac
 %endif
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %release_post -s Flash
 %release_post -s Free
 %release_post -s One 
@@ -263,7 +260,6 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files common
-%defattr(-,root,root)
 %doc CREDITS distro.txt README.urpmi release-notes.*
 /etc/mandrake-release
 /etc/mandrakelinux-release
