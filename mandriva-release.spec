@@ -191,14 +191,14 @@ else
 fi
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 mkdir -p %buildroot/etc
-echo "Mandriva Linux release %{realversion} (%{distrib}) for %{_target_cpu}" > $RPM_BUILD_ROOT/etc/mandriva-release
-ln -sf mandriva-release $RPM_BUILD_ROOT/etc/redhat-release
-ln -sf mandriva-release $RPM_BUILD_ROOT/etc/mandrake-release
-ln -sf mandriva-release $RPM_BUILD_ROOT/etc/release
-ln -sf mandriva-release $RPM_BUILD_ROOT/etc/mandrakelinux-release
-echo "%{version}.0 %{rel} %{distname}" > $RPM_BUILD_ROOT/etc/version
+echo "Mandriva Linux release %{realversion} (%{distrib}) for %{_target_cpu}" > %{buildroot}/etc/mandriva-release
+ln -sf mandriva-release %{buildroot}/etc/redhat-release
+ln -sf mandriva-release %{buildroot}/etc/mandrake-release
+ln -sf mandriva-release %{buildroot}/etc/release
+ln -sf mandriva-release %{buildroot}/etc/mandrakelinux-release
+echo "%{version}.0 %{rel} %{distname}" > %{buildroot}/etc/version
 
 mkdir -p %buildroot%_sysconfdir/profile.d
 cat > %buildroot%_sysconfdir/profile.d/10mandriva-release.csh<<'EOF'
