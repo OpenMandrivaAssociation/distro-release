@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2012.0
-%define rel 0.3
+%define rel 0.4
 %define distname cooker
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -198,6 +198,7 @@ ln -sf mandriva-release %{buildroot}/etc/redhat-release
 ln -sf mandriva-release %{buildroot}/etc/mandrake-release
 ln -sf mandriva-release %{buildroot}/etc/release
 ln -sf mandriva-release %{buildroot}/etc/mandrakelinux-release
+ln -sf mandriva-release %{buildroot}/etc/os-release
 echo "%{version}.0 %{rel} %{distname}" > %{buildroot}/etc/version
 
 mkdir -p %buildroot%_sysconfdir/profile.d
