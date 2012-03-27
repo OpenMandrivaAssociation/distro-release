@@ -70,24 +70,31 @@ BuildRoot:	%{_tmppath}/%{name}-root
 Mandriva Linux release file.
 
 %package common
-Summary: Mandriva release common files
-Group: System/Configuration/Other
-Conflicts: %name < %version-%release
-Obsoletes: mandriva-release-Discovery mandriva-release-Powerpack+
-Obsoletes: %name < %version-%release
-Obsoletes: rawhide-release redhat-release mandrake-release mandrakelinux-release
+Summary:	Mandriva release common files
+Group:		System/Configuration/Other
+Conflicts:	%name < %version-%release
+Obsoletes:	mandriva-release-Discovery
+Obsoletes:	mandriva-release-Powerpack+
+Obsoletes:	%name < %version-%release
+Obsoletes:	rawhide-release
+Obsoletes:	redhat-release
+Obsoletes:	mandrake-release
+Obsoletes:	mandrakelinux-release
+# (tpg) older releases provides /etc/os-release
+Conflicts:	systemd < 37-5
+Requires:	lsb-release
 
 # cf mdvbz#32631
-Provides: arch(%_target_cpu)
-Provides: %arch_tagged mandriva-release-common
+Provides:	arch(%_target_cpu)
+Provides:	%arch_tagged mandriva-release-common
 
 %description common
 Common files for Mandriva Linux release packages.
 
 %define release_package(s) \
 %{-s:%package %1} \
-Summary: Mandriva release file%{?1: for %1} \
-Group: System/Configuration/Other \
+Summary:	Mandriva release file%{?1: for %1} \
+Group:		System/Configuration/Other \
 Requires:	%{arch_tagged mandriva-release-common} \
 Requires(post):	coreutils \
 Provides:	redhat-release rawhide-release mandrake-release mandrakelinux-release \
@@ -104,18 +111,18 @@ ln -fs product.id.%1 /etc/product.id
 
 
 %define release_install(s) \
-cat > %buildroot/etc/product.id.%{1} << EOF \
+cat > %{buildroot}/etc/product.id.%{1} << EOF \
 %{product_id_base},product=%1\
 EOF\
  \
-mkdir -p %buildroot%_sys_macros_dir \
-cat > %buildroot%_sys_macros_dir/%{1}.macros <<EOF \
+mkdir -p %{buildroot}%_sys_macros_dir \
+cat > %{buildroot}%_sys_macros_dir/%{1}.macros << EOF \
 %%distribution      %distribution\
 %%mandriva_release  %mandriva_release\
 %%mandriva_branch   %mandriva_branch\
 %%mandriva_arch     %mandriva_arch\
 %%mandriva_os       %mandriva_os\
-%%mandriva_class    %%(. %_sysconfdir/sysconfig/system; echo \\\$META_CLASS)\
+%%mandriva_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)\
 %%mdkver            %mdkver\
 %%mdvver            %mdkver\
 %%distsuffix        %distsuffix\
@@ -135,8 +142,8 @@ cat > %buildroot%_sys_macros_dir/%{1}.macros <<EOF \
 %{?unstable}\
 EOF\
  \
-mkdir -p %buildroot%_sysconfdir/sysconfig \
-cat > %buildroot%_sysconfdir/sysconfig/system <<EOF \
+mkdir -p %{buildroot}%{_sysconfdir}/sysconfig \
+cat > %{buildroot}%{_sysconfdir}/sysconfig/system << EOF \
 SECURITY=3\
 CLASS=beginner\
 LIBSAFE=no\
@@ -144,35 +151,37 @@ META_CLASS=download\
 EOF\
 
 
-%release_package -s One
-Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-Powerpack mandriva-release-Mini
 %release_package -s Flash
-Conflicts: mandriva-release-Free mandriva-release-One mandriva-release-Powerpack mandriva-release-Mini
+Conflicts:	mandriva-release-Free mandriva-release-One mandriva-release-Powerpack mandriva-release-Mini
 %release_package -s Free
-Conflicts: mandriva-release-Flash mandriva-release-One mandriva-release-Powerpack mandriva-release-Mini
+Conflicts:	mandriva-release-Flash mandriva-release-One mandriva-release-Powerpack mandriva-release-Mini
+%release_package -s One
+Conflicts:	mandriva-release-Flash mandriva-release-Free mandriva-release-Powerpack mandriva-release-Mini
 %release_package -s Powerpack
-Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Mini
+Conflicts:	mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Mini
 %release_package -s Mini
-Conflicts: mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Powerpack
+Conflicts:	mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Powerpack
 
 %release_descr -s Flash
-%release_descr -s One
 %release_descr -s Free
+%release_descr -s One
 %release_descr -s Powerpack
 %release_descr -s Mini
 
 %triggerpostun -n mandriva-release-common -- mandriva-release < 2007.1
-perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %_sysconfdir/sysconfig/system
+perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %{_sysconfdir}/sysconfig/system
 
 %triggerpostun -n mandriva-release-common -- mandriva-release-common < 2008.0-0.17
-perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %_sysconfdir/sysconfig/system
+perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %{_sysconfdir}/sysconfig/system
 
 %prep
 %setup -q -n %{name}
+
 cp -a %SOURCE3 CREDITS
 cp -a %SOURCE4 release-notes.txt
 cp -a %SOURCE5 release-notes.html
-cat > README.urpmi <<EOF
+
+cat > README.urpmi << EOF
 This is Mandriva Linux %version
 
 You can find the release notes in %_docdir/%name-common/release-notes.txt
@@ -192,17 +201,32 @@ fi
 
 %install
 rm -rf %{buildroot}
-mkdir -p %buildroot/etc
-echo "Mandriva Linux release %{realversion} (%{distrib}) for %{_target_cpu}" > %{buildroot}/etc/mandriva-release
+mkdir -p %{buildroot}/etc
+touch %{buildroot}%{_sysconfdir}/product.id
+
+echo "%{distribution} release %{realversion} (%{distrib}) for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf mandriva-release %{buildroot}/etc/redhat-release
 ln -sf mandriva-release %{buildroot}/etc/mandrake-release
 ln -sf mandriva-release %{buildroot}/etc/release
 ln -sf mandriva-release %{buildroot}/etc/mandrakelinux-release
-ln -sf mandriva-release %{buildroot}/etc/os-release
 echo "%{version}.0 %{rel} %{distname}" > %{buildroot}/etc/version
 
-mkdir -p %buildroot%_sysconfdir/profile.d
-cat > %buildroot%_sysconfdir/profile.d/10mandriva-release.csh<<'EOF'
+# (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
+cat > %{buildroot}/etc/os-release << EOF
+Mandriva Linux release %{realversion} (%{distrib}) for %{_target_cpu}
+NAME="%{distribution}"
+VERSION="%{product_product} %{realversion} %{distrib}"
+ID=mandriva
+VERSION_ID=%{realversion}
+PRETTY_NAME="%{distribution} %{product_product} %{realversion} %{distrib}"
+ANSI_COLOR=1;43
+CPE_NAME="cpe:/o:mandriva:mandrivalinux:%{realversion}"
+HOME_URL="http://www.mandriva.org/"
+BUG_REPORT_URL="https://qa.mandriva.com/"
+EOF
+
+mkdir -p %{buildroot}%{_sysconfdir}/profile.d
+cat > %{buildroot}%{_sysconfdir}/profile.d/10mandriva-release.csh << EOF
 if ( -r /etc/sysconfig/system ) then
 	eval `sed 's|^#.*||' /etc/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
 	setenv META_CLASS $META_CLASS
@@ -211,7 +235,7 @@ else
 endif
 EOF
 
-cat > %buildroot%_sysconfdir/profile.d/10mandriva-release.sh<<'EOF'
+cat > %{buildroot}%{_sysconfdir}/profile.d/10mandriva-release.sh << EOF
 if [ -r /etc/sysconfig/system ]; then
 	. /etc/sysconfig/system
 	export META_CLASS
@@ -220,13 +244,11 @@ else
 fi
 EOF
 
-%release_install Free
 %release_install Flash Flash
+%release_install Free Free
 %release_install One One
 %release_install Powerpack Powerpack
 %release_install Mini Mini
-
-touch %buildroot%_sysconfdir/product.id
 
 
 %check
@@ -242,7 +264,7 @@ esac
 
 %release_post -s Flash
 %release_post -s Free
-%release_post -s One 
+%release_post -s One
 %release_post -s Powerpack
 %release_post -s Mini
 
@@ -263,15 +285,9 @@ esac
 
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
-/etc/mandrake-release
-/etc/mandrakelinux-release
-/etc/redhat-release
-/etc/mandriva-release
+/etc/*-release
 /etc/release
 /etc/version
 /etc/profile.d/10mandriva-release.sh
 /etc/profile.d/10mandriva-release.csh
-%config(noreplace) %verify(not md5 size mtime) %_sysconfdir/sysconfig/system
-
-
-
+%config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sysconfig/system
