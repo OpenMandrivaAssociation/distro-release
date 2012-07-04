@@ -124,7 +124,7 @@ cat > %{buildroot}%_sys_macros_dir/%{1}.macros << EOF \
 %%mandriva_os       %mandriva_os\
 %%mandriva_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)\
 %%mdkver            %mdkver\
-%%mdvver            %mdkver\
+%%mdvver            %%mdkver\
 %%distsuffix        %distsuffix\
 \
 # productid variable\
