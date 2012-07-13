@@ -139,7 +139,7 @@ cat > %{buildroot}%_sys_macros_dir/%{1}.macros << EOF \
 %%product_arch          %product_arch\
 %%product_product       %1\
 \
-%{?unstable}\
+ %{?unstable}\
 EOF\
  \
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig \
