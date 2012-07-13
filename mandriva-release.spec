@@ -53,18 +53,17 @@
 
 Summary:	Mandriva release file
 Name:		mandriva-release
-Version:	%version
-Release:	%rel
+Version:	%{version}
+Release:	0.4
 Epoch:		1
-License:	GPL
+License:	GPLv2+
 URL:		http://www.mandrivalinux.com/
 Group:		System/Configuration/Other
-Source:		%name.tar.bz2
+Source0:	%{name}.tar.bz2
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
 Source5:	release-notes.html
-BuildRoot:	%{_tmppath}/%{name}-root
 
 %description
 Mandriva Linux release file.
@@ -80,7 +79,7 @@ Obsoletes:	rawhide-release
 Obsoletes:	redhat-release
 Obsoletes:	mandrake-release
 Obsoletes:	mandrakelinux-release
-# (tpg) older releases provides /etc/os-release
+# (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
 
@@ -107,11 +106,11 @@ Mandriva Linux release file for %1 flavor. \
 
 %define release_post(s) \
 %post %{-s:%1} \
-ln -fs product.id.%1 /etc/product.id
+ln -fs product.id.%1 %{_sysconfdir}/product.id
 
 
 %define release_install(s) \
-cat > %{buildroot}/etc/product.id.%{1} << EOF \
+cat > %{buildroot}%{_sysconfdir}/product.id.%{1} << EOF \
 %{product_id_base},product=%1\
 EOF\
  \
@@ -177,9 +176,9 @@ perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %{_sysconfdir}/sysconfig/syst
 %prep
 %setup -q -n %{name}
 
-cp -a %SOURCE3 CREDITS
-cp -a %SOURCE4 release-notes.txt
-cp -a %SOURCE5 release-notes.html
+cp -a %{SOURCE3} CREDITS
+cp -a %{SOURCE4} release-notes.txt
+cp -a %{SOURCE5} release-notes.html
 
 cat > README.urpmi << EOF
 This is Mandriva Linux %version
@@ -201,18 +200,18 @@ fi
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/etc
+mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/product.id
 
 echo "%{distribution} release %{realversion} (%{distrib}) for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/mandriva-release
-ln -sf mandriva-release %{buildroot}/etc/redhat-release
-ln -sf mandriva-release %{buildroot}/etc/mandrake-release
-ln -sf mandriva-release %{buildroot}/etc/release
-ln -sf mandriva-release %{buildroot}/etc/mandrakelinux-release
-echo "%{version}.0 %{rel} %{distname}" > %{buildroot}/etc/version
+ln -sf mandriva-release %{buildroot}%{_sysconfdir}/redhat-release
+ln -sf mandriva-release %{buildroot}%{_sysconfdir}/mandrake-release
+ln -sf mandriva-release %{buildroot}%{_sysconfdir}/release
+ln -sf mandriva-release %{buildroot}%{_sysconfdir}/mandrakelinux-release
+echo "%{version}.0 %{rel} %{distname}" > %{buildroot}%{_sysconfdir}/version
 
 # (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
-cat > %{buildroot}/etc/os-release << EOF
+cat > %{buildroot}%{_sysconfdir}/os-release << EOF
 Mandriva Linux release %{realversion} (%{distrib}) for %{_target_cpu}
 NAME="%{distribution}"
 VERSION="%{product_product} %{realversion} %{distrib}"
@@ -227,8 +226,8 @@ EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 cat > %{buildroot}%{_sysconfdir}/profile.d/10mandriva-release.csh << EOF
-if ( -r /etc/sysconfig/system ) then
-	eval `sed 's|^#.*||' /etc/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
+if ( -r %{_sysconfdir}/sysconfig/system ) then
+	eval `sed 's|^#.*||' %{_sysconfdir}/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
 	setenv META_CLASS $META_CLASS
 else
 	setenv META_CLASS unknown
@@ -236,8 +235,8 @@ endif
 EOF
 
 cat > %{buildroot}%{_sysconfdir}/profile.d/10mandriva-release.sh << EOF
-if [ -r /etc/sysconfig/system ]; then
-	. /etc/sysconfig/system
+if [ -r %{_sysconfdir}/sysconfig/system ]; then
+	. %{_sysconfdir}/sysconfig/system
 	export META_CLASS
 else
 	export META_CLASS=unknown
@@ -252,7 +251,7 @@ EOF
 
 
 %check
-%if %am_i_cooker
+%if %{am_i_cooker}
 case %release in
     0.*) ;;
     *)
@@ -270,9 +269,8 @@ esac
 
 %define release_files(s:) \
 %files %{-s:%{-s*}} \
-%defattr(-,root,root) \
-%_sys_macros_dir/%{1}.macros \
-/etc/product.id.%1
+%{_sys_macros_dir}/%{1}.macros \
+%{_sysconfdir}/product.id.%1
 
 %release_files -s Flash Flash
 %release_files -s Free Free
@@ -283,10 +281,10 @@ esac
 
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
-%ghost /etc/product.id
-/etc/*-release
-/etc/release
-/etc/version
-/etc/profile.d/10mandriva-release.sh
-/etc/profile.d/10mandriva-release.csh
+%ghost %{_sysconfdir}/product.id
+%{_sysconfdir}/*-release
+%{_sysconfdir}/release
+%{_sysconfdir}/version
+%{_sysconfdir}/profile.d/10mandriva-release.sh
+%{_sysconfdir}/profile.d/10mandriva-release.csh
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sysconfig/system
