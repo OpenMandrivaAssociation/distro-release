@@ -272,9 +272,7 @@ esac
 %files %{-s:%{-s*}} \
 %defattr(-,root,root) \
 %_sys_macros_dir/%{1}.macros \
-/etc/product.id.%1 \
-%ghost /etc/product.id\
-\
+/etc/product.id.%1
 
 %release_files -s Flash Flash
 %release_files -s Free Free
@@ -285,6 +283,7 @@ esac
 
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
+%ghost /etc/product.id
 /etc/*-release
 /etc/release
 /etc/version
