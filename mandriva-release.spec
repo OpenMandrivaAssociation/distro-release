@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2012.0
-%define rel 0.4
+%define rel 0.5
 %define distname cooker
 %define distsuffix mdv
 %define distribution Mandriva Linux
@@ -54,7 +54,7 @@
 Summary:	Mandriva release file
 Name:		mandriva-release
 Version:	%{version}
-Release:	0.4
+Release:	0.5
 Epoch:		1
 License:	GPLv2+
 URL:		http://www.mandrivalinux.com/
@@ -212,13 +212,12 @@ echo "%{version}.0 %{rel} %{distname}" > %{buildroot}%{_sysconfdir}/version
 
 # (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
 cat > %{buildroot}%{_sysconfdir}/os-release << EOF
-Mandriva Linux release %{realversion} (%{distrib}) for %{_target_cpu}
 NAME="%{distribution}"
 VERSION="%{product_product} %{realversion} %{distrib}"
 ID=mandriva
 VERSION_ID=%{realversion}
 PRETTY_NAME="%{distribution} %{product_product} %{realversion} %{distrib}"
-ANSI_COLOR=1;43
+ANSI_COLOR="1;43"
 CPE_NAME="cpe:/o:mandriva:mandrivalinux:%{realversion}"
 HOME_URL="http://www.mandriva.org/"
 BUG_REPORT_URL="https://qa.mandriva.com/"
