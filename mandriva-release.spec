@@ -9,15 +9,12 @@
 %define distrib Official
 %endif
 %define version 2012.0
-%define rel 0.5
 %define distname cooker
-%define distsuffix mdv
-%define distribution Mandriva Linux
 
-%define product_vendor Mandriva
-%define product_distribution %distribution
+%define product_vendor %{vendor}
+%define product_distribution %{distribution}
 %define product_type Basic
-%define product_version %version
+%define product_version %{version}
 %if %am_i_cooker
 %define product_branch Devel
 %else
@@ -33,31 +30,31 @@
 %endif
 
 # The mandriva release, what is written on box
-%define mandriva_release %version
+%define mandriva_release %{version}
 
 # The mandriva branch: Cooker, Community or Official
-%define mandriva_branch %distrib
+%define mandriva_branch %{distrib}
 
 # The mandriva arch, notice: using %_target_cpu is bad
 # elsewhere because this depend of the config of the packager
 # _target_cpu => package build for
 # mandriva_arch => the distribution we are using
-%define mandriva_arch %_target_cpu
+%define mandriva_arch %{_target_cpu}
 
 # To be coherent with %mandriva_arch I provide os too
 # be I wonder it will be linux for a long time
-%define mandriva_os %_target_os
+%define mandriva_os %{_target_os}
 
-%define realversion %version
-%define mdkver %(echo %version | sed 's/\\.//')0
+%define realversion %{version}
+%define mdkver %(echo %{version} | sed 's/\\.//')0
 
-Summary:	Mandriva release file
-Name:		mandriva-release
+Summary:	%{distribution} release file
+Name:		%{_vendor}-release
 Version:	%{version}
 Release:	0.5
 Epoch:		1
 License:	GPLv2+
-URL:		http://www.mandrivalinux.com/
+URL:		%{disturl}
 Group:		System/Configuration/Other
 Source0:	%{name}.tar.bz2
 Source3:	CREDITS
@@ -66,10 +63,10 @@ Source4:	release-notes.txt
 Source5:	release-notes.html
 
 %description
-Mandriva Linux release file.
+%{distribution} release file.
 
-%package common
-Summary:	Mandriva release common files
+%package	common
+Summary:	%{distribution} release common files
 Group:		System/Configuration/Other
 Conflicts:	%name < %version-%release
 Obsoletes:	mandriva-release-Discovery
@@ -85,23 +82,23 @@ Requires:	lsb-release
 
 # cf mdvbz#32631
 Provides:	arch(%_target_cpu)
-Provides:	%arch_tagged mandriva-release-common
+Provides:	%arch_tagged %{_vendor}-release-common
 
 %description common
-Common files for Mandriva Linux release packages.
+Common files for %{distribution} release packages.
 
 %define release_package(s) \
 %{-s:%package %1} \
-Summary:	Mandriva release file%{?1: for %1} \
+Summary:	%{distribution} release file%{?1: for %1} \
 Group:		System/Configuration/Other \
-Requires:	%{arch_tagged mandriva-release-common} \
+Requires:	%{arch_tagged %{_vendor}-release-common} \
 Requires(post):	coreutils \
 Provides:	redhat-release rawhide-release mandrake-release mandrakelinux-release \
 Provides:	%name = %version-%release \
 
 %define release_descr(s) \
 %description %{-s:%1} \
-Mandriva Linux release file for %1 flavor. \
+%{distribution} release file for %1 flavor. \
 
 
 %define release_post(s) \
@@ -124,7 +121,6 @@ cat > %{buildroot}%_sys_macros_dir/%{1}.macros << EOF \
 %%mandriva_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)\
 %%mdkver            %mdkver\
 %%mdvver            %%mdkver\
-%%distsuffix        %distsuffix\
 \
 # productid variable\
 %%product_id %{product_id_base},product=%{1}\
@@ -151,15 +147,15 @@ EOF\
 
 
 %release_package -s Flash
-Conflicts:	mandriva-release-Free mandriva-release-One mandriva-release-Powerpack mandriva-release-Mini
+Conflicts:	%{_vendor}-release-Free %{_vendor}-release-One %{_vendor}-release-Powerpack %{_vendor}-release-Mini
 %release_package -s Free
-Conflicts:	mandriva-release-Flash mandriva-release-One mandriva-release-Powerpack mandriva-release-Mini
+Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-One %{_vendor}-release-Powerpack %{_vendor}-release-Mini
 %release_package -s One
-Conflicts:	mandriva-release-Flash mandriva-release-Free mandriva-release-Powerpack mandriva-release-Mini
+Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-Free %{_vendor}-release-Powerpack %{_vendor}-release-Mini
 %release_package -s Powerpack
-Conflicts:	mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Mini
+Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-Free %{_vendor}-release-One %{_vendor}-release-Mini
 %release_package -s Mini
-Conflicts:	mandriva-release-Flash mandriva-release-Free mandriva-release-One mandriva-release-Powerpack
+Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-Free %{_vendor}-release-One %{_vendor}-release-Powerpack
 
 %release_descr -s Flash
 %release_descr -s Free
@@ -167,10 +163,10 @@ Conflicts:	mandriva-release-Flash mandriva-release-Free mandriva-release-One man
 %release_descr -s Powerpack
 %release_descr -s Mini
 
-%triggerpostun -n mandriva-release-common -- mandriva-release < 2007.1
+%triggerpostun -n %{_vendor}-release-common -- %{_vendor}-release < 2007.1
 perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %{_sysconfdir}/sysconfig/system
 
-%triggerpostun -n mandriva-release-common -- mandriva-release-common < 2008.0-0.17
+%triggerpostun -n %{_vendor}-release-common -- %{_vendor}-release-common < 2008.0-0.17
 perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %{_sysconfdir}/sysconfig/system
 
 %prep
@@ -181,11 +177,11 @@ cp -a %{SOURCE4} release-notes.txt
 cp -a %{SOURCE5} release-notes.html
 
 cat > README.urpmi << EOF
-This is Mandriva Linux %version
+This is %{distribution} %{version}
 
-You can find the release notes in %_docdir/%name-common/release-notes.txt
+You can find the release notes in %{_docdir}/%{name}-common/release-notes.txt
 
-or on the web at http://wiki.mandriva.com/en/%{version}_Notes
+or on the web at http://wiki.%{_vendor}.com/en/%{version}_Notes
 EOF
 
 # check that CREDITS file is in UTF-8, fail otherwise
@@ -214,13 +210,13 @@ echo "%{version}.0 %{rel} %{distname}" > %{buildroot}%{_sysconfdir}/version
 cat > %{buildroot}%{_sysconfdir}/os-release << EOF
 NAME="%{distribution}"
 VERSION="%{product_product} %{realversion} %{distrib}"
-ID=mandriva
+ID=%{
 VERSION_ID=%{realversion}
 PRETTY_NAME="%{distribution} %{product_product} %{realversion} %{distrib}"
 ANSI_COLOR="1;43"
-CPE_NAME="cpe:/o:mandriva:mandrivalinux:%{realversion}"
-HOME_URL="http://www.mandriva.org/"
-BUG_REPORT_URL="https://qa.mandriva.com/"
+CPE_NAME="cpe:/o:%{_vendor}:%{_vendor}%{_os}:%{realversion}"
+HOME_URL="%{disturl}"
+BUG_REPORT_URL="%{bugurl}"
 EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
