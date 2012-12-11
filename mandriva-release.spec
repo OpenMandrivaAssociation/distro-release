@@ -8,7 +8,7 @@
 %else
 %define distrib Official
 %endif
-%define version 2012.0
+%define version 2013.0
 %define distname cooker
 
 %define product_vendor %{vendor}
@@ -51,7 +51,7 @@
 Summary:	%{distribution} release file
 Name:		%{_vendor}-release
 Version:	%{version}
-Release:	0.6
+Release:	0.1
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
