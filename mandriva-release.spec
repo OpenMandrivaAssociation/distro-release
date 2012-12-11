@@ -210,7 +210,7 @@ echo "%{version}.0 %{rel} %{distname}" > %{buildroot}%{_sysconfdir}/version
 cat > %{buildroot}%{_sysconfdir}/os-release << EOF
 NAME="%{distribution}"
 VERSION="%{product_product} %{realversion} %{distrib}"
-ID=%{
+ID=%{_vendor}
 VERSION_ID=%{realversion}
 PRETTY_NAME="%{distribution} %{product_product} %{realversion} %{distrib}"
 ANSI_COLOR="1;43"
