@@ -51,7 +51,7 @@
 Summary:	%{distribution} release file
 Name:		%{_vendor}-release
 Version:	%{version}
-Release:	0.2
+Release:	0.3
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -205,6 +205,9 @@ ln -sf mandriva-release %{buildroot}%{_sysconfdir}/redhat-release
 ln -sf mandriva-release %{buildroot}%{_sysconfdir}/mandrake-release
 ln -sf mandriva-release %{buildroot}%{_sysconfdir}/release
 ln -sf mandriva-release %{buildroot}%{_sysconfdir}/mandrakelinux-release
+ln -sf mandriva-release %{buildroot}%{_sysconfdir}/rosa-release
+ln -sf mandriva-release %{buildroot}%{_sysconfdir}/system-release
+
 echo "%{version}.0 %{rel} %{distname}" > %{buildroot}%{_sysconfdir}/version
 
 # (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
