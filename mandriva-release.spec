@@ -51,7 +51,7 @@
 Summary:	%{distribution} release file
 Name:		%{_vendor}-release
 Version:	%{version}
-Release:	0.1
+Release:	0.2
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -76,6 +76,7 @@ Obsoletes:	rawhide-release
 Obsoletes:	redhat-release
 Obsoletes:	mandrake-release
 Obsoletes:	mandrakelinux-release
+%rename		rosa-release-common
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
