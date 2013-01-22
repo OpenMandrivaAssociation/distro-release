@@ -51,7 +51,7 @@
 Summary:	%{distribution} release file
 Name:		%{_vendor}-release
 Version:	%{version}
-Release:	0.3
+Release:	0.4
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -114,7 +114,6 @@ EOF\
  \
 mkdir -p %{buildroot}%_sys_macros_dir \
 cat > %{buildroot}%_sys_macros_dir/%{1}.macros << EOF \
-%%distribution      %distribution\
 %%mandriva_release  %mandriva_release\
 %%mandriva_branch   %mandriva_branch\
 %%mandriva_arch     %mandriva_arch\
