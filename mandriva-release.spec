@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2013.0
-%define distname cooker
+%define distname Beta (Twelve Angry Penguins)
 
 %define product_vendor %{vendor}
 %define product_distribution %{distribution}
