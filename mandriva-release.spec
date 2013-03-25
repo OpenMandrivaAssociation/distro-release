@@ -207,7 +207,7 @@ ln -sf mandriva-release %{buildroot}%{_sysconfdir}/mandrakelinux-release
 ln -sf mandriva-release %{buildroot}%{_sysconfdir}/rosa-release
 ln -sf mandriva-release %{buildroot}%{_sysconfdir}/system-release
 
-echo "%{version}.0 %{rel} %{distname}" > %{buildroot}%{_sysconfdir}/version
+echo "%{version}.0 %{release} %{distname}" > %{buildroot}%{_sysconfdir}/version
 
 # (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
 cat > %{buildroot}%{_sysconfdir}/os-release << EOF
