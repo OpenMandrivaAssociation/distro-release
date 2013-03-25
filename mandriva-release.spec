@@ -10,6 +10,7 @@
 %endif
 %define version 2013.0
 %define distname Beta (Twelve Angry Penguins)
+%define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /]#_#g')
 
 %define product_vendor %{vendor}
 %define product_distribution %{distribution}
@@ -51,7 +52,7 @@
 Summary:	%{distribution} release file
 Name:		%{_vendor}-release
 Version:	%{version}
-Release:	0.8
+Release:	0.9
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -199,7 +200,7 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/product.id
 
-echo "%{distribution} release %{realversion} (%{distrib}) for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/mandriva-release
+echo "%{distribution} release %{realversion} %{distname} for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf mandriva-release %{buildroot}%{_sysconfdir}/redhat-release
 ln -sf mandriva-release %{buildroot}%{_sysconfdir}/mandrake-release
 ln -sf mandriva-release %{buildroot}%{_sysconfdir}/release
@@ -212,12 +213,12 @@ echo "%{version}.0 %{release} %{distname}" > %{buildroot}%{_sysconfdir}/version
 # (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
 cat > %{buildroot}%{_sysconfdir}/os-release << EOF
 NAME="%{distribution}"
-VERSION="%{product_product} %{realversion} %{distrib}"
+VERSION="%{realversion} %{distname}"
 ID=%{_vendor}
 VERSION_ID=%{realversion}
-PRETTY_NAME="%{distribution} %{product_product} %{realversion} %{distrib}"
+PRETTY_NAME="%{distribution} %{realversion} %{distname}"
 ANSI_COLOR="1;43"
-CPE_NAME="cpe:/o:%{_vendor}:%{_vendor}%{_os}:%{realversion}"
+CPE_NAME="cpe:/o:%{_vendor}:%{_distribution}:%{realversion}"
 HOME_URL="%{disturl}"
 BUG_REPORT_URL="%{bugurl}"
 EOF
