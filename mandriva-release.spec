@@ -52,7 +52,7 @@
 Summary:	%{distribution} release file
 Name:		%{_vendor}-release
 Version:	%{version}
-Release:	0.9
+Release:	0.10
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
