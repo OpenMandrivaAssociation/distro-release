@@ -50,9 +50,9 @@
 %define mdkver %(echo %{version} | sed 's/\\.//')0
 
 Summary:	%{distribution} release file
-Name:		%{_vendor}-release
+Name:		distro-release
 Version:	%{version}
-Release:	0.10
+Release:	0.11
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -78,6 +78,7 @@ Obsoletes:	redhat-release
 Obsoletes:	mandrake-release
 Obsoletes:	mandrakelinux-release
 %rename		rosa-release-common
+%rename		mandriva-release-common
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
@@ -86,7 +87,7 @@ Requires:	lsb-release
 Provides:	arch(%_target_cpu)
 Provides:	%arch_tagged %{_vendor}-release-common
 
-%description common
+%description	common
 Common files for %{distribution} release packages.
 
 %define release_package(s) \
@@ -147,22 +148,13 @@ META_CLASS=download\
 EOF\
 
 
-%release_package -s Flash
-Conflicts:	%{_vendor}-release-Free %{_vendor}-release-One %{_vendor}-release-Powerpack %{_vendor}-release-Mini
-%release_package -s Free
-Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-One %{_vendor}-release-Powerpack %{_vendor}-release-Mini
-%release_package -s One
-Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-Free %{_vendor}-release-Powerpack %{_vendor}-release-Mini
-%release_package -s Powerpack
-Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-Free %{_vendor}-release-One %{_vendor}-release-Mini
-%release_package -s Mini
-Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-Free %{_vendor}-release-One %{_vendor}-release-Powerpack
+%release_package -s Moondrake
+%rename		mandriva-release-Free
+%rename		mandriva-release-One
+%rename		mandriva-release-Powerpack
+%rename		mandriva-release-Mini
 
-%release_descr -s Flash
-%release_descr -s Free
-%release_descr -s One
-%release_descr -s Powerpack
-%release_descr -s Mini
+%release_descr -s Moondrake
 
 %triggerpostun -n %{_vendor}-release-common -- %{_vendor}-release < 2007.1
 perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %{_sysconfdir}/sysconfig/system
@@ -224,7 +216,7 @@ BUG_REPORT_URL="%{bugurl}"
 EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
-cat > %{buildroot}%{_sysconfdir}/profile.d/10mandriva-release.csh << EOF
+cat > %{buildroot}%{_sysconfdir}/profile.d/10distro-release.csh << EOF
 if ( -r %{_sysconfdir}/sysconfig/system ) then
 	eval `sed 's|^#.*||' %{_sysconfdir}/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
 	setenv META_CLASS $META_CLASS
@@ -233,7 +225,7 @@ else
 endif
 EOF
 
-cat > %{buildroot}%{_sysconfdir}/profile.d/10mandriva-release.sh << EOF
+cat > %{buildroot}%{_sysconfdir}/profile.d/10distro-release.sh << EOF
 if [ -r %{_sysconfdir}/sysconfig/system ]; then
 	. %{_sysconfdir}/sysconfig/system
 	export META_CLASS
@@ -242,12 +234,7 @@ else
 fi
 EOF
 
-%release_install Flash Flash
-%release_install Free Free
-%release_install One One
-%release_install Powerpack Powerpack
-%release_install Mini Mini
-
+%release_install Moondrake
 
 %check
 %if %{am_i_cooker}
@@ -260,23 +247,14 @@ case %release in
 esac
 %endif
 
-%release_post -s Flash
-%release_post -s Free
-%release_post -s One
-%release_post -s Powerpack
-%release_post -s Mini
+%release_post -s Moondrake
 
 %define release_files(s:) \
 %files %{-s:%{-s*}} \
 %{_sys_macros_dir}/%{1}.macros \
 %{_sysconfdir}/product.id.%1
 
-%release_files -s Flash Flash
-%release_files -s Free Free
-%release_files -s One One
-%release_files -s Powerpack Powerpack
-%release_files -s Mini Mini
-
+%release_files -s Moondrake
 
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
@@ -284,6 +262,6 @@ esac
 %{_sysconfdir}/*-release
 %{_sysconfdir}/release
 %{_sysconfdir}/version
-%{_sysconfdir}/profile.d/10mandriva-release.sh
-%{_sysconfdir}/profile.d/10mandriva-release.csh
+%{_sysconfdir}/profile.d/10distro-release.sh
+%{_sysconfdir}/profile.d/10distro-release.csh
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sysconfig/system
