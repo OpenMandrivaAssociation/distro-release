@@ -10,7 +10,7 @@
 %endif
 %define version 2013.0
 %define distname Beta (Twelve Angry Penguins)
-%define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /]#_#g')
+%define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
 
 %define product_vendor %{vendor}
 %define product_distribution %{distribution}
@@ -51,13 +51,13 @@
 
 Summary:	%{distribution} release file
 Name:		distro-release
-Version:	%{version}
+Version:	2013.0
 Release:	0.11
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
-Source0:	%{name}.tar.bz2
+Source0:	%{name}.tar.xz
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
@@ -69,10 +69,10 @@ Source5:	release-notes.html
 %package	common
 Summary:	%{distribution} release common files
 Group:		System/Configuration/Other
-Conflicts:	%name < %version-%release
+Conflicts:	%{name} < %{version}-%{release}
 Obsoletes:	mandriva-release-Discovery
 Obsoletes:	mandriva-release-Powerpack+
-Obsoletes:	%name < %version-%release
+Obsoletes:	%{name} < %{version}-%{release}
 Obsoletes:	rawhide-release
 Obsoletes:	redhat-release
 Obsoletes:	mandrake-release
@@ -97,7 +97,8 @@ Group:		System/Configuration/Other \
 Requires:	%{arch_tagged %{_vendor}-release-common} \
 Requires(post):	coreutils \
 Provides:	redhat-release rawhide-release mandrake-release mandrakelinux-release \
-Provides:	%name = %version-%release \
+Provides:	%{name} = %{version}-%{release} \
+Provides:	mandriva-release = %{version}-%{release} \
 
 %define release_descr(s) \
 %description %{-s:%1} \
@@ -156,12 +157,6 @@ EOF\
 
 %release_descr -s Moondrake
 
-%triggerpostun -n %{_vendor}-release-common -- %{_vendor}-release < 2007.1
-perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %{_sysconfdir}/sysconfig/system
-
-%triggerpostun -n %{_vendor}-release-common -- %{_vendor}-release-common < 2008.0-0.17
-perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %{_sysconfdir}/sysconfig/system
-
 %prep
 %setup -q -n %{name}
 
@@ -188,7 +183,6 @@ else
 fi
 
 %install
-rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/product.id
 
@@ -234,11 +228,11 @@ else
 fi
 EOF
 
-%release_install Moondrake
+%release_install Moondrake Moondrake
 
 %check
 %if %{am_i_cooker}
-case %release in
+case %{release} in
     0.*) ;;
     *)
     echo "Cooker distro should have this package with release < %{mkrel 1}"
@@ -254,7 +248,7 @@ esac
 %{_sys_macros_dir}/%{1}.macros \
 %{_sysconfdir}/product.id.%1
 
-%release_files -s Moondrake
+%release_files -s Moondrake Moondrake
 
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
