@@ -9,7 +9,7 @@
 %define distrib Official
 %endif
 %define version 2013.0
-%define distname Beta (Twelve Angry Penguins)
+%define distname Beta (Oxygen)
 %define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /]#_#g')
 
 %define product_vendor %{vendor}
@@ -52,7 +52,7 @@
 Summary:	%{distribution} release file
 Name:		%{_vendor}-release
 Version:	%{version}
-Release:	0.10
+Release:	0.11
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
