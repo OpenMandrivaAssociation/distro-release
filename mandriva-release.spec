@@ -95,7 +95,10 @@ Summary:	%{distribution} release file%{?1: for %1} \
 Group:		System/Configuration/Other \
 Requires:	%{arch_tagged %{_vendor}-release-common} \
 Requires(post):	coreutils \
-Provides:	redhat-release rawhide-release mandrake-release mandrakelinux-release \
+Provides:	redhat-release \
+Provides:	rawhide-release \
+Provides:	mandrake-release \
+Provides:	mandrakelinux-release \
 Provides:	%name = %version-%release \
 
 %define release_descr(s) \
