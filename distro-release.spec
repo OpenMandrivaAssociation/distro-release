@@ -52,7 +52,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	0.12
+Release:	0.13
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -96,7 +96,7 @@ Summary:	%{distribution} release file%{?1: for %1} \
 Group:		System/Configuration/Other \
 Requires:	%{arch_tagged %{_vendor}-release-common} \
 Requires(post):	coreutils \
-Provides:	redhat-release rawhide-release mandrake-release
+Provides:	redhat-release rawhide-release mandrake-release \
 Provides:	mandrakelinux-release \
 Provides:	%{name} = %{version}-%{release} \
 Provides:	mandriva-release = %{version}-%{release} \
