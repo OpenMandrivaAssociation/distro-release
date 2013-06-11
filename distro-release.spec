@@ -52,7 +52,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	0.13
+Release:	0.14
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -152,12 +152,20 @@ EOF\
 
 
 %release_package -s Moondrake
+%release_package -s OpenMandriva
+
 %rename		mandriva-release-Free
 %rename		mandriva-release-One
 %rename		mandriva-release-Powerpack
 %rename		mandriva-release-Mini
+%rename		openmandriva-release-Free
+%rename		openmandriva-release-One
+%rename		openmandriva-release-Powerpack
+%rename		openmandriva-release-Mini
 
 %release_descr -s Moondrake
+%release_descr -s OpenMandriva
+
 
 %prep
 %setup -q -n %{name}
@@ -231,6 +239,8 @@ fi
 EOF
 
 %release_install Moondrake Moondrake
+%release_install OpenMandriva OpenMandriva
+
 
 %check
 %if %{am_i_cooker}
@@ -244,6 +254,8 @@ esac
 %endif
 
 %release_post -s Moondrake
+%release_post -s OpenMandriva
+
 
 %define release_files(s:) \
 %files %{-s:%{-s*}} \
@@ -251,6 +263,8 @@ esac
 %{_sysconfdir}/product.id.%1
 
 %release_files -s Moondrake Moondrake
+%release_files -s OpenMandriva OpenMandriva
+
 
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
