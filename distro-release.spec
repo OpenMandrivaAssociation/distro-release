@@ -79,6 +79,7 @@ Obsoletes:	mandrake-release
 Obsoletes:	mandrakelinux-release
 %rename		rosa-release-common
 %rename		mandriva-release-common
+%rename		opemandriva-release-common
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
