@@ -9,8 +9,8 @@
 %define distrib Official
 %endif
 %define version 2013.0
-%define distname Beta (Oxygen)
-%define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /]#_#g')
+%define distname Beta (Twelve Angry Penguins)
+%define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
 
 %define product_vendor %{vendor}
 %define product_distribution %{distribution}
@@ -50,14 +50,14 @@
 %define mdkver %(echo %{version} | sed 's/\\.//')0
 
 Summary:	%{distribution} release file
-Name:		%{_vendor}-release
-Version:	%{version}
-Release:	0.12
+Name:		distro-release
+Version:	2013.0
+Release:	0.14
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
-Source0:	%{name}.tar.bz2
+Source0:	%{name}.tar.xz
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
@@ -69,15 +69,17 @@ Source5:	release-notes.html
 %package	common
 Summary:	%{distribution} release common files
 Group:		System/Configuration/Other
-Conflicts:	%name < %version-%release
+Conflicts:	%{name} < %{version}-%{release}
 Obsoletes:	mandriva-release-Discovery
 Obsoletes:	mandriva-release-Powerpack+
-Obsoletes:	%name < %version-%release
+Obsoletes:	%{name} < %{version}-%{release}
 Obsoletes:	rawhide-release
 Obsoletes:	redhat-release
 Obsoletes:	mandrake-release
 Obsoletes:	mandrakelinux-release
 %rename		rosa-release-common
+%rename		mandriva-release-common
+%rename		opemandriva-release-common
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
@@ -86,7 +88,7 @@ Requires:	lsb-release
 Provides:	arch(%_target_cpu)
 Provides:	%arch_tagged %{_vendor}-release-common
 
-%description common
+%description	common
 Common files for %{distribution} release packages.
 
 %define release_package(s) \
@@ -95,11 +97,10 @@ Summary:	%{distribution} release file%{?1: for %1} \
 Group:		System/Configuration/Other \
 Requires:	%{arch_tagged %{_vendor}-release-common} \
 Requires(post):	coreutils \
-Provides:	redhat-release \
-Provides:	rawhide-release \
-Provides:	mandrake-release \
+Provides:	redhat-release rawhide-release mandrake-release \
 Provides:	mandrakelinux-release \
-Provides:	%name = %version-%release \
+Provides:	%{name} = %{version}-%{release} \
+Provides:	mandriva-release = %{version}-%{release} \
 
 %define release_descr(s) \
 %description %{-s:%1} \
@@ -150,28 +151,21 @@ META_CLASS=download\
 EOF\
 
 
-%release_package -s Flash
-Conflicts:	%{_vendor}-release-Free %{_vendor}-release-One %{_vendor}-release-Powerpack %{_vendor}-release-Mini
-%release_package -s Free
-Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-One %{_vendor}-release-Powerpack %{_vendor}-release-Mini
-%release_package -s One
-Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-Free %{_vendor}-release-Powerpack %{_vendor}-release-Mini
-%release_package -s Powerpack
-Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-Free %{_vendor}-release-One %{_vendor}-release-Mini
-%release_package -s Mini
-Conflicts:	%{_vendor}-release-Flash %{_vendor}-release-Free %{_vendor}-release-One %{_vendor}-release-Powerpack
+%release_package -s Moondrake
+%release_package -s OpenMandriva
 
-%release_descr -s Flash
-%release_descr -s Free
-%release_descr -s One
-%release_descr -s Powerpack
-%release_descr -s Mini
+%rename		mandriva-release-Free
+%rename		mandriva-release-One
+%rename		mandriva-release-Powerpack
+%rename		mandriva-release-Mini
+%rename		openmandriva-release-Free
+%rename		openmandriva-release-One
+%rename		openmandriva-release-Powerpack
+%rename		openmandriva-release-Mini
 
-%triggerpostun -n %{_vendor}-release-common -- %{_vendor}-release < 2007.1
-perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %{_sysconfdir}/sysconfig/system
+%release_descr -s Moondrake
+%release_descr -s OpenMandriva
 
-%triggerpostun -n %{_vendor}-release-common -- %{_vendor}-release-common < 2008.0-0.17
-perl -pi -e "s/(META_CLASS=)server$/\\1powerpack/" %{_sysconfdir}/sysconfig/system
 
 %prep
 %setup -q -n %{name}
@@ -199,7 +193,6 @@ else
 fi
 
 %install
-rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/product.id
 
@@ -227,7 +220,7 @@ BUG_REPORT_URL="%{bugurl}"
 EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
-cat > %{buildroot}%{_sysconfdir}/profile.d/10mandriva-release.csh << EOF
+cat > %{buildroot}%{_sysconfdir}/profile.d/10distro-release.csh << EOF
 if ( -r %{_sysconfdir}/sysconfig/system ) then
 	eval `sed 's|^#.*||' %{_sysconfdir}/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
 	setenv META_CLASS $META_CLASS
@@ -236,7 +229,7 @@ else
 endif
 EOF
 
-cat > %{buildroot}%{_sysconfdir}/profile.d/10mandriva-release.sh << EOF
+cat > %{buildroot}%{_sysconfdir}/profile.d/10distro-release.sh << EOF
 if [ -r %{_sysconfdir}/sysconfig/system ]; then
 	. %{_sysconfdir}/sysconfig/system
 	export META_CLASS
@@ -245,16 +238,13 @@ else
 fi
 EOF
 
-%release_install Flash Flash
-%release_install Free Free
-%release_install One One
-%release_install Powerpack Powerpack
-%release_install Mini Mini
+%release_install Moondrake Moondrake
+%release_install OpenMandriva OpenMandriva
 
 
 %check
 %if %{am_i_cooker}
-case %release in
+case %{release} in
     0.*) ;;
     *)
     echo "Cooker distro should have this package with release < %{mkrel 1}"
@@ -263,22 +253,17 @@ case %release in
 esac
 %endif
 
-%release_post -s Flash
-%release_post -s Free
-%release_post -s One
-%release_post -s Powerpack
-%release_post -s Mini
+%release_post -s Moondrake
+%release_post -s OpenMandriva
+
 
 %define release_files(s:) \
 %files %{-s:%{-s*}} \
 %{_sys_macros_dir}/%{1}.macros \
 %{_sysconfdir}/product.id.%1
 
-%release_files -s Flash Flash
-%release_files -s Free Free
-%release_files -s One One
-%release_files -s Powerpack Powerpack
-%release_files -s Mini Mini
+%release_files -s Moondrake Moondrake
+%release_files -s OpenMandriva OpenMandriva
 
 
 %files common
@@ -287,6 +272,6 @@ esac
 %{_sysconfdir}/*-release
 %{_sysconfdir}/release
 %{_sysconfdir}/version
-%{_sysconfdir}/profile.d/10mandriva-release.sh
-%{_sysconfdir}/profile.d/10mandriva-release.csh
+%{_sysconfdir}/profile.d/10distro-release.sh
+%{_sysconfdir}/profile.d/10distro-release.csh
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sysconfig/system
