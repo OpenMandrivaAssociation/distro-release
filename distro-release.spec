@@ -9,7 +9,11 @@
 %define distrib Official
 %endif
 %define version 2013.0
+%if "%{disttag}" == "omv"
+%define distname Beta (Oxygen)
+%else
 %define distname Beta (Twelve Angry Penguins)
+%endif
 %define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
 
 %define product_vendor %{vendor}
@@ -52,7 +56,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	0.14
+Release:	0.15
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
