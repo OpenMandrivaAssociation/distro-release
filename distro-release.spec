@@ -129,7 +129,7 @@ cat > %{buildroot}%_sys_macros_dir/%{1}.macros << EOF \
 %%distro_os       %distro_os\
 %%distro_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)\
 %%disver            %distro_ver\
-
+\
 # (tpg) legacy stuff should be removed after all packages do not use macros begining with %mandriva
 %%mandriva_release  %distro_release\
 %%mandriva_branch   %distro_branch\
