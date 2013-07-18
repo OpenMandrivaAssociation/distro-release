@@ -34,29 +34,29 @@
     %define unstable %%_with_unstable --with-unstable
 %endif
 
-# The mandriva release, what is written on box
-%define mandriva_release %{version}
+# The distro release, what is written on box
+%define distro_release %{version}
 
-# The mandriva branch: Cooker, Community or Official
-%define mandriva_branch %{distrib}
+# The distro branch: Cooker, Community or Official
+%define distro_branch %{distrib}
 
-# The mandriva arch, notice: using %_target_cpu is bad
+# The distro arch, notice: using %_target_cpu is bad
 # elsewhere because this depend of the config of the packager
 # _target_cpu => package build for
-# mandriva_arch => the distribution we are using
-%define mandriva_arch %{_target_cpu}
+# distro_arch => the distribution we are using
+%define distro_arch %{_target_cpu}
 
-# To be coherent with %mandriva_arch I provide os too
+# To be coherent with %distro_arch I provide os too
 # be I wonder it will be linux for a long time
-%define mandriva_os %{_target_os}
+%define distro_os %{_target_os}
 
 %define realversion %{version}
-%define mdkver %(echo %{version} | sed 's/\\.//')0
+%define distro_ver %(echo %{version} | sed 's/\\.//')0
 
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	0.15
+Release:	0.16
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -123,12 +123,20 @@ EOF\
  \
 mkdir -p %{buildroot}%_sys_macros_dir \
 cat > %{buildroot}%_sys_macros_dir/%{1}.macros << EOF \
-%%mandriva_release  %mandriva_release\
-%%mandriva_branch   %mandriva_branch\
-%%mandriva_arch     %mandriva_arch\
-%%mandriva_os       %mandriva_os\
+%%distro_release  %distro_release\
+%%distro_branch   %distro_branch\
+%%distro_arch     %distro_arch\
+%%distro_os       %distro_os\
+%%distro_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)\
+%%disver            %distro_ver\
+
+# (tpg) legacy stuff should be removed after all packages do not use macros begining with %mandriva
+%%mandriva_release  %distro_release\
+%%mandriva_branch   %distro_branch\
+%%mandriva_arch     %distro_arch\
+%%mandriva_os       %distro_os\
 %%mandriva_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)\
-%%mdkver            %mdkver\
+%%mdkver            %distro_ver\
 %%mdvver            %%mdkver\
 \
 # productid variable\
@@ -183,7 +191,7 @@ This is %{distribution} %{version}
 
 You can find the release notes in %{_docdir}/%{name}-common/release-notes.txt
 
-or on the web at http://wiki.%{_vendor}.com/en/%{version}_Notes
+or on the web at %{disturl}
 EOF
 
 # check that CREDITS file is in UTF-8, fail otherwise
@@ -200,13 +208,15 @@ fi
 mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/product.id
 
-echo "%{distribution} release %{realversion} %{distname} for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/mandriva-release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/redhat-release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/mandrake-release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/mandrakelinux-release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/rosa-release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/system-release
+echo "%{distribution} release %{realversion} %{distname} for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/distro-release
+ln -sf distro-release %{buildroot}%{_sysconfdir}/redhat-release
+ln -sf distro-release %{buildroot}%{_sysconfdir}/mandriva-release
+ln -sf distro-release %{buildroot}%{_sysconfdir}/mandrake-release
+ln -sf distro-release %{buildroot}%{_sysconfdir}/release
+ln -sf distro-release %{buildroot}%{_sysconfdir}/mandrakelinux-release
+ln -sf distro-release %{buildroot}%{_sysconfdir}/rosa-release
+ln -sf distro-release %{buildroot}%{_sysconfdir}/system-release
+
 
 echo "%{version}.0 %{release} %{distname}" > %{buildroot}%{_sysconfdir}/version
 
