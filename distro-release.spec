@@ -56,7 +56,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	0.16
+Release:	0.17
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -130,7 +130,7 @@ cat > %{buildroot}%_sys_macros_dir/%{1}.macros << EOF \
 %%distro_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)\
 %%disver            %distro_ver\
 \
-# (tpg) legacy stuff should be removed after all packages do not use macros begining with %mandriva\
+# (tpg) legacy stuff should be removed after all packages do not use macros begining with %%mandriva\
 %%mandriva_release  %distro_release\
 %%mandriva_branch   %distro_branch\
 %%mandriva_arch     %distro_arch\
@@ -221,14 +221,16 @@ ln -sf distro-release %{buildroot}%{_sysconfdir}/system-release
 echo "%{version}.0 %{release} %{distname}" > %{buildroot}%{_sysconfdir}/version
 
 # (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
+# and http://www.freedesktop.org/software/systemd/man/os-release.html
 cat > %{buildroot}%{_sysconfdir}/os-release << EOF
 NAME="%{distribution}"
 VERSION="%{realversion} %{distname}"
-ID=%{_vendor}
+ID="%(echo %{vendor} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')"
 VERSION_ID=%{realversion}
+BUILD_ID=%(echo `date +"%Y%m%d.%H"`)
 PRETTY_NAME="%{distribution} %{realversion} %{distname}"
 ANSI_COLOR="1;43"
-CPE_NAME="cpe:/o:%{_vendor}:%{_distribution}:%{realversion}"
+CPE_NAME="cpe:/o:%(echo %{vendor} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g'):%{_distribution}:%{realversion}"
 HOME_URL="%{disturl}"
 BUG_REPORT_URL="%{bugurl}"
 EOF
