@@ -9,18 +9,7 @@
 %else
 %define distrib Official
 %endif
-%define version 2013.0
-%if "%{disttag}" == "omv"
-%define distname Beta (Oxygen)
-%else
-%define distname Beta (Twelve Angry Penguins)
-%endif
-%define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
-
-%define product_vendor %{vendor}
-%define product_distribution %{distribution}
 %define product_type Basic
-%define product_version %{version}
 %if %am_i_cooker
 %define product_branch Devel
 %else
@@ -28,12 +17,6 @@
 %endif
 %define product_release 1
 %define product_arch %{_target_cpu}
-
-%define product_id_base vendor=%product_vendor,distribution=%product_distribution,type=%product_type,version=%product_version,branch=%product_branch,release=%product_release,arch=%product_arch
-
-%if %am_i_cooker
-    %define unstable %%_with_unstable --with-unstable
-%endif
 
 # The mandriva release, what is written on box
 %define mandriva_release %{version}
@@ -51,13 +34,12 @@
 # be I wonder it will be linux for a long time
 %define mandriva_os %{_target_os}
 
-%define realversion %{version}
 %define mdkver %(echo %{version} | sed 's/\\.//')0
 
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	0.15
+Release:	0.18
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -104,10 +86,8 @@ Provides:	%arch_tagged %{_vendor}-release-common
 %description	common
 Common files for %{distribution} release packages.
 
-
-
-%{python:distro.release_package("Moondrake")}
-%{python:distro.release_package("OpenMandriva")}
+%{python:distro.release_package("Moondrake GNU/Linux", "Moondrake")}
+%{python:distro.release_package("OpenMandriva LX", "OpenMandriva")}
 
 %prep
 %setup -q -n %{name}
@@ -138,10 +118,10 @@ fi
 %install
 mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/product.id
+touch %{buildroot}%{_sysconfdir}/os-release
+touch %{buildroot}%{_sysconfdir}/release
 
 
-echo "Moondrake GNU/Linux release %{realversion} %{distname} for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/moondrake-release
-echo "OpenMandriva LX release %{realversion} %{distname} for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/openmandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/redhat-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandrake-release
@@ -149,21 +129,6 @@ ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandrakelinux-release
 ln -sf release %{buildroot}%{_sysconfdir}/rosa-release
 ln -sf release %{buildroot}%{_sysconfdir}/system-release
-
-echo "%{version}.0 %{release} %{distname}" > %{buildroot}%{_sysconfdir}/version
-
-# (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
-cat > %{buildroot}%{_sysconfdir}/os-release << EOF
-NAME="%{distribution}"
-VERSION="%{realversion} %{distname}"
-ID=%{_vendor}
-VERSION_ID=%{realversion}
-PRETTY_NAME="%{distribution} %{realversion} %{distname}"
-ANSI_COLOR="1;43"
-CPE_NAME="cpe:/o:%{_vendor}:%{_distribution}:%{realversion}"
-HOME_URL="%{disturl}"
-BUG_REPORT_URL="%{bugurl}"
-EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 cat > %{buildroot}%{_sysconfdir}/profile.d/10distro-release.csh << EOF
@@ -184,9 +149,8 @@ else
 fi
 EOF
 
-%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake")}
-%{python:distro.release_install("OpenMandriva LX", "OpenMandriva", "OpenMandriva")}
-
+%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta (Twelve Angry Penguins)","http://moondrake.net","mdk",ansiColor="1;35;4;44")}
+%{python:distro.release_install("OpenMandriva LX", "OpenMandriva", "OpenMandriva", "Beta (Oxygen)", "http://openmandriva.org", "omv")}
 
 %check
 %if %{am_i_cooker}
@@ -202,7 +166,14 @@ esac
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
 %ghost %{_sysconfdir}/product.id
-%{_sysconfdir}/*-release
+%ghost %{_sysconfdir}/os-release
+%ghost %{_sysconfdir}/release
+%{_sysconfdir}/redhat-release
+%{_sysconfdir}/mandrake-release
+%{_sysconfdir}/mandriva-release
+%{_sysconfdir}/mandrakelinux-release
+%{_sysconfdir}/rosa-release
+%{_sysconfdir}/system-release
 %{_sysconfdir}/version
 %{_sysconfdir}/profile.d/10distro-release.sh
 %{_sysconfdir}/profile.d/10distro-release.csh

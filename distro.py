@@ -1,38 +1,53 @@
 import sys,rpm
 
-def release_package(distribution):
+def release_package(distribution, Vendor):
+    vendor = Vendor.lower()
     print(rpm.expandMacro("""
-%%package 	"""+distribution+"""
-Summary:	%{distribution} release file for """+distribution+"""
+%%package 	"""+Vendor+"""
+Summary:	"""+Vendor+""" release file
 Group:		System/Configuration/Other
 Requires:	%{arch_tagged %{_vendor}-release-common}
 Requires(post):	coreutils
+Requires(post,postun): update-alternatives
 Provides:	redhat-release rawhide-release mandrake-release
 Provides:	mandrakelinux-release
 Provides:	%{name} = %{version}-%{release}
 Provides:	mandriva-release = %{version}-%{release}
 
-%%description """+distribution+"""
-%{distribution} release file for """+distribution+""" flavor.
+%%description """+Vendor+"""
+"""+distribution+""" release file for """+Vendor+""" flavor.
 
-%%post		"""+distribution+"""
-ln -fs product.id."""+distribution+""" %{_sysconfdir}/product.id
+%%post		"""+Vendor+"""
+update-alternatives --install /etc/os-release os-release /etc/os-release."""+vendor+""" 10
+update-alternatives --install /etc/release release /etc/"""+vendor+"""-release 10
+update-alternatives --install /etc/product.id product.id /etc/product.id."""+Vendor+""" 10
 
-%%files		"""+distribution+"""
-%{_sys_macros_dir}/"""+distribution+""".macros
-%{_sysconfdir}/product.id."""+distribution))
+%%postun	"""+Vendor+"""
+if [ "$1" = "0" ]; then
+update-alternatives --remove os-release /etc/os-release."""+vendor+"""
+update-alternatives --remove release /etc/"""+vendor+"""-release 10
+update-alternatives --remove product.id /etc/product.id."""+Vendor+"""
+fi
+
+%%files		"""+Vendor+"""
+%{_sys_macros_dir}/"""+Vendor+""".macros
+%{_sysconfdir}/os-release."""+vendor+"""
+%{_sysconfdir}/"""+vendor+"""-release
+%{_sysconfdir}/product.id."""+Vendor))
     sys.stdout.flush()
 
-def release_install(distribution,product,Vendor):
+def release_install(distribution,product,Vendor,codename,disturl,disttag,ansiColor="1;43"):
     vendor = Vendor.lower()
+    _distribution = distribution.lower().replace(" ","_").replace("/","_").replace("!","_").replace("?","_")
+
     print(rpm.expandMacro("""
 cat > %{buildroot}%{_sysconfdir}/product.id."""+product+""" << EOF
-%{product_id_base},product="""+product+"""
+vendor="""+Vendor+""",distribution="""+distribution+""",type=%{product_type},version=%{distepoch},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product="""+product+"""
 EOF
 
 mkdir -p %{buildroot}%{_sys_macros_dir}
 cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
-%%mandriva_release  %mandriva_release
+%%mandriva_release  %{distepoch}
 %%mandriva_branch   %mandriva_branch
 %%mandriva_arch     %mandriva_arch
 %%mandriva_os       %mandriva_os
@@ -41,17 +56,22 @@ cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
 %%mdvver            %%mdkver
 
 # productid variable
-%%product_id vendor="""+vendor+",distribution="+distribution+",type=%product_type,version=%product_version,branch=%product_branch,release=%product_release,arch=%product_arch,product="+Vendor+"""
+%%product_id vendor="""+vendor+",distribution="+distribution+",type=%product_type,version=%{distepoch},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product="+product+"""
 
 %%product_vendor        """+vendor+"""
 %%product_distribution  """+distribution+"""
 %%product_type          %product_type
-%%product_version       %product_version
+%%product_version       %distepoch
 %%product_branch        %product_branch
 %%product_release       %product_release
 %%product_arch          %product_arch
 %%product_product       """+product+"""
-
+%%distribution		"""+distribution+"""
+ %%_distribution		"""+_distribution+"""
+%%disturl		"""+disturl+"""
+%%vendor		"""+Vendor+"""
+ %%_vendor		"""+vendor+"""
+%%disttag		"""+disttag+"""
 EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
@@ -60,4 +80,23 @@ SECURITY=3
 CLASS=beginner
 LIBSAFE=no
 META_CLASS=download
-EOF"""))
+EOF
+
+echo \""""+distribution+""" release %{distepoch} """+codename+""" for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/"""+vendor+"""-release
+if [ ! -f %{buildroot}%{_sysconfdir}/version ]; then
+echo \"%{distepoch} %{release} """+codename+"""\" > %{buildroot}%{_sysconfdir}/version
+fi
+
+# (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
+cat > %{buildroot}%{_sysconfdir}/os-release."""+vendor+""" << EOF
+NAME=\""""+distribution+"""\"
+VERSION=\"%{distepoch} """+codename+"""\"
+ID=\""""+vendor+"""\"
+VERSION_ID=\"%{distepoch}\"
+PRETTY_NAME=\""""+distribution+"""%{distepoch} """+codename+"""\"
+ANSI_COLOR=\""""+ansiColor+"""\"
+CPE_NAME=\"cpe:/o:"""+vendor+":"+_distribution+""":%{distepoch}\"
+HOME_URL=\""""+disturl+"""\"
+BUG_REPORT_URL=\"%{bugurl}\"
+EOF
+"""))
