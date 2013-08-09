@@ -21,18 +21,18 @@
 # The mandriva release, what is written on box
 %define mandriva_release %{version}
 
-# The mandriva branch: Cooker, Community or Official
-%define mandriva_branch %{distrib}
+# The distro branch: Cooker, Community or Official
+%define distro_branch %{distrib}
 
-# The mandriva arch, notice: using %_target_cpu is bad
+# The distro arch, notice: using %_target_cpu is bad
 # elsewhere because this depend of the config of the packager
 # _target_cpu => package build for
-# mandriva_arch => the distribution we are using
-%define mandriva_arch %{_target_cpu}
+# distro_arch => the distribution we are using
+%define distro_arch %{_target_cpu}
 
-# To be coherent with %mandriva_arch I provide os too
+# To be coherent with %distro_arch I provide os too
 # be I wonder it will be linux for a long time
-%define mandriva_os %{_target_os}
+%define distro_os %{_target_os}
 
 %define mdkver %(echo %{version} | sed 's/\\.//')0
 
@@ -102,7 +102,7 @@ This is %{distribution} %{version}
 
 You can find the release notes in %{_docdir}/%{name}-common/release-notes.txt
 
-or on the web at http://wiki.%{_vendor}.com/en/%{version}_Notes
+or on the web at %{disturl}
 EOF
 
 # check that CREDITS file is in UTF-8, fail otherwise
