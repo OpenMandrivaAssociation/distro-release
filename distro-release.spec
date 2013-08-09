@@ -2,6 +2,7 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
+%{python:import distro}
 %define am_i_cooker 1
 %if %am_i_cooker
 %define distrib Cooker
@@ -9,7 +10,11 @@
 %define distrib Official
 %endif
 %define version 2013.0
+%if "%{disttag}" == "omv"
+%define distname Beta (Oxygen)
+%else
 %define distname Beta (Twelve Angry Penguins)
+%endif
 %define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
 
 %define product_vendor %{vendor}
@@ -52,7 +57,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	0.14.1
+Release:	0.15
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -80,6 +85,14 @@ Obsoletes:	mandrakelinux-release
 %rename		rosa-release-common
 %rename		mandriva-release-common
 %rename		opemandriva-release-common
+%rename		mandriva-release-Free
+%rename		mandriva-release-One
+%rename		mandriva-release-Powerpack
+%rename		mandriva-release-Mini
+%rename		openmandriva-release-Free
+%rename		openmandriva-release-One
+%rename		openmandriva-release-Powerpack
+%rename		openmandriva-release-Mini
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
@@ -91,84 +104,14 @@ Provides:	%arch_tagged %{_vendor}-release-common
 %description	common
 Common files for %{distribution} release packages.
 
-%define release_package(s) \
-%{-s:%package %1} \
-Summary:	%{distribution} release file%{?1: for %1} \
-Group:		System/Configuration/Other \
-Requires:	%{arch_tagged %{_vendor}-release-common} \
-Requires(post):	coreutils \
-Provides:	redhat-release rawhide-release mandrake-release \
-Provides:	mandrakelinux-release \
-Provides:	%{name} = %{version}-%{release} \
-Provides:	mandriva-release = %{version}-%{release} \
-
-%define release_descr(s) \
-%description %{-s:%1} \
-%{distribution} release file for %1 flavor. \
 
 
-%define release_post(s) \
-%post %{-s:%1} \
-ln -fs product.id.%1 %{_sysconfdir}/product.id
-
-
-%define release_install(s) \
-cat > %{buildroot}%{_sysconfdir}/product.id.%{1} << EOF \
-%{product_id_base},product=%1\
-EOF\
- \
-mkdir -p %{buildroot}%_sys_macros_dir \
-cat > %{buildroot}%_sys_macros_dir/%{1}.macros << EOF \
-%%mandriva_release  %mandriva_release\
-%%mandriva_branch   %mandriva_branch\
-%%mandriva_arch     %mandriva_arch\
-%%mandriva_os       %mandriva_os\
-%%mandriva_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)\
-%%mdkver            %mdkver\
-%%mdvver            %%mdkver\
-\
-# productid variable\
-%%product_id %{product_id_base},product=%{1}\
-\
-%%product_vendor        %product_vendor\
-%%product_distribution  %product_distribution\
-%%product_type          %product_type\
-%%product_version       %product_version\
-%%product_branch        %product_branch\
-%%product_release       %product_release\
-%%product_arch          %product_arch\
-%%product_product       %1\
-\
- %{?unstable}\
-EOF\
- \
-mkdir -p %{buildroot}%{_sysconfdir}/sysconfig \
-cat > %{buildroot}%{_sysconfdir}/sysconfig/system << EOF \
-SECURITY=3\
-CLASS=beginner\
-LIBSAFE=no\
-META_CLASS=download\
-EOF\
-
-
-%release_package -s Moondrake
-%release_package -s OpenMandriva
-
-%rename		mandriva-release-Free
-%rename		mandriva-release-One
-%rename		mandriva-release-Powerpack
-%rename		mandriva-release-Mini
-%rename		openmandriva-release-Free
-%rename		openmandriva-release-One
-%rename		openmandriva-release-Powerpack
-%rename		openmandriva-release-Mini
-
-%release_descr -s Moondrake
-%release_descr -s OpenMandriva
-
+%{python:distro.release_package("Moondrake")}
+%{python:distro.release_package("OpenMandriva")}
 
 %prep
 %setup -q -n %{name}
+
 
 cp -a %{SOURCE3} CREDITS
 cp -a %{SOURCE4} release-notes.txt
@@ -196,13 +139,16 @@ fi
 mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/product.id
 
-echo "%{distribution} release %{realversion} %{distname} for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/mandriva-release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/redhat-release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/mandrake-release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/mandrakelinux-release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/rosa-release
-ln -sf mandriva-release %{buildroot}%{_sysconfdir}/system-release
+
+echo "Moondrake GNU/Linux release %{realversion} %{distname} for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/moondrake-release
+echo "OpenMandriva LX release %{realversion} %{distname} for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/openmandriva-release
+ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
+ln -sf release %{buildroot}%{_sysconfdir}/redhat-release
+ln -sf release %{buildroot}%{_sysconfdir}/mandrake-release
+ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
+ln -sf release %{buildroot}%{_sysconfdir}/mandrakelinux-release
+ln -sf release %{buildroot}%{_sysconfdir}/rosa-release
+ln -sf release %{buildroot}%{_sysconfdir}/system-release
 
 echo "%{version}.0 %{release} %{distname}" > %{buildroot}%{_sysconfdir}/version
 
@@ -238,8 +184,8 @@ else
 fi
 EOF
 
-%release_install Moondrake Moondrake
-%release_install OpenMandriva OpenMandriva
+%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake")}
+%{python:distro.release_install("OpenMandriva LX", "OpenMandriva", "OpenMandriva")}
 
 
 %check
@@ -253,24 +199,10 @@ case %{release} in
 esac
 %endif
 
-%release_post -s Moondrake
-%release_post -s OpenMandriva
-
-
-%define release_files(s:) \
-%files %{-s:%{-s*}} \
-%{_sys_macros_dir}/%{1}.macros \
-%{_sysconfdir}/product.id.%1
-
-%release_files -s Moondrake Moondrake
-%release_files -s OpenMandriva OpenMandriva
-
-
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
 %ghost %{_sysconfdir}/product.id
 %{_sysconfdir}/*-release
-%{_sysconfdir}/release
 %{_sysconfdir}/version
 %{_sysconfdir}/profile.d/10distro-release.sh
 %{_sysconfdir}/profile.d/10distro-release.csh
