@@ -2,7 +2,7 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
-%define am_i_cooker 1
+%define am_i_cooker 0
 %if %am_i_cooker
 %define distrib Cooker
 %else
@@ -56,7 +56,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	0.17
+Release:	0.18
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
