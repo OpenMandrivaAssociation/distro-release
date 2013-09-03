@@ -2,6 +2,7 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
+%{python:import sys; sys.path.append(rpm.expandMacro("%{_sourcedir}"))}
 %{python:import distro}
 %define am_i_cooker 1
 %if %am_i_cooker
