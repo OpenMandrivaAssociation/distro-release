@@ -46,6 +46,7 @@ License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
 Source0:	%{name}.tar.xz
+Source1:	distro.py
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
