@@ -47,6 +47,7 @@ URL:		%{disturl}
 Group:		System/Configuration/Other
 Source0:	%{name}.tar.xz
 Source1:	distro.py
+Source2:	%{name}.rpmlintrc
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt

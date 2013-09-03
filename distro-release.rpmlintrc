@@ -1,0 +1,1 @@
+addFilter('.*use-of-RPM_SOURCE_DIR.*')
