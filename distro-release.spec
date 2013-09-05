@@ -1,6 +1,11 @@
 # Please update release notes:
 # make -C SOURCES release-notes.{html,txt}
 #
+%if %product_product == "OpenMandriva"
+%bcond_with	Moondrake
+%else 
+%bcond_without	Moondrake
+%endif
 
 %define am_i_cooker 1
 %if %am_i_cooker
@@ -56,7 +61,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	0.17
+Release:	0.18
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -163,7 +168,9 @@ META_CLASS=download\
 EOF\
 
 
+%if %{with Moondrake}
 %release_package -s Moondrake
+%endif
 %release_package -s OpenMandriva
 
 %rename		mandriva-release-Free
@@ -175,7 +182,9 @@ EOF\
 %rename		openmandriva-release-Powerpack
 %rename		openmandriva-release-Mini
 
+%if %{with Moondrake}
 %release_descr -s Moondrake
+%endif
 %release_descr -s OpenMandriva
 
 
@@ -254,7 +263,9 @@ else
 fi
 EOF
 
+%if %{with Moondrake}
 %release_install Moondrake Moondrake
+%endif
 %release_install OpenMandriva OpenMandriva
 
 
@@ -269,7 +280,9 @@ case %{release} in
 esac
 %endif
 
+%if %{with Moondrake}
 %release_post -s Moondrake
+%endif
 %release_post -s OpenMandriva
 
 
@@ -278,7 +291,9 @@ esac
 %{_sys_macros_dir}/%{1}.macros \
 %{_sysconfdir}/product.id.%1
 
+%if %{with Moondrake}
 %release_files -s Moondrake Moondrake
+%endif
 %release_files -s OpenMandriva OpenMandriva
 
 
