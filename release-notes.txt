@@ -1,725 +1,212 @@
+2013.0 Beta
 
-   Contents
-
-        * 1 Mandriva Linux 2010 Spring Release Notes
-        * 2 Introduction
-        * 3 Editions
-             + 3.1 One Edition
-             + 3.2 Powerpack Edition
-             + 3.3 Free Edition
-        * 4 Deprecation
-        * 5 Installation media
-             + 5.1 Available media
-        * 6 Upgrading
-             + 6.1 Upgrading from previous releases
-             + 6.2 General Upgrading Steps
-                  o 6.2.1 Upgrade using the GUI, mdkonline
-                  o 6.2.2 Upgrade using the CLI, urpmi
-                  o 6.2.3 Advanced upgrade options
-        * 7 Major features
-             + 7.1 Mandriva tools
-                  o 7.1.1 Guest account
-                  o 7.1.2 KA method / Installer
-                  o 7.1.3 Diskdrake / Installer
-                  o 7.1.4 Media management
-                  o 7.1.5 Bootloader
-                  o 7.1.6 msecgui
-                  o 7.1.7 drakguard
-                  o 7.1.8 netprofile
-                  o 7.1.9 Mandriva Directory Server
-             + 7.2 Desktop environments
-                  o 7.2.1 GNOME
-                  o 7.2.2 KDE
-                  o 7.2.3 Desktop applications
-                  o 7.2.4 Educational and scientific applications
-             + 7.3 X server
-             + 7.4 Base system
-             + 7.5 System administration
-             + 7.6 Internationalization
-
-Mandriva Linux 2010 Spring Release Notes
-
-Introduction
-
-   This page contains important information the Mandriva Linux (2010.1)
-   release, code name Farman.
-
-   The following topics are covered:
-     * General information about new features and major changes.
-     * Changes to the Mandriva installer and upgrade instructions for
-       users of previous releases.
-     * Changes to supported hardware and drivers.
-     * Changes regarding software packages.
-     * Other technical information for experienced users.
-
-   Please also refer to Mandriva Linux 2010 Spring Errata - the Errata for
-   the 2010 Spring release. The Errata page contains information on known
-   bugs and problems in the release and instructions on fixing, avoiding
-   or working around them.
-
-   For a more detailed and graphical introduction to the most obvious
-   user-visible changes in this release, please see the Release Tour.
-
-Editions
-
-   Mandriva Linux 2010 Spring is available in several different editions,
-   listed below.
-
-One Edition
-
-   The One edition is an installable live CD integrating the latest
-   proprietary drivers, available free of charge. Six different versions
-   of the One edition are available: two for GNOME and four for KDE, each
-   with a different set of supported languages.
-     * Starting from Mandriva 2010 Spring, now you are able to install
-       Mandriva One directly from the boot menu, choosing the option
-       'Install to Hard Disk', no need to run into a live session if you
-       want so.
-
-Powerpack Edition
-
-   The Powerpack edition includes support, services, a wider range of
-   packages, third-party proprietary applications, a subset of the Fluendo
-   multimedia codec pack, providing support for MP3, WMA and WMV files and
-   Fluendo DVD player.
-
-Free Edition
-
-   The Free edition is a pure free / open source software edition, without
-   any of the non-free packages bundled with the other editions, available
-   as a free download.
-
-   For more information on the various editions, see Choosing the right
-   edition.
-
-   Additional information is also available online:
-     * List of Compatible/Certified Computers and the detailed Mandriva
-       Hardware Database
-     * The Mandriva User Forums
-     * The Mandriva Wiki
-
-Deprecation
-
-Installation media
-
-Available media
-
-   This release is available:
-     * As a Free edition for the x86-32 and x86-64 architectures, on one
-       DVD each, with a traditional installer.
-     * As a Free edition for the x86-32 and x86-64 architectures, both on
-       one single "dual" CD with a traditional installer.
-     * As One live-CD (x86-32 architecture only), for GNOME and KDE
-       editions, available for various languages. 4 different One editions
-       are available, 2 for GNOME and 4 for KDE.
-
-Upgrading
-
-Upgrading from previous releases
-
-   Please note!
-   If you upgrade from a previous releases, KDE 3 - if installed - will be
-   replaced by KDE 4. The old .kde directory in the user's /home will be
-   backed up.
-
-   Upgrading between releases always has the potential to cause some
-   problems. Upgrading is supported and we do test upgrades, but due to
-   the huge range of packages and hardware configurations possible, it is
-   always the case that in your particular situation, the upgrade may
-   cause a problem we did not anticipate. Therefore we recommend that you
-   always back up your system prior to upgrading.
-
-   If you tested one of the Mandriva Linux 2010 pre-releases (beta or RC),
-   we advise you to remove all package sources and add them back using the
-   Mandriva Control Center > Software Management >
-   Configure media sources for install and update to be sure you have
-   stable release media sources.
-
-General Upgrading Steps
-
-   After taking the necessary precautions pointed out above, you can
-   upgrade using the Free or Powerpack editions respective DVD's, and it
-   should work well. You can also upgrade in-line. What that means is that
-   the Mandriva update notification applet, Mandriva Online, will notify
-   you that a new Mandriva Linux release (2010.1) is available, and ask if
-   you wish to upgrade. If you agree, the upgrade will be carried out from
-   within your running system, just like a regular system update. You
-   should then be able to reboot into a working 2010.1 system. If you have
-   disabled the applet or it is not automatically running for some reason,
-   you can upgrade manually either using the GUI or the CLI. Both methods
-   are outlined below.
-
-Upgrade using the GUI, mdkonline
-
-   First make sure you have the latest updates for your currently running
-   release prior to upgrading. To upgrade run this command as root in
-   terminal:
-
-          su
-          mdkapplet-upgrade-helper --new_distro_version=2010.1
-
-Upgrade using the CLI, urpmi
-
-   You can also upgrade using urpmi in terminal. Below are the steps you
-   need to follow:
-     * First ensure your system is entirely up-to-date with the latest
-       updates (when upgrading it's assumed you have the latest updates
-       available for your installed release, so for a smoother upgrade
-       always make sure you have the latest updates) using this command as
-       root in terminal:
-
-          su
-          urpmi --auto-update -v
-
-     * Remove your existing repositories, either using:
-          + The Mandriva Control Center > Software
-            Management > Configure media sources for install and update OR
-          + Using this command as root:
-
-                su
-                urpmi.removemedia -av
-
-     * Add 2010.1 repositories. To do this, use Easy URPMI. Set the
-       Version field to 2010.1 also make sure the Architecture field is
-       set correctly then click Add official medias. Next open the file it
-       offers you with the default handler (gurpmi aka Software
-       Installer).
-
-     * To start the upgrade process, run the following command, as root:
-
-          su
-          urpmi --auto --auto-update --replacefiles 2>&1 | tee upgrade.log
-
-   This will save the output of the process to the file upgrade.log in the
-   current directory, in case you need to check it later, or you have any
-   problems. Once the process completes (without errors), you should
-   reboot, and you should find the system has been fully updated to
-   2010.1.
-   Caution !
-   If you get any errors you should try and fix them before you reboot so
-   as not to end up with a broken system e.g. without a graphical desktop
-   (text console, aka tty, always works and can be used to fix most
-   problems but is not as easy to use as a graphical desktop).
-
-Advanced upgrade options
-
-     * You can add --download-all to the above command when upgrading,
-       this a brand new option in urpmi and will make it download all the
-       packages first before trying to install them, this is useful in the
-       case of internet connection failure during the upgrade process,
-       since you can just relaunch the command and continue the process.
-       Be aware though that this will requires quite some free space on
-       the root / partition. Notice that urpmi displays info about the
-       total size of the packages it's going to download, 10GB would
-       usually be enough, but that depends on how many packages you have
-       installed. You can also specify a location to download the rpms, in
-       case the / partition is full and you have more free space say in
-       your /home, you can do this using:
-
-          urpmi -v --auto-update --download-all /path/to/download/folder
-
-     * However note that --download-all /path/to/download/folder won't
-       work for upgrading from releases older than 2010.0, until you
-       update urpmi as older urpmi versions will consider
-       /path/to/download/folder a package name, and no package names are
-       allowed on the same command line with --auto-select or
-       --auto-update. Working around this is simple, when upgrading, urpmi
-       will first update itself along with some other core packages,
-       glibc, perl, rpm... ect. So first use:
-
-          urpmi -v --auto-update to update urpmi and the other packages
-          mentioned above. After these packages are updated you'll be
-          asked again for the rest of the packages, press Ctrl+C to cancel
-          then relaunch it:
-          urpmi -v --auto-update --download-all /path/to/download/folder
-
-     * Another option, --noclean, will make urpmi not delete the rpms it
-       downloads, you can then copy the rpms to another machine and use
-       them when upgrading.
-
-Major features
-
-Mandriva tools
-
-Guest account
-
-   Many improvements in guest account management: use of restricted shell,
-   restricted access to other user's files, prevent access for most of
-   Mandriva administration tools...
-
-KA method / Installer
-
-   There is a new method to install a Mandriva System: duplicate an
-   already installed one using a clone tool called KA. This is an
-   experimental tool taken from an old research project named CLIC,
-   (cluster product). The cloning process is able to duplicate nodes with
-   different kinds of hardware (network, hdd, sound card etc...), and
-   automatically regenerate his modprobe.conf. The cloning process erase
-   all data on client nodes, so it should be used with care. A full
-   documentation in PDF and HTML is available in the drakx trunk installer
-   subversion repository. ka documentation.
-
-Diskdrake / Installer
-
-   File system encryption has been improved and made easier both in
-   diskdrake and installer. "Encrypted" is no longer listed as a
-   Filesystem, but as a checkbox in the creation window. This allows to
-   specify a filesystem to use inside the encrypted partition, while it
-   used to be forced to be ext3/ext4. Another change is that there will be
-   no longer a "dmcrypt" tab listing on the encrypted partitions from
-   various disks. Instead they are displayed in-place, identified also by
-   a lock icon. Passphrase will be asked at boot time.
-
-   As a reminder /boot can not be encrypted, so you need to have a
-   separate unencrypted /boot if you decide to encrypt the root partition
-   /.
-
-   As a side effect, cryptoloop support, which is obsolete, has been
-   completely removed.
-
-Media management
-
-     * New tag "media_type" has been added in media.cfg. One of the first
-       application is to be able to manage easily media. Non-Free media
-       will not be added anymore on Free installation. More
-       functionnalities coming.
-
-     * In the Free Edition the Non-free media sources are disabled by
-       default, this is to comply with the idea that the Free Edition, DVD
-       and free-dual CD, only contain free-open-source-software, when
-       setting up the online media sources in Free Edition installs, the
-       Non-free media sources are added, but disabled/ignored by default.
-       For more information see Bug #40033.
-
-     *
-          + You can easily enable the Non-free media sources from the
-            Mandriva Control Center > Software
-            Management > Configure media sources for install and update.
-            Basically you'd need to enable the Non-free and Non-free
-            Updates repositories.
-
-Bootloader
-
-   Mandriva configuration utilities now support setting up an encrypted
-   password in GRUB.
-
-msecgui
-
-     * A security summary GUI is now available.
-     * Added ACLs support (Thanks to Tiago Marques from Caixa Magica).
-     * It is now possible to run each periodic test and visualize test
-       results using graphical interface.
-     * Support for different periodicity for each periodic check (e.g.,
-       checks could be run on daily, weekly or monthly base).
-     * Support for task-oriented security levels, providing optimized
-       configurations for desktops, netbooks, local and Internet servers,
-       among others.
-
-drakguard
-
-     * Applications blocker: you can now decide to block some applications
-       for a given user (Thanks also to Tiago Marques from Caixa Magica).
-       Use the new tab for it.
-
-netprofile
-
-     * Add support for custom services: you can now add whatever service
-       you need to be managed by netprofile.
-
-          For more info see this blog post by Eugeni Dodonov.
-
-Mandriva Directory Server
-
-   New release of MDS (Mandriva Directory Server).
-     * New userquota module (Glen Ogilvie) to set disk and network quota
-       for users.
-     * New bulkimport mode (Glen Ogilvie) to do massive import/update
-       users from a CSV file.
-     * New sshlpk module to manage OpenSSH LDAP public keys.
-     * Many updates in translations (French, German, Spanish, Brazilian
-       Portuguese).
-
-Desktop environments
-
-GNOME
-
-     * Ia-Ora GTK+ theme improvements:
-          + Tooltips are now a little bigger, have rounded-corners and if
-            you are running with a compositing manager (Compiz, Mutter,
-            Metacity with compositing enabled), they become a bit
-            translucent too.
-          + Tooltips placement has been improved and should try to avoid
-            hiding the widgets they describe.
-          + Windows can now be dragged not only from window title (in
-            Metacity or Compiz), but also from window menubar. This is not
-            very useful for Ia-Ora theme but other themes are now trying
-            to remove the distinction between window title and menubar, so
-            it might help.
-          + mnemonics are now hidden by default, unless you start pressing
-            "Alt" key. It is to help reducing clutter on screen.
-          + GNOME Panel is now using more space between icons for
-            launchers and status icons.
-
-   GNOME 2.30.1, which includes (non exhaustive list):
-     * Many Epiphany improvements: Webkit page cache enabled, Youtube
-       movie extension available (no flash required), infobar for saving
-       username/password in GNOME keyring, support for GZIP compressed
-       pages.
-     * Gnome Activity Journal, a tool which uses Zeitgeist to let you
-       browse through the documents you recently worked on, is now
-       available in Mandriva.
-     * Evolution opens attachments read-only to prevent accidentally
-       loosing modification you might make.
-     * Vinagre now supports tunnelling VNC connections over SSH.
-     * GNOME Color Manager, a utility to set up colour profiles for your
-       monitor, is now packaged in Mandriva Cooker.
-     * Many changes have been implemented in Nautilus before GNOME 3.0
-       release. Nautilus will then become a file manager only and will not
-       manage desktop anymore. So file management functionalities have
-       been improved and an optional split view has been added fore more
-       convenience.
-     * You can now configure a background per monitor on a multi-monitor
-       setup.
-     * Tracker has replaced Beagle as the document search engine.
-     * Packagekit service is now available for applications, including
-       file-roller (for e.g. installing unzip or unrar utilities when
-       needed).
-     * Rewritten GDM 2.30.2 is now used as the default GNOME display
-       manager. Please check 2010 Spring Errata as this new version
-       doesn't support all the features from the old 2.20 series. You can
-       still install 2.20 gdm, by using the gdm-220 package.
-
-   Various news:
-     * udisks and gnome-disk-utility are now used by GNOME tools,
-       replacing HAL, for disk handling.
-     * There were further performance improvements in the GLib library.
-     * LightsOff: A new GNOME game.
-     * Improved IRC support for Empathy and support for Facebook chat,
-       using XMPP standard protocol.
-     * Seed supported by more and more applications.
-     * GtkBuilder is one of the new APIs used for applications.
-     * Cheese: the webcam application has been split into different
-       libraries, making it easier for other applications to integrate
-       webcam functionality (like avatar choosers in instant messaging
-       applications).
-     * A preview of GNOME-Shell (2.29.1), which will be part of GNOME 3,
-       is now available. You should use "GNOME3Preview" session to test
-       GNOME-Shell (and you need 3D support from your graphics card).
-       GNOME-Shell is available on One live-CD, GNOME edition. You will
-       need to install the live CD if you want to evaluate GNOME-Shell.
-
-KDE
-
-     * KDE 4.4.3 (final release) has had a number of improvements since
-       4.3.x:
-          + The brand new Window Tabbing, this enables you to group
-            windows together, which makes handling large numbers of
-            application windows easier as you can group the relevant ones,
-            according to your work flow, together
-          + Possible crashes in Plasma, Dolphin and Okular have been fixed
-          + A performance problem in KMail when sending emails has been
-            fixed
-          + Numerous fixes in Konsole, KDE's terminal emulator, among them
-            two possible crashers in session management
-          + Flash plugin support in KHTML has been enhanced to work with
-            newest Youtube skins
-          + Fixes for Case-sensitivity when renaming in KIO, KDE's
-            network-transparent I/O library
-          + Microblog applet now shows the correct time in the timeline
-          + The audioplayer KRunner plugin has been fixed to not freeze
-            the KRunner UI
-          + Backported fixes / improvements for kdegraphics from KDE trunk
-          + Backported fixes / improvements for Nepomuk from KDE trunk
-          + Better plymouth support/integration in KDM
-          + The GetHotNewStuff interface in KDE4 has been further improved
-            to make it easier to install available third party content
-          + KGet now has support for digital signature checking and
-            downloading files from multiple sources
-          + Gwenview now includes an easy to use photo import tool
-
-     * Application Launcher Menu tool tips: now if the Application
-       Launcher Menu "Format" is set to "Name Only" or "Description Only"
-       a tool tip will appear when hovering over a menu entry displaying
-       the other component (e.g. with "Name Only" the tool tip will
-       display the Description and vice versa).
-     * KDM:
-          + KDM in Mandriva now automatically triggers XFdrake, the X
-            server configuration tool in Mandriva, if the X server can't
-            be started normally allowing users to easily reconfigure their
-            display configuration.
-          + To make the KDM greeter, the login screen, use the colours of
-            each Mandriva edition (Free, One, Powerpack and Flash)
-            correctly, the kdm configuration file kdmrc has been moved to
-            each *-kde4-config sub-package; so now kdmrc will be in
-            /var/lib/mandriva/kde4-profiles/{free,one,powerpack,flash}/sha
-            re/config/kdm/.
-          + Fingerprint support has been added to KDM.
-
-     * Ia-Ora KDE theme:
-          + Multiple crash fixes
-          + Various fixes / improvements regrading themes colours and list
-            view alternative background colours
-          + Window tabbing support: Now IaOra-KDE supports window tabbing,
-            i.e. several windows can be grouped together, like what the
-            Oxygen style can do
-
-   Around KDE:
-     * Qt, The current version in 2010.1 is the latest stable version,
-       4.6.2.
-
-     * Nepomuk now uses Virtuoso as its back-end to store data, which
-       should give faster tagging and indexing.
-          + Nepomuk have Timeline support in Dolphin, which allows to see
-            the new tags as a function of the modification date.
-          + Ginkgo is a new graphical front-end for managing data
-            semantically. Ginkgo lets you create and explore links between
-            your personal data such as e-mails, contacts, files, Web
-            pages. It harnesses the Nepomuk framework.
-
-     * Amarok 2.3.1: improved podcast support, a newly designed toolbar
-       and the possiblity of automatically using a USB mass storage device
-       for the collection when it's connected.
-
-     * FFmpegThumbs: a new KDE4 video preview/thumbnailer implementation,
-       based on FFmpegThumbnailer, it's very light on resources and works
-       for all video file types supported by FFmpeg.
-
-     * KTorrent 4.0: redesigned GUI for better ergonomy.
-
-     * Digikam and kipi-plugins 1.3.0, the latest version, are available
-       in the official repositories.
-
-     * The KDE Webkit based browser reKonq was updated to version 0.4
-       which includes kwallet support, AdBlock support, and many more
-       improvements/features.
-
-     * Choqok a KDE micro-blogging client for Twitter and identi.ca is
-       packaged and ready to install.
-
-     * The KDE 4 port of KmyMoney now reached beta status and is available
-       in the official repositories.
-
-Desktop applications
-
-     * Firefox 3.6.3. This brand new version comes with lots of
-       improvements in performance. You will find also some new
-       functionalities to improve global ergonomy:
-          + Tab previews: to activate this new feature, open about:config
-            in your browser and look for browser.CtrlTab.previews
-            parameter.
-          + Support for Persona themes.
-          + More feedback information like report when an installed
-            plug-in is out of date.
-          + For an overview of Firefox 3.6 features, you can check this
-            Ars Technica article.
-          + KDE4 Integration, now under KDE4, Firefox uses the KDE file
-            chooser, and respects the KDE file type association settings.
-
-     * OpenOffice.org 3.2: startup speed has been improved a lot. Some
-       improvements also in OpenXML files import and basic docx file
-       export.
-     * System-config-printer 1.2.0 is now Hal Free and uses Udev for
-       printer auto-detection.
-     * Gutenprint 5.2.5 adds support for many new Epson printers.
-     * Chromium (The open source browser on which Google Chrome is based)
-       is available in the official repositories. It's, for now, available
-       only for both i586 and x86_64 in the contrib repositories.
-     * Opera: The Opera browser is now available in the official Non-free
-       repository.
-     * Gnash 0.8.7 snapshot.
-     * xine-lib 1.2 with support for VDPAU for hardware accelerated
-       rendering of high definition video is now available.
-     * Clementine player has been packaged for Mandriva. This is a port of
-       Amarok 1.4 to QT4, for people who prefer the older Amarok GUI.
-     * Deluge 1.2.3 (final) is now available in Cooker. It has a rewritten
-       web UI and performance improvements.
-     * XBMC: The popular media centre software is now available in the
-       official repositories. Ideal for setting up a Home Theatre PC
-       (HTPC) with Mandriva!
-     * Transmission 1.92 is now available. It adds support for magnet
-       links and trackerless torrents and has many other improvements.
-     * qBittorrent, a light weight but feature-full Qt-based BitTorrent
-       client is available in the official repositories.
-     * Skrooge 0.7.0: New versions of the personal finances management
-       applications Skrooge and Homebank were released, this brings many
-       new features and improvements, mostly focusing on import and
-       export. Homebank 4.2.1 brings similar improvements with a new trend
-       time reports.
-     * libgpod 0.7.93 was released and this version brings iPhone, iPod
-       Touch and iPod Nano 5G support for gtkpod, Rhythmbox and Amarok.
-     * Avant Window Navigator 4.0, the latest stable version, is now
-       available in the official repositories along with the latest
-       awn-extras.
-     * Video editors updates:
-          + Lives 1.3.2 brings PulseAudio support, many improvements to
-            multi-track mode, a startup wizard for new users, some new
-            real-time transitions and improved performance.
-          + Kdenlive 0.7.7.1 now includes colour themes, an improved
-            titler and a few other new features.
-          + The OpenShot video editor was imported in Mandriva recently.
-            The package is now at version 1.1.3.
-
-     * Major new version 2.0.0 of the Bluefish web editor. It adds
-       autocompletion for HTML, CSS and PHP, inline help, inline spell
-       checking, a character map, upload/download synchronization with
-       remote web sites, automatic document recovery and more.
-
-Educational and scientific applications
-
-   Many educational and scientific applications were introduced and
-   improved Mandriva 2010.1. Among some of such applications it is
-   possible to mention:
-     * Sagemath. A free open-source mathematics software system licensed
-       under the GPL, which combines the power of many existing
-       open-source packages into a common Python-based interface, was
-       fully integrated in Mandriva 2010.1
-     * Salome. An open-source software that provides a generic platform
-       for Pre- and Post-Processing for numerical simulation was also
-       introduced in Mandriva 2010.1 distribution.
-     * Invesalius. InVesalius generates 3D anatomical models based on a
-       sequence of 2D DICOM files acquired using CT or MRI equipments.
-     * Root. A framework for data processing, born at CERN, at the heart
-       of the research on high-energy physics.
-     * Axiom. A general purpose Computer Algebra system, which defines a
-       strongly typed, mathematically correct type hierarchy and has a
-       programming language and a built-in compiler.
-     * Tachyon. Tachyon is a parallel ray tracing library, for use on
-       distributed memory parallel computers, shared memory computers, and
-       clusters of workstations. Tachyon supports MPI for distributed
-       memory parallel computers, threads for shared memory machines, and
-       can support both simultaneously for clusters of shared memory
-       machines. Tachyon has been selected for inclusion in the SPEC
-       MPI2007 benchmark suite.
-     * Jmol. An open-source Java viewer for chemical structures in 3D with
-       features for chemicals, crystals, materials and biomolecules.
-     * Singular. SINGULAR is a Computer Algebra system for polynomial
-       computations with special emphasize on the needs of commutative
-       algebra, algebraic geometry, singularity theory and polynomial
-       system solving.
-     * Gap. GAP is a system for computational discrete algebra, with
-       particular emphasis on Computational Group Theory. GAP provides a
-       programming language, a library of thousands of functions
-       implementing algebraic algorithms written in the GAP language as
-       well as large data libraries of algebraic objects.
-     * Ecl. ECL (Embeddable Common-Lisp) is an interpreter of the
-       Common-Lisp language as described in the X3J13 Ansi specification,
-       featuring CLOS (Common-Lisp Object System), conditions, loops, etc,
-       plus a translator to C, which can produce standalone executables.
-     * Polybori. PolyBoRi is implemented as a C++ library for Polynomials
-       over Boolean Rings, which provides high-level data types for
-       Boolean polynomials. A python-interface yields extensible
-       algorithms for computing Groebner bases over Boolean Rings.
-     * Macaulay2. Macaulay 2 is a software system devoted to supporting
-       research in algebraic geometry and commutative algebra, whose
-       creation has been funded by the National Science Foundation since
-       1992.
-     * Linalg-linbox. LinBox is a C++ template library for exact,
-       high-performance linear algebra computation with dense, sparse, and
-       structured matrices over the integers and over finite fields.
-
-X server
-
-     * Imwheel has been removed from Mandriva distribution as it was
-       getting really old and buggy. Please report any bugs you could have
-       because of this.
-     * Nouveau driver: it's now used as the default free driver for nVidia
-       graphics cards instead of of the nv. Nouveau will bring Kernel Mode
-       Setting support, 2D acceleration, and RandR 1.2 support (for easy
-       multi-monitor setup).
-     * Mesa 7.8: 3D support has been enabled for the ATI R600 and R700
-       chipets (ATI Radeon HD 2000 and later), you can now enjoy 3D
-       acceleration with the free ATI drivers.
-     * Intel X11 driver version 2.11.0 is now included. Together with
-       kernel 2.6.33 it brings video overlay support for more CPU
-       efficient video playback.
-     * X.org related packages have been updated to X.org release 7.5. Also
-       included xserver version 1.7.7.
-     * The free ATI driver has been updated to version 6.13. This version
-       supports kernel-mode setting support (enabled by default in the TMB
-       kernel) and adds support for some newer ATI cards.
-
-Base system
-
-     * HAL use has been removed from printing system now. Please report
-       any trouble you may have in printers detection and daily work.
-     * Linux kernel 2.6.33.4 release: Some noteworthy changes include: **
-       The new Nouveau driver for nVidia graphics cards is now included in
-       the kernel and is now used by default on Mandriva instead of the nv
-       driver.
-          + DRBD, the Distributed Replicated Block Device driver, which is
-            useful on High Availability clusters is now included in the
-            kernel.
-          + There is a new experimental Compcache driver, which compresses
-            part of the memory, effectively increasing the amount of
-            memory you can use. Note that Mandriva does not yet include
-            the user space tools to effectively use this.
-          + The Anticipatory I/O scheduler was removed and there were the
-            usual improvements to the default CFQ I/O scheduler.
-          + Of course there are also many improvements to hardware
-            support, such as a new driver for WIFI devices with the Ralink
-            RT2800 and Realtek RTL8192U chipsets.
-     * TMB kernel in Contrib uses the BFS process scheduler now, bringing
-       improved responsiveness.
-     * ntfs-3g driver 2010.03.06: Performance and timestamps fixes.
-     * Glibc 2.11.1: many performance improvements. For example, binutils
-       package now comes with STT_GNU_IFUNC support.
-     * The GDB debugger was updated to version 7.1. Developers are excited
-       about the process record and replay and reverse debugging features.
-     * General build options: all packages are now linked with the -Wl,-O1
-       linker options. This can improve start-up performance of
-       applications linked with many libraries.
-     * Dracut, a replacement for mkinitrd, has been improved to better
-       integrate with Mandriva (but it is still experimental and does not
-       replace mkinitrd by default) You can create a new initrd with
-       Dracut by hand if you want, or start using it by default the next
-       time you install a new kernel by running update-alternatives
-       --config mkinitrd and selecting dracut.
-     * Ruby 1.9.1 is now available in Contrib. This new version is much
-       more faster than the previous Ruby 1.8 series.
-     * USB/IP, a tool for using USB devices over the network, is now
-       packaged in Cooker.
-     * microcode_ctl package has been enhanced to automatically download
-       the latest microcode for you CPU and now supports AMD CPUs. Intel
-       microcode is also available from the new microcode package in
-       non-free.
-     * Python has been updated to the 2.6.5 release.
-
-System administration
-
-     * The Sysklogd system log daemon has been replaced by rsyslog.
-       rsyslog is a very modern system logger with very active
-       development. It includes advanced features such as storing logs in
-       SQL databases, e-mail warnings on some log messages, support for
-       sending syslog messages over TCP and many more.
-     * Munin 1.4.4: better scalability, many new plug-ins for monitoring
-       MySQL, PostgreSQL, Asterisk and others.
-     * Spamassassin has been updated to version 3.3.1. There are new
-       plug-ins and adaptations of the default scores for better spam
-       detection. The rules now are in a separate spamassassin-rules
-       package and by default sa-update is run on a daily basis to update
-       them.
-     * Monitoring tool Zabbix has been updated to new version 1.8.2. This
-       release brings much improved performance and GUI.
-     * Postfix 2.7.0 is now available, bringing improved performance in
-       content filtering and address verification.
-     * MySQL packages were reorganized a bit. The mysql-max package was
-       dropped and its features were merged in the standard mysql
-       packages. The clustered storage engine NDB was removed from the
-       mysql package and is now available in the mysql-cluster package.
-     * Zarafa groupware solution is now included in Mandriva (Community
-       version).
-     * This release of Mandriva Linux brings a fully-functional
-       Network-Manager plugin, developed and maintained by Andrey
-       Borzenkov from Mandriva community, which is able to use all
-       features supported by the Mandriva Network Tools (drakx-net). Note
-       that while drakx-net tools remain the official Mandriva network
-       configuration utilities, this plugin allows users who are used to
-       the Network-Manager and want to use it while having all
-       Mandriva-specific features.
-
-Internationalization
-
-     * iBus has been included in contrib repository. We encourage input
-       method users to try out this new input method framework, and report
-       bugs to bugzilla.
+   The OpenMandriva Cooker & QA teams are pleased to announce the
+   availability of the 2013.0 beta!
+
+   Detailed are some of the changes that the OS has undergone since
+   Mandriva Linux 2012.
+
+   This is a beta, not for use in production environments. It has received
+   some testing and is believed to be stable. However there are still some
+   bugs. You have been warned.
+
+   You may wish to view the Errata, located near the bottom of this page.
+
+Available Media
+
+   The 2013.0 beta is available as a live media DVD, downloadable in ISO
+   format. They are available on our downloads page.
+
+   Live media means you're able to run OpenMandriva LX straight from the
+   DVD and try it before installing it. You may also install the system to
+   hard disk either from the running live cd or from the boot manager.
+
+Recommended Hardware
+
+   Please note the recommended hardware requirements have changed; To run
+   the distribution, we recommend 1 GB of memory (min 640MB), at least 10
+   GB of hard drive space (see below for known issues with partitioning),
+   and for best compositing performance a suitable accelerated 3D graphics
+   card. Releases are available for the i586 and x86_64 architectures.
+
+New Features and Major Changes
+
+   The introduction of OpenMandriva-2013.0 represents a major update from
+   the previous version of Mandriva. This is the first release under the
+   new name, OpenMandriva LX, and is also the first release under the
+   community of the OpenMandriva Association. With that in mind, here are
+   some of the new features:
+
+KDE 4.11
+
+   KDE 4.11 provides a clean, unified desktop for OpenMandriva. It has all
+   the tools required to be productive whilst providing a pleasant,
+   functional environment.
+
+   This beta provides a KDE 4.11 installation with four launchers:
+   Lancelot, the traditional KDE KickOff/KMenu, ROSA's SimpleWelcome, and
+   the Homerun Launcher. We'd like feedback on which should be the default
+   in the 2013.0 final release, so please be sure to voice your thoughts
+   on the OpenMandriva forums at http://forums.openmandriva.org/!
+
+Upgrading to 2013.0
+
+   Upgrading between releases of OpenMandriva always has the potential to
+   cause some problems. Upgrading is supported and we do test upgrades,
+   but due to the huge range of packages and hardware configurations
+   possible, it is always the case that in your particular situation, the
+   upgrade may cause a problem we did not anticipate. Therefore we
+   recommend that you always back up your system prior to upgrading.
+
+   In particular, upgrading between MDV-based packages and OMV-based
+   packages may cause problems.
+
+Upgrading from 2011.0
+
+   We do not currently have an official way to update this from the GUI,
+   as our tool is not ready yet.
+
+   With the caveats mentioned above, you can still accomplish this upgrade
+   from the command line. To do this, first ensure your system is entirely
+   up-to-date with the latest updates for your current version of the
+   distribution (using either MandrivaUpdate, Mandriva Online (Mandriva
+   update notification applet) or urpmi --auto-update}}.
+
+   Then remove your existing repositories, either using the graphical
+   repository configuration tool or the urpmi.removemedia command.
+   urpmi.removemedia -a will remove all repositories. Then you should add
+   repositories for this release. Run a command like this:
+urpmi.addmedia --distrib --mirrorlist 'http://downloads.openmandriva.org/mirrors
+/openmandriva.2013.0.ARCH.list'
+
+   Substitute ARCH with your architecture, e.g. i586 or x86_64.
+
+   Then run the following commands, as root:
+urpmi --auto --auto-select --replacefiles 2>&1 | tee upgrade.log
+
+   You may see an error "unknown option --replacefiles" when you first run
+   this, but don't worry, that's normal: older urpmi versions do not have
+   this option, but our urpmi does, and it will be passed along to our
+   urpmi when the urpmi process is restarted after the package has been
+   updated. This will save the output of the process to the file
+   upgrade.log, in case you need to check it later, or you have any
+   problems. Once the process completes, you should reboot immediately,
+   and you should find the system has been fully updated to this version.
+
+Unavailable
+
+DrakX Installer
+
+   The DrakX Installer is not included in this release. We hope to include
+   it in later releases.
+
+Changes to Hardware Support
+
+Graphics Support
+
+   Graphics support has improved with the latest drivers.
+
+NVIDIA Graphics Cards
+
+   Note that older NVidia graphics cards FX series and before are not
+   currently supported by the drakx Xorg configuration tool, this is
+   currently under investigation. Older drivers are available from the
+   OpenMandriva repositories and should be installed directly with urpmi:
+   your mileage may vary. The reverse engineered nouveau driver gives
+   moderately good support for these older cards.
+
+ATI Graphics Cards
+
+   The latest ATI graphics cards are supported; however, we have not had
+   any concrete feedback about its usage. Your mileage may vary.
+
+Intel Graphics Cards
+
+   Intel graphics cards should be supported with the latest kernel we
+   have, including newer 4th generation Intel graphics cards.
+
+Misc.
+
+   We have not had any other feedback from users.
+
+Ethernet Support
+
+   The kernel upgrade to 3.10.9 has enabled much more support, including
+   new ethernet drivers and improved existing drivers, such as Atheros
+   ethernet chips (alx).
+
+Changes with Installation
+
+Unused Hardware & Language Removal
+
+   Previously, when running the installer, you would not be prompted to
+   remove any hardware or languages that the system did not use. However,
+   this did lead to numerous false-positives (and even in some cases,
+   destruction of the installed system). We have disabled the removal step
+   until the problem can be remedied or a choice given to the user
+   (unselected by default).
+
+Changes with the DrakX suite of tools
+
+   N/A
+
+Changes to Software Support
+
+   N/A
+
+Other Changes
+
+   N/A
+
+Errata
+
+   As this is a beta, there are still issues and bugs that have not been
+   resolved. This page attempts to document the ones that may cause
+   inconvenience.
+
+Partitioning
+
+   When using the custom partitioning tool to divide up the hard disk/s be
+   aware that there is a minimum size requirement for the partition that
+   contains the /usr directory of at least 4.0Gb. If the partition is made
+   smaller that this the partition manager will not function correctly.
+
+   Workaround: If you receive an error message stating that the partition
+   is smaller than the minimum requirement then do not try to resize it as
+   this will fail; instead, use the auto-allocate function which will
+   automatically create a partitioning scheme for you, which you may then
+   delete or change to suit your own requirements. This will clear the
+   error.
+
+Printing with HP USB Printers
+
+   There is currently a known communication error between OpenMandriva LX
+   and HP printers connected via USB. Anything sent to print will fail as
+   a "device communication error".
+
+   Workaround: Sadly, there is none at this current time. This is planned
+   to be addressed in a future update.
+
+Contact, Bug Reporting, Discussion
+
+   You are invited to discuss this release on our forums
+   (forums.openmandriva.org). Support is also available in the development
+   channels via email (http://ml.openmandriva.org/listinfo.cgi). We
+   are also on IRC.
+
+   Please report bugs to our bugtracker (issues.openmandriva.org). Please
+   give as much information as you can in your report.
+
+Helping the Project
+
+   As always, the OpenMandriva development teams (Cooker & QA) are always
+   looking for contributors to assist in bugfixing, and so we invite you
+   to join us and help tackle issues that might arise!
+
+   Also, the OpenMandriva Workshop, which contains Artwork, Documentation,
+   and Communication teams, is always open to new submissions for artwork
+   and translations!
+
+   See our wiki (wiki.openmandriva.org) for more details, and to learn how
+   to join!.
 
