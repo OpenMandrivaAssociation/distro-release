@@ -1,11 +1,6 @@
 # Please update release notes:
 # make -C SOURCES release-notes.{html,txt}
 #
-%if %product_product == "OpenMandriva"
-%bcond_with	Moondrake
-%else 
-%bcond_without	Moondrake
-%endif
 
 %{python:import sys; sys.path.append(rpm.expandMacro("%{_sourcedir}"))}
 %{python:import distro}
