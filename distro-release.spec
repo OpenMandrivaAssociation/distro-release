@@ -1,6 +1,11 @@
 # Please update release notes:
 # make -C SOURCES release-notes.{html,txt}
 #
+%if %product_product == "OpenMandriva"
+%bcond_with	Moondrake
+%else 
+%bcond_without	Moondrake
+%endif
 
 %{python:import sys; sys.path.append(rpm.expandMacro("%{_sourcedir}"))}
 %{python:import distro}
@@ -40,7 +45,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	0.18
+Release:	3
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
