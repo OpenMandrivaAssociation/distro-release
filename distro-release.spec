@@ -4,7 +4,7 @@
 
 %{python:import sys; sys.path.append(rpm.expandMacro("%{_sourcedir}"))}
 %{python:import distro}
-%define am_i_cooker 1
+%define am_i_cooker 0
 %if %am_i_cooker
 %define distrib Cooker
 %else
