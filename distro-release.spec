@@ -40,7 +40,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -165,6 +165,11 @@ case %{release} in
     ;;
 esac
 %endif
+
+%pre common
+[ -f %{_sysconfdir}/product.id ] && rm %{_sysconfdir}/product.id
+[ -f %{_sysconfdir}/os-release ] && rm %{_sysconfdir}/os-release
+[ -f %{_sysconfdir}/release ] && rm %{_sysconfdir}/release
 
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*

@@ -9,6 +9,7 @@ Group:		System/Configuration/Other
 Requires:	%{arch_tagged %{_vendor}-release-common}
 Requires(post):	coreutils
 Requires(post,postun): update-alternatives
+Requires(pre):	distro-release-common
 Provides:	redhat-release rawhide-release mandrake-release
 Provides:	mandrakelinux-release
 Provides:	%{name} = %{version}-%{release}
