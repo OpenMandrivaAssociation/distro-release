@@ -40,7 +40,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	5
+Release:	6
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
