@@ -52,7 +52,7 @@ cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
 %%mandriva_branch   %mandriva_branch
 %%mandriva_arch     %mandriva_arch
 %%mandriva_os       %mandriva_os
-%%mandriva_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)
+%%mandriva_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\$META_CLASS)
 %%mdkver            %mdkver
 %%mdvver            %%mdkver
 
