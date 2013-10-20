@@ -173,6 +173,7 @@ esac
 [ -f %{_sysconfdir}/product.id ] && rm %{_sysconfdir}/product.id
 [ -f %{_sysconfdir}/os-release ] && rm %{_sysconfdir}/os-release
 [ -f %{_sysconfdir}/release ] && rm %{_sysconfdir}/release
+exit 0
 
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
