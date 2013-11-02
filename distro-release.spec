@@ -15,9 +15,9 @@
 %endif
 %define version 2013.0
 %if "%{disttag}" == "omv"
-%define distname Beta (Oxygen)
+%define distname RC1 (Oxygen)
 %else
-%define distname Beta (Twelve Angry Penguins)
+%define distname RC1 (Twelve Angry Penguins)
 %endif
 %define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
 
@@ -61,7 +61,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
