@@ -7,7 +7,7 @@
 %bcond_without	Moondrake
 %endif
 
-%define am_i_cooker 1
+%define am_i_cooker 0
 %if %am_i_cooker
 %define distrib Cooker
 %else
