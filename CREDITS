@@ -13,385 +13,69 @@
 # maybe also the language section may be made into a clickable
 # link to the url of the translation status page?
 
-Mandriva 2010 Spring| Contributors involved in Mandriva Linux 2010 Spring development: The following people have contributed to the development of the Mandriva Linux 2010 Spring. Some are employees and many are not, but we owe them all thanks for contributing their time and talents. |
+OpenMandriva Lx 2013.0| Contributors involved in OpenMandriva Lx 2013.0 development: The following people have contributed to the development of the OpenMandriva Lx 2013.0. Thanks for all contributing their time and talents. |
 
-Contributors | Abel Cheung
-Contributors | Adam Williamson
-Contributors | Alain
-Contributors | Alexander Skwar
-Contributors | Andreas Hasenack
-Contributors | Andrey Borzenkov
-Contributors | Angelo Naselli
-Contributors | Anna Lawless
-Contributors | Anne Nicolas
-Contributors | Anssi Hannula
-Contributors | Antoine Ginies
-Contributors | Arian Sanusi
-Contributors | Austin Acton
-Contributors | Ben Reser
-Contributors | Benoît Audouard
-Contributors | Bill Wallerd
-Contributors | Brian J. Murrell
-Contributors | Buchan Milne
-Contributors | Camille Begnis
-Contributors | Chmouel Boudjnah
-Contributors | Christiaan Welvaart
-Contributors | Christian Belisle
-Contributors | Christophe Fergeau
-Contributors | Christopher Molnar
-Contributors | Colin Guthrie
-Contributors | Couriousous
-Contributors | Cris B
-Contributors | Damien Chaumette
-Contributors | Damien Krotkine
-Contributors | Daouda Lo
-Contributors | David Baudens
-Contributors | David Odin
+Contributors | Alexander Burmashev
+Contributors | Alexander Khryukin
+Contributors | Andrey Bondrov
+Contributors | Anurag Bhandari
+Contributors | Ben Bullard
+Contributors | Bernhard Rosenkränzer
+Contributors | Blackcrack
+Contributors | Caig
+Contributors | Charles H-Schulz
+Contributors | Chris Tanner
+Contributors | Colin Close
+Contributors | Crispin Boylan
+Contributors | Cristina (rugyada)
 Contributors | David Walser
-Contributors | David White
-Contributors | Dick Gevers
-Contributors | Emmanuel Andry
-Contributors | Emmanuel Blindauer
-Contributors | Emmanuel Moll
-Contributors | Eric Fernandez
-Contributors | Eric Pielbug
-Contributors | Erwan Velu
-Contributors | Eskild Hustvedt
-Contributors | Etienne Faure
-Contributors | Eugeni Dodonov
-Contributors | Fabrice Facorat
-Contributors | Felix Miata
-Contributors | Florent Villard
-Contributors | Francis Galiegue
-Contributors | Franck Villaume
-Contributors | Francois Pons
-Contributors | Frank
-Contributors | Frank Griffin
-Contributors | Frederic Crozat
-Contributors | Frederic Lepied
-Contributors | Frederik Himpe
-Contributors | Funda Wang
-Contributors | Geoffrey Lee
-Contributors | Gaëtan Lehmann
-Contributors | Gergely Lónyai
-Contributors | Glen Ogilvie
-Contributors | Gregor Pirnaver
-Contributors | Guillaume Cottenceau
-Contributors | Guillaume Rousse
-Contributors | Gustavo De Nardin
-Contributors | Gwenole Beauchesne
-Contributors | Götz Waschk
-Contributors | H M Jagannatha
-Contributors | H. Narfi Stefansson
-Contributors | Han
-Contributors | Ian D. Allen
-Contributors | Install team
-Contributors | James Sparenberg
-Contributors | Jan Ciger
-Contributors | Jean-Michel Dault
-Contributors | Jeff Garzik
-Contributors | Jerome Soyer
-Contributors | João Victor Duarte Martins
-Contributors | John Keller
-Contributors | Juan Quintela
-Contributors | Jure Repinc (JLP)
-Contributors | Jérôme
-Contributors | Jérôme Martin
-Contributors | Jérôme Quelin
-Contributors | Kevin O'Riordan
-Contributors | Laurent Culioli
-Contributors | Lenny Cartier
-Contributors | Lev Givon
-Contributors | Luca Berra
-Contributors | Mandriva - QA team
-Contributors | Marcel Pol
-Contributors | Mauricio Teixeira (netmask)
-Contributors | Michael Braun
-Contributors | Michael Reinsch
-Contributors | Michael Scherer
-Contributors | Michal Bukovjan
-Contributors | Narfi Stefansson
-Contributors | Nick Brown
-Contributors | Nicolas Lécureuil
-Contributors | Nicolas Planel
-Contributors | Olivier Blin
-Contributors | Olivier Paroz
-Contributors | Pablo Saratxaga
-Contributors | Pascal
-Contributors | Pascal Cavy
-Contributors | Pascal Rigaux
-Contributors | Pascal Terjan
-Contributors | Paulo Ricardo Zanoni
+Contributors | Denis Silakov
+Contributors | Derrick Devine
+Contributors | Guilherme Moro
+Contributors | Hamp3
+Contributors | Jean-Claude Vanier
+Contributors | Jeffrey Johnson
+Contributors | Jochen Schönfelder
+Contributors | John Cave
+Contributors | Johnny A. Solbu
+Contributors | João Azevedo Patrício
+Contributors | Julia
+Contributors | Kate Lebedeff
+Contributors | Matthew Dawkins
+Contributors | Nicolo Costanza
+Contributors | Paulo César Pereira de Andrade
 Contributors | Per Øyvind Karlsen
-Contributors | Peter
-Contributors | Philippe Libat
-Contributors | Philippe ROUBACH
-Contributors | Pierre
-Contributors | Pierre Jarillon
-Contributors | Quel Qun
-Contributors | Rafael Garcia-Suarez
-Contributors | Raphaël Gertz
-Contributors | Reinout van Schouwen
-Contributors | Rémy Clouard
-Contributors | Renaud Chaillat
-Contributors | Riccardo
-Contributors | Richard
-Contributors | Robert Vojta
-Contributors | Robin Rosenberg
-Contributors | Samuel Verschelde
-Contributors | Scott Karns
-Contributors | Serguei Popov
-Contributors | Shiyu Tang
-Contributors | Sitsofe Wheeler
-Contributors | Stefan van der Eijk
-Contributors | Stefan van der Eijk
-Contributors | Stew Benedict
-Contributors | Sylvestre Taburet
-Contributors | Thierry Vignaud
-Contributors | Thomas Spuhler
-Contributors | Till Kamppeter
-Contributors | Tor Lundberg
-Contributors | Tomasz Chmielewski
+Contributors | Raphaël Jadot
+Contributors | Raul Liota da Rosa
+Contributors | Robert Xu
+Contributors | Subperceptual
 Contributors | Tomasz Paweł Gajc
-Contributors | Tulear
-Contributors | Udo Rader
-Contributors | UTUMI Hirosi
-Contributors | Vedran Ljubovic
-Contributors | Vincent Panel
-Contributors | Vincent Saugey
-Contributors | Yves Duret
-Contributors | atelco
-Contributors | bruno Goujon
-Contributors | cuki
-Contributors | digri
-Contributors | dovix
-Contributors | hajma
-Contributors | kukukuan
-Contributors | letzter3
-Contributors | paul c
-Contributors | svetljo
-
-Translators | Afrikaans (Afrikaans) | Schalk W. Cronjé
-Translators | Amharic (አማርኛ) | አለማየሁ ገመዳ (Alemayehu Gemeda)
-Translators | Arabic (العربية) | Ahmad Tarek
-Translators | Arabic (العربية) | Ahmad khalifa
-Translators | Arabic (العربية) | Amr Fathy
-Translators | Arabic (العربية) | Arabeyes http://www.arabeyes.org/
-Translators | Arabic (العربية) | Boujaj Mostapha Ibrahim
-Translators | Arabic (العربية) | Khouk Abderrahim
-Translators | Arabic (العربية) | Mohammed Gamal
-Translators | Arabic (العربية) | Munzir Taha Obeid
-Translators | Arabic (العربية) | Ossama M. Khayat
-Translators | Arabic (العربية) | Youcef Rabah Rahal
-Translators | Assamese (অসমীয়া) | সোণাৰাম পাতিৰ (sunaram patir)
-Translators | Basque (euskara) | Iñigo Salvador Azurmendi
-Translators | Bengali (বাংলা) | জামিল আহমেদ (Jamil Ahmed)
-Translators | Bosnian (Bosanski) | Vedran Ljubović
-Translators | Brazilian Portuguese (Português do Brasil) | Cristiano Otto Von Trompczynski
-Translators | Brazilian Portuguese (Português do Brasil) | Deivi Kuhn
-Translators | Breton (Brezhoneg) | Thierry Vignaud
-Translators | Bulgarian (Български) | Dimitar Terziev
-Translators | Bulgarian (Български) | Rumen Yotov
-Translators | Bulgarian (Български) | Боян иванов (Boyan Ivanov)
-Translators | Bulgarian (Български) | Христо Симеонов Христов
-Translators | Catalan (català) | Albert Astals Cid
-Translators | Croatian (Hrvatski) | Denis Lacković
-Translators | Croatian (Hrvatski) | Hrvoje Matijakovic
-Translators | Croatian (Hrvatski) | Matija Blagus
-Translators | Croatian (Hrvatski) | Tomislav Plavčić
-Translators | Croatian (Hrvatski) | Vinko Prelac
-Translators | Croatian (Hrvatski) | Vjekoslav Matausic
-Translators | Croatian (Hrvatski) | Vlatko Kosturjak
-Translators | Croatian (Hrvatski) | Zorana Čurković
-Translators | Czech (Čeština) | Michal Bukovjan
-Translators | Danish (Dansk) | Keld Simonsen
-Translators | Danih (Nederlands) | Arno Fleming
-Translators | Dutch (Nederlands) | C. Verschuuren
-Translators | Dutch (Nederlands) | Frederik Himpe
-Translators | Dutch (Nederlands) | Hans Chung
-Translators | Dutch (Nederlands) | Reinout van Schouwen
-Translators | Dutch (Nederlands) | Rob Teng
-Translators | Esperanto (Esperanto) | Grégoire Colbert
-Translators | Estonian (Eesti) | Marek Laane
-Translators | Filipino (Filipino) | Arys P. Deloso
-Translators | Filipino (Filipino) | Eric Pareja
-Translators | Finnish (suomi) | Anssi Hannula
-Translators | Finnish (suomi) | Jani Välimaa
-Translators | Finnish (suomi) | Mika Nieminen
-Translators | Finnish (suomi) | Thomas Backlund
-Translators | French (français) | Christophe Berthelé
-Translators | French (français) |Nicolas Lécureuil
-Translators | French (français) | Stéphane Teletchéa
-Translators | French (français) |Rémy Clouard
-Translators | Galician (Galego) | Leandro Regueiro
-Translators | German (Deutsch) | Frank Köster
-Translators | German (Deutsch) | Nicolas Bauer
-Translators | Greek (Ελληνικά) | George Moralis
-Translators | Greek (Ελληνικά) | Δημήτρης Κορμπέτης (Dimitris Korbetis)
-Translators | Greek (Ελληνικά) | Ευθύμιος Τσούτσιας (Efthimis Tsoutsias)
-Translators | Greek (Ελληνικά) | Μπαλάσκας Ευάγγελος (Balaskas Euaggelos)
-Translators | Hebrew (עברית) | Diego Iastrubni (דיאגו)
-Translators | Hebrew (עברית) | Dotan Kamber
-Translators | Hebrew (עברית) | Itayf (איתי)
-Translators | Hebrew (עברית) | dovix (דוביקס)
-Translators | Hindi (हिन्दी) | धनञ्जय शर्मा (Dhananjaya Sharma)
-Translators | Hungarian (magyar) | Arpad Biro
-Translators | Hungarian (magyar) | Gergely Lonyai
-Translators | Icelandic (Íslenska) | Pjetur G. Hjaltason
-Translators | Indonesian (Bahasa Indonesia) | Erwien Samantha Y
-Translators | Indonesian (Bahasa Indonesia) | Firdaus Tjahyadi
-Translators | Indonesian (Bahasa Indonesia) | Willy Sudiarto Raharjo
-Translators | Indonesian (Bahasa Indonesia) | bayu
-Translators | Indonesian (Bahasa Indonesia) | sofian hanafi
-Translators | Italian (Italiano) | Andrea Celli
-Translators | Italian (Italiano) | Daniele Pighin
-Translators | Italian (Italiano) | Giuseppe Lavagetto
-Translators | Italian (Italiano) | Giuseppe Levi
-Translators | Italian (Italiano) | Marcello Anni
-Translators | Italian (Italiano) | Mario Pacchiarotti <mario@pacchiarotti.com> 
-Translators | Italian (Italiano) | Moreno Manzini
-Translators | Italian (Italiano) | Roberto Rosselli Del Turco
-Translators | Italian (Italiano) | Simone Martarelli <simone.martarelli@gmail.com>
-Translators | Japanese (日本語) | 坂東由紀子 (Yukiko Bando)
-Translators | Kirghiz (Кыргызча) | Жакшылык Сабиров
-Translators | Kirghiz (Кыргызча) | Ильяс Бакиров
-Translators | Kirghiz (Кыргызча) | Нурлан Бөрүбаев
-Translators | Kurdish (Kurdî) | Kader DILSIZ
-Translators | Lao (ພາສາລາວ) | ທິນນະພາວົງ ສີພະຈັນ Thinnaphavong SIPHACHANH
-Translators | Latgalian (Latgalīšu) | Māris Laureckis
-Translators | Lithuanian (Lietuviškai) | Arvydas Svirka
-Translators | Macedonian (Македонски) | Зоран Димовски
-Translators | Malay (Bahasa Melayu) | Sharuzzaman Ahmat Raslan
-Translators | Norwegian Bokmål (Bokmål) | Eskild Hustvedt
-Translators | Norwegian Bokmål (Bokmål) | Kenneth Rørvik
-Translators | Norwegian Bokmål (Bokmål) | Olav Dahlum
-Translators | Norwegian Bokmål (Bokmål) | Per Øyvind Karlsen
-Translators | Norwegian Nynorsk (Nynorsk) | Karl Ove Hufthammer
-Translators | Persian (فارسی) | عباس ايزد (Abbas Izad)
-Translators | Polish (Polski) | Tomasz Bednarski
-Translators | Portuguese (Português) | Jose Américo José Melo
-Translators | Portuguese (Português) | Jose JORGE
-Translators | Punjabi (ਪੰਜਾਬੀ) | Amanpreet Singh Alam (ਅਮਨਪ੍ਰੀਤ ਸਿੰਘ ਆਲਮ)
-Translators | Punjabi (ਪੰਜਾਬੀ) | Jaswinder Singh Phulewala (ਜਸਵਿੰਦਰ ਸਿੰਘ ਫੂਲੇਵਾਲਾ)
-Translators | Punjabi (ਪੰਜਾਬੀ) | Kanwaljeet Singh Brar (ਕੰਵਲਜੀਤ ਸਿੰਘ ਬਰਾੜ)
-Translators | Russian (Русский) | Alice
-Translators | Russian (Русский) | Pavel Maryanov
-Translators | Sardinian (Sardu) | Antoni Pistis
-Translators | Serbian (Српски) | Janković Tomislav
-Translators | Simplified Chinese (简体中文) | Funda Wang
-Translators | Simplified Chinese (简体中文) | 汤诗语 (Shiyu Tang)
-Translators | Slovak (Slovensky) | Michal Holeš
-Translators | Slovak (Slovensky) | Tibor Pittich
-Translators | Slovenian (Slovenščina) | Aljoša Ločičnik
-Translators | Slovenian (Slovenščina) | Aljoša Vidmar
-Translators | Slovenian (Slovenščina) | Blaž Praper
-Translators | Slovenian (Slovenščina) | Gregor Pirnaver
-Translators | Slovenian (Slovenščina) | Igor Čučnik
-Translators | Slovenian (Slovenščina) | Istok Lenarčič
-Translators | Slovenian (Slovenščina) | Jaka Kranjc
-Translators | Slovenian (Slovenščina) | Jani Praper
-Translators | Slovenian (Slovenščina) | Jure Repinc
-Translators | Slovenian (Slovenščina) | Matic Gradišer
-Translators | Slovenian (Slovenščina) | Matjaž Kaše
-Translators | Slovenian (Slovenščina) | Urška Colner
-Translators | Slovenian (Slovenščina) | Zoran Smilevski
-Translators | Spanish (español) | Jaime Crespo
-Translators | Spanish (español) | José Manuel Pérez
-Translators | Swedish (Svenska) | Kenneth Krekula
-Translators | Swedish (Svenska) | Lars Westergren
-Translators | Tajik (Тоҷикӣ) | Роҷер Ковакс (Roger Kovacs)
-Translators | Thai (ภาษาไทย) | วัชชระ ชินเศรษฐวงศื (Wachara Chinsettawong)
-Translators | Thai (ภาษาไทย) | อนุพันธ์ รุ่งกิจเกียรติคุณ (Anupan Rungkitkiattikul)
-Translators | Traditional Chinese (繁體中文) | Shiva Huang
-Translators | Traditional Chinese (繁體中文) | You-Cheng Hsieh
-Translators | Traditional Chinese (繁體中文) | yujia
-Translators | Turkish (Türkçe) | Ömer Fadıl Usta
-Translators | Ukrainian (Українська) | Сергій Рибалченко (Sergey Ribalchenko)
-Translators | Ukrainian (Українська) | Тарас Бойчук (Taras Boychuk)
-Translators | Urdu (اردو) | Abubakar
-Translators | Urdu (اردو) | Khushbakht Zafar
-Translators | Vietnamese (Tiếng Việt) | T.M.Thanh
-Translators | Walloon (Walon) | Pablo Saratxaga
-Translators | Welsh (Cymraeg) | Rhoslyn Prys
-
-Testers | aaw
-Testers | aledr
-Testers | alex@texwire.com
-Testers | andres kaaber
-Testers | aol002@motorola.com
-Testers | arnld23@execpc.com
-Testers | bauch@lycoris.com
-Testers | bibri@qcm.cz
-Testers | bjmg@h0t.de
-Testers | bruno@rpgd.uklinux.net
-Testers | bukovjan@mbox.dkm.cz
-Testers | cavassin@mandriva.com
-Testers | christophe.cazin@laposte.net
-Testers | clive dove
-Testers | correonpersonal@telefonica.net
-Testers | couriousous@sceen.net
-Testers | cwadge@gmail.com
-Testers | daniel le berre
-Testers | danny@mailmij.org
-Testers | dave cotton
-Testers | david walser
-Testers | david.linn@intel.com
-Testers | davide
-Testers | e.mindahl@stofanet.dk
-Testers | eandry@free.fr
-Testers | fabrice.boyrie@ens-lyon.org
-Testers | fhimpe@pandora.be
-Testers | flink@fholzinger.com
-Testers | ftg@adelphia.net
-Testers | giuseppe ghibò
-Testers | henryju@yahoo.fr
-Testers | jan.ciger@gmail.com
-Testers | jérôme quelin
-Testers | jlp.bugs@gmail.com
-Testers | john campbell
-Testers | john keller
-Testers | john wilson
-Testers | kelk1@comcast.net
-Testers | kim schulz
-Testers | koslund@sympatico.ca
-Testers | lalawless@wingets.co.uk
-Testers | laurent suchet
-Testers | leslie@eskk.nu
-Testers | luigiwalser@yahoo.com
-Testers | luis vicente castillo corbella
-Testers | mangoo@interia.pl
-Testers | mauricio teixeira (netmask)
-Testers | michael reinsch
-Testers | michael scherer
-Testers | miura@mandriva.com
-Testers | mr@uue.org
-Testers | msub@gardnerbusiness.com
-Testers | ntung@free.fr
-Testers | olivier lahaye
-Testers | piel@lifl.fr
-Testers | pierre42d@9online.fr
-Testers | pitrou@free.fr
-Testers | rapsys@free.fr
-Testers | reinout@cs.vu.nl
-Testers | robert fox
-Testers | rpgoldman@real-time.com
-Testers | Sergio Rafael Lemke
-Testers | sergei@stams.strath.ac.uk
-Testers | simon@margo.student.utwente.nl (simon oosthoek)
-Testers | sitsofe@yahoo.com
-Testers | software-mandriva@interfasys.ch
-Testers | stephane.flavigny@wanadoo.fr
-Testers | thomas spuhler
-Testers | tobbe@nyvalls.se
-Testers | tom
-Testers | tomasz chmielewski
-Testers | Pavel Heimlich <tropikhajma@seznam.cz>
-Testers | troumad@libertysurf.fr
-Testers | ts
-Testers | viewtronix@uklinux.net
-Testers | walluck@mandriva.org
-Testers | werchowyna@epf.pl
-Testers | wojtekpod@wp.pl
-Testers | y.k.levine@phys.uu.nl
-Testers | ybando@k6.dion.ne.jp
+Contributors | Wayne Sallee
+Testers | Ben Bullard                                                                                                                                                                                              
+Testers | Chris Tanner                                                                                                                                                                                             
+Testers | Colin Close                                                                                                                                                                                              
+Testers | Davide Garatti                                                                                                                                                                                           
+Testers | Gus Be                                                                                                                                                                                                   
+Testers | Robert Xu                                                                                                                                                                                                
+Testers | luca                                                                                                                                                                                                     
+Testers | viking60
 Testers | Many unnamed and unknown beta testers and bug reporters that helped make sure it all worked right |
+Translators | Brazilian Portuguese (Português do Brasil) | Alisson Oliveira                                                                                                                                        
+Translators | Brazilian Portuguese (Português do Brasil) | Raul Liota da Rosa                                                                                                                                      
+Translators | Dutch (Nederlands) | Arvi Pingus                                                                                                                                                                     
+Translators | Dutch (Nederlands) | Willie                                                                                                                                                                          
+Translators | French (français) | Jean-Claude Vanier
+Translators | French (français) | Raphaël Jadot
+Translators | German (Deutsch) | Isadora
+Translators | German (Deutsch) | blackcrack
+Translators | German (Deutsch) | tapwag
+Translators | Hindi (हिन्दी) | Anurag Bhandari
+Translators | Indonesian (Bahasa Indonesia) | Panahbiru
+Translators | Italian (Italiano) | Cristina (rugyada)
+Translators | Polish (polski) | Tomasz Paweł Gajc
+Translators | Portuguese (Português) | Eu_Talvez
+Translators | Russian (Русский) | Kate Lebedeff
+Translators | Spanish (español) | BlogDrake
+Translators | Spanish (español) | mdktrans
+Translators | Turkish (Türkçe) | elektronist
+Translators | Ukrainian (Українська) | Taras Boychuk
