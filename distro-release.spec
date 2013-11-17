@@ -70,6 +70,7 @@ Source0:	%{name}.tar.xz
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
+# raw output of lynx -source of wiki:
 Source5:	release-notes.html
 
 %description

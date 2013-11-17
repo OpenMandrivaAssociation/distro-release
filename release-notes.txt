@@ -1,23 +1,23 @@
-2013.0 Beta
-
-   The OpenMandriva Cooker & QA teams are pleased to announce the
-   availability of the 2013.0 beta!
+   The OpenMandriva Lx teams are pleased to announce the availability of
+   the 2013.0 release candidate!
 
    Detailed are some of the changes that the OS has undergone since
-   Mandriva Linux 2012.
+   Mandriva Linux 2011.
 
-   This is a beta, not for use in production environments. It has received
-   some testing and is believed to be stable. However there are still some
-   bugs. You have been warned.
+   This is a release candidate, not for use in production environments. It
+   has received major testing since beta and is believed to be stable.
+   However there may be some bugs that we haven't discovered. You have
+   been warned.
 
-   You may wish to view the Errata, located near the bottom of this page.
+   You may wish to view the [41]Errata, located near the bottom of this
+   page.
 
 Available Media
 
    The 2013.0 beta is available as a live media DVD, downloadable in ISO
    format. They are available on our downloads page.
 
-   Live media means you're able to run OpenMandriva LX straight from the
+   Live media means you're able to run OpenMandriva Lx straight from the
    DVD and try it before installing it. You may also install the system to
    hard disk either from the running live cd or from the boot manager.
 
@@ -27,36 +27,60 @@ Recommended Hardware
    the distribution, we recommend 1 GB of memory (min 640MB), at least 10
    GB of hard drive space (see below for known issues with partitioning),
    and for best compositing performance a suitable accelerated 3D graphics
-   card. Releases are available for the i586 and x86_64 architectures.
+   card. Releases are available for the i586 and x86_64 architectures. ARM
+   architectures are not available for this release.
+
+Booting from USB
+
+   It is possible to boot this release from a USB. You may use
+   [42]Fedora's LiveUSB Creator with a download of the OpenMandriva Lx ISO
+   for your system to make your USB bootable. At least 2GB of flash drive
+   capacity is recommended. Persistent storage is not necessary. Note that
+   this will erase everything on your USB!
+
+Booting with KVM
+
+   Please use the QXL or VMWare video driver to avoid any problems booting
+   OpenMandriva LX with kernel 3.11.5 or higher.
+
+Booting with VirtualBox
+
+   Please note that there is an increased memory requirement for
+   successful booting in this VM manager. The virtual machine should be
+   set up with a minumum of 1536mb.
 
 New Features and Major Changes
 
-   The introduction of OpenMandriva-2013.0 represents a major update from
+   The introduction of OpenMandriva 2013.0 represents a major update from
    the previous version of Mandriva. This is the first release under the
-   new name, OpenMandriva LX, and is also the first release under the
+   new name, OpenMandriva Lx, and is also the first release under the
    community of the OpenMandriva Association. With that in mind, here are
    some of the new features:
 
-KDE 4.11
+KDE 4.11.2
 
-   KDE 4.11 provides a clean, unified desktop for OpenMandriva. It has all
-   the tools required to be productive whilst providing a pleasant,
+   KDE 4.11.2 provides a clean, unified desktop for OpenMandriva. It has
+   all the tools required to be productive whilst providing a pleasant,
    functional environment.
 
-   This beta provides a KDE 4.11 installation with four launchers:
-   Lancelot, the traditional KDE KickOff/KMenu, ROSA's SimpleWelcome, and
-   the Homerun Launcher. We'd like feedback on which should be the default
-   in the 2013.0 final release, so please be sure to voice your thoughts
-   on the OpenMandriva forums at http://forums.openmandriva.org/!
+   This release candidate provides a KDE 4.11 installation with four
+   launchers: Lancelot, the traditional KDE KickOff/KMenu, ROSA's
+   SimpleWelcome, and the Homerun Launcher. We'd like feedback on which
+   should be the default in the 2013.0 final release, so please be sure to
+   voice your thoughts on the OpenMandriva forums at
+   [43]http://forums.openmandriva.org/!
 
 Upgrading to 2013.0
 
-   Upgrading between releases of OpenMandriva always has the potential to
+   Upgrading between releases of Mandriva always has the potential to
    cause some problems. Upgrading is supported and we do test upgrades,
    but due to the huge range of packages and hardware configurations
    possible, it is always the case that in your particular situation, the
    upgrade may cause a problem we did not anticipate. Therefore we
    recommend that you always back up your system prior to upgrading.
+
+   Upgrading between OpenMandriva releases should be less problematic in
+   the future.
 
    In particular, upgrading between MDV-based packages and OMV-based
    packages may cause problems.
@@ -98,7 +122,8 @@ Unavailable
 DrakX Installer
 
    The DrakX Installer is not included in this release. We hope to include
-   it in later releases.
+   it (or a new installer that brings back its features) in later
+   releases.
 
 Changes to Hardware Support
 
@@ -109,11 +134,11 @@ Graphics Support
 NVIDIA Graphics Cards
 
    Note that older NVidia graphics cards FX series and before are not
-   currently supported by the drakx Xorg configuration tool, this is
-   currently under investigation. Older drivers are available from the
-   OpenMandriva repositories and should be installed directly with urpmi:
-   your mileage may vary. The reverse engineered nouveau driver gives
-   moderately good support for these older cards.
+   currently supported by the XFDrake, the DrakX video configuration tool.
+   Older drivers are available from the OpenMandriva repositories and
+   should be installed directly with urpmi: your mileage may vary. The
+   reverse engineered nouveau driver gives moderately good support for
+   these older cards.
 
 ATI Graphics Cards
 
@@ -122,8 +147,8 @@ ATI Graphics Cards
 
 Intel Graphics Cards
 
-   Intel graphics cards should be supported with the latest kernel we
-   have, including newer 4th generation Intel graphics cards.
+   Intel graphics cards are supported with the latest kernel we have,
+   including newer 4th generation Intel graphics cards.
 
 Misc.
 
@@ -131,7 +156,7 @@ Misc.
 
 Ethernet Support
 
-   The kernel upgrade to 3.10.9 has enabled much more support, including
+   The kernel upgrade to 3.11.5 has enabled much more support, including
    new ethernet drivers and improved existing drivers, such as Atheros
    ethernet chips (alx).
 
@@ -152,7 +177,22 @@ Changes with the DrakX suite of tools
 
 Changes to Software Support
 
-   N/A
+Booting with systemd
+
+   Switching runlevels has changed. Instead of adding the target runlevel,
+   as before, there are now specific boot options. Namely, the following
+   options must be appended to the kernel command line:
+     * Rescue Mode: systemd.unit=rescue.target
+     * Text Mode: systemd.unit=multi-user.target
+     * Graphical Mode: systemd.unit=graphical.target
+
+VirtualBox Guest Additions
+
+   We use kernel 3.11.5. This kernel has a small change to the API which
+   makes it incompatible with versions of VirtualBox prior to 4.3 (the
+   kernel modules will not build for the kernel). VirtualBox 4.3 and later
+   do not have these issues - you may retrieve these versions from the
+   OpenMandriva repositories or your system distribution.
 
 Other Changes
 
@@ -160,11 +200,31 @@ Other Changes
 
 Errata
 
-   As this is a beta, there are still issues and bugs that have not been
+   As with any release, there are still issues and bugs that have not been
    resolved. This page attempts to document the ones that may cause
    inconvenience.
 
-Partitioning
+Update tool tries to add Cooker repositories
+
+   The update tool, MandrivaUpdate, will attempt to add repositories that
+   are not for 2013.0; instead, it will try to add Cooker repositories and
+   expose your system to unnecessary and potentially breakable updates.
+
+   Workaround: Either use the popup that appears with mdkapplet; or:
+   Open Install & Remove Software (or rpmdrake), and from the menu, open
+   the Media Manager and click Add. This will add the proper repositories.
+   Then, check periodically for updates. MandrivaUpdate will be usable
+   after this workaround.
+
+Usage of Mandriva in System Tools
+
+   There are still usages of Mandriva in the system tools. They are being
+   remedied.
+
+   Workaround: Check for updates periodically, and report bugs for any
+   occurrences that you still see.
+
+Partitioning with Small Disks
 
    When using the custom partitioning tool to divide up the hard disk/s be
    aware that there is a minimum size requirement for the partition that
@@ -178,20 +238,19 @@ Partitioning
    delete or change to suit your own requirements. This will clear the
    error.
 
-Printing with HP USB Printers
+VirtualBox Guest Additions
 
-   There is currently a known communication error between OpenMandriva LX
-   and HP printers connected via USB. Anything sent to print will fail as
-   a "device communication error".
+   Due to a recent API change, 4.2.x series of vboxadditions will not
+   work. Instead, use 4.3.x series which is known to work with this
+   release [44]Bug small.png [45]Bug #204
 
-   Workaround: Sadly, there is none at this current time. This is planned
-   to be addressed in a future update.
+   Workaround: Upgrade to VirtualBox 4.3 or later.
 
 Contact, Bug Reporting, Discussion
 
    You are invited to discuss this release on our forums
    (forums.openmandriva.org). Support is also available in the development
-   channels via email (http://ml.openmandriva.org/listinfo.cgi). We
+   channels via email ([46]http://ml.openmandriva.org/listinfo.cgi). We
    are also on IRC.
 
    Please report bugs to our bugtracker (issues.openmandriva.org). Please
@@ -209,4 +268,3 @@ Helping the Project
 
    See our wiki (wiki.openmandriva.org) for more details, and to learn how
    to join!.
-
