@@ -1,20 +1,12 @@
    The OpenMandriva Lx teams are pleased to announce the availability of
-   the 2013.0 release candidate!
+   the 2013.0 final release!
 
    Detailed are some of the changes that the OS has undergone since
    Mandriva Linux 2011.
 
-   This is a release candidate, not for use in production environments. It
-   has received major testing since beta and is believed to be stable.
-   However there may be some bugs that we haven't discovered. You have
-   been warned.
-
-   You may wish to view the [41]Errata, located near the bottom of this
-   page.
-
 Available Media
 
-   The 2013.0 beta is available as a live media DVD, downloadable in ISO
+   This release is available as a live media DVD, downloadable in ISO
    format. They are available on our downloads page.
 
    Live media means you're able to run OpenMandriva Lx straight from the
@@ -33,7 +25,7 @@ Recommended Hardware
 Booting from USB
 
    It is possible to boot this release from a USB. You may use
-   [42]Fedora's LiveUSB Creator with a download of the OpenMandriva Lx ISO
+   [43]Fedora's LiveUSB Creator with a download of the OpenMandriva Lx ISO
    for your system to make your USB bootable. At least 2GB of flash drive
    capacity is recommended. Persistent storage is not necessary. Note that
    this will erase everything on your USB!
@@ -57,18 +49,26 @@ New Features and Major Changes
    community of the OpenMandriva Association. With that in mind, here are
    some of the new features:
 
+Kernel
+
+   OpenMandriva Lx features new kernel called NRJ as for energy!
+
+   With the "NRJ" configs the CPU and RCU are configured with full
+   Preemption enabled and in full Boost mode, while the "QL" mode add also
+   the CK1 and BFQ patchsets combined provide optimisations, including
+   better CPU load scheduler (BFS), better disk I/O scheduler (BFQ), then
+   we must consider the presence of UKSM for a better memory manager and
+   TOI for better suspension and hibernate functionality, each designed
+   with desktop system performance and responsiveness in mind
+
 KDE 4.11.2
 
    KDE 4.11.2 provides a clean, unified desktop for OpenMandriva. It has
    all the tools required to be productive whilst providing a pleasant,
    functional environment.
 
-   This release candidate provides a KDE 4.11 installation with four
-   launchers: Lancelot, the traditional KDE KickOff/KMenu, ROSA's
-   SimpleWelcome, and the Homerun Launcher. We'd like feedback on which
-   should be the default in the 2013.0 final release, so please be sure to
-   voice your thoughts on the OpenMandriva forums at
-   [43]http://forums.openmandriva.org/!
+   This release provides a KDE 4.11 installation featuring ROSA's
+   SimpleWelcome launcher, a winner of the latest contest.
 
 Upgrading to 2013.0
 
@@ -160,7 +160,7 @@ Ethernet Support
    new ethernet drivers and improved existing drivers, such as Atheros
    ethernet chips (alx).
 
-Changes with Installation
+Changes to Installation
 
 Unused Hardware & Language Removal
 
@@ -171,7 +171,7 @@ Unused Hardware & Language Removal
    until the problem can be remedied or a choice given to the user
    (unselected by default).
 
-Changes with the DrakX suite of tools
+Changes to the DrakX suite of tools
 
    N/A
 
@@ -245,6 +245,47 @@ VirtualBox Guest Additions
    release [44]Bug small.png [45]Bug #204
 
    Workaround: Upgrade to VirtualBox 4.3 or later.
+
+Black Screen at Boot
+
+   There is an issue with systems that have two different graphics
+   adapters but only one of them is operational. Typically this is a
+   Nvidia GPU combined the either Intel or AMD/ATI. Due to the automated
+   nature of driver selection in modern systems if the non-functional GPU
+   is automatically selected then there is currently no way to stop X from
+   loading a matching driver. Thus the working GPU never gets setup
+   resulting in a black screen. There is currently no way around this
+   without user intervention although we are working on a boot time option
+   to disable the second GPU at boot. If you have a situation like this it
+   will be necessary to disable the troublesome GPU one the system is
+   installed here are the steps:-
+
+   1: Boot from the DVD/USB device and install the system using option
+   three at the boot screen.
+
+   2: Once installed reboot and edit the grub command line and add the
+   command line "systemd.unit=multi-user.task nomodeset" to it and boot
+   the machine. This will bring you too a command prompt where you can
+   login.
+
+   3: Create a file blacklist-nouveau.conf and edit it with the
+   following:- "blacklist nouveau" (use a tab separator)
+
+   4: Finally remove the Xorg nouveau driver with "rpm -e
+   x11-driver-video-nouveau"
+
+   5: There are circumstances where updates may reload the
+   x11-driver-video-nouveau may be reloaded by an OS update so it may be
+   necessary to remove it again.
+
+   A kernel command line solution is being sought for this problem.
+
+   There are other circumstances where a black screen may be encountered.
+   In these circumstances adding nomodeset or nokmsboot to the kernel
+   commandline will normally be enough to allow installation of the OS. If
+   necessary the command may be added permanently by editing
+   /etc/default/grub at the GRUB_CMDLINE_LINUX_DEFAULT label and adding
+   the required command. Then run update-rub2
 
 Contact, Bug Reporting, Discussion
 
