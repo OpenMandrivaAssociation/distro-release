@@ -25,10 +25,12 @@ Recommended Hardware
 Booting from USB
 
    It is possible to boot this release from a USB. You may use
-   [43]Fedora's LiveUSB Creator with a download of the OpenMandriva Lx ISO
+   [45]Fedora's LiveUSB Creator with a download of the OpenMandriva Lx ISO
    for your system to make your USB bootable. At least 2GB of flash drive
    capacity is recommended. Persistent storage is not necessary. Note that
-   this will erase everything on your USB!
+   this will erase everything on your USB! It is also possible to use the
+   dd command to image the iso to an USB Drive e.g "dd if=<iso_name>
+   of=/dev/sd<x> bs=4M" .
 
 Booting with KVM
 
@@ -160,6 +162,12 @@ Ethernet Support
    new ethernet drivers and improved existing drivers, such as Atheros
    ethernet chips (alx).
 
+ARM hardware support
+
+   Repositories for armv7l (softfloat) and armv7hl (hardfloat) is ready to
+   use on ARM development boards like cubieboard, wandboard, arndale,
+   mk802++ and other boards based on cortex-a8, a9, a15 processors.
+
 Changes to Installation
 
 Unused Hardware & Language Removal
@@ -242,57 +250,71 @@ VirtualBox Guest Additions
 
    Due to a recent API change, 4.2.x series of vboxadditions will not
    work. Instead, use 4.3.x series which is known to work with this
-   release [44]Bug small.png [45]Bug #204
+   release [46]Bug small.png [47]Bug #204
 
    Workaround: Upgrade to VirtualBox 4.3 or later.
 
 Black Screen at Boot
 
+   Graphics Drivers:
+
    There is an issue with systems that have two different graphics
    adapters but only one of them is operational. Typically this is a
    Nvidia GPU combined the either Intel or AMD/ATI. Due to the automated
    nature of driver selection in modern systems if the non-functional GPU
-   is automatically selected then there is currently no way to stop X from
-   loading a matching driver. Thus the working GPU never gets setup
-   resulting in a black screen. There is currently no way around this
-   without user intervention although we are working on a boot time option
-   to disable the second GPU at boot. If you have a situation like this it
-   will be necessary to disable the troublesome GPU one the system is
-   installed here are the steps:-
+   is automatically selected then X will load the matching driver. Thus
+   the working GPU never gets setup resulting in a black screen. We have
+   recently added a new boot command line option to allow an Xorg driver
+   to be blacklisted thus allowing the correct driver to be detected.
 
-   1: Boot from the DVD/USB device and install the system using option
-   three at the boot screen.
+   To use this feature you must edit the grub2 command line. You can do
+   this by selecting your desired boot option and then pressing TAB. To
+   the end of the line add the following:-
 
-   2: Once installed reboot and edit the grub command line and add the
-   command line "systemd.unit=multi-user.task nomodeset" to it and boot
-   the machine. This will bring you too a command prompt where you can
-   login.
+   xorg.blacklist=<driver to blacklist>.
 
-   3: Create a file blacklist-nouveau.conf and edit it with the
-   following:- "blacklist nouveau" (use a tab separator)
-
-   4: Finally remove the Xorg nouveau driver with "rpm -e
-   x11-driver-video-nouveau"
-
-   5: There are circumstances where updates may reload the
-   x11-driver-video-nouveau may be reloaded by an OS update so it may be
-   necessary to remove it again.
-
-   A kernel command line solution is being sought for this problem.
+   To determine which driver needs to be blacklisted is probably best
+   achieved by booting the system to a text mode and checking which driver
+   has been loaded at boot time. A procedure for doing this is detailed
+   below. In some circumstances this may not be possible and you will need
+   to resort to your motherboard/Graphics card specifications or trial and
+   error. It will be necessary to permanently add the line to the grub2
+   commandline that boots the installation. This is described below.
 
    There are other circumstances where a black screen may be encountered.
    In these circumstances adding nomodeset or nokmsboot to the kernel
    commandline will normally be enough to allow installation of the OS. If
    necessary the command may be added permanently by editing
    /etc/default/grub at the GRUB_CMDLINE_LINUX_DEFAULT label and adding
-   the required command. Then run update-rub2
+   the required command. Then run update-grub2
+
+   To boot to text mode:-
+
+   1: Boot from the DVD/USB stick and at the grub selection screen select
+   the livecd option and press TAB. Edit the grub command line by and add
+   the command "systemd.unit=multi-user.task nomodeset" to the end and
+   boot the machine. This will bring you to a command prompt where you can
+   login.
+
+   2: Login as root and then type lsmod | less and observe the output.
+   Look for the loaded graphics driver by finding the drm entry the
+   graphics driver will be listed here. It will be typically nouveau,
+   radeon or i915 (there may be others). The name used here will be the
+   name to add to the xorg.blacklist= parameter
+
+   Backlight Issues
+
+   There are some machines with Intel GPU's (Netbooks particularly) may
+   still give a black screen. This may be fixed by adding
+   i915.invert_brightness=1 parameter to the boot command line. This may
+   be needed in addition to the xorg.blacklist= parameter.
 
 Contact, Bug Reporting, Discussion
 
    You are invited to discuss this release on our forums
    (forums.openmandriva.org). Support is also available in the development
-   channels via email ([46]http://ml.openmandriva.org/listinfo.cgi). We
-   are also on IRC.
+   channels via email ([48]http://ml.openmandriva.org/listinfo.cgi). We
+   are also on [49]IRC.
 
    Please report bugs to our bugtracker (issues.openmandriva.org). Please
    give as much information as you can in your report.

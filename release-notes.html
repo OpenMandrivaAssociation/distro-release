@@ -16,7 +16,7 @@
 
 <script src="//wiki.openmandriva.org/en/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;*"></script>
 <script>if(window.mw){
-mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"2013.0/Release_Notes","wgTitle":"2013.0/Release Notes","wgCurRevisionId":2567,"wgArticleId":615,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["2013.0"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"2013.0/Release_Notes","wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":false,"dialogs":false,"hidesig":true,"templateEditor":false,"templates":false,"preview":false,"previewDialog":false,"publish":false,"toc":false}});
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"2013.0/Release_Notes","wgTitle":"2013.0/Release Notes","wgCurRevisionId":2606,"wgArticleId":615,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["2013.0"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"2013.0/Release_Notes","wgRestrictionEdit":["sysop"],"wgRestrictionMove":["sysop"],"wgWikiEditorEnabledModules":{"toolbar":false,"dialogs":false,"hidesig":true,"templateEditor":false,"templates":false,"preview":false,"previewDialog":false,"publish":false,"toc":false}});
 }</script><script>if(window.mw){
 mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,
 "watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs190":false,"searchNs191":false});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
@@ -55,6 +55,7 @@ mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.
 </div>
 <div style="margin: 6px 0; height: 2px; width: 100%; background-color: #E2266E;"></div>
 <p><br />
+</p><p>It is recommended that you read the latest release notes <a rel="nofollow" class="external text" href="http://wiki.openmandriva.org/en/2013.0/Release_Notes">on our wiki</a>.
 </p>
 <h1> <span class="mw-headline" id="2013.0_Final_Release"> 2013.0 Final Release </span></h1>
 <p>
@@ -98,32 +99,33 @@ mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.
 </ul>
 </li>
 <li class="toclevel-2 tocsection-20"><a href="#Ethernet_Support"><span class="tocnumber">5.2</span> <span class="toctext">Ethernet Support</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="#ARM_hardware_support"><span class="tocnumber">5.3</span> <span class="toctext">ARM hardware support</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-21"><a href="#Changes_to_Installation"><span class="tocnumber">6</span> <span class="toctext">Changes to Installation</span></a>
+<li class="toclevel-1 tocsection-22"><a href="#Changes_to_Installation"><span class="tocnumber">6</span> <span class="toctext">Changes to Installation</span></a>
 <ul>
-<li class="toclevel-2 tocsection-22"><a href="#Unused_Hardware_.26_Language_Removal"><span class="tocnumber">6.1</span> <span class="toctext">Unused Hardware &amp; Language Removal</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="#Unused_Hardware_.26_Language_Removal"><span class="tocnumber">6.1</span> <span class="toctext">Unused Hardware &amp; Language Removal</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-23"><a href="#Changes_to_the_DrakX_suite_of_tools"><span class="tocnumber">7</span> <span class="toctext">Changes to the DrakX suite of tools</span></a></li>
-<li class="toclevel-1 tocsection-24"><a href="#Changes_to_Software_Support"><span class="tocnumber">8</span> <span class="toctext">Changes to Software Support</span></a>
+<li class="toclevel-1 tocsection-24"><a href="#Changes_to_the_DrakX_suite_of_tools"><span class="tocnumber">7</span> <span class="toctext">Changes to the DrakX suite of tools</span></a></li>
+<li class="toclevel-1 tocsection-25"><a href="#Changes_to_Software_Support"><span class="tocnumber">8</span> <span class="toctext">Changes to Software Support</span></a>
 <ul>
-<li class="toclevel-2 tocsection-25"><a href="#Booting_with_systemd"><span class="tocnumber">8.1</span> <span class="toctext">Booting with systemd</span></a></li>
-<li class="toclevel-2 tocsection-26"><a href="#VirtualBox_Guest_Additions"><span class="tocnumber">8.2</span> <span class="toctext">VirtualBox Guest Additions</span></a></li>
+<li class="toclevel-2 tocsection-26"><a href="#Booting_with_systemd"><span class="tocnumber">8.1</span> <span class="toctext">Booting with systemd</span></a></li>
+<li class="toclevel-2 tocsection-27"><a href="#VirtualBox_Guest_Additions"><span class="tocnumber">8.2</span> <span class="toctext">VirtualBox Guest Additions</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-27"><a href="#Other_Changes"><span class="tocnumber">9</span> <span class="toctext">Other Changes</span></a></li>
-<li class="toclevel-1 tocsection-28"><a href="#Errata"><span class="tocnumber">10</span> <span class="toctext">Errata</span></a>
+<li class="toclevel-1 tocsection-28"><a href="#Other_Changes"><span class="tocnumber">9</span> <span class="toctext">Other Changes</span></a></li>
+<li class="toclevel-1 tocsection-29"><a href="#Errata"><span class="tocnumber">10</span> <span class="toctext">Errata</span></a>
 <ul>
-<li class="toclevel-2 tocsection-29"><a href="#Update_tool_tries_to_add_Cooker_repositories"><span class="tocnumber">10.1</span> <span class="toctext">Update tool tries to add Cooker repositories</span></a></li>
-<li class="toclevel-2 tocsection-30"><a href="#Usage_of_Mandriva_in_System_Tools"><span class="tocnumber">10.2</span> <span class="toctext">Usage of <i>Mandriva</i> in System Tools</span></a></li>
-<li class="toclevel-2 tocsection-31"><a href="#Partitioning_with_Small_Disks"><span class="tocnumber">10.3</span> <span class="toctext">Partitioning with Small Disks</span></a></li>
-<li class="toclevel-2 tocsection-32"><a href="#VirtualBox_Guest_Additions_2"><span class="tocnumber">10.4</span> <span class="toctext">VirtualBox Guest Additions</span></a></li>
-<li class="toclevel-2 tocsection-33"><a href="#Black_Screen_at_Boot"><span class="tocnumber">10.5</span> <span class="toctext">Black Screen at Boot</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="#Update_tool_tries_to_add_Cooker_repositories"><span class="tocnumber">10.1</span> <span class="toctext">Update tool tries to add Cooker repositories</span></a></li>
+<li class="toclevel-2 tocsection-31"><a href="#Usage_of_Mandriva_in_System_Tools"><span class="tocnumber">10.2</span> <span class="toctext">Usage of <i>Mandriva</i> in System Tools</span></a></li>
+<li class="toclevel-2 tocsection-32"><a href="#Partitioning_with_Small_Disks"><span class="tocnumber">10.3</span> <span class="toctext">Partitioning with Small Disks</span></a></li>
+<li class="toclevel-2 tocsection-33"><a href="#VirtualBox_Guest_Additions_2"><span class="tocnumber">10.4</span> <span class="toctext">VirtualBox Guest Additions</span></a></li>
+<li class="toclevel-2 tocsection-34"><a href="#Black_Screen_at_Boot"><span class="tocnumber">10.5</span> <span class="toctext">Black Screen at Boot</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-34"><a href="#Contact.2C_Bug_Reporting.2C_Discussion"><span class="tocnumber">11</span> <span class="toctext">Contact, Bug Reporting, Discussion</span></a></li>
-<li class="toclevel-1 tocsection-35"><a href="#Helping_the_Project"><span class="tocnumber">12</span> <span class="toctext">Helping the Project</span></a></li>
+<li class="toclevel-1 tocsection-35"><a href="#Contact.2C_Bug_Reporting.2C_Discussion"><span class="tocnumber">11</span> <span class="toctext">Contact, Bug Reporting, Discussion</span></a></li>
+<li class="toclevel-1 tocsection-36"><a href="#Helping_the_Project"><span class="tocnumber">12</span> <span class="toctext">Helping the Project</span></a></li>
 </ul>
 </td></tr></table>
 </td></tr></table>
@@ -142,6 +144,7 @@ Releases are available for the i586 and x86_64 architectures. ARM architectures 
 </p>
 <h2> <span class="mw-headline" id="Booting_from_USB"> Booting from USB </span></h2>
 <p>It is possible to boot this release from a USB. You may use <a rel="nofollow" class="external text" href="https://fedorahosted.org/liveusb-creator/">Fedora's LiveUSB Creator</a> with a download of the OpenMandriva Lx ISO for your system to make your USB bootable. At least 2GB of flash drive capacity is recommended. Persistent storage is not necessary. Note that this will <b>erase</b> everything on your USB!
+It is also possible to use the dd command to image the iso to an USB Drive e.g "dd if=&lt;iso_name&gt; of=/dev/sd&lt;x&gt;  bs=4M" .
 </p>
 <h2> <span class="mw-headline" id="Booting_with_KVM"> Booting with KVM </span></h2>
 <p>Please use the QXL or VMWare video driver to avoid any problems booting OpenMandriva LX with kernel 3.11.5 or higher.
@@ -203,6 +206,11 @@ urpmi.addmedia --distrib --mirrorlist 'http://downloads.openmandriva.org/mirrors
 <h2> <span class="mw-headline" id="Ethernet_Support"> Ethernet Support </span></h2>
 <p>The kernel upgrade to 3.11.5 has enabled much more support, including new ethernet drivers and improved existing drivers, such as Atheros ethernet chips (alx).
 </p>
+<h2> <span class="mw-headline" id="ARM_hardware_support"> ARM hardware support </span></h2>
+<p>Repositories for armv7l (softfloat) and armv7hl (hardfloat) is ready to use on
+ARM development boards like cubieboard, wandboard, arndale, mk802++ and other boards
+based on cortex-a8, a9, a15 processors.
+</p>
 <h1> <span class="mw-headline" id="Changes_to_Installation"> Changes to Installation </span></h1>
 <h2> <span class="mw-headline" id="Unused_Hardware_.26_Language_Removal"> Unused Hardware &amp; Language Removal </span></h2>
 <p>Previously, when running the installer, you would not be prompted to remove any hardware or languages that the system did not use. However, this did lead to numerous false-positives (and even in some cases, destruction of the installed system). We have disabled the removal step until the problem can be remedied or a choice given to the user (unselected by default).
@@ -249,18 +257,21 @@ If you receive an error message stating that the partition is smaller than the m
 Upgrade to VirtualBox 4.3 or later.
 </p>
 <h2> <span class="mw-headline" id="Black_Screen_at_Boot"> Black Screen at Boot </span></h2>
-<p>There is an issue with systems that have two different graphics adapters but only one of them is operational. Typically this is a Nvidia GPU combined the either Intel or AMD/ATI. Due to the automated nature of driver selection in modern systems if the non-functional GPU is automatically selected then there is currently no way to stop X from loading a matching driver. Thus the working GPU never gets setup resulting in a black screen. There is currently no way around this without user intervention although we are working on a boot time option to disable the second GPU at boot.
-If you have a situation like this it will be necessary to disable the troublesome GPU one the system is installed here are the steps:-
-</p><p>1: Boot from the DVD/USB device and install the system using option three at the boot screen.
-</p><p>2: Once installed reboot and edit the grub command line and add the command line "systemd.unit=multi-user.task nomodeset" to it and boot the machine. This will bring you too a command prompt where you can login.
-</p><p>3: Create a file blacklist-nouveau.conf and edit it with the following:- "blacklist   nouveau" (use a tab separator)
-</p><p>4: Finally remove the Xorg nouveau driver with "rpm -e x11-driver-video-nouveau"
-</p><p>5: There are circumstances where updates may reload the  x11-driver-video-nouveau may be reloaded by an OS update so it may be necessary to remove it again.
-</p><p>A kernel command line solution is being sought for this problem.
-</p><p>There are other circumstances where a black screen may be encountered. In these circumstances adding nomodeset or nokmsboot to the kernel commandline will normally be enough to allow installation of the OS. If necessary the command may be added permanently by editing /etc/default/grub at the GRUB_CMDLINE_LINUX_DEFAULT label and adding the required command. Then run update-rub2
+<p><b>Graphics Drivers:</b>
+</p><p>There is an issue with systems that have two different graphics adapters but only one of them is operational. Typically this is a Nvidia GPU combined the either Intel or AMD/ATI. Due to the automated nature of driver selection in modern systems if the non-functional GPU is automatically selected then X will load the matching driver. Thus the working GPU never gets setup resulting in a black screen. 
+We have recently added a new boot command line option to allow an Xorg driver to be blacklisted thus allowing the correct driver to be detected.
+</p><p>To use this feature you must edit the grub2 command line. You can do this by selecting your desired boot option and then pressing TAB. To the end of the line add the following:-
+</p><p>xorg.blacklist=&lt;driver to blacklist&gt;.
+</p><p>To determine which driver needs to be blacklisted is probably best achieved by booting the system to a text mode and checking which driver has been loaded at boot time. A procedure for doing this is detailed below. In some circumstances this may not be possible and you will need to resort to your motherboard/Graphics card specifications or trial and error. It will be necessary to permanently add the line to the grub2 commandline that boots the installation. This is described below.
+</p><p>There are other circumstances where a black screen may be encountered. In these circumstances adding nomodeset or nokmsboot to the kernel commandline will normally be enough to allow installation of the OS. If necessary the command may be added permanently by editing /etc/default/grub at the GRUB_CMDLINE_LINUX_DEFAULT label and adding the required command. Then run update-grub2
+</p><p>To boot to text mode:-
+</p><p>1: Boot from the DVD/USB stick and at the grub selection screen select the livecd option and press TAB. Edit the grub command line by and add the command  "systemd.unit=multi-user.task nomodeset" to the end and boot the machine. This will bring you to a command prompt where you can login.
+</p><p>2: Login as root and then type lsmod | less and observe the output. Look for the loaded graphics driver by finding the drm entry the graphics driver will be listed here.  It will be typically nouveau, radeon or i915 (there may be others). The name used here will be the name to add to the xorg.blacklist= parameter
+</p><p><b>Backlight Issues</b>
+</p><p>There are some machines with Intel GPU's (Netbooks particularly) may still give a black screen. This may be fixed by adding i915.invert_brightness=1 parameter to the boot command line. This may be needed in addition to the xorg.blacklist= parameter.
 </p>
 <h1> <span class="mw-headline" id="Contact.2C_Bug_Reporting.2C_Discussion"> Contact, Bug Reporting, Discussion </span></h1>
-<p>You are invited to discuss this release on our forums (forums.openmandriva.org). Support is also available in the development channels via email (<a rel="nofollow" class="external free" href="http://ml.openmandriva.org/listinfo.cgi">http://ml.openmandriva.org/listinfo.cgi</a>). We are also on IRC.
+<p>You are invited to discuss this release on our forums (forums.openmandriva.org). Support is also available in the development channels via email (<a rel="nofollow" class="external free" href="http://ml.openmandriva.org/listinfo.cgi">http://ml.openmandriva.org/listinfo.cgi</a>). We are also on <a href="/en/Openmandriva_on_IRC" title="Openmandriva on IRC" class="mw-redirect">IRC</a>.
 </p><p>Please report bugs to our bugtracker (issues.openmandriva.org). Please give as much information as you can in your report.
 </p>
 <h1> <span class="mw-headline" id="Helping_the_Project"> Helping the Project </span></h1>
@@ -270,19 +281,19 @@ If you have a situation like this it will be necessary to disable the troublesom
 </p>
 <!-- 
 NewPP limit report
-Preprocessor visited node count: 192/1000000
-Preprocessor generated node count: 394/1000000
+Preprocessor visited node count: 196/1000000
+Preprocessor generated node count: 398/1000000
 Post‐expand include size: 360/2097152 bytes
 Template argument size: 15/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
-<!-- Saved in parser cache with key mw_en:pcache:idhash:615-0!*!*!!en!2!* and timestamp 20131118201913 -->
+<!-- Saved in parser cache with key mw_en:pcache:idhash:615-0!*!0!!en!2!* and timestamp 20131119150017 -->
 </div>				<!-- /bodycontent -->
 								<!-- printfooter -->
 				<div class="printfooter">
-				Retrieved from "<a href="http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Notes&amp;oldid=2567">http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Notes&amp;oldid=2567</a>"				</div>
+				Retrieved from "<a href="http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Notes&amp;oldid=2606">http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Notes&amp;oldid=2606</a>"				</div>
 				<!-- /printfooter -->
 												<!-- catlinks -->
 				<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/en/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="/en/Category:2013.0" title="Category:2013.0">2013.0</a></li></ul></div></div>				<!-- /catlinks -->
@@ -475,7 +486,7 @@ Expensive parser function count: 0/100
 			<li id="t-recentchangeslinked"><a href="/en/Special:RecentChangesLinked/2013.0/Release_Notes" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
 			<li id="t-specialpages"><a href="/en/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
 			<li id="t-print"><a href="/en/index.php?title=2013.0/Release_Notes&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
-			<li id="t-permalink"><a href="/en/index.php?title=2013.0/Release_Notes&amp;oldid=2567" title="Permanent link to this revision of the page">Permanent link</a></li>
+			<li id="t-permalink"><a href="/en/index.php?title=2013.0/Release_Notes&amp;oldid=2606" title="Permanent link to this revision of the page">Permanent link</a></li>
 			<li id="t-info"><a href="/en/index.php?title=2013.0/Release_Notes&amp;action=info">Page information</a></li>
 		</ul>
 	</div>
@@ -488,8 +499,8 @@ Expensive parser function count: 0/100
 		<!-- footer -->
 		<div id="footer" role="contentinfo">
 							<ul id="footer-info">
-											<li id="footer-info-lastmod"> This page was last modified on 18 November 2013, at 17:08.</li>
-											<li id="footer-info-viewcount">This page has been accessed 61 times.</li>
+											<li id="footer-info-lastmod"> This page was last modified on 19 November 2013, at 15:58.</li>
+											<li id="footer-info-viewcount">This page has been accessed 110 times.</li>
 											<li id="footer-info-copyright">Content is available under <a class="external" rel="nofollow" href="http://creativecommons.org/licenses/by-sa/3.0/">Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)</a>.</li>
 									</ul>
 							<ul id="footer-places">
@@ -517,6 +528,6 @@ mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.pag
 <script>if(window.mw){
 mw.loader.state({"site":"ready"});
 }</script>
-<!-- Served in 0.086 secs. -->
+<!-- Served in 0.088 secs. -->
 	</body>
 </html>

@@ -61,7 +61,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2013.0
-Release:	7
+Release:	8
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
