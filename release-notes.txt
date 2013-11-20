@@ -1,3 +1,57 @@
+   #[1]Wiki [en] OpenMandriva (en) [2]copyright [3]Wiki [en] OpenMandriva
+   Atom feed
+
+2013.0/Release Notes
+
+   From Wiki [en] OpenMandriva
+   < [4]2013.0
+   Jump to: [5]navigation, [6]search
+   [7]G3588.png
+
+   It is recommended that you read the latest release notes [8]on our
+   wiki.
+
+2013.0 Final Release
+
+
+         Contents
+
+              * [9]1 2013.0 Final Release
+              * [10]2 Available Media
+                   + [11]2.1 Recommended Hardware
+                   + [12]2.2 Booting from USB
+                   + [13]2.3 Booting with KVM
+                   + [14]2.4 Booting with VirtualBox
+              * [15]3 New Features and Major Changes
+                   + [16]3.1 Kernel
+                   + [17]3.2 KDE 4.11.2
+                   + [18]3.3 Upgrading to 2013.0
+                        o [19]3.3.1 Upgrading from 2011.0
+              * [20]4 Unavailable
+                   + [21]4.1 DrakX Installer
+              * [22]5 Changes to Hardware Support
+                   + [23]5.1 Graphics Support
+                        o [24]5.1.1 NVIDIA Graphics Cards
+                        o [25]5.1.2 ATI Graphics Cards
+                        o [26]5.1.3 Intel Graphics Cards
+                        o [27]5.1.4 Misc.
+                   + [28]5.2 Ethernet Support
+              * [29]6 Changes to Installation
+                   + [30]6.1 Unused Hardware & Language Removal
+              * [31]7 Changes to the DrakX suite of tools
+              * [32]8 Changes to Software Support
+                   + [33]8.1 Booting with systemd
+                   + [34]8.2 VirtualBox
+              * [35]9 Other Changes
+              * [36]10 Errata
+                   + [37]10.1 Update tool tries to add Cooker repositories
+                   + [38]10.2 Usage of Mandriva in System Tools
+                   + [39]10.3 Partitioning with Small Disks
+                   + [40]10.4 VirtualBox Guest Additions
+                   + [41]10.5 Black Screen at Boot
+              * [42]11 Contact, Bug Reporting, Discussion
+              * [43]12 Helping the Project
+
    The OpenMandriva Lx teams are pleased to announce the availability of
    the 2013.0 final release!
 
@@ -25,7 +79,7 @@ Recommended Hardware
 Booting from USB
 
    It is possible to boot this release from a USB. You may use
-   [45]Fedora's LiveUSB Creator with a download of the OpenMandriva Lx ISO
+   [44]Fedora's LiveUSB Creator with a download of the OpenMandriva Lx ISO
    for your system to make your USB bootable. At least 2GB of flash drive
    capacity is recommended. Persistent storage is not necessary. Note that
    this will erase everything on your USB! It is also possible to use the
@@ -162,12 +216,6 @@ Ethernet Support
    new ethernet drivers and improved existing drivers, such as Atheros
    ethernet chips (alx).
 
-ARM hardware support
-
-   Repositories for armv7l (softfloat) and armv7hl (hardfloat) is ready to
-   use on ARM development boards like cubieboard, wandboard, arndale,
-   mk802++ and other boards based on cortex-a8, a9, a15 processors.
-
 Changes to Installation
 
 Unused Hardware & Language Removal
@@ -194,13 +242,11 @@ Booting with systemd
      * Text Mode: systemd.unit=multi-user.target
      * Graphical Mode: systemd.unit=graphical.target
 
-VirtualBox Guest Additions
+VirtualBox
 
-   We use kernel 3.11.5. This kernel has a small change to the API which
-   makes it incompatible with versions of VirtualBox prior to 4.3 (the
-   kernel modules will not build for the kernel). VirtualBox 4.3 and later
-   do not have these issues - you may retrieve these versions from the
-   OpenMandriva repositories or your system distribution.
+   We include VirtualBox 4.3 and above. Please note of an issue with
+   VirtualBox Guest Additions in versions less than 4.3 and our kernels in
+   the errata.
 
 Other Changes
 
@@ -250,7 +296,7 @@ VirtualBox Guest Additions
 
    Due to a recent API change, 4.2.x series of vboxadditions will not
    work. Instead, use 4.3.x series which is known to work with this
-   release [46]Bug small.png [47]Bug #204
+   release [45]Bug small.png [46]Bug #204
 
    Workaround: Upgrade to VirtualBox 4.3 or later.
 
@@ -313,8 +359,8 @@ Contact, Bug Reporting, Discussion
 
    You are invited to discuss this release on our forums
    (forums.openmandriva.org). Support is also available in the development
-   channels via email ([48]http://ml.openmandriva.org/listinfo.cgi). We
-   are also on [49]IRC.
+   channels via email ([47]http://ml.openmandriva.org/listinfo.cgi). We
+   are also on [48]IRC.
 
    Please report bugs to our bugtracker (issues.openmandriva.org). Please
    give as much information as you can in your report.
@@ -331,3 +377,190 @@ Helping the Project
 
    See our wiki (wiki.openmandriva.org) for more details, and to learn how
    to join!.
+   Retrieved from
+   "[49]http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Not
+   es&oldid=2608"
+   [50]Category:
+     * [51]2013.0
+
+Navigation menu
+
+Personal tools
+
+     * [52]Create account
+     * [53]Log in
+
+Namespaces
+
+     * [54]Page
+     * [55]Discussion
+
+Variants
+
+Views
+
+     * [56]Read
+     * [57]View source
+     * [58]View history
+
+Actions
+
+Search
+
+   ____________________ Go Search
+
+Navigation
+
+     * [59]Wiki Home
+     * [60]Main Site
+     * [61]Recent changes
+     * [62]Random page
+     * [63]Help
+
+Users
+
+     * [64]Community portal
+     * [65]First Time
+
+Contributors
+
+     * [66]Cooker
+     * [67]Localization
+     * [68]Moderation
+     * [69]Quality Assurance
+
+Workshop
+
+     * [70]Artwork
+     * [71]Communication
+     * [72]Documentation
+     * [73]Infrastructure
+
+Association
+
+     * [74]Council
+     * [75]Technical
+     * [76]Membership
+
+In other languages
+
+     * [77]Français
+
+Toolbox
+
+     * [78]What links here
+     * [79]Related changes
+     * [80]Special pages
+     * [81]Printable version
+     * [82]Permanent link
+     * [83]Page information
+
+     * This page was last modified on 19 November 2013, at 19:23.
+     * This page has been accessed 136 times.
+     * Content is available under [84]Attribution-ShareAlike 3.0 Unported
+       (CC BY-SA 3.0).
+
+     * [85]Privacy policy
+     * [86]About Wiki [en] OpenMandriva
+     * [87]Disclaimers
+
+     * [88]Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+     * [89]Powered by MediaWiki
+
+References
+
+   Visible links
+   1. http://wiki.openmandriva.org/en/opensearch_desc.php
+   2. http://creativecommons.org/licenses/by-sa/3.0/
+   3. http://wiki.openmandriva.org/en/index.php?title=Special:RecentChanges&feed=atom
+   4. http://wiki.openmandriva.org/en/2013.0
+   5. http://wiki.openmandriva.org/en/2013.0/Release_Notes#mw-navigation
+   6. http://wiki.openmandriva.org/en/2013.0/Release_Notes#p-search
+   7. http://wiki.openmandriva.org/en/File:G3588.png
+   8. http://wiki.openmandriva.org/en/2013.0/Release_Notes
+   9. http://wiki.openmandriva.org/en/2013.0/Release_Notes#2013.0_Final_Release
+  10. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Available_Media
+  11. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Recommended_Hardware
+  12. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Booting_from_USB
+  13. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Booting_with_KVM
+  14. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Booting_with_VirtualBox
+  15. http://wiki.openmandriva.org/en/2013.0/Release_Notes#New_Features_and_Major_Changes
+  16. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Kernel
+  17. http://wiki.openmandriva.org/en/2013.0/Release_Notes#KDE_4.11.2
+  18. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Upgrading_to_2013.0
+  19. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Upgrading_from_2011.0
+  20. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Unavailable
+  21. http://wiki.openmandriva.org/en/2013.0/Release_Notes#DrakX_Installer
+  22. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Changes_to_Hardware_Support
+  23. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Graphics_Support
+  24. http://wiki.openmandriva.org/en/2013.0/Release_Notes#NVIDIA_Graphics_Cards
+  25. http://wiki.openmandriva.org/en/2013.0/Release_Notes#ATI_Graphics_Cards
+  26. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Intel_Graphics_Cards
+  27. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Misc.
+  28. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Ethernet_Support
+  29. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Changes_to_Installation
+  30. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Unused_Hardware_.26_Language_Removal
+  31. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Changes_to_the_DrakX_suite_of_tools
+  32. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Changes_to_Software_Support
+  33. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Booting_with_systemd
+  34. http://wiki.openmandriva.org/en/2013.0/Release_Notes#VirtualBox
+  35. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Other_Changes
+  36. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Errata
+  37. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Update_tool_tries_to_add_Cooker_repositories
+  38. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Usage_of_Mandriva_in_System_Tools
+  39. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Partitioning_with_Small_Disks
+  40. http://wiki.openmandriva.org/en/2013.0/Release_Notes#VirtualBox_Guest_Additions
+  41. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Black_Screen_at_Boot
+  42. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Contact.2C_Bug_Reporting.2C_Discussion
+  43. http://wiki.openmandriva.org/en/2013.0/Release_Notes#Helping_the_Project
+  44. https://fedorahosted.org/liveusb-creator/
+  45. http://wiki.openmandriva.org/en/File:Bug_small.png
+  46. http://issues.openmandriva.org/show_bug.cgi?id=204
+  47. http://ml.openmandriva.org/listinfo.cgi
+  48. http://wiki.openmandriva.org/en/Openmandriva_on_IRC
+  49. http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Notes&oldid=2608
+  50. http://wiki.openmandriva.org/en/Special:Categories
+  51. http://wiki.openmandriva.org/en/Category:2013.0
+  52. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=2013.0%2FRelease+Notes&type=signup
+  53. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=2013.0%2FRelease+Notes
+  54. http://wiki.openmandriva.org/en/2013.0/Release_Notes
+  55. http://wiki.openmandriva.org/en/index.php?title=Talk:2013.0/Release_Notes&action=edit&redlink=1
+  56. http://wiki.openmandriva.org/en/2013.0/Release_Notes
+  57. http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Notes&action=edit
+  58. http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Notes&action=history
+  59. http://wiki.openmandriva.org/en/Welcome
+  60. http://www.openmandriva.org/
+  61. http://wiki.openmandriva.org/en/Special:RecentChanges
+  62. http://wiki.openmandriva.org/en/Special:Random
+  63. http://wiki.openmandriva.org/en/Help:Contents
+  64. http://wiki.openmandriva.org/en/Users
+  65. http://wiki.openmandriva.org/en/Users/First_Time
+  66. http://wiki.openmandriva.org/en/Cooker
+  67. http://wiki.openmandriva.org/en/L10n
+  68. http://wiki.openmandriva.org/en/Mod
+  69. http://wiki.openmandriva.org/en/QA
+  70. http://wiki.openmandriva.org/en/Artwork
+  71. http://wiki.openmandriva.org/en/Com
+  72. http://wiki.openmandriva.org/en/Doc
+  73. http://wiki.openmandriva.org/en/Infra
+  74. http://wiki.openmandriva.org/en/OpenMandriva:Council
+  75. http://wiki.openmandriva.org/en/OpenMandriva:Technical
+  76. http://wiki.openmandriva.org/en/OpenMandriva:Membership
+  77. http://wiki.openmandriva.org/fr/2013.0/Release_Notes
+  78. http://wiki.openmandriva.org/en/Special:WhatLinksHere/2013.0/Release_Notes
+  79. http://wiki.openmandriva.org/en/Special:RecentChangesLinked/2013.0/Release_Notes
+  80. http://wiki.openmandriva.org/en/Special:SpecialPages
+  81. http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Notes&printable=yes
+  82. http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Notes&oldid=2608
+  83. http://wiki.openmandriva.org/en/index.php?title=2013.0/Release_Notes&action=info
+  84. http://creativecommons.org/licenses/by-sa/3.0/
+  85. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:Privacy_policy
+  86. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:About
+  87. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:General_disclaimer
+  88. http://creativecommons.org/licenses/by-sa/3.0/
+  89. http://www.mediawiki.org/
+
+   Hidden links:
+  90. http://wiki.openmandriva.org/en/2013.0/Release_Notes
+  91. http://wiki.openmandriva.org/en/2013.0/Release_Notes
+  92. http://wiki.openmandriva.org/en/Welcome
