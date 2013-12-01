@@ -3,7 +3,7 @@
 #
 %if %product_product == "OpenMandriva"
 %bcond_with	Moondrake
-%else 
+%else
 %bcond_without	Moondrake
 %endif
 
@@ -15,9 +15,9 @@
 %endif
 %define version 2013.0
 %if "%{disttag}" == "omv"
-%define distname RC1 (Oxygen)
+%define distname (Oxygen)
 %else
-%define distname RC1 (Twelve Angry Penguins)
+%define distname (Twelve Angry Penguins)
 %endif
 %define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
 
@@ -60,8 +60,8 @@
 
 Summary:	%{distribution} release file
 Name:		distro-release
-Version:	2013.0
-Release:	4
+Version:	2014.0
+Release:	0.1
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -70,6 +70,7 @@ Source0:	%{name}.tar.xz
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
+# raw output of lynx -source of wiki:
 Source5:	release-notes.html
 
 %description
