@@ -13,7 +13,7 @@
 %else
 %define distrib Official
 %endif
-%define version 2013.0
+%define version 2014.0
 %if "%{disttag}" == "omv"
 %define distname (Oxygen)
 %else
@@ -60,7 +60,7 @@
 
 Summary:	%{distribution} release file
 Name:		distro-release
-Version:	2014.0
+Version:	%{version}
 Release:	0.1
 Epoch:		1
 License:	GPLv2+
@@ -271,9 +271,7 @@ EOF
 
 
 %check
-# (tpg) oops disable this for now, fix for next relase
 %if %{am_i_cooker}
-%if %{version} != "2013.0"
 case %{release} in
     0.*) ;;
     *)
@@ -281,7 +279,6 @@ case %{release} in
     exit 1
     ;;
 esac
-%endif
 %endif
 
 %if %{with Moondrake}
