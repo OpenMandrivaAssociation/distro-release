@@ -8,31 +8,7 @@
 %define distrib Cooker
 %else
 %define distrib Official
-%define product_type Basic
-%if %am_i_cooker
-%define product_branch Devel
-%else
-%define product_branch Official
 %endif
-%define product_release 1
-%define product_arch %{_target_cpu}
-
-# The mandriva release, what is written on box
-%define mandriva_release %{version}
-
-# The distro branch: Cooker, Community or Official
-%define distro_branch %{distrib}
-
-# The distro arch, notice: using %_target_cpu is bad
-# elsewhere because this depend of the config of the packager
-# _target_cpu => package build for
-# distro_arch => the distribution we are using
-%define distro_arch %{_target_cpu}
-
-# To be coherent with %distro_arch I provide os too
-# be I wonder it will be linux for a long time
-%define distro_os %{_target_os}
-
 %define mdkver %(echo %{version} | sed 's/\\.//')0
 
 Summary:	%{distribution} release file
