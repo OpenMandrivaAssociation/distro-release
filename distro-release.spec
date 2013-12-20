@@ -1,7 +1,6 @@
 # Please update release notes:
 # make -C SOURCES release-notes.{html,txt}
 #
-
 %{python:import sys; sys.path.append(rpm.expandMacro("%{_sourcedir}"))}
 %{python:import distro}
 %define am_i_cooker 0
@@ -9,7 +8,6 @@
 %define distrib Cooker
 %else
 %define distrib Official
-%endif
 %define product_type Basic
 %if %am_i_cooker
 %define product_branch Devel
@@ -39,8 +37,8 @@
 
 Summary:	%{distribution} release file
 Name:		distro-release
-Version:	2013.5
-Release:	1
+Version:	2014.1
+Release:	0.1
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -51,6 +49,7 @@ Source2:	%{name}.rpmlintrc
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
+# raw output of lynx -source of wiki:
 Source5:	release-notes.html
 
 %description
@@ -156,9 +155,7 @@ EOF
 %{python:distro.release_install("OpenMandriva LX", "OpenMandriva", "OpenMandriva", "Beta (Oxygen)", "http://openmandriva.org", "omv")}
 
 %check
-# (tpg) oops disable this for now, fix for next relase
 %if %{am_i_cooker}
-%if %{version} != "2013.0"
 case %{release} in
     0.*) ;;
     *)
@@ -166,7 +163,6 @@ case %{release} in
     exit 1
     ;;
 esac
-%endif
 %endif
 
 %pre common
