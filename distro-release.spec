@@ -15,7 +15,8 @@
 %endif
 %define version 2014.0
 %if "%{disttag}" == "omv"
-%define distname (Oxygen)
+#https://wiki.openmandriva.org/en/Codename
+%define distname (Phosphorus)
 %else
 %define distname (Twelve Angry Penguins)
 %endif
