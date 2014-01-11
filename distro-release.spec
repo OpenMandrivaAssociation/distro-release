@@ -1,6 +1,7 @@
 # Please update release notes:
 # make -C SOURCES release-notes.{html,txt}
 #
+
 %{python:import sys; sys.path.append(rpm.expandMacro("%{_sourcedir}"))}
 %{python:import distro}
 %define am_i_cooker 0
@@ -9,17 +10,37 @@
 %else
 %define distrib Official
 %endif
+%define product_type Basic
+%if %am_i_cooker
+%define product_branch Devel
+%else
+%define product_branch Official
+%endif
+%define product_release 1
+%define product_arch %{_target_cpu}
+
+# The mandriva release, what is written on box
+%define mandriva_release %{version}
+
+# The distro branch: Cooker, Community or Official
+%define distro_branch %{distrib}
+
+# The distro arch, notice: using %_target_cpu is bad
+# elsewhere because this depend of the config of the packager
+# _target_cpu => package build for
+# distro_arch => the distribution we are using
+%define distro_arch %{_target_cpu}
+
+# To be coherent with %distro_arch I provide os too
+# be I wonder it will be linux for a long time
+%define distro_os %{_target_os}
+
 %define mdkver %(echo %{version} | sed 's/\\.//')0
 
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2014.1
-<<<<<<< HEAD
-Release:	2
-=======
-Release:	0.1
->>>>>>> e7c90da84d7436d45c66eb96a44af46e6b25ff75
-Epoch:		1
+Release:	0.2
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -29,7 +50,6 @@ Source2:	%{name}.rpmlintrc
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
-# raw output of lynx -source of wiki:
 Source5:	release-notes.html
 
 %description
@@ -135,7 +155,9 @@ EOF
 %{python:distro.release_install("OpenMandriva LX", "OpenMandriva", "OpenMandriva", "Beta (Oxygen)", "http://openmandriva.org", "omv")}
 
 %check
+# (tpg) oops disable this for now, fix for next relase
 %if %{am_i_cooker}
+%if %{version} != "2013.0"
 case %{release} in
     0.*) ;;
     *)
@@ -143,6 +165,7 @@ case %{release} in
     exit 1
     ;;
 esac
+%endif
 %endif
 
 %pre common
