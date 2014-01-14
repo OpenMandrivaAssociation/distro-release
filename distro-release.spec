@@ -7,7 +7,7 @@
 %bcond_without	Moondrake
 %endif
 
-%define am_i_cooker 1
+%define am_i_cooker 0
 %if %am_i_cooker
 %define distrib Cooker
 %else
@@ -62,7 +62,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	%{version}
-Release:	0.5
+Release:	0.6
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
