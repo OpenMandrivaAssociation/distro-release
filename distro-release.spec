@@ -13,7 +13,7 @@
 %else
 %define distrib Official
 %endif
-%define version 2014.0
+%define version 2014.1
 %if "%{disttag}" == "omv"
 #https://wiki.openmandriva.org/en/Codename
 %define distname (Phosphorus)
@@ -62,7 +62,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	%{version}
-Release:	0.5
+Release:	0.1
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
