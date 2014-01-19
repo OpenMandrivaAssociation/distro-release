@@ -1,0 +1,10 @@
+OpenMandriva Lx 2014.0 FOSDEM Preview Snapshot.
+
+Welcome to OpenMandriva Lx 2014.
+
+This snapshot release of OpenMandriva 2014 release has received minimal testing 
+but is thought to be stable.
+The release does not as yet fully support UEFI booting thus to install the OS 
+it may be necessary to turn off UEFI in the machine's BIOS.
+
+We hope you enjoy previewing our work.

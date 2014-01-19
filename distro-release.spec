@@ -62,12 +62,13 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	%{version}
-Release:	0.6
+Release:	0.7
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
 Source0:	%{name}.tar.xz
+Source2:	README
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
@@ -193,6 +194,7 @@ EOF\
 %prep
 %setup -q -n %{name}
 
+cp -a %{SOURCE2} README
 cp -a %{SOURCE3} CREDITS
 cp -a %{SOURCE4} release-notes.txt
 cp -a %{SOURCE5} release-notes.html
@@ -270,6 +272,7 @@ EOF
 %endif
 %release_install OpenMandriva OpenMandriva
 
+cp README %{buildroot}/
 
 %check
 %if %{am_i_cooker}
@@ -302,6 +305,10 @@ esac
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
 %ghost %{_sysconfdir}/product.id
+# This is not exactly an FHSly correct location -- but it is for the sake
+# of the live CD. Move this to a sane place once the ISO build scripts have
+# been adjusted to allow adding files.
+/README
 %{_sysconfdir}/*-release
 %{_sysconfdir}/release
 %{_sysconfdir}/version
