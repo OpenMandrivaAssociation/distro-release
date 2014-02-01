@@ -123,7 +123,7 @@ mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/product.id
 touch %{buildroot}%{_sysconfdir}/os-release
 touch %{buildroot}%{_sysconfdir}/release
-
+touch %{buildroot}%{_sysconfdir}/version
 
 ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/redhat-release
@@ -173,6 +173,7 @@ esac
 [ -f %{_sysconfdir}/product.id ] && rm %{_sysconfdir}/product.id
 [ -f %{_sysconfdir}/os-release ] && rm %{_sysconfdir}/os-release
 [ -f %{_sysconfdir}/release ] && rm %{_sysconfdir}/release
+[ -f %{_sysconfdir}/version ] && rm %{_sysconfdir}/version
 exit 0
 
 %files common
@@ -180,13 +181,13 @@ exit 0
 %ghost %{_sysconfdir}/product.id
 %ghost %{_sysconfdir}/os-release
 %ghost %{_sysconfdir}/release
+%ghost %{_sysconfdir}/version
 %{_sysconfdir}/redhat-release
 %{_sysconfdir}/mandrake-release
 %{_sysconfdir}/mandriva-release
 %{_sysconfdir}/mandrakelinux-release
 %{_sysconfdir}/rosa-release
 %{_sysconfdir}/system-release
-%{_sysconfdir}/version
 %{_sysconfdir}/profile.d/10distro-release.sh
 %{_sysconfdir}/profile.d/10distro-release.csh
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sysconfig/system

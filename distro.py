@@ -22,19 +22,23 @@ Provides:	mandriva-release = %{version}-%{release}
 update-alternatives --install /etc/os-release os-release /etc/os-release."""+vendor+""" 10
 update-alternatives --install /etc/release release /etc/"""+vendor+"""-release 10
 update-alternatives --install /etc/product.id product.id /etc/product.id."""+Vendor+""" 10
+update-alternatives --install /etc/version version /etc/version."""+Vendor+""" 10
+
 
 %%postun	"""+Vendor+"""
 if [ "$1" = "0" ]; then
 update-alternatives --remove os-release /etc/os-release."""+vendor+"""
 update-alternatives --remove release /etc/"""+vendor+"""-release
 update-alternatives --remove product.id /etc/product.id."""+Vendor+"""
+update-alternatives --remove version /etc/version."""+Vendor+"""
 fi
 
 %%files		"""+Vendor+"""
 %{_sys_macros_dir}/"""+Vendor+""".macros
 %{_sysconfdir}/os-release."""+vendor+"""
 %{_sysconfdir}/"""+vendor+"""-release
-%{_sysconfdir}/product.id."""+Vendor))
+%{_sysconfdir}/product.id."""+Vendor+"""
+%{_sysconfdir}/version."""+vendor))
     sys.stdout.flush()
 
 def release_install(distribution,product,Vendor,codename,disturl,disttag,ansiColor="1;43"):
@@ -84,8 +88,8 @@ META_CLASS=download
 EOF
 
 echo \""""+distribution+""" release %{distepoch} """+codename+""" for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/"""+vendor+"""-release
-if [ ! -f %{buildroot}%{_sysconfdir}/version ]; then
-echo \"%{distepoch} %{release} """+codename+"""\" > %{buildroot}%{_sysconfdir}/version
+if [ ! -f %{buildroot}%{_sysconfdir}/version"""+vendor+""" ]; then
+echo \"%{distepoch} %{release} """+codename+"""\" > %{buildroot}%{_sysconfdir}/version."""+vendor+"""
 fi
 
 # (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
