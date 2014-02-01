@@ -10,6 +10,7 @@
 %else
 %define distrib Official
 %endif
+%define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
 %define product_type Basic
 %if %am_i_cooker
 %define product_branch Devel
