@@ -40,7 +40,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2014.1
-Release:	0.2
+Release:	0.3
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -152,7 +152,7 @@ fi
 EOF
 
 %{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta 2 (Tough Love)","http://moondrake.org","mdk",ansiColor="1;35;4;44")}
-%{python:distro.release_install("OpenMandriva LX", "OpenMandriva", "OpenMandriva", "Beta (Oxygen)", "http://openmandriva.org", "omv")}
+%{python:distro.release_install("OpenMandriva LX", "OpenMandriva", "OpenMandriva", "Alpha (Phosphorus)", "http://openmandriva.org", "omv")}
 
 %check
 # (tpg) oops disable this for now, fix for next relase
