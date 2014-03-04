@@ -41,7 +41,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2014.1
-Release:	0.3
+Release:	0.4
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
