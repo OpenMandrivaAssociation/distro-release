@@ -1,8 +1,8 @@
-OpenMandriva Lx 2014.0 alpha2 snapshot.
+OpenMandriva Lx 2014.0 beta snapshot.
 
 Welcome to OpenMandriva Lx 2014.
 
-This snapshot release of OpenMandriva 2014 release has received minimal testing 
+This snapshot release of OpenMandriva 2014 release has received some testing 
 but is thought to be stable.
 The release does not as yet fully support UEFI booting thus to install the OS 
 it may be necessary to turn off UEFI in the machine's BIOS.
