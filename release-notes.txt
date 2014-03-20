@@ -11,12 +11,12 @@
    It is recommended that you read the latest release notes [8]on our
    wiki.
 
-2014.0 Alpha2 Release
+2014.0 Beta Release
 
 
                     Contents
 
-                         * [9]1 2014.0 Alpha2 Release
+                         * [9]1 2014.0 Beta Release
                          * [10]2 Available Media
                               + [11]2.1 Recommended Hardware
                               + [12]2.2 Booting from USB
@@ -24,7 +24,7 @@
                               + [14]2.4 Booting with VirtualBox
                          * [15]3 New Features and Major Changes
                               + [16]3.1 Kernel
-                              + [17]3.2 KDE 4.12.2
+                              + [17]3.2 KDE 4.12.3
                               + [18]3.3 Upgrading to 2014.0
                                    o [19]3.3.1 Upgrading from 2013.0
                                    o [20]3.3.2 Upgrading from 2011.0
@@ -53,7 +53,7 @@
                          * [43]12 Helping the Project
 
    The OpenMandriva Lx teams are pleased to announce the availability of
-   the 2014.0 alpha2 release!
+   the 2014.0 beta release!
 
    Detailed are some of the changes that the OS has undergone since
    OpenMandriva Lx 2013.
@@ -138,9 +138,9 @@ Kernel
    functionality, each designed with desktop system performance and
    responsiveness in mind.
 
-KDE 4.12.2
+KDE 4.12.3
 
-   KDE 4.12.2 provides a clean, unified desktop for OpenMandriva. It has
+   KDE 4.12.3 provides a clean, unified desktop for OpenMandriva. It has
    all the tools required to be productive whilst providing a pleasant,
    functional environment.
 
@@ -298,7 +298,7 @@ Errata
 
 Booting Live DVD/USB
 
-   This software is ALPHA quality. There seem to be an issue booting the
+   This software is BETA quality. There seem to be an issue booting the
    live image with some hardware. Please report a bug detailing your
    hardware and any observations that you make if you are affected by this
    problem. Please also see Black Screen at Boot
@@ -402,13 +402,13 @@ nokmsboot
 
 Contact, Bug Reporting, Discussion
 
-   You are invited to discuss this release on our forums
-   (forums.openmandriva.org). Support is also available in the development
-   channels via email ([51]http://ml.openmandriva.org/listinfo.cgi). We
-   are also on [52]IRC.
+   You are invited to discuss this release on:
+     * [51]Official forum
+     * [52]Official Mailing Lists
+     * [53]IRC
 
-   Please report bugs to our bugtracker (issues.openmandriva.org). Please
-   give as much information as you can in your report.
+   Please report bugs to our [54]bugtracker. Please give as much
+   information as you can in your report.
 
    IMPORTANT NOTE:
 
@@ -430,30 +430,30 @@ Helping the Project
    See our wiki (wiki.openmandriva.org) for more details, and to learn how
    to join!.
    Retrieved from
-   "[53]http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Not
-   es&oldid=3155"
-   [54]Category:
-     * [55]2014.0
+   "[55]http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Not
+   es&oldid=3453"
+   [56]Category:
+     * [57]2014.0
 
 Navigation menu
 
 Personal tools
 
-     * [56]Create account
-     * [57]Log in
+     * [58]Create account
+     * [59]Log in
 
 Namespaces
 
-     * [58]Page
-     * [59]Discussion
+     * [60]Page
+     * [61]Discussion
 
 Variants
 
 Views
 
-     * [60]Read
-     * [61]View source
-     * [62]View history
+     * [62]Read
+     * [63]View source
+     * [64]View history
 
 Actions
 
@@ -463,62 +463,62 @@ Search
 
 Navigation
 
-     * [63]Wiki Home
-     * [64]Main Site
-     * [65]Recent changes
-     * [66]Random page
-     * [67]Help
+     * [65]Wiki Home
+     * [66]Main Site
+     * [67]Recent changes
+     * [68]Random page
+     * [69]Help
 
 Users
 
-     * [68]Community portal
-     * [69]First Time
+     * [70]Community portal
+     * [71]First Time
 
 Contributors
 
-     * [70]Cooker
-     * [71]Localization
-     * [72]Moderation
-     * [73]Quality Assurance
+     * [72]Cooker
+     * [73]Localization
+     * [74]Moderation
+     * [75]Quality Assurance
 
 Workshop
 
-     * [74]Artwork
-     * [75]Communication
-     * [76]Documentation
-     * [77]Infrastructure
+     * [76]Artwork
+     * [77]Communication
+     * [78]Documentation
+     * [79]Infrastructure
 
 Association
 
-     * [78]Council
-     * [79]Technical
-     * [80]Membership
+     * [80]Council
+     * [81]Technical
+     * [82]Membership
 
 In other languages
 
-     * [81]Français
-     * [82]Español
+     * [83]Français
+     * [84]Español
 
 Toolbox
 
-     * [83]What links here
-     * [84]Related changes
-     * [85]Special pages
-     * [86]Printable version
-     * [87]Permanent link
-     * [88]Page information
+     * [85]What links here
+     * [86]Related changes
+     * [87]Special pages
+     * [88]Printable version
+     * [89]Permanent link
+     * [90]Page information
 
-     * This page was last modified on 28 February 2014, at 18:51.
-     * This page has been accessed 107 times.
-     * Content is available under [89]Attribution-ShareAlike 3.0 Unported
+     * This page was last modified on 18 March 2014, at 13:33.
+     * This page has been accessed 377 times.
+     * Content is available under [91]Attribution-ShareAlike 3.0 Unported
        (CC BY-SA 3.0).
 
-     * [90]Privacy policy
-     * [91]About Wiki [en] OpenMandriva
-     * [92]Disclaimers
+     * [92]Privacy policy
+     * [93]About Wiki [en] OpenMandriva
+     * [94]Disclaimers
 
-     * [93]Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
-     * [94]Powered by MediaWiki
+     * [95]Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+     * [96]Powered by MediaWiki
 
 References
 
@@ -531,7 +531,7 @@ References
    6. http://wiki.openmandriva.org/en/2014.0/Release_Notes#p-search
    7. http://wiki.openmandriva.org/en/File:G3309.png
    8. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-   9. http://wiki.openmandriva.org/en/2014.0/Release_Notes#2014.0_Alpha2_Release
+   9. http://wiki.openmandriva.org/en/2014.0/Release_Notes#2014.0_Beta_Release
   10. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Available_Media
   11. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Recommended_Hardware
   12. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_from_USB
@@ -539,7 +539,7 @@ References
   14. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_with_VirtualBox
   15. http://wiki.openmandriva.org/en/2014.0/Release_Notes#New_Features_and_Major_Changes
   16. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Kernel
-  17. http://wiki.openmandriva.org/en/2014.0/Release_Notes#KDE_4.12.2
+  17. http://wiki.openmandriva.org/en/2014.0/Release_Notes#KDE_4.12.3
   18. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Upgrading_to_2014.0
   19. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Upgrading_from_2013.0
   20. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Upgrading_from_2011.0
@@ -573,52 +573,54 @@ References
   48. http://issues.openmandriva.org/show_bug.cgi?id=204
   49. http://community.kde.org/Plasma/Plasma_Media_Center
   50. http://freedesktop.org/wiki/Software/systemd/separate-usr-is-broken/
-  51. http://ml.openmandriva.org/listinfo.cgi
-  52. http://wiki.openmandriva.org/en/Openmandriva_on_IRC
-  53. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&oldid=3155
-  54. http://wiki.openmandriva.org/en/Special:Categories
-  55. http://wiki.openmandriva.org/en/Category:2014.0
-  56. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=2014.0%2FRelease+Notes&type=signup
-  57. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=2014.0%2FRelease+Notes
-  58. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-  59. http://wiki.openmandriva.org/en/index.php?title=Talk:2014.0/Release_Notes&action=edit&redlink=1
+  51. http://forums.openmandriva.org/
+  52. http://ml.openmandriva.org/listinfo.cgi
+  53. http://wiki.openmandriva.org/en/Openmandriva_on_IRC
+  54. http://issues.openmandriva.org/
+  55. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&oldid=3453
+  56. http://wiki.openmandriva.org/en/Special:Categories
+  57. http://wiki.openmandriva.org/en/Category:2014.0
+  58. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=2014.0%2FRelease+Notes&type=signup
+  59. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=2014.0%2FRelease+Notes
   60. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-  61. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=edit
-  62. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=history
-  63. http://wiki.openmandriva.org/en/Welcome
-  64. http://www.openmandriva.org/
-  65. http://wiki.openmandriva.org/en/Special:RecentChanges
-  66. http://wiki.openmandriva.org/en/Special:Random
-  67. http://wiki.openmandriva.org/en/Help:Contents
-  68. http://wiki.openmandriva.org/en/Users
-  69. http://wiki.openmandriva.org/en/Users/First_Time
-  70. http://wiki.openmandriva.org/en/Cooker
-  71. http://wiki.openmandriva.org/en/L10n
-  72. http://wiki.openmandriva.org/en/Mod
-  73. http://wiki.openmandriva.org/en/QA
-  74. http://wiki.openmandriva.org/en/Artwork
-  75. http://wiki.openmandriva.org/en/Com
-  76. http://wiki.openmandriva.org/en/Doc
-  77. http://wiki.openmandriva.org/en/Infra
-  78. http://wiki.openmandriva.org/en/OpenMandriva:Council
-  79. http://wiki.openmandriva.org/en/OpenMandriva:Technical
-  80. http://wiki.openmandriva.org/en/OpenMandriva:Membership
-  81. http://wiki.openmandriva.org/fr/2014.0/Release_Notes
-  82. http://wiki.openmandriva.org/es/2014.0/Notas_sobre_2013.0
-  83. http://wiki.openmandriva.org/en/Special:WhatLinksHere/2014.0/Release_Notes
-  84. http://wiki.openmandriva.org/en/Special:RecentChangesLinked/2014.0/Release_Notes
-  85. http://wiki.openmandriva.org/en/Special:SpecialPages
-  86. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&printable=yes
-  87. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&oldid=3155
-  88. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=info
-  89. http://creativecommons.org/licenses/by-sa/3.0/
-  90. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:Privacy_policy
-  91. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:About
-  92. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:General_disclaimer
-  93. http://creativecommons.org/licenses/by-sa/3.0/
-  94. http://www.mediawiki.org/
+  61. http://wiki.openmandriva.org/en/index.php?title=Talk:2014.0/Release_Notes&action=edit&redlink=1
+  62. http://wiki.openmandriva.org/en/2014.0/Release_Notes
+  63. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=edit
+  64. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=history
+  65. http://wiki.openmandriva.org/en/Welcome
+  66. http://www.openmandriva.org/
+  67. http://wiki.openmandriva.org/en/Special:RecentChanges
+  68. http://wiki.openmandriva.org/en/Special:Random
+  69. http://wiki.openmandriva.org/en/Help:Contents
+  70. http://wiki.openmandriva.org/en/Users
+  71. http://wiki.openmandriva.org/en/Users/First_Time
+  72. http://wiki.openmandriva.org/en/Cooker
+  73. http://wiki.openmandriva.org/en/L10n
+  74. http://wiki.openmandriva.org/en/Mod
+  75. http://wiki.openmandriva.org/en/QA
+  76. http://wiki.openmandriva.org/en/Artwork
+  77. http://wiki.openmandriva.org/en/Com
+  78. http://wiki.openmandriva.org/en/Doc
+  79. http://wiki.openmandriva.org/en/Infra
+  80. http://wiki.openmandriva.org/en/OpenMandriva:Council
+  81. http://wiki.openmandriva.org/en/OpenMandriva:Technical
+  82. http://wiki.openmandriva.org/en/OpenMandriva:Membership
+  83. http://wiki.openmandriva.org/fr/2014.0/Release_Notes
+  84. http://wiki.openmandriva.org/es/2014.0/Notas_sobre_2013.0
+  85. http://wiki.openmandriva.org/en/Special:WhatLinksHere/2014.0/Release_Notes
+  86. http://wiki.openmandriva.org/en/Special:RecentChangesLinked/2014.0/Release_Notes
+  87. http://wiki.openmandriva.org/en/Special:SpecialPages
+  88. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&printable=yes
+  89. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&oldid=3453
+  90. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=info
+  91. http://creativecommons.org/licenses/by-sa/3.0/
+  92. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:Privacy_policy
+  93. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:About
+  94. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:General_disclaimer
+  95. http://creativecommons.org/licenses/by-sa/3.0/
+  96. http://www.mediawiki.org/
 
    Hidden links:
-  95. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-  96. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-  97. http://wiki.openmandriva.org/en/Welcome
+  97. http://wiki.openmandriva.org/en/2014.0/Release_Notes
+  98. http://wiki.openmandriva.org/en/2014.0/Release_Notes
+  99. http://wiki.openmandriva.org/en/Welcome
