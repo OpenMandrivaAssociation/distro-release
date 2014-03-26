@@ -22,7 +22,7 @@ Provides:	mandriva-release = %{version}-%{release}
 update-alternatives --install /etc/os-release os-release /etc/os-release."""+vendor+""" 10
 update-alternatives --install /etc/release release /etc/"""+vendor+"""-release 10
 update-alternatives --install /etc/product.id product.id /etc/product.id."""+Vendor+""" 10
-update-alternatives --install /etc/version version /etc/version."""+Vendor+""" 10
+update-alternatives --install /etc/version version /etc/version."""+vendor+""" 10
 
 
 %%postun	"""+Vendor+"""
