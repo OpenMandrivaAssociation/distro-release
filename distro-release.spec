@@ -20,9 +20,6 @@
 %define product_release 1
 %define product_arch %{_target_cpu}
 
-# enable/disable Moondrake
-%bcond_with moondrake
-
 # The mandriva release, what is written on box
 %define mandriva_release %{version}
 
@@ -92,9 +89,7 @@ Provides:	%arch_tagged %{_vendor}-release-common
 %description	common
 Common files for %{distribution} release packages.
 
-%if %{with moondrake}
 %{python:distro.release_package("Moondrake GNU/Linux", "Moondrake")}
-%endif
 %{python:distro.release_package("OpenMandriva LX", "OpenMandriva")}
 
 %prep
@@ -157,9 +152,7 @@ else
 fi
 EOF
 
-%if %{with moondrake}
 %{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta 2 (Tough Love)","http://moondrake.org","mdk",ansiColor="1;35;4;44")}
-%endif
 %{python:distro.release_install("OpenMandriva LX", "OpenMandriva", "OpenMandriva", "Alpha (Phosphorus)", "http://openmandriva.org", "omv")}
 
 %check
