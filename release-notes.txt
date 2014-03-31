@@ -11,12 +11,12 @@
    It is recommended that you read the latest release notes [8]on our
    wiki.
 
-2014.0 Beta Release
+2014.0 RC1 Release
 
 
                     Contents
 
-                         * [9]1 2014.0 Beta Release
+                         * [9]1 2014.0 RC1 Release
                          * [10]2 Available Media
                               + [11]2.1 Recommended Hardware
                               + [12]2.2 Booting from USB
@@ -53,7 +53,7 @@
                          * [43]12 Helping the Project
 
    The OpenMandriva Lx teams are pleased to announce the availability of
-   the 2014.0 beta release!
+   the 2014.0 RC1 release!
 
    Detailed are some of the changes that the OS has undergone since
    OpenMandriva Lx 2013.
@@ -531,7 +531,7 @@ References
    6. http://wiki.openmandriva.org/en/2014.0/Release_Notes#p-search
    7. http://wiki.openmandriva.org/en/File:G3309.png
    8. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-   9. http://wiki.openmandriva.org/en/2014.0/Release_Notes#2014.0_Beta_Release
+   9. http://wiki.openmandriva.org/en/2014.0/Release_Notes#2014.0_RC1_Release
   10. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Available_Media
   11. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Recommended_Hardware
   12. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_from_USB
