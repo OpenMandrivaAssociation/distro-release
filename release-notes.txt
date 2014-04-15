@@ -14,59 +14,64 @@
 2014.0 RC1 Release
 
 
-                    Contents
+   Contents
 
-                         * [9]1 2014.0 RC1 Release
-                         * [10]2 Available Media
-                              + [11]2.1 Recommended Hardware
-                              + [12]2.2 Booting from USB
-                              + [13]2.3 Booting with KVM
-                              + [14]2.4 Booting with VirtualBox
-                         * [15]3 New Features and Major Changes
-                              + [16]3.1 Kernel
-                              + [17]3.2 KDE 4.12.3
-                              + [18]3.3 Upgrading to 2014.0
-                                   o [19]3.3.1 Upgrading from 2013.0
-                                   o [20]3.3.2 Upgrading from 2011.0
-                              + [21]3.4 Media "restricted"
-                         * [22]4 Unavailable
-                              + [23]4.1 DrakX Installer
-                         * [24]5 Changes to Hardware Support
-                              + [25]5.1 Graphics Support
-                                   o [26]5.1.1 NVIDIA Graphics Cards
-                                   o [27]5.1.2 ATI Graphics Cards
-                                   o [28]5.1.3 Intel Graphics Cards
-                                   o [29]5.1.4 Misc.
-                              + [30]5.2 Ethernet Support
-                         * [31]6 Changes to Installation
-                              + [32]6.1 Unused Hardware & Language Removal
-                         * [33]7 Changes to the DrakX suite of tools
-                         * [34]8 Changes to Software Support
-                              + [35]8.1 Booting with systemd
-                         * [36]9 Other Changes
-                         * [37]10 Errata
-                              + [38]10.1 Booting Live DVD/USB
-                              + [39]10.2 Usage of Mandriva in System Tools
-                              + [40]10.3 Partitioning with Small Disks
-                              + [41]10.4 Black Screen at Boot
-                         * [42]11 Contact, Bug Reporting, Discussion
-                         * [43]12 Helping the Project
+        * [9]1 2014.0 RC1 Release
+        * [10]2 Available Media
+             + [11]2.1 Recommended Hardware
+             + [12]2.2 EFI BOOT
+             + [13]2.3 Booting from USB
+             + [14]2.4 Booting with KVM
+             + [15]2.5 Booting with VirtualBox
+        * [16]3 New Features and Major Changes
+             + [17]3.1 EFI BOOT
+             + [18]3.2 Kernel
+             + [19]3.3 KDE 4.12.4
+             + [20]3.4 LibreOffice-4.2.2.1
+             + [21]3.5 JAVA
+             + [22]3.6 Upgrading to 2014.0
+                  o [23]3.6.1 Upgrading from OpenMandriva Lx-2013.0 Release
+                  o [24]3.6.2 Upgrading from 2011.0
+             + [25]3.7 Media "Contrib"
+             + [26]3.8 Media "restricted"
+        * [27]4 Unavailable
+             + [28]4.1 DrakX Installer
+        * [29]5 Changes to Hardware Support
+             + [30]5.1 Graphics Support
+                  o [31]5.1.1 NVIDIA Graphics Cards
+                  o [32]5.1.2 ATI Graphics Cards
+                  o [33]5.1.3 Intel Graphics Cards
+                  o [34]5.1.4 Miscellaneous Graphic Cards .
+             + [35]5.2 Ethernet Support
+        * [36]6 Changes to Installation
+             + [37]6.1 Unused Hardware & Language Removal
+        * [38]7 Changes to the DrakX suite of tools
+        * [39]8 Changes to Software Support
+             + [40]8.1 Booting with systemd
+        * [41]9 Other Changes
+        * [42]10 Errata
+             + [43]10.1 Booting Live DVD/USB
+             + [44]10.2 Usage of Mandriva in System Tools
+             + [45]10.3 Partitioning with Small Disks
+             + [46]10.4 Black Screen at Boot
+        * [47]11 Contact, Bug Reporting, Discussion
+        * [48]12 Helping the Project
 
    The OpenMandriva Lx teams are pleased to announce the availability of
    the 2014.0 RC1 release!
 
-   Detailed are some of the changes that the OS has undergone since
-   OpenMandriva Lx 2013.
+   Detailed below are some of the advances that the distribution has
+   incorporated since OpenMandriva Lx 2013.
 
 Available Media
 
    This release is available as a live media DVD, downloadable in ISO
    format. They are available on our downloads page.
 
-   Live media means you're able to run OpenMandriva Lx straight from the
-   DVD and try it before installing it. You may also install the system to
-   hard disk either from the running live cd or from the boot manager. You
-   may also from a USB memory stick (See Below).
+   Live media means you're able to run OpenMandriva Lx straight from a DVD
+   or memory stick (See Below) and try it before installing it. You may
+   also install the system to hard disk either from the running live image
+   or from the boot manager.
 
 Recommended Hardware
 
@@ -78,28 +83,39 @@ Recommended Hardware
 
    To run the live distribution (Grub Option 1) The minimum memory
    requirement is 1.5GB of memory but 2GB is recommended. Releases are
-   available for the i586 and x86_64 architectures. ARM architectures are
-   not available for this release.
+   available for i586 and x86_64 architectures. ARM architectures are not
+   available for this release.
 
    The same hardware requirements apply when running in virtual machines
+   Note that in Qemu you may need to select one of the alternative
+   graphics drivers or you will boot to a black screen
+
+EFI BOOT
+
+   This is the first release of OpenMandriva Lx that incorporates working
+   support for EFI booting. We have only been able to perform limited
+   testing on this feature and would welcome feedback on user experience.
 
 Booting from USB
 
-   It is possible to boot this release from a USB. You may use ROSA Image
-   Writer available from our repos:
+   It is also possible to boot this release from a USB storage device. To
+   transfer the live/installation you may use the ROSA Image Writer
+   available from our repos:
 urpmi rosa-imagewriter
 
    as a static binary:
-   [44]Linux 32-bit
-   [45]Linux 64-bit
+   [49]Linux 32-bit
+   [50]Linux 64-bit
 
-   There is also a [46]Windows binary, working out of box. Just download
+   There is also a [51]Windows binary, working out of box. Just download
    it and write iso. with a download of the OpenMandriva Lx ISO for your
    system to make your USB bootable. At least 2GB of flash drive capacity
    is recommended. Persistent storage is not necessary. Note that this
-   will erase everything on your USB! It is also possible to use the dd
-   command to image the iso to an USB Drive e.g "dd if=<iso_name>
-   of=/dev/sd<x> bs=4M" .
+   will erase everything on your USB!
+
+   Alternatively the dd command may be used with the general form "dd
+   if=<iso_name> of=</dev/sd<x> BS=4M where x = The device letter i.e.
+   /dev/sdb
 
 Booting with KVM
 
@@ -114,16 +130,22 @@ Booting with VirtualBox
 
    Due to a recent API change, 4.2.x series of vboxadditions will not
    work. Instead, use 4.3.x series which is known to work with this
-   release [47]Bug small.png [48]Bug #204
+   release
 
    Workaround: Upgrade to VirtualBox 4.3 or later
 
 New Features and Major Changes
 
-   The introduction of OpenMandriva 2014.0 represents a major update from
-   the previous version of OpenMandriva Lx, and is also the third release
-   under the community of the OpenMandriva Association. With that in mind,
-   here are some of the new features:
+   The introduction of OpenMandriva Lx 2014.0 represents a major update
+   from the previous version of OpenMandriva Lx, and is also the third
+   release under the community of the OpenMandriva Association. With that
+   in mind, here are some of the new features:
+
+EFI BOOT
+
+   This is the first release of OpenMandriva Lx that incorporates working
+   support for EFI booting. We have only been able to perform limited
+   testing on this feature and would welcome feedback on user experience.
 
 Kernel
 
@@ -136,43 +158,58 @@ Kernel
    disk I/O scheduling (BFQ), Improved memory managment is present with
    the provision of UKSM and TOI for better suspension and hibernate
    functionality, each designed with desktop system performance and
-   responsiveness in mind.
+   responsiveness in mind. Some very recent USB patches that partially
+   correct a misinterpretation of the USB standard will improve device
+   compatibility and also ensure that devices re-awake properly after
+   suspend or hibernate. NFS has also received some attention with patches
+   that will give faster start up of the nfs services.
 
-KDE 4.12.3
+KDE 4.12.4
 
-   KDE 4.12.3 provides a clean, unified desktop for OpenMandriva. It has
-   all the tools required to be productive whilst providing a pleasant,
-   functional environment.
+   KDE 4.12.4 provides a clean, unified desktop for OpenMandriva Lx. It
+   has all the tools required to be productive whilst providing a
+   pleasant, functional environment.
 
-   This release provides a KDE 4.12 installation featuring homerun
-   launcher, new artwork and [49]plasma-mediacenter!.
+   The KDE installation included in this release features the Homerun
+   launcher, attractive new artwork and [52]plasma-mediacenter!.
+
+LibreOffice-4.2.2.1
+
+   The latest LibreOffice featuring much faster load times and many bug
+   fixes.
+
+JAVA
+
+   The OpenMandriva Java stack has been entirely rebuilt and has all the
+   functionality required to run the powerful development environment
+   Eclipse of which we provide the latest version (Kepler).
 
 Upgrading to 2014.0
 
-   Upgrading between releases of Mandriva always has the potential to
-   cause some problems. Upgrading is supported and we do test upgrades,
-   but due to the huge range of packages and hardware configurations
-   possible, it is always the case that in your particular situation, the
-   upgrade may cause a problem we did not anticipate. Therefore we
-   recommend that you always back up your system prior to upgrading.
+   Upgrading between releases always has the potential to cause some
+   problems. Upgrading is supported and we do test upgrades, but due to
+   the huge range of packages and hardware configurations that are
+   possible, thus in some situations, the upgrade may cause problems that
+   were not anticipated. Therefore we recommend that you always perform a
+   fully back up your system prior to any upgrading attempt. In particular
+   be aware that upgrading between MDV-based packages and OMV-based
+   packages may be the most problematic and should be avoided if possible.
 
-   Upgrading between OpenMandriva releases should be less problematic in
-   the future.
+   We hope that upgrading between OpenMandriva releases will become be
+   less problematic in the future.
 
-   In particular, upgrading between MDV-based packages and OMV-based
-   packages may cause problems.
+Upgrading from OpenMandriva Lx-2013.0 Release
 
-Upgrading from 2013.0
-
-   Please use below commands:
-urpmi.addmedia -a
+   Please use the following commands while logged in at a root terminal
+   instance:-
+urpmi.removemedia -a
 
 urpmi.addmedia --distrib --mirrorlist 'http://downloads.openmandriva.org/mirrors
 /openmandriva.2014.0.ARCH.list'
 
    Substitute ARCH with your architecture, e.g. i586 or x86_64.
 
-   Then run the following commands, as root:
+   Then run the following commands:
 urpmi --auto --auto-select --replacefiles 2>&1 | tee upgrade.log
 
 Upgrading from 2011.0
@@ -207,11 +244,24 @@ urpmi --auto --auto-select --replacefiles 2>&1 | tee upgrade.log
    problems. Once the process completes, you should reboot immediately,
    and you should find the system has been fully updated to this version.
 
+Media "Contrib"
+
+   Recently a new contributor to OpenMandriva has placed some interesting
+   packages in our Contrib repository a few examples are xt7-player, the
+   lightest gui for mplayer and Bino which allows you play with 3d movies
+   if you have the technology (Red and Green lensed glasses :) ). The
+   Contrib repository is gradually being updated and rebuilt but this is a
+   major task and will take some time.
+
 Media "restricted"
 
-   Here are some non free libraries that aren't installed by default. For
-   example, playing mp4 videos with VLC needs libfaad2_2 which can be
-   installed after having added all set of media.
+   This is where non free libraries that aren't installed by default are
+   kept. For example, playing mp4 videos with VLC needs libfaad2_2 which
+   can be installed after having added all set of media.
+
+   You will also find in this repository some of the famous PLF builds
+   which enable additional functionality to some programs not included in
+   the main release repositories.
 
 Unavailable
 
@@ -224,9 +274,20 @@ DrakX Installer
    Please note though that the various tasks that installed batches of
    software that were available in the old installer may still be used
    either through the OpenMandriva Tools or though the command line with
-   urpmi. The tasks available can be listed by running 'urpmq --fuzzy
-   task-'. Use these tasks at your own risk as they are not all currently
-   maintained.
+   urpmi.
+
+   These tasks may be listed by running 'urpmq --fuzzy task-'. Use these
+   compilations at your own risk as they are not all currently maintained.
+
+   Some tasks such as task-games may require the addition of the the 32bit
+   repositories for successful installation
+
+   Please also note that some tasks may pull packages from the contrib
+   repository. Currently many of the packages in contrib have incorrect
+   signatures. This is a known issue and you should not report incorrectly
+   signed packages as a bug. This problem will be addressed post release
+   when our build farm will have a quieter period so that the processor
+   intensive resigning process can be run.
 
 Changes to Hardware Support
 
@@ -237,26 +298,44 @@ Graphics Support
 
 NVIDIA Graphics Cards
 
-   Note that older NVidia graphics cards FX series and before are not
-   currently supported by the XFDrake, the DrakX video configuration tool.
-   Older drivers are available from the OpenMandriva repositories and
-   should be installed directly with urpmi: your mileage may vary. The
-   reverse engineered nouveau driver gives moderately good support for
-   these older cards.
+   NVidia graphics cards are all currently supported by the XFDrake, the
+   DrakX video configuration tool. In some cases it may be necessary to
+   install older drivers using the command line. These drivers are
+   available from the OpenMandriva repositories. The reverse engineered
+   nouveau driver gives moderately good support for these older cards and
+   for some dual-screen work(Publishing) it is actually better as it
+   supports screen rotation on a second monitor which is useful for
+   monitors with rotatable screens.
 
 ATI Graphics Cards
 
    The latest ATI graphics cards are supported; however, we have not had
    any concrete feedback about its usage. Your mileage may vary.
 
+   If you are using Radeon HD7770 or if you experience a black screen at
+   boot and you know that you have an ATI/AMD grahics card please add the
+   command below to the grub2 cmdline:-
+xorg.blacklist=ati
+
+   To do this at when booting the iso press the "TAB" key; the kernel
+   bootline will be displayed at the bottom of the screen, go to the end
+   of it and add any options required there. Press enter to boot. If you
+   need to enter a kernel parameter while boot an installed system the
+   procedure is slightly different. At the boot screen press the "E" key
+   and this will bring up the Grub editor. Search for the first line that
+   begins with "linux" go to the end of it and add the option there. To
+   boot press F10.
+
 Intel Graphics Cards
 
    Intel graphics cards are supported with the latest kernel we have,
    including newer 4th generation Intel graphics cards.
 
-Misc.
+Miscellaneous Graphic Cards .
 
-   We have not had any other feedback from users.
+   We have not had feedback from users. Should you have an unusual
+   graphics card that is not performing as it should please file a bug at
+   issues.openmandriva.org
 
 Ethernet Support
 
@@ -273,15 +352,19 @@ Unused Hardware & Language Removal
 
 Changes to the DrakX suite of tools
 
-   N/A
+   Boot configuration features a new application kcm-grub2 which give
+   greater flexibility of choice in boot options. DrakX has been
+   overhauled and now installs the proprietary drivers correctly
 
 Changes to Software Support
 
 Booting with systemd
 
-   Switching runlevels has changed. Instead of adding the target runlevel,
-   as before, there are now specific boot options. Namely, the following
-   options must be appended to the kernel command line:
+   Systemd has now been moved into the initramfs and the result is
+   super-fast booting. Switching runlevels has changed. Instead of adding
+   the target runlevel, as before, there are now specific boot options.
+   Namely, the following options must be appended to the kernel command
+   line:
      * Rescue Mode: systemd.unit=rescue.target
      * Text Mode: systemd.unit=multi-user.target
      * Graphical Mode: systemd.unit=graphical.target
@@ -292,21 +375,21 @@ Other Changes
 
 Errata
 
-   As with any release, there are still issues and bugs that have not been
-   resolved. This page attempts to document the ones that may cause
-   inconvenience.
+   As with any release, there are still issues and bugs that may not have
+   been resolved. This page documents those that may cause inconvenience
+   and where possible details how they may be worked around.
 
 Booting Live DVD/USB
 
-   This software is BETA quality. There seem to be an issue booting the
-   live image with some hardware. Please report a bug detailing your
-   hardware and any observations that you make if you are affected by this
-   problem. Please also see Black Screen at Boot
+   If you have a problem booting the live image with some hardware please
+   report a bug detailing your hardware and any observations that you make
+   if you are affected by this problem. Please also see Black Screen at
+   Boot
 
 Usage of Mandriva in System Tools
 
-   There are still usages of Mandriva in the system tools. They are being
-   remedied.
+   There are still usages of Mandriva in the system tools. They will be
+   remedied before the final release.
 
    Workaround: Check for updates periodically, and report bugs for any
    occurrences that you still see.
@@ -317,7 +400,7 @@ Partitioning with Small Disks
    aware that there is a minimum size requirement a root partition that
    contains the /usr directory of at least 5.0Gb. If the partition is made
    smaller that this the partition manager will not function correctly.
-Due to the adoption of systemd the use of a separate /usr partition is [50]no lo
+Due to the adoption of systemd the use of a separate /usr partition is [53]no lo
 nger possible.
 It is still permissible to have a separate /usr/local partition.
 
@@ -355,17 +438,19 @@ xorg.blacklist=<driver to blacklist>
    command line that boots the installation. This is described below.
 
    There are other circumstances where a black screen may be encountered.
-   In these circumstances adding
+   For example if you wish to use the proprietary driver for your graphics
+   adapter it may be necessary to inhibit the kernel mechanism that loads
+   the free drivers. In these circumstances adding
 nomodeset
 
    or
 nokmsboot
 
    to the kernel command line will normally be enough to allow
-   installation of the OS. If necessary the command may be added
-   permanently by editing /etc/default/grub at the
-   GRUB_CMDLINE_LINUX_DEFAULT label and adding the required command. Then
-   run update-grub2
+   installation of the OS or running with the manufacturers drivers . If
+   necessary the command may be added permanently by editing
+   /etc/default/grub at the GRUB_CMDLINE_LINUX_DEFAULT label and adding
+   the required command. Then run update-grub2
 
    To boot to text mode:-
 
@@ -385,10 +470,11 @@ nokmsboot
 
    Backlight Issues
 
-   There are some machines with Intel GPU's (Netbooks particularly) may
-   still give a black screen. This may be fixed by adding
-   i915.invert_brightness=1 parameter to the boot command line. This may
-   be needed in addition to the xorg.blacklist= parameter.
+   There are some machines with Intel GPU's (Netbooks particularly) that
+   may still give a black screen even with everything set up correctly;
+   this is due to the screen backlight logic being inverted. This may be
+   fixed by adding i915.invert_brightness=1 parameter to the boot command
+   line. This may be needed in addition to the xorg.blacklist= parameter.
 
    Incorrect tty
 
@@ -403,57 +489,64 @@ nokmsboot
 Contact, Bug Reporting, Discussion
 
    You are invited to discuss this release on:
-     * [51]Official forum
-     * [52]Official Mailing Lists
-     * [53]IRC
+     * [54]Official forum
+     * [55]Official Mailing Lists
+     * [56]IRC
 
-   Please report bugs to our [54]bugtracker. Please give as much
-   information as you can in your report.
-
-   IMPORTANT NOTE:
-
-   Currently we are having problems importing our CA Cert into our web
-   browser configurations. When you go to openmandriva.org pages you will
-   get a security exception which you can safely ignore. We hope to
-   address this problem very soon.
+   Please report bugs to our [57]bugtracker. A new tool is available to
+   allow you to provide maintainers with comprehensive diagnostic
+   information with little effort. The RPM package omv-bug-report is
+   installed by default. Running the omv-bug-report.sh script as root will
+   generate a compressed archive that can be attached to a bug or mailed
+   to a maintainer and will greatly assist them in the diagnosis of the
+   problem being reported.
 
 Helping the Project
 
    As always, the OpenMandriva development teams (Cooker & QA) are always
-   looking for contributors to assist in bugfixing, and so we invite you
-   to join us and help tackle issues that might arise!
+   looking for new contributors to assist in creating and maintaining
+   packages and to assist bugfixing and testing. You are welcome to join
+   us and help us in this work which is not only rewarding but also
+   tremendous fun!
 
-   Also, the OpenMandriva Workshop, which contains Artwork, Documentation,
-   and Communication teams, is always open to new submissions for artwork
-   and translations!
+   If you feel that your talents do not lie in the realm of software then
+   the OpenMandriva Workshop group, which is made up from the artwork,
+   documentation, translation and Communication teams, is always open for
+   the submissions of artwork and translations. New contributors who would
+   like to help with these wide-ranging tasks should see our wiki
+   (wiki.openmandriva.org) for more details, and to learn how to join!.
+   Alternatively you may sign up to the mailing lists available [58]here
 
-   See our wiki (wiki.openmandriva.org) for more details, and to learn how
-   to join!.
+   AND
+
+   Finally if you love using our system but don't have the time to help
+   you can always give us a donation to help keep our servers up and
+   running you can do this here > [59]DONATE
    Retrieved from
-   "[55]http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Not
-   es&oldid=3453"
-   [56]Category:
-     * [57]2014.0
+   "[60]http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Not
+   es&oldid=3543"
+   [61]Category:
+     * [62]2014.0
 
 Navigation menu
 
 Personal tools
 
-     * [58]Create account
-     * [59]Log in
+     * [63]Create account
+     * [64]Log in
 
 Namespaces
 
-     * [60]Page
-     * [61]Discussion
+     * [65]Page
+     * [66]Discussion
 
 Variants
 
 Views
 
-     * [62]Read
-     * [63]View source
-     * [64]View history
+     * [67]Read
+     * [68]View source
+     * [69]View history
 
 Actions
 
@@ -463,164 +556,169 @@ Search
 
 Navigation
 
-     * [65]Wiki Home
-     * [66]Main Site
-     * [67]Recent changes
-     * [68]Random page
-     * [69]Help
+     * [70]Wiki Home
+     * [71]Main Site
+     * [72]Recent changes
+     * [73]Random page
+     * [74]Help
 
 Users
 
-     * [70]Community portal
-     * [71]First Time
+     * [75]Community portal
+     * [76]First Time
 
 Contributors
 
-     * [72]Cooker
-     * [73]Localization
-     * [74]Moderation
-     * [75]Quality Assurance
+     * [77]Cooker
+     * [78]Localization
+     * [79]Moderation
+     * [80]Quality Assurance
 
 Workshop
 
-     * [76]Artwork
-     * [77]Communication
-     * [78]Documentation
-     * [79]Infrastructure
+     * [81]Artwork
+     * [82]Communication
+     * [83]Documentation
+     * [84]Infrastructure
 
 Association
 
-     * [80]Council
-     * [81]Technical
-     * [82]Membership
+     * [85]Council
+     * [86]Technical
+     * [87]Membership
 
 In other languages
 
-     * [83]Français
-     * [84]Español
+     * [88]Français
+     * [89]Español
 
 Toolbox
 
-     * [85]What links here
-     * [86]Related changes
-     * [87]Special pages
-     * [88]Printable version
-     * [89]Permanent link
-     * [90]Page information
+     * [90]What links here
+     * [91]Related changes
+     * [92]Special pages
+     * [93]Printable version
+     * [94]Permanent link
+     * [95]Page information
 
-     * This page was last modified on 18 March 2014, at 13:33.
-     * This page has been accessed 377 times.
-     * Content is available under [91]Attribution-ShareAlike 3.0 Unported
+     * This page was last modified on 9 April 2014, at 14:38.
+     * This page has been accessed 1,511 times.
+     * Content is available under [96]Attribution-ShareAlike 3.0 Unported
        (CC BY-SA 3.0).
 
-     * [92]Privacy policy
-     * [93]About Wiki [en] OpenMandriva
-     * [94]Disclaimers
+     * [97]Privacy policy
+     * [98]About Wiki [en] OpenMandriva
+     * [99]Disclaimers
 
-     * [95]Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
-     * [96]Powered by MediaWiki
+     * [100]Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+     * [101]Powered by MediaWiki
 
 References
 
    Visible links
-   1. http://wiki.openmandriva.org/en/opensearch_desc.php
+   1. https://wiki.openmandriva.org/en/opensearch_desc.php
    2. http://creativecommons.org/licenses/by-sa/3.0/
-   3. http://wiki.openmandriva.org/en/index.php?title=Special:RecentChanges&feed=atom
-   4. http://wiki.openmandriva.org/en/2014.0
-   5. http://wiki.openmandriva.org/en/2014.0/Release_Notes#mw-navigation
-   6. http://wiki.openmandriva.org/en/2014.0/Release_Notes#p-search
-   7. http://wiki.openmandriva.org/en/File:G3309.png
+   3. https://wiki.openmandriva.org/en/index.php?title=Special:RecentChanges&feed=atom
+   4. https://wiki.openmandriva.org/en/2014.0
+   5. https://wiki.openmandriva.org/en/2014.0/Release_Notes#mw-navigation
+   6. https://wiki.openmandriva.org/en/2014.0/Release_Notes#p-search
+   7. https://wiki.openmandriva.org/en/File:G3309.png
    8. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-   9. http://wiki.openmandriva.org/en/2014.0/Release_Notes#2014.0_RC1_Release
-  10. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Available_Media
-  11. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Recommended_Hardware
-  12. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_from_USB
-  13. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_with_KVM
-  14. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_with_VirtualBox
-  15. http://wiki.openmandriva.org/en/2014.0/Release_Notes#New_Features_and_Major_Changes
-  16. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Kernel
-  17. http://wiki.openmandriva.org/en/2014.0/Release_Notes#KDE_4.12.3
-  18. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Upgrading_to_2014.0
-  19. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Upgrading_from_2013.0
-  20. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Upgrading_from_2011.0
-  21. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Media_.22restricted.22
-  22. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Unavailable
-  23. http://wiki.openmandriva.org/en/2014.0/Release_Notes#DrakX_Installer
-  24. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Changes_to_Hardware_Support
-  25. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Graphics_Support
-  26. http://wiki.openmandriva.org/en/2014.0/Release_Notes#NVIDIA_Graphics_Cards
-  27. http://wiki.openmandriva.org/en/2014.0/Release_Notes#ATI_Graphics_Cards
-  28. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Intel_Graphics_Cards
-  29. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Misc.
-  30. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Ethernet_Support
-  31. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Changes_to_Installation
-  32. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Unused_Hardware_.26_Language_Removal
-  33. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Changes_to_the_DrakX_suite_of_tools
-  34. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Changes_to_Software_Support
-  35. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_with_systemd
-  36. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Other_Changes
-  37. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Errata
-  38. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_Live_DVD.2FUSB
-  39. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Usage_of_Mandriva_in_System_Tools
-  40. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Partitioning_with_Small_Disks
-  41. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Black_Screen_at_Boot
-  42. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Contact.2C_Bug_Reporting.2C_Discussion
-  43. http://wiki.openmandriva.org/en/2014.0/Release_Notes#Helping_the_Project
-  44. http://cdn.2safe.com/522355033047/RosaImageWriter-2.1-lin-i686.txz
-  45. http://cdn.2safe.com/522353033047/RosaImageWriter-2.1-lin-x86_64.txz
-  46. http://cdn.2safe.com/564936033559/RosaImageWriter-2.1-win.zip
-  47. http://wiki.openmandriva.org/en/File:Bug_small.png
-  48. http://issues.openmandriva.org/show_bug.cgi?id=204
-  49. http://community.kde.org/Plasma/Plasma_Media_Center
-  50. http://freedesktop.org/wiki/Software/systemd/separate-usr-is-broken/
-  51. http://forums.openmandriva.org/
-  52. http://ml.openmandriva.org/listinfo.cgi
-  53. http://wiki.openmandriva.org/en/Openmandriva_on_IRC
-  54. http://issues.openmandriva.org/
-  55. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&oldid=3453
-  56. http://wiki.openmandriva.org/en/Special:Categories
-  57. http://wiki.openmandriva.org/en/Category:2014.0
-  58. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=2014.0%2FRelease+Notes&type=signup
-  59. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=2014.0%2FRelease+Notes
-  60. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-  61. http://wiki.openmandriva.org/en/index.php?title=Talk:2014.0/Release_Notes&action=edit&redlink=1
-  62. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-  63. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=edit
-  64. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=history
-  65. http://wiki.openmandriva.org/en/Welcome
-  66. http://www.openmandriva.org/
-  67. http://wiki.openmandriva.org/en/Special:RecentChanges
-  68. http://wiki.openmandriva.org/en/Special:Random
-  69. http://wiki.openmandriva.org/en/Help:Contents
-  70. http://wiki.openmandriva.org/en/Users
-  71. http://wiki.openmandriva.org/en/Users/First_Time
-  72. http://wiki.openmandriva.org/en/Cooker
-  73. http://wiki.openmandriva.org/en/L10n
-  74. http://wiki.openmandriva.org/en/Mod
-  75. http://wiki.openmandriva.org/en/QA
-  76. http://wiki.openmandriva.org/en/Artwork
-  77. http://wiki.openmandriva.org/en/Com
-  78. http://wiki.openmandriva.org/en/Doc
-  79. http://wiki.openmandriva.org/en/Infra
-  80. http://wiki.openmandriva.org/en/OpenMandriva:Council
-  81. http://wiki.openmandriva.org/en/OpenMandriva:Technical
-  82. http://wiki.openmandriva.org/en/OpenMandriva:Membership
-  83. http://wiki.openmandriva.org/fr/2014.0/Release_Notes
-  84. http://wiki.openmandriva.org/es/2014.0/Notas_sobre_2013.0
-  85. http://wiki.openmandriva.org/en/Special:WhatLinksHere/2014.0/Release_Notes
-  86. http://wiki.openmandriva.org/en/Special:RecentChangesLinked/2014.0/Release_Notes
-  87. http://wiki.openmandriva.org/en/Special:SpecialPages
-  88. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&printable=yes
-  89. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&oldid=3453
-  90. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=info
-  91. http://creativecommons.org/licenses/by-sa/3.0/
-  92. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:Privacy_policy
-  93. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:About
-  94. http://wiki.openmandriva.org/en/Wiki_OpenMandriva:General_disclaimer
-  95. http://creativecommons.org/licenses/by-sa/3.0/
-  96. http://www.mediawiki.org/
+   9. https://wiki.openmandriva.org/en/2014.0/Release_Notes#2014.0_RC1_Release
+  10. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Available_Media
+  11. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Recommended_Hardware
+  12. https://wiki.openmandriva.org/en/2014.0/Release_Notes#EFI_BOOT
+  13. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_from_USB
+  14. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_with_KVM
+  15. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_with_VirtualBox
+  16. https://wiki.openmandriva.org/en/2014.0/Release_Notes#New_Features_and_Major_Changes
+  17. https://wiki.openmandriva.org/en/2014.0/Release_Notes#EFI_BOOT_2
+  18. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Kernel
+  19. https://wiki.openmandriva.org/en/2014.0/Release_Notes#KDE_4.12.4
+  20. https://wiki.openmandriva.org/en/2014.0/Release_Notes#LibreOffice-4.2.2.1
+  21. https://wiki.openmandriva.org/en/2014.0/Release_Notes#JAVA
+  22. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Upgrading_to_2014.0
+  23. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Upgrading_from_OpenMandriva_Lx-2013.0_Release
+  24. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Upgrading_from_2011.0
+  25. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Media_.22Contrib.22
+  26. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Media_.22restricted.22
+  27. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Unavailable
+  28. https://wiki.openmandriva.org/en/2014.0/Release_Notes#DrakX_Installer
+  29. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Changes_to_Hardware_Support
+  30. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Graphics_Support
+  31. https://wiki.openmandriva.org/en/2014.0/Release_Notes#NVIDIA_Graphics_Cards
+  32. https://wiki.openmandriva.org/en/2014.0/Release_Notes#ATI_Graphics_Cards
+  33. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Intel_Graphics_Cards
+  34. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Miscellaneous_Graphic_Cards_.
+  35. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Ethernet_Support
+  36. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Changes_to_Installation
+  37. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Unused_Hardware_.26_Language_Removal
+  38. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Changes_to_the_DrakX_suite_of_tools
+  39. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Changes_to_Software_Support
+  40. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_with_systemd
+  41. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Other_Changes
+  42. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Errata
+  43. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Booting_Live_DVD.2FUSB
+  44. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Usage_of_Mandriva_in_System_Tools
+  45. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Partitioning_with_Small_Disks
+  46. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Black_Screen_at_Boot
+  47. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Contact.2C_Bug_Reporting.2C_Discussion
+  48. https://wiki.openmandriva.org/en/2014.0/Release_Notes#Helping_the_Project
+  49. http://cdn.2safe.com/522355033047/RosaImageWriter-2.1-lin-i686.txz
+  50. http://cdn.2safe.com/522353033047/RosaImageWriter-2.1-lin-x86_64.txz
+  51. http://cdn.2safe.com/564936033559/RosaImageWriter-2.1-win.zip
+  52. http://community.kde.org/Plasma/Plasma_Media_Center
+  53. http://freedesktop.org/wiki/Software/systemd/separate-usr-is-broken/
+  54. http://forums.openmandriva.org/
+  55. http://ml.openmandriva.org/listinfo.cgi
+  56. https://wiki.openmandriva.org/en/Openmandriva_on_IRC
+  57. http://issues.openmandriva.org/
+  58. http://ml.openmandriva.org/listinfo.cgi
+  59. http://openmandriva.org/en/donate
+  60. http://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&oldid=3543
+  61. https://wiki.openmandriva.org/en/Special:Categories
+  62. https://wiki.openmandriva.org/en/Category:2014.0
+  63. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=2014.0%2FRelease+Notes&wpStickHTTPS=1&type=signup
+  64. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=2014.0%2FRelease+Notes&wpStickHTTPS=1
+  65. https://wiki.openmandriva.org/en/2014.0/Release_Notes
+  66. https://wiki.openmandriva.org/en/index.php?title=Talk:2014.0/Release_Notes&action=edit&redlink=1
+  67. https://wiki.openmandriva.org/en/2014.0/Release_Notes
+  68. https://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=edit
+  69. https://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=history
+  70. https://wiki.openmandriva.org/en/Welcome
+  71. http://www.openmandriva.org/
+  72. https://wiki.openmandriva.org/en/Special:RecentChanges
+  73. https://wiki.openmandriva.org/en/Special:Random
+  74. https://wiki.openmandriva.org/en/Help:Contents
+  75. https://wiki.openmandriva.org/en/Users
+  76. https://wiki.openmandriva.org/en/Users/First_Time
+  77. https://wiki.openmandriva.org/en/Cooker
+  78. https://wiki.openmandriva.org/en/L10n
+  79. https://wiki.openmandriva.org/en/Mod
+  80. https://wiki.openmandriva.org/en/QA
+  81. https://wiki.openmandriva.org/en/Artwork
+  82. https://wiki.openmandriva.org/en/Com
+  83. https://wiki.openmandriva.org/en/Doc
+  84. https://wiki.openmandriva.org/en/Infra
+  85. https://wiki.openmandriva.org/en/OpenMandriva:Council
+  86. https://wiki.openmandriva.org/en/OpenMandriva:Technical
+  87. https://wiki.openmandriva.org/en/OpenMandriva:Membership
+  88. https://wiki.openmandriva.org/fr/2014.0/Release_Notes
+  89. https://wiki.openmandriva.org/es/2014.0/Notas_sobre_2013.0
+  90. https://wiki.openmandriva.org/en/Special:WhatLinksHere/2014.0/Release_Notes
+  91. https://wiki.openmandriva.org/en/Special:RecentChangesLinked/2014.0/Release_Notes
+  92. https://wiki.openmandriva.org/en/Special:SpecialPages
+  93. https://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&printable=yes
+  94. https://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&oldid=3543
+  95. https://wiki.openmandriva.org/en/index.php?title=2014.0/Release_Notes&action=info
+  96. http://creativecommons.org/licenses/by-sa/3.0/
+  97. https://wiki.openmandriva.org/en/Wiki_OpenMandriva:Privacy_policy
+  98. https://wiki.openmandriva.org/en/Wiki_OpenMandriva:About
+  99. https://wiki.openmandriva.org/en/Wiki_OpenMandriva:General_disclaimer
+ 100. http://creativecommons.org/licenses/by-sa/3.0/
+ 101. https://www.mediawiki.org/
 
    Hidden links:
-  97. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-  98. http://wiki.openmandriva.org/en/2014.0/Release_Notes
-  99. http://wiki.openmandriva.org/en/Welcome
+ 102. https://wiki.openmandriva.org/en/2014.0/Release_Notes
+ 103. https://wiki.openmandriva.org/en/2014.0/Release_Notes
+ 104. https://wiki.openmandriva.org/en/Welcome
