@@ -41,7 +41,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2014.1
-Release:	0.6
+Release:	0.7
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -81,6 +81,7 @@ Obsoletes:	mandrakelinux-release
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
+Requires(pre):	util-linux
 
 # cf mdvbz#32631
 Provides:	arch(%_target_cpu)
@@ -170,11 +171,13 @@ esac
 %endif
 
 %pre common
-[ -f %{_sysconfdir}/product.id ] && rm %{_sysconfdir}/product.id
-[ -f %{_sysconfdir}/os-release ] && rm %{_sysconfdir}/os-release
-[ -f %{_sysconfdir}/release ] && rm %{_sysconfdir}/release
-[ -f %{_sysconfdir}/version ] && rm %{_sysconfdir}/version
-exit 0
+if [ $1 -ge 2 ]; then
+    [ -f %{_sysconfdir}/product.id ] && rm %{_sysconfdir}/product.id
+    [ -f %{_sysconfdir}/os-release ] && rm %{_sysconfdir}/os-release
+    [ -f %{_sysconfdir}/release ] && rm %{_sysconfdir}/release
+    [ -f %{_sysconfdir}/version ] && rm %{_sysconfdir}/version
+    exit 0
+fi
 
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
