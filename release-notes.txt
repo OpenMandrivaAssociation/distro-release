@@ -489,11 +489,6 @@ Non-Functional Tools
 
    Parental Controls are currently non-functional#'
 
-   Logdrake is currently non-funtional
-
-   Workaround: Check for updates periodically, and report bugs for any
-   occurrences that you still see.
-
 Partitioning with Small Disks
 
    When using the custom partitioning tool to divide up the hard disk/s be
