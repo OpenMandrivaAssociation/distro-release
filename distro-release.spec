@@ -153,7 +153,7 @@ else
 fi
 EOF
 
-%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta 2 (Tough Love)","http://moondrake.org","mdk",ansiColor="1;35;4;44")}
+%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta 3 (Just another Moby Dick)","http://moondrake.org","mdk",ansiColor="1;35;4;44")}
 %{python:distro.release_install("OpenMandriva LX", "OpenMandriva", "OpenMandriva", "Alpha (Phosphorus)", "http://openmandriva.org", "omv")}
 
 %check
