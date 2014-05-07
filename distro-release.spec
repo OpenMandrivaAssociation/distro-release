@@ -32,16 +32,13 @@
 # distro_arch => the distribution we are using
 %define distro_arch %{_target_cpu}
 
-# To be coherent with %distro_arch I provide os too
-# be I wonder it will be linux for a long time
-%define distro_os %{_target_os}
-
 %define mdkver %(echo %{version} | sed 's/\\.//')0
 
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2014.5
-Release:	0.9
+Release:	0.10
+Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -59,14 +56,6 @@ Source5:	release-notes.html
 %package	common
 Summary:	%{distribution} release common files
 Group:		System/Configuration/Other
-Conflicts:	%{name} < %{version}-%{release}
-Obsoletes:	mandriva-release-Discovery
-Obsoletes:	mandriva-release-Powerpack+
-Obsoletes:	%{name} < %{version}-%{release}
-Obsoletes:	rawhide-release
-Obsoletes:	redhat-release
-Obsoletes:	mandrake-release
-Obsoletes:	mandrakelinux-release
 %rename		rosa-release-common
 %rename		mandriva-release-common
 %rename		opemandriva-release-common
@@ -74,10 +63,6 @@ Obsoletes:	mandrakelinux-release
 %rename		mandriva-release-One
 %rename		mandriva-release-Powerpack
 %rename		mandriva-release-Mini
-%rename		openmandriva-release-Free
-%rename		openmandriva-release-One
-%rename		openmandriva-release-Powerpack
-%rename		openmandriva-release-Mini
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
@@ -128,6 +113,7 @@ touch %{buildroot}%{_sysconfdir}/version
 ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/redhat-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandrake-release
+ln -sf release %{buildroot}%{_sysconfdir}/moondrake-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandrakelinux-release
 ln -sf release %{buildroot}%{_sysconfdir}/rosa-release

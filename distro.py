@@ -6,14 +6,11 @@ def release_package(distribution, Vendor):
 %%package 	"""+Vendor+"""
 Summary:	"""+Vendor+""" release file
 Group:		System/Configuration/Other
-Requires:	distro-release-common = %{EVRD}
+Requires:	%{name}-common = %{EVRD}
 Requires(post):	coreutils
 Requires(post,postun): update-alternatives
-Requires(pre):	distro-release-common
-Provides:	redhat-release rawhide-release mandrake-release
-Provides:	mandrakelinux-release
-Provides:	%{name} = %{version}-%{release}
-Provides:	mandriva-release = %{version}-%{release}
+Requires(pre):	%{name}-common
+Provides:	%{name} = %{EVRD}
 
 %%description """+Vendor+"""
 """+distribution+""" release file for """+Vendor+""" flavor.
