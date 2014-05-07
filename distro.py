@@ -6,7 +6,7 @@ def release_package(distribution, Vendor):
 %%package 	"""+Vendor+"""
 Summary:	"""+Vendor+""" release file
 Group:		System/Configuration/Other
-Requires:	%{arch_tagged distro-release-common} = %{EVRD}
+Requires:	distro-release-common = %{EVRD}
 Requires(post):	coreutils
 Requires(post,postun): update-alternatives
 Requires(pre):	distro-release-common
