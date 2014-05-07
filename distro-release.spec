@@ -41,7 +41,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2014.1
-Release:	0.7
+Release:	0.8
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -85,7 +85,7 @@ Requires(pre):	util-linux
 
 # cf mdvbz#32631
 Provides:	arch(%_target_cpu)
-Provides:	%arch_tagged %{_vendor}-release-common
+Provides:	%{arch_tagged distro-release-common} = %{EVRD}
 
 %description	common
 Common files for %{distribution} release packages.
