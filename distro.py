@@ -84,10 +84,12 @@ LIBSAFE=no
 META_CLASS=download
 EOF
 
-echo \""""+distribution+""" release %{distepoch} """+codename+""" for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/"""+vendor+"""-release
-if [ ! -f %{buildroot}%{_sysconfdir}/version"""+vendor+""" ]; then
-echo \"%{distepoch} %{release} """+codename+"""\" > %{buildroot}%{_sysconfdir}/version."""+vendor+"""
-fi
+cat > %{buildroot}%{_sysconfdir}/"""+vendor+"""-release << EOF
+"""+distribution+""" release %{distepoch} """+codename+""" for %{_target_cpu}
+EOF
+cat > %{buildroot}%{_sysconfdir}/version."""+vendor+""" << EOF
+%{distepoch} %{release} """+codename+"""
+EOF
 
 # (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
 cat > %{buildroot}%{_sysconfdir}/os-release."""+vendor+""" << EOF

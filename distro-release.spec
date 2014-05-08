@@ -1,7 +1,6 @@
 # Please update release notes:
 # make -C SOURCES release-notes.{html,txt}
 #
-
 %{python:import sys; sys.path.append(rpm.expandMacro("%{_sourcedir}"))}
 %{python:import distro}
 %define am_i_cooker 0
@@ -113,7 +112,6 @@ touch %{buildroot}%{_sysconfdir}/version
 ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/redhat-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandrake-release
-ln -sf release %{buildroot}%{_sysconfdir}/moondrake-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandrakelinux-release
 ln -sf release %{buildroot}%{_sysconfdir}/rosa-release
