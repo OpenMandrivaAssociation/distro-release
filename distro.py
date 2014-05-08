@@ -69,10 +69,10 @@ cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
 %%product_arch          %product_arch
 %%product_product       """+product+"""
 %%distribution		"""+distribution+"""
- %%_distribution		"""+_distribution+"""
+%%_distribution		"""+_distribution+"""
 %%disturl		"""+disturl+"""
 %%vendor		"""+Vendor+"""
- %%_vendor		"""+vendor+"""
+%%_vendor		"""+vendor+"""
 %%disttag		"""+disttag+"""
 EOF
 
