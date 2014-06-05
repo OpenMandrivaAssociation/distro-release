@@ -1,13 +1,13 @@
-# -*- encoding: utf-8 -*-
+﻿# -*- encoding: utf-8 -*-
 #
 # Type | Comment | Name and email
 #
 # first field ("Translators") is translatable, it is the main section
 # second field is the subsection for language, it is half translatable,
-# and half non translatable, eg: "French (Fran�ais)", "French (%s)"
-# is translatable, but "Fran�ais" is not; so when displaying under
-# Spanish locale it would look like "Franc�s (Fran�ais)" and
-# under Russian locale "????????? (Fran�ais)"
+# and half non translatable, eg: "French (Français)", "French (%s)"
+# is translatable, but "Français" is not; so when displaying under
+# Spanish locale it would look like "Francés (Français)" and
+# under Russian locale "Француска (Français)"
 # last field is the translator name (and possibly email), it is not
 # translatable.
 # maybe also the language section may be made into a clickable
@@ -21,7 +21,7 @@ Contributors | Alisson Oliveira
 Contributors | Andrey Bondrov
 Contributors | Anurag Bhandari
 Contributors | Ben Bullard
-Contributors | Bernhard Rosenkr�nzer
+Contributors | Bernhard Rosenkränzer
 Contributors | Blackcrack
 Contributors | Caig
 Contributors | Charles H-Schulz
@@ -36,25 +36,25 @@ Contributors | Guilherme Moro
 Contributors | Hamp3
 Contributors | Jean-Claude Vanier
 Contributors | Jeffrey Johnson
-Contributors | Jochen Sch�nfelder
+Contributors | Jochen Schönfelder
 Contributors | John Cave
 Contributors | Johnny A. Solbu
-Contributors | Joao Azevedo Patr�cio
+Contributors | João Azevedo Patrício
 Contributors | Julia
 Contributors | Kate Lebedeff
 Contributors | Kamil Rytarowski
 Contributors | Matthew Dawkins
 Contributors | Marco Benatto
 Contributors | Nicolo Costanza
-Contributors | Paulo C�sar Pereira de Andrade
+Contributors | Paulo César Pereira de Andrade
 Contributors | Panah Biru
 Contributors | Per Oyvind Karlsen
-Contributors | Rapha�l Jadot
+Contributors | Raphaël Jadot
 Contributors | Raul Liota da Rosa
 Contributors | Robert Xu
 Contributors | Subperceptual
 COntributors | SymbianFlo
-Contributors | Tomasz Pawe� Gajc
+Contributors | Tomasz Paweł Gajc
 Contributors | Wayne Sallee
 Contributors | Krzyszttof Zalewski
 Testers | Ben Bullard
@@ -71,22 +71,22 @@ Testers | Luca Pedrielli
 Testers | Joel Tesson
 Testers | viking60
 Testers | Many unnamed and unknown beta testers and bug reporters that helped make sure it all worked right |
-Translators | Brazilian Portuguese (Portugues do Brasil) | Alisson Oliveira
-Translators | Brazilian Portuguese (Portugues do Brasil) | Raul Liota da Rosa
+Translators | Brazilian Portuguese (Português do Brasil) | Alisson Oliveira
+Translators | Brazilian Portuguese (Português do Brasil) | Raul Liota da Rosa
 Translators | Dutch (Nederlands) | Arvi Pingus
 Translators | Dutch (Nederlands) | Willie
-Translators | French (fran�ais) | Jean-Claude Vanier
-Translators | French (fran�ais) | Rapha�l Jadot
+Translators | French (français) | Jean-Claude Vanier
+Translators | French (français) | Raphaël Jadot
 Translators | German (Deutsch) | Isadora
 Translators | German (Deutsch) | blackcrack
 Translators | German (Deutsch) | tapwag
-Translators | Hindi (??????) | Anurag Bhandari
+Translators | Hindi (हिन्दी) | Anurag Bhandari
 Translators | Indonesian (Bahasa Indonesia) | Panahbiru
 Translators | Italian (Italiano) | Cristina (rugyada)
-Translators | Polish (polski) | Tomasz Pawe� Gajc
-Translators | Portuguese (Portugues) | Eu_Talvez
-Translators | Russian (???????) | Kate Lebedeff
-Translators | Spanish (espanol) | BlogDrake
-Translators | Spanish (espanol) | mdktrans
-Translators | Turkish (T�rk�e) | elektronist
-Translators | Ukrainian (??????????) | Taras Boychuk
+Translators | Polish (polski) | Tomasz Paweł Gajc
+Translators | Portuguese (Português) | Eu_Talvez
+Translators | Russian (Русский) | Kate Lebedeff
+Translators | Spanish (español) | BlogDrake
+Translators | Spanish (español) | mdktrans
+Translators | Turkish (Türkçe) | elektronist
+Translators | Ukrainian (Українська) | Taras Boychuk
