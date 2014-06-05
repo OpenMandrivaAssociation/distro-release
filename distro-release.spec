@@ -4,7 +4,7 @@
 
 %{python:import sys; sys.path.append(rpm.expandMacro("%{_sourcedir}"))}
 %{python:import distro}
-%define am_i_cooker 0
+%define am_i_cooker 1
 %if %am_i_cooker
 %define distrib Cooker
 %else
@@ -20,8 +20,8 @@
 %define product_release 1
 %define product_arch %{_target_cpu}
 
-# The mandriva release, what is written on box
-%define mandriva_release %{version}
+# The Distribution release, what is written on box
+%define distro_release %{version}
 
 # The distro branch: Cooker, Community or Official
 %define distro_branch %{distrib}
@@ -36,12 +36,13 @@
 # be I wonder it will be linux for a long time
 %define distro_os %{_target_os}
 
-%define mdkver %(echo %{version} | sed 's/\\.//')0
+%define distro_ver %(echo %{version} | sed 's/\\.//')0
+%define mdkver %distro_ver
 
 Summary:	%{distribution} release file
 Name:		distro-release
-Version:	2014.1
-Release:	0.7
+Version:	2015.0
+Release:	0.8
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -91,11 +92,10 @@ Provides:	%arch_tagged %{_vendor}-release-common
 Common files for %{distribution} release packages.
 
 %{python:distro.release_package("Moondrake GNU/Linux", "Moondrake")}
-%{python:distro.release_package("OpenMandriva LX", "OpenMandriva")}
+%{python:distro.release_package("OpenMandriva Lx", "OpenMandriva")}
 
 %prep
 %setup -q -n %{name}
-
 
 cp -a %{SOURCE3} CREDITS
 cp -a %{SOURCE4} release-notes.txt
@@ -154,12 +154,11 @@ fi
 EOF
 
 %{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta 3 (Just another Moby Dick)","http://moondrake.org","mdk",ansiColor="1;35;4;44")}
-%{python:distro.release_install("OpenMandriva LX", "OpenMandriva", "OpenMandriva", "Alpha (Phosphorus)", "http://openmandriva.org", "omv")}
+# (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
+%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "Alpha (Eisteinium)", "http://openmandriva.org", "omv")}
 
 %check
-# (tpg) oops disable this for now, fix for next relase
 %if %{am_i_cooker}
-%if %{version} != "2013.0"
 case %{release} in
     0.*) ;;
     *)
@@ -167,7 +166,6 @@ case %{release} in
     exit 1
     ;;
 esac
-%endif
 %endif
 
 %pre common
