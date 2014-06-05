@@ -42,7 +42,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2015.0
-Release:	0.8
+Release:	0.9
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
