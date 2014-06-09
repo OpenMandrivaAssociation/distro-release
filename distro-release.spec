@@ -43,7 +43,7 @@ Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2015.0
 DistEpoch:	%{version}
-Release:	0.9
+Release:	0.10
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
