@@ -32,18 +32,13 @@
 # distro_arch => the distribution we are using
 %define distro_arch %{_target_cpu}
 
-# To be coherent with %distro_arch I provide os too
-# be I wonder it will be linux for a long time
-%define distro_os %{_target_os}
-
-%define distro_ver %(echo %{version} | sed 's/\\.//')0
-%define mdkver %distro_ver
+%define mdkver %(echo %{version} | sed 's/\\.//')0
 
 Summary:	%{distribution} release file
 Name:		distro-release
-Version:	2015.0
-DistEpoch:	%{version}
-Release:	0.10
+Version:	2014.5
+Release:	0.11
+Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -61,14 +56,6 @@ Source5:	release-notes.html
 %package	common
 Summary:	%{distribution} release common files
 Group:		System/Configuration/Other
-Conflicts:	%{name} < %{version}-%{release}
-Obsoletes:	mandriva-release-Discovery
-Obsoletes:	mandriva-release-Powerpack+
-Obsoletes:	%{name} < %{version}-%{release}
-Obsoletes:	rawhide-release
-Obsoletes:	redhat-release
-Obsoletes:	mandrake-release
-Obsoletes:	mandrakelinux-release
 %rename		rosa-release-common
 %rename		mandriva-release-common
 %rename		opemandriva-release-common
@@ -76,10 +63,6 @@ Obsoletes:	mandrakelinux-release
 %rename		mandriva-release-One
 %rename		mandriva-release-Powerpack
 %rename		mandriva-release-Mini
-%rename		openmandriva-release-Free
-%rename		openmandriva-release-One
-%rename		openmandriva-release-Powerpack
-%rename		openmandriva-release-Mini
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
@@ -87,7 +70,6 @@ Requires(pre):	util-linux
 
 # cf mdvbz#32631
 Provides:	arch(%_target_cpu)
-Provides:	%arch_tagged %{_vendor}-release-common
 
 %description	common
 Common files for %{distribution} release packages.

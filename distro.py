@@ -6,14 +6,11 @@ def release_package(distribution, Vendor, prio=10):
 %%package 	"""+Vendor+"""
 Summary:	"""+Vendor+""" release file
 Group:		System/Configuration/Other
-Requires:	%{arch_tagged %{_vendor}-release-common}
+Requires:	%{name}-common = %{EVRD}
 Requires(post):	coreutils
 Requires(post,postun): update-alternatives
-Requires(pre):	distro-release-common
-Provides:	redhat-release rawhide-release mandrake-release
-Provides:	mandrakelinux-release
-Provides:	%{name} = %{version}-%{release}
-Provides:	mandriva-release = %{version}-%{release}
+Requires(pre):	%{name}-common
+Provides:	%{name} = %{EVRD}
 
 %%description """+Vendor+"""
 """+distribution+""" release file for """+Vendor+""" flavor.
@@ -80,10 +77,10 @@ cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
 %%product_arch          %product_arch
 %%product_product       """+product+"""
 %%distribution		"""+distribution+"""
- %%_distribution		"""+_distribution+"""
+%%_distribution		"""+_distribution+"""
 %%disturl		"""+disturl+"""
 %%vendor		"""+Vendor+"""
- %%_vendor		"""+vendor+"""
+%%_vendor		"""+vendor+"""
 %%disttag		"""+disttag+"""
 EOF
 
@@ -95,10 +92,12 @@ LIBSAFE=no
 META_CLASS=download
 EOF
 
-echo \""""+distribution+""" release %{distepoch} """+codename+""" for %{_target_cpu}" > %{buildroot}%{_sysconfdir}/"""+vendor+"""-release
-if [ ! -f %{buildroot}%{_sysconfdir}/version"""+vendor+""" ]; then
-echo \"%{distepoch} %{release} """+codename+"""\" > %{buildroot}%{_sysconfdir}/version."""+vendor+"""
-fi
+cat > %{buildroot}%{_sysconfdir}/"""+vendor+"""-release << EOF
+"""+distribution+""" release %{distepoch} """+codename+""" for %{_target_cpu}
+EOF
+cat > %{buildroot}%{_sysconfdir}/version."""+vendor+""" << EOF
+%{distepoch} %{release} """+codename+"""
+EOF
 
 # (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
 cat > %{buildroot}%{_sysconfdir}/os-release."""+vendor+""" << EOF
