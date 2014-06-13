@@ -43,7 +43,7 @@ Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2015.0
 DistEpoch:	%{version}
-Release:	0.9
+Release:	0.10
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -92,7 +92,14 @@ Provides:	%arch_tagged %{_vendor}-release-common
 %description	common
 Common files for %{distribution} release packages.
 
-%{python:distro.release_package("Moondrake GNU/Linux", "Moondrake")}
+# give Moondrake GNU/Linux release package a higher priority as it's not
+# installed by default, while the build system explcitly installs, giving
+# issues when trying to prevent this from happening using buildconflict..
+# As long as ABF explicitly installs distro-release-OpenMandriva first,
+# we'll bump Moondrake prio to higher priority to get around it
+# don't remove unless you're a zealot completely oblivious about this issue
+# and rather wait for a better solution to be implemented in ABF
+%{python:distro.release_package("Moondrake GNU/Linux", "Moondrake", prio=11)}
 %{python:distro.release_package("OpenMandriva Lx", "OpenMandriva")}
 
 %prep

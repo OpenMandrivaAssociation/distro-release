@@ -1,6 +1,6 @@
 import sys,rpm
 
-def release_package(distribution, Vendor):
+def release_package(distribution, Vendor, prio=10):
     vendor = Vendor.lower()
     print(rpm.expandMacro("""
 %%package 	"""+Vendor+"""
