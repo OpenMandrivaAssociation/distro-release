@@ -37,7 +37,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2014.5
-Release:	0.12
+Release:	0.13
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}

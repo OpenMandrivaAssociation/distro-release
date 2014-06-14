@@ -1,6 +1,7 @@
 import sys,rpm
 
-def release_package(distribution, Vendor, prio=10):
+def release_package(distribution, Vendor, Prio=10):
+    prio=str(Prio)
     vendor = Vendor.lower()
     print(rpm.expandMacro("""
 %%package 	"""+Vendor+"""
@@ -16,10 +17,10 @@ Provides:	%{name} = %{EVRD}
 """+distribution+""" release file for """+Vendor+""" flavor.
 
 %%post		"""+Vendor+"""
-update-alternatives --install /etc/os-release os-release /etc/os-release."""+vendor+""" 10
-update-alternatives --install /etc/release release /etc/"""+vendor+"""-release 10
-update-alternatives --install /etc/product.id product.id /etc/product.id."""+Vendor+""" 10
-update-alternatives --install /etc/version version /etc/version."""+vendor+""" 10
+update-alternatives --install /etc/os-release os-release /etc/os-release."""+vendor+" "+prio+"""
+update-alternatives --install /etc/release release /etc/"""+vendor+"""-release """+prio+"""
+update-alternatives --install /etc/product.id product.id /etc/product.id."""+Vendor+" "+prio+"""
+update-alternatives --install /etc/version version /etc/version."""+vendor+" "+prio+"""
 
 
 %%postun	"""+Vendor+"""
