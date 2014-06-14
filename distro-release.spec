@@ -81,7 +81,7 @@ Common files for %{distribution} release packages.
 # we'll bump Moondrake prio to higher priority to get around it
 # don't remove unless you're a zealot completely oblivious about this issue
 # and rather wait for a better solution to be implemented in ABF
-%{python:distro.release_package("Moondrake GNU/Linux", "Moondrake", prio=11)}
+%{python:distro.release_package("Moondrake GNU/Linux", "Moondrake", Prio=11)}
 %{python:distro.release_package("OpenMandriva Lx", "OpenMandriva")}
 
 %prep
