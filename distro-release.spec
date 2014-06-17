@@ -36,15 +36,9 @@
 
 Summary:	%{distribution} release file
 Name:		distro-release
-<<<<<<< HEAD
 Version:	2014.5
-Release:	0.13
+Release:	0.14
 Epoch:		1
-=======
-Version:	2015.0
-DistEpoch:	%{version}
-Release:	0.11
->>>>>>> 32abab4e33268976db655a4e1009cc8c636510f3
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
