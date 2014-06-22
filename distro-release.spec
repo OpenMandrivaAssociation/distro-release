@@ -37,7 +37,8 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2014.5
-Release:	0.14
+DistEpoch:	%{version}
+Release:	0.15
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
@@ -59,6 +60,7 @@ Group:		System/Configuration/Other
 %rename		rosa-release-common
 %rename		mandriva-release-common
 %rename		opemandriva-release-common
+%rename		mandriva-release
 %rename		mandriva-release-Free
 %rename		mandriva-release-One
 %rename		mandriva-release-Powerpack
@@ -144,6 +146,7 @@ fi
 EOF
 
 %{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta 3 (Just another Moby Dick)","http://moondrake.org","mdk",ansiColor="1;35;4;44")}
+
 # (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
 %{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "Alpha (Eisteinium)", "http://openmandriva.org", "omv")}
 
