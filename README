@@ -1,8 +1,8 @@
-OpenMandriva Lx 2014.0 final.
+OpenMandriva Lx 2014.1 final.
 
-Welcome to OpenMandriva Lx 2014.
+Welcome to OpenMandriva Lx 2014.1 a update release.
 
-This final release of OpenMandriva 2014 release has received QA testing 
+This final release of OpenMandriva Lx has received QA testing 
 and is thought to be stable.
 The release support UEFI booting, but on some machines
 it may be necessary to turn off UEFI in the machine's BIOS.
