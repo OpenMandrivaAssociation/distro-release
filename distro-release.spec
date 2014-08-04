@@ -13,7 +13,7 @@
 %else
 %define distrib Official
 %endif
-%define version 2014.0
+%define version 2014.1
 %if "%{disttag}" == "omv"
 #https://wiki.openmandriva.org/en/Codename
 %define distname (Phosphorus)
@@ -41,7 +41,7 @@
 %endif
 
 # The distro release, what is written on box
-%define distro_release %{version}
+%define distro_release 2014.0
 
 # The distro branch: Cooker, Community or Official
 %define distro_branch %{distrib}
@@ -57,12 +57,12 @@
 %define distro_os %{_target_os}
 
 %define realversion %{version}
-%define distro_ver %(echo %{version} | sed 's/\\.//')0
+%define distro_ver %(echo %{distro_release} | sed 's/\\.//')0
 
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	%{version}
-Release:	0.15
+Release:	0.16
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
