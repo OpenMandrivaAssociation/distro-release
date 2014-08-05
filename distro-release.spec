@@ -25,7 +25,7 @@
 %define product_vendor %{vendor}
 %define product_distribution %{distribution}
 %define product_type Basic
-%define product_version %{version}
+%define product_version 2014.0
 %if %am_i_cooker
 %define product_branch Devel
 %else
@@ -62,7 +62,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	%{version}
-Release:	0.16
+Release:	0.17
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
