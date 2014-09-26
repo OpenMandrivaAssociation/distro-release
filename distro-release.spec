@@ -62,7 +62,7 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	%{version}
-Release:	0.19
+Release:	0.20
 Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
