@@ -43,7 +43,7 @@ Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2015.0
 DistEpoch:	%{version}
-Release:	0.12
+Release:	0.13
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -84,6 +84,8 @@ Obsoletes:	mandrakelinux-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
 Requires(pre):	util-linux
+# (cb) attempt workaround to prevent problems with chroot ordering
+Requires(pre):	bash
 
 # cf mdvbz#32631
 Provides:	arch(%_target_cpu)
