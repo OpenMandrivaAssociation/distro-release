@@ -10,6 +10,7 @@ Requires:	%{arch_tagged %{_vendor}-release-common}
 Requires(post):	coreutils
 Requires(post,postun): update-alternatives
 Requires(pre):	distro-release-common
+Requires(pre):	bash
 Provides:	redhat-release rawhide-release mandrake-release
 Provides:	mandrakelinux-release
 Provides:	%{name} = %{version}-%{release}
