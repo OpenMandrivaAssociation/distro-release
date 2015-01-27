@@ -43,7 +43,7 @@ Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2015.0
 DistEpoch:	%{version}
-Release:	0.15
+Release:	0.16
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -53,6 +53,7 @@ Source2:	%{name}.rpmlintrc
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
+# raw output of lynx -source of wiki:
 Source5:	release-notes.html
 
 %description

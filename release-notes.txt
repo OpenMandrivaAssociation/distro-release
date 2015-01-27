@@ -1,1 +1,753 @@
-2015.0
+Release 3/Release Notes
+
+   From Wiki [en] OpenMandriva
+   < [4]Release 3
+   Jump to: [5]navigation, [6]search
+   [7]G3403.png
+
+   It is recommended that you read the latest release notes [8]on our
+   wiki.
+
+Release 3
+
+
+       Contents
+
+            * [9]1 Release 3
+            * [10]2 Available Media
+                 + [11]2.1 Important Note
+                 + [12]2.2 Recommended Hardware
+                 + [13]2.3 Virtual Machines
+                 + [14]2.4 EFI Support
+                 + [15]2.5 Booting from USB
+                      o [16]2.5.1 via dd
+            * [17]3 New Features and Major Changes
+                 + [18]3.1 LLVM/clang
+                 + [19]3.2 Kernel
+                 + [20]3.3 Desktop
+                 + [21]3.4 Xorg
+                 + [22]3.5 KDE 4.14.3
+                 + [23]3.6 KF 5.x
+                 + [24]3.7 SDDM
+                 + [25]3.8 LXQt 0.8.0
+                 + [26]3.9 xfce4 4.10.0
+                 + [27]3.10 Wayland
+                 + [28]3.11 LibreOffice 4.3.5
+                 + [29]3.12 Firefox 35
+                 + [30]3.13 Java 7-8
+                 + [31]3.14 Printing
+                 + [32]3.15 Cloud service
+                 + [33]3.16 systemd
+                 + [34]3.17 LCMS
+                 + [35]3.18 libarchive
+                 + [36]3.19 Perl
+                 + [37]3.20 Python
+                 + [38]3.21 ISO build tools
+                 + [39]3.22 Upgrading to 3
+                      o [40]3.22.1 Upgrading from previous OpenMandriva Lx
+                        Releases
+                      o [41]3.22.2 Upgrading from 2011.0
+            * [42]4 Unavailable
+                 + [43]4.1 Calamares
+            * [44]5 Changes to Hardware Support
+                 + [45]5.1 Graphics Support
+                      o [46]5.1.1 NVIDIA Graphics Cards
+                      o [47]5.1.2 ATI Graphics Cards
+                      o [48]5.1.3 Intel Graphics Cards
+                      o [49]5.1.4 Miscellaneous Graphic Cards .
+            * [50]6 Changes to Installation
+                 + [51]6.1 Unused Hardware & Language Removal
+            * [52]7 Changes to the DrakX suite of tools
+                 + [53]7.1 Boot Configuration
+                 + [54]7.2 Proprietary Drivers
+                 + [55]7.3 Firewall
+                 + [56]7.4 Booting with systemd
+                 + [57]7.5 Desktop Environments
+                 + [58]7.6 Media Sources
+                      o [59]7.6.1 contrib
+                      o [60]7.6.2 restricted
+            * [61]8 Other Changes
+                 + [62]8.1 Monitor EDID Loading
+            * [63]9 Errata
+                 + [64]9.1 Booting Live DVD/USB
+                 + [65]9.2 Local Network Sharing
+                 + [66]9.3 Parental Controls
+                 + [67]9.4 Partitioning with Small Disks: Clearing the
+                   partitioner
+                 + [68]9.5 wheel
+                 + [69]9.6 Black Screen at Boot
+                 + [70]9.7 Backlight Issues
+                 + [71]9.8 Boot to a dracut prompt
+            * [72]10 Contact, Bug Reporting, Discussion
+            * [73]11 Helping the Project
+
+   The OpenMandriva Lx teams are pleased to announce the availability of
+   the release 3!
+
+   Detailed below are some of the advances that the distribution has
+   incorporated since OpenMandriva Lx 2014.1. Apart from the enhancements
+   233 bug have been resolved since the 2014 release.
+
+Available Media
+
+   This release is available as a live media DVD, downloadable in ISO
+   format. These are available on our downloads page.
+
+   Live media means you're able to run OpenMandriva Lx straight from a DVD
+   or memory stick (See Below) and try it before installing it. You may
+   also install the system to hard disk either from the running live image
+   or from the boot manager.
+
+Important Note
+
+   The live media currently comes with no predefault mirrors. This means
+   that there are currently no mirrors accessible to urpmi. The mirror
+   list is updated/refreshed periodically.
+
+   It may be that you have installed this release very early, so the
+   mirrorlist may not yet be due for update - so urpmi will refuse to
+   work. There are two ways to correct this problem:
+    1. Wait a few hours until the mirror list is due for an update.
+    2. Force a refresh by running su -c 'rm -f
+       /var/cache/urpmi/mirrors.cache', entering the root (administrator)
+       password when prompted.
+
+Recommended Hardware
+
+   OpenMandriva Lx 3 requires at least 1 GB of memory (min 640MB), at
+   least 10 GB of hard drive space (see below for known issues with
+   partitioning), and for best compositing performance a suitable
+   accelerated 3D graphics card.
+
+   If you wish to run the live distribution (the option to Start
+   OpenMandriva 3 at the CD boot screen), you must have at minimum 1.5 GB
+   of memory. At least 2 GB of memory is recommended for optimal
+   performance.
+
+   Releases are available for i586 and x86_64 architectures. ARM
+   architectures are not available for this release.
+
+Virtual Machines
+
+   The same hardware requirements apply when running in virtual machines.
+
+   For VirtualBox, however, you must ALWAYS have at least 1536 MB of
+   memory or OpenMandriva Lx will fail to boot. Please ensure that
+   VirtualBox is configured with "Enable PAE/NX" This option can be found
+   under the System>Processor tab.
+   Also for VirtualBox you must install to a fresh VM, as trying to
+   install to an existing one may fail. This recent problem is being
+   investigated.
+
+   Note that if you use qemu, you may need to select an alternative
+   graphics driver other than your distribution default or you will boot
+   to a black screen.
+
+EFI Support
+
+   This is the first release of OpenMandriva Lx that incorporates support
+   for [74]UEFI booting. You should be able to boot on [75]UEFI machines;
+   however, we have only performed limited testing.
+
+   We welcome feedback on user experience. It should be possible to boot
+   the live system on the majority of machines; however, your mileage may
+   vary. Please file bug reports at [76]our bug tracker.
+
+Booting from USB
+
+   It is also possible to boot this release from a USB storage device. To
+   transfer the live/installation you may use the ROSA Image Writer
+   available from our repos:
+urpmi rosa-imagewriter
+
+   Or, if you do not have OpenMandriva Lx:
+   [77]Windows (32-bit)
+   [78]Linux x86 (32 bit)
+   [79]Linux x86_64 (64 bit)
+   [80]Mac OS
+
+   At least 2GB of flash drive capacity is recommended. Persistent storage
+   is not necessary. Note that this will erase everything on your USB!
+
+via dd
+
+   You may alternatively dd the image to your USB stick:
+dd if=<iso_name> of=<usb_drive> bs=4M
+
+   Replace <iso_name> with the path to the ISO and <usb_drive> with the
+   device node of the USB drive, i.e. /dev/sdb.
+
+New Features and Major Changes
+
+   OpenMandriva Lx 3 is a new release.
+
+LLVM/clang
+
+   OpenMandriva decided to give a go for a switch to LLVM/clang as a
+   default compiler, and finally has replaced GCC. Over 90% of packages
+   are rebuilded with LLVM/clang in our main repository.
+
+   Benefits for end user:
+     * Fast compiles and Low Memory Use
+     * Expressive Diagnostics
+     * GCC Compatibility
+     * Better object code generation compared to others
+     * Object code is optimized for its size
+
+   More infor can be found [81]here.
+
+Kernel
+
+   A new Kernel 3.18.3 nrJQL - a powerful variant of the 3.18.3 kernel
+   that has been configured with desktop system performance,
+   responsiveness, and realtime capabilities, in mind.
+   The new NRJ mode adds CPU and RCU full Preemption and Boost mode, the
+   QL mode adds patchsets which combine to provide further optimisations,
+   including BFS CPU task scheduler, BFQ disk I/O scheduler, UKSM memory
+   management, TOI for suspension and hibernation.
+   SQUASHFS_MULTI_DECOMPRESSOR within the kernel supports the use of all
+   available CPU's for faster booting of Live Images.
+   Some very recent USB patches that partially correct a misinterpretation
+   of the USB standard will improve device compatibility and also ensure
+   that devices re-awake properly after suspend or hibernate.
+   NFS has also received some attention with patches that will give faster
+   start up of the NFS services.
+   This kernel version is enabled with kernel keys necessary to use the
+   "EDID ovverride" feature, with this we should be able to override an
+   incorrect screen EDID with boot time options, we have included EDIDBINS
+   in the ISOs, a package containing 5 basic firmwares for the most common
+   resolutions so that users may force different resolutions than the ones
+   detected automatically by X.
+   The CONFIG_ACPI_CUSTOM_DSDT key allows loading of a customised acpi
+   table. Details will be found on our Wiki in the kernel pages.
+   To improve the powersave and reduce the comsumption on portable PCs:
+   - it has been enabled the audio powersave for AC97 and Intel HDA
+   modules
+   - it has been imported ASPM fix patch from kernel 3.17 queue
+   > [82]http://www.phoronix.com/scan.php?page=news_item&px=MTc0NzE
+   To improve the proper fps reproduction of hires videos:
+   - it has been added: UVD handle basis fps estimation v2
+   >
+   [83]http://lists.freedesktop.org/archives/dri-devel/2014-August/065766.
+   html
+   It has been fixed the support for running 16-bit code on Wine32
+   It has been fixed an old performance regression for KVM with BFS
+   Highlight:
+   HT/SMT NICE feature added and enabled by default for a better
+   responsiveness and realtime behaviour on all PC with HT (Hyper-Thread),
+   improving performance of foreground applications at the expense of
+   background ones.
+   Your desktop / gui / applications will remain fast even if you run
+   folding@home, mprime, seti@home etc.
+   A more effective and precise control on the nice levels of server apps
+   for its proper balancing and tuneups.
+   Please, see: [84]https://wiki.openmandriva.org/en/Kernel for more
+   information.
+
+Desktop
+
+   The oma-welcome oma-welcome, or Welcome to OpenMandriva Lx has been
+   updated to reflect the new version. This application introduces users
+   to OpenMandriva Lx and shows them some of the features we have, as well
+   as providing quick links to common tasks such as updating, installing
+   new software, and configuring a desktop.
+
+Xorg
+
+   We've upgraded Xorg to version 1.16.3, and Mesa to 10.4.2, which brings
+   the latest free drivers for the best performance. A Compose cache is
+   now incorporated which speeds up application startup time and reduces
+   memory usage especially in locales with large Compose tables (e.g. all
+   UTF-8 locales).
+
+   We recommend that users change the composite manager in KDE from
+   XRender to OpenGL mode. This gives transparency the proper blur effect.
+   This also allows our theme and it's decorations to be shown at their
+   best.
+
+KDE 4.14.3
+
+   We've upgraded to the latest and greatest version of the KDE desktop.
+   If you don't know what KDE is, [85]learn more at their website.
+
+   We've switched our default menu launcher to Homerun kicker. To learn
+   more about Homerun, [86]check out its features page.
+
+   The network management, media centre, and mobile device support has
+   also been updated.
+
+KF 5.x
+
+   We are working to bring fully working KDE Framwork 5.x as our new
+   default desktop, replacing KDE 4.x.
+
+SDDM
+
+   SDDM is new and lightweight displaymanager, written in Qt5 with QML and
+   provides new features and benefits to enduser, compared to KDM.
+
+LXQt 0.8.0
+
+   We have prepared LXQt for our alpha release. LXQt is a lightweight
+   desktop fully written in Qt5.
+
+   By default SDDM is used as display manager.
+
+xfce4 4.10.0
+
+   xfce4 is very lightweight environment based on GTK+2.0, featuring
+   speed, low request on resources combined with great look.
+
+Wayland
+
+   We are working on many new and interesting shells using new display
+   technology based on Wayland. Currently planned are:
+     * hawaii
+     * papyros-os
+     * orbital
+
+   Currently only Weston is working out of box.
+
+LibreOffice 4.3.5
+
+   The latest LibreOffice featuring much faster load times and many bug
+   fixes.
+
+Firefox 35
+
+   The latest firefox with it's new graphical interface and all the latest
+   features.
+
+   You may wish to suspend desktop effects when Firefox is in full screen
+   mode, as it speeds up scrolling.
+
+Java 7-8
+
+   The OpenMandriva Java stack has been entirely rebuilt to version 7 and
+   is completely functional.
+
+   We currently provide Eclipse Kepler by default.
+
+Printing
+
+   Improved support for printing, with an emphasis on the latest HP
+   printers.
+
+Cloud service
+
+   We added support for ownClound.org via mirall package.
+
+systemd
+
+   Default init system is systemd with version 218. By default are
+   enabled;
+     * systemd-networkd
+     * systemd-timedated
+     * systemd-timesyncd
+     * systemd-resolved
+
+LCMS
+
+   We have updated our LCMS to version 2.x, also all software which was
+   dependant on older library has been rebuilded to meet new one.
+
+libarchive
+
+   We have decided to make better use of [87]libarchive, and starting from
+   this release by default we use:
+     * bsdtar as a default tar program
+     * bsdcpio as a default cpio program
+
+   Detailed features and benefits can be found [88]here.
+
+Perl
+
+   Perl base package has been updated to 5.20.1 version. All perl related
+   software in main repository has been rebuilded to meet new version.
+
+Python
+
+   Python has been updated to 3.4.3 version and starting from now it
+   became default python interpreter over python 2.x.
+
+ISO build tools
+
+   Previously livecd-tools were used to build OpenMandriva ISO images. Due
+   to code complication and its limits, we moved to build own ISO image
+   build tool.
+
+   [89]omdv-build-tool is written as a bash shell script, which works out
+   of box on ABF.io and in userland.
+
+Upgrading to 3
+
+   Upgrading between releases always has the potential to cause some
+   problems. Upgrading is supported and we do test upgrades, but due to
+   the huge range of packages and hardware configurations that are
+   possible, the upgrade may cause unexpected problems. Therefore we
+   recommend that you always perform fully backup your system prior to any
+   upgrading attempt, since there can be a chance for a loss of data. In
+   particular be aware that upgrading between MDV-based packages and
+   OMV-based packages may be the most problematic and should be avoided if
+   possible.
+
+   We hope that upgrading between OpenMandriva Lx releases will become
+   less problematic in the near future.
+
+Upgrading from previous OpenMandriva Lx Releases
+
+   If you do NOT receive an upgrade notification from the Online Update
+   applet, you may have to update your system.
+
+   If mdkapplet crashes trying to upgrade, you may have to update the
+   packages on your system first.
+
+   If you still do not receive a notification (we may not have pushed it
+   to all systems) or wish to do a manual upgrade, you may step through
+   the following procedure.
+
+   As root, run the following commands:
+urpmi.removemedia -a
+
+urpmi.addmedia --distrib --mirrorlist 'http://downloads.openmandriva.org/mirrors
+/openmandriva.2014.0.ARCH.list'
+
+   Substitute ARCH with your architecture, e.g. i586 or x86_64.
+
+   Then run the following commands:
+urpmi --auto --auto-select --replacefiles 2>&1 | tee /root/upgrade.log
+
+   Reboot when completed. The upgrade log is stored in /root/upgrade.log.
+
+Upgrading from 2011.0
+
+   Please upgrade to 2013.0 first by following the procedures outlined in
+   the [90]2013.0 release notes before upgrading to 3.
+
+Unavailable
+
+Calamares
+
+   We are working on [91]Calamares to use it as our default installer, and
+   finally replace Drakx installer.
+
+Changes to Hardware Support
+
+Graphics Support
+
+   Graphics support has improved with the latest drivers however there are
+   still issues with some hardware.
+
+NVIDIA Graphics Cards
+
+   NVidia graphics cards are all currently supported by the XFDrake, the
+   DrakX video configuration tool. In some cases it may be necessary to
+   install older drivers using the command line. These drivers are
+   available from the OpenMandriva repositories. The reverse engineered
+   nouveau driver gives moderately good support for these older cards and
+   for some dual-screen work(Publishing) it is actually better as it
+   supports screen rotation on a second monitor which is useful for
+   monitors with rotatable screens.
+
+ATI Graphics Cards
+
+   The latest ATI graphics cards are supported; however, we have not had
+   any concrete feedback about its usage. Your mileage may vary.
+
+   If you are using Radeon HD7770 or if you experience a black screen at
+   boot and you know that you have an ATI/AMD grahics card please add the
+   command below to the grub2 cmdline:-
+xorg.blacklist=ati
+
+   To do this at when booting the iso press the "TAB" key; the kernel
+   bootline will be displayed at the bottom of the screen, go to the end
+   of it and add any options required there. Press enter to boot. If you
+   need to enter a kernel parameter while boot an installed system the
+   procedure is slightly different. At the boot screen press the "E" key
+   and this will bring up the Grub editor. Search for the first line that
+   begins with "linux" go to the end of it and add the option there. To
+   boot press F10.
+
+Intel Graphics Cards
+
+   Intel graphics cards are supported with the latest kernel we have,
+   including newer 4th generation Intel graphics cards.
+
+Miscellaneous Graphic Cards .
+
+   We have not had feedback from users. Should you have an unusual
+   graphics card that is not performing as it should please file a bug at
+   issues.openmandriva.org
+
+Changes to Installation
+
+Unused Hardware & Language Removal
+
+   This feature has been re-enabled. It prompts you to run it at first
+   boot, and you may run it any time afterwards from the oma-welcome
+   application (Welcome to OpenMandriva Lx).
+
+Changes to the DrakX suite of tools
+
+Boot Configuration
+
+   We now default to using kcm-grub2 to control the boot loader.
+
+Proprietary Drivers
+
+   We now install proprietary drivers correctly.
+
+Firewall
+
+   We have deprecated drakfirewall in favour of firewall-config, which
+   relies on firewalld.
+
+   Service responsible for firewall is not enabled by default.
+
+Booting with systemd
+
+   Systemd has now been moved into the initramfs and the result is
+   super-fast booting. Switching runlevels has changed. Instead of adding
+   the target runlevel, as before, there are now specific boot options.
+   Namely, the following options must be appended to the kernel command
+   line:
+     * Rescue Mode: systemd.unit=rescue.target
+     * Text Mode: systemd.unit=multi-user.target
+     * Graphical Mode: systemd.unit=graphical.target
+
+Desktop Environments
+
+   Please note that only KDE is supported by OpenMandriva Lx at this time.
+   LXDE, Unity, GNOME, XFCE, or any other desktop environment is not
+   supported.
+
+Media Sources
+
+contrib
+
+   contrib represents community maintained packages. These are not
+   supported by the core OpenMandriva Lx team, and depend on package
+   maintainers to update it.
+
+restricted
+
+   restricted contains libraries that aren't installed by default due to
+   legal concerns. The usage of these packages vary by country -
+   OpenMandriva Lx is not responsible for their usage! If you believe that
+   their usage is unallowed in your country, please disable the restricted
+   repositories.
+
+Other Changes
+
+Monitor EDID Loading
+
+   The "EDID ovverride" feature is now available and allows a monitor with
+   incorrect (or no) EDID to be enabled at kernel boot A package
+   "edidbins" has been included in the ISOs which provided five binary
+   files to support the most common resolutions. These may be called from
+   the kernel command line at boot such that screen resolution may be
+   force to that which the user desires. Obviously a facility like this
+   should be used with care as it has the potential to damage your
+   monitor. In order to enable one of the supplied edid's you need to add
+   the following line to your kernel command line
+   "drm_kms_helper.edid_firmware=edid/1280x1024.bin" obviously you can
+   select your resolution from those supplied which are.
+
+   1024x768 1280x1024 1600x1200 1680x1050 1920x1080
+
+   As things currently stand these resolutions are available as soon as
+   the root directory is mounted. If you want these resolutions for
+   plymouth then you will need to incorporate the edid binary file in the
+   initramfs. Dracut the image builder does not currently support this.
+   The current approach would be to unpack the initramfs, add the
+   necessary files and then repack.
+
+Errata
+
+   As with any release, there are still issues and bugs that may not have
+   been resolved. This page documents those that may cause inconvenience
+   and where possible details how they may be worked around.
+
+Booting Live DVD/USB
+
+   If you have a problem booting the live image with some hardware please
+   report a bug detailing your hardware and any observations that you make
+   if you are affected by this problem.
+Partitioning with Small Disks
+
+   When using the custom partitioning tool to divide up the hard disk/s be
+   aware that there is a minimum size requirement a root partition that
+   contains the /usr directory of at least 5.0Gb. If the partition is made
+   smaller that this the partition manager will not function correctly.
+
+   Due to the adoption of systemd the use of a separate /usr partition is
+   no longer possible. It is still permissible to have a separate
+   /usr/local partition.
+
+   Workaround: If you receive an error message stating that the partition
+   is smaller than the minimum requirement then do not try to resize it as
+   this will fail; instead, use the auto-allocate function which will
+   automatically create a partitioning scheme for you, which you may then
+   delete or change to suit your own requirements. This will clear the
+   error.
+
+Local Network Sharing
+
+   The firewall service, firewalld is now disabled by default, if required
+   it may be re-enabled via the OMA Contol Centre under the system entry.
+
+Parental Controls
+
+   Parental Controls are currently non-functional.
+
+   Workaround: None available at the moment.
+
+Partitioning with Small Disks: Clearing the partitioner
+
+   When using the custom partitioning tool to divide up the hard disk/s be
+   aware that there is a minimum size requirement a root partition that
+   contains the /usr directory of at least 5.0Gb. If the partition is made
+   smaller that this the partition manager will not function correctly.
+Due to the adoption of systemd the use of a separate /usr partition is [92]no lo
+nger possible.
+It is still permissible to have a separate /usr/local partition.
+
+   Workaround: If you receive an error message stating that the partition
+   is smaller than the minimum requirement then do not try to resize it as
+   this will fail; instead, use the auto-allocate function which will
+   automatically create a partitioning scheme for you, which you may then
+   delete or change to suit your own requirements. This will clear the
+   error.
+
+wheel
+
+   Please note that the first user created on the system is part of the
+   wheel group, which allocates special privileges that are usually only
+   allocated for the root user. Users in wheel can bypass certain password
+   dialogues to change system settings.
+
+   Workaround: This is intended behaviour. If you wish to disable this,
+   remove users from the wheel group.
+
+Black Screen at Boot
+
+   There is an issue with systems that have two different graphics
+   adapters but only one of them is operational. Typically this is a
+   Nvidia GPU combined the either Intel or AMD/ATI. Due to the automated
+   nature of driver selection in modern systems if the non-functional GPU
+   is automatically selected then X will load the matching driver. Thus
+   the working GPU never gets setup resulting in a black screen. We have
+   recently added a new boot command line option to allow an Xorg driver
+   to be blacklisted thus allowing the correct driver to be detected.
+
+   To use this feature you must edit the grub2 command line. You can do
+   this by selecting your desired boot option and then pressing TAB. To
+   the end of the line add the following:-
+xorg.blacklist=<driver to blacklist>
+
+   To determine which driver needs to be blacklisted is probably best
+   achieved by booting the system to a text mode and checking which driver
+   has been loaded at boot time. A procedure for doing this is detailed
+   below. In some circumstances this may not be possible and you will need
+   to resort to your motherboard/Graphics card specifications or trial and
+   error. It will be necessary to permanently add the line to the grub2
+   command line that boots the installation. This is described below.
+
+   There are other circumstances where a black screen may be encountered.
+   For example if you wish to use the proprietary driver for your graphics
+   adapter it may be necessary to inhibit the kernel mechanism that loads
+   the free drivers. In these circumstances adding
+nomodeset
+
+   or
+nokmsboot
+
+   to the kernel command line will normally be enough to allow
+   installation of the OS or running with the manufacturers drivers . If
+   necessary the command may be added permanently by editing
+   /etc/default/grub at the GRUB_CMDLINE_LINUX_DEFAULT label and adding
+   the required command. Then run update-grub2
+
+   To boot to text mode:-
+
+   1: Boot from the DVD/USB stick and at the grub selection screen select
+   the livecd option and press TAB. Edit the grub command line by and add
+   the command
+"systemd.unit=multi-user.task nomodeset"
+
+   to the end and boot the machine. This will bring you to a command
+   prompt where you can login.
+
+   2: Login as root and then type lsmod | less and observe the output.
+   Look for the loaded graphics driver by finding the drm entry the
+   graphics driver will be listed here. It will be typically nouveau,
+   radeon or i915 (there may be others). The name used here will be the
+   name to add to the xorg.blacklist= parameter
+
+Backlight Issues
+
+   There are some machines with Intel GPU's (Netbooks particularly) that
+   may still give a black screen even with everything set up correctly;
+   this is due to the screen backlight logic being inverted. This may be
+   fixed by adding i915.invert_brightness=1 parameter to the boot command
+   line. This may be needed in addition to the xorg.blacklist= parameter.
+
+Boot to a dracut prompt
+
+   If this happens all is not lost. This may be indicative of the lack of
+   disk driver for your hardware. Dracut indicates that it has produced a
+   bug report which you can copy to a memory stick and then attach to a
+   bug report you will need to mount your memory stick. Assuming it is FAT
+   formatted then plug it in and type 'dmesg' the device name of your
+   memory stick should be visible it will be in the form /dev/sd<x> the
+   bracketed x will vary depending on how many drives have been found on
+   your machine if for example you have one other drive then the entry
+   might read /dev/sdb. Create a new directory /mnt with 'mkdir /mnt' then
+   type 'mount -t vfat /dev/sdb1 /mnt' and the drive should be mounted.
+   (Note the 1 added to the device name). You should then be able to copy
+   files to your memory stick with 'cp <files> /mnt/' . Please take the
+   trouble to report this type of problem as receiving these reports is
+   the only way we can improve our distribution.
+
+Contact, Bug Reporting, Discussion
+
+   You are invited to discuss this release on our:
+     * [93]Forums
+     * [94]Mailing Lists
+     * [95]IRC
+
+   Please report bugs to our [96]bugtracker.
+
+   For us to get the most information about your situation, it is a wise
+   idea to install omv-bug-report:
+urpmi omv-bug-report
+
+   Then, as root:
+omv-bug-report.sh
+
+   will generate an archive containing system information that can be
+   attached to a bug or mailed to a maintainer. This will greatly assist
+   them in the diagnosis of the problem being reported.
+
+Helping the Project
+
+   As always, the OpenMandriva development teams (Cooker & QA) are always
+   looking for new contributors to assist in creating and maintaining
+   packages and to assist bugfixing and testing. You are welcome to join
+   us and help us in this work which is not only rewarding but also
+   tremendous fun!
+
+   If you feel that your talents do not lie in the realm of software, then
+   the OpenMandriva Workshop group, which is made up from the artwork,
+   documentation, translation and Communication teams, is always open for
+   the submissions of artwork and translations. New contributors who would
+   like to help with these wide-ranging tasks should see our wiki
+   (wiki.openmandriva.org) for more details, and to learn how to join!.
+   Alternatively you may sign up to the mailing lists available [97]here.
+
+   It also costs time and money to keep our servers up and running. If you
+   can, please [98]donate to keep the lights on!
+   Retrieved from
+   "[99]http://wiki.openmandriva.org/en/index.php?title=Release_3/Release_
+   Notes&oldid=8393"
+
