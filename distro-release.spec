@@ -43,7 +43,7 @@ Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2015.0
 DistEpoch:	%{version}
-Release:	0.16
+Release:	0.17
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -159,7 +159,7 @@ EOF
 
 %{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta 3 (Just another Moby Dick)","http://moondrake.org","mdk",ansiColor="1;35;4;44")}
 # (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
-%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "Alpha (Eisteinium)", "http://openmandriva.org", "omv")}
+%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "Alpha (Einsteinium)", "http://openmandriva.org", "omv")}
 
 %check
 %if %{am_i_cooker}
