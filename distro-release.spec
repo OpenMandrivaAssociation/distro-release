@@ -36,10 +36,9 @@
 
 Summary:	%{distribution} release file
 Name:		distro-release
-Version:	2014.5
+Version:	2015.0
 DistEpoch:	%{version}
-Release:	0.15
-Epoch:		1
+Release:	0.17
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -49,6 +48,7 @@ Source2:	%{name}.rpmlintrc
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
+# raw output of lynx -source of wiki:
 Source5:	release-notes.html
 
 %description
@@ -69,6 +69,8 @@ Group:		System/Configuration/Other
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
 Requires(pre):	util-linux
+# (cb) attempt workaround to prevent problems with chroot ordering
+Requires(pre):	bash
 
 # cf mdvbz#32631
 Provides:	arch(%_target_cpu)
@@ -145,10 +147,10 @@ else
 fi
 EOF
 
-%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta 3 (Just another Moby Dick)","http://moondrake.org","mdk",ansiColor="1;35;4;44")}
+%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Alpha (Pink elephant in the room)","http://moondrake.org","mdk",ansiColor="1;35;4;44")}
 
 # (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
-%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "Alpha (Eisteinium)", "http://openmandriva.org", "omv")}
+%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "Alpha (Einsteinium)", "http://openmandriva.org", "omv")}
 
 %check
 %if %{am_i_cooker}
