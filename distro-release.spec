@@ -147,10 +147,11 @@ else
 fi
 EOF
 
-%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Alpha (Pink elephant in the room)","http://moondrake.org","mdk",ansiColor="1;35;4;44")}
+# (tpg) distribution,product,Vendor,codename,disturl,bugurl,disttag,ansiColor
+%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Alpha (Pink elephant in the room)", "http://moondrake.org", "http://moondrake.org", "mdk",ansiColor="1;35;4;44")}
 
 # (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
-%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "Alpha (Einsteinium)", "http://openmandriva.org", "omv")}
+%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "Alpha (Einsteinium)", "http://openmandriva.org", "https://issues.openmandriva.org", "omv")}
 
 %check
 %if %{am_i_cooker}
