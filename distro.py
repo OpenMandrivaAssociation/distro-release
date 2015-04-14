@@ -8,7 +8,7 @@ def release_package(distribution, Vendor, Prio=10):
 Summary:	"""+Vendor+""" release file
 Group:		System/Configuration/Other
 Requires:	%{name}-common = %{EVRD}
-Requires:	%{arch_tagged %{_vendor}-release-common}
+Requires:	%{arch_tagged distro-release-common}
 Requires(post):	coreutils  bash
 Requires(post,postun): update-alternatives
 Requires(pre):	%{name}-common
@@ -97,7 +97,7 @@ cat > %{buildroot}%{_sysconfdir}/version."""+vendor+""" << EOF
 %{distepoch} %{release} """+codename+"""
 EOF
 
-# (tpg) follow standard specifications http://0pointer.de/blog/projects/os-release
+# (tpg) follow standard specifications http://www.freedesktop.org/software/systemd/man/os-release.html
 cat > %{buildroot}%{_sysconfdir}/os-release."""+vendor+""" << EOF
 NAME=\""""+distribution+"""\"
 VERSION=\"%{distepoch} """+codename+"""\"
