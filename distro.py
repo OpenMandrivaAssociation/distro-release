@@ -8,7 +8,7 @@ def release_package(distribution, Vendor, Prio=10):
 Summary:	"""+Vendor+""" release file
 Group:		System/Configuration/Other
 Requires:	%{name}-common = %{EVRD}
-Requires:    %{arch_tagged %{name}-release-common}
+Requires:    %{arch_tagged %{name}-common}
 Requires(post):	coreutils  bash
 Requires(post,postun): update-alternatives
 Requires(pre):	%{name}-common
