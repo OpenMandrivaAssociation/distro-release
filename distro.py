@@ -13,6 +13,7 @@ Requires(post):	coreutils  bash
 Requires(post,postun): update-alternatives
 Requires(pre):	%{name}-common
 Provides:	mandriva-release = %{EVRD}
+Provides:	distro-release = %{EVRD}
 
 %%description """+Vendor+"""
 """+distribution+""" release file for """+Vendor+""" flavor.
