@@ -60,6 +60,7 @@ Group:		System/Configuration/Other
 %rename		rosa-release-common
 %rename		mandriva-release-common
 %rename		opemandriva-release-common
+%rename		moondrake-release-common
 %rename		mandriva-release
 %rename		mandriva-release-Free
 %rename		mandriva-release-One
