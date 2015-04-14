@@ -40,7 +40,7 @@ fi
 %{_sysconfdir}/version."""+vendor))
     sys.stdout.flush()
 
-def release_install(distribution,product,Vendor,codename,disturl,disttag,ansiColor="1;43"):
+def release_install(distribution,product,Vendor,codename,disturl,bugurl,disttag,ansiColor="1;43"):
     vendor = Vendor.lower()
     _distribution = distribution.lower().replace(" ","_").replace("/","_").replace("!","_").replace("?","_")
 
@@ -75,6 +75,7 @@ cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
 %%distribution		"""+distribution+"""
 %%_distribution		"""+_distribution+"""
 %%disturl		"""+disturl+"""
+%%bugurl		"""+bugurl+"""
 %%vendor		"""+Vendor+"""
 %%_vendor		"""+vendor+"""
 %%disttag		"""+disttag+"""
@@ -106,6 +107,6 @@ PRETTY_NAME=\""""+distribution+""" %{distepoch} """+codename+"""\"
 ANSI_COLOR=\""""+ansiColor+"""\"
 CPE_NAME=\"cpe:/o:"""+vendor+":"+_distribution+""":%{distepoch}\"
 HOME_URL=\""""+disturl+"""\"
-BUG_REPORT_URL=\"%{bugurl}\"
+BUG_REPORT_URL=\""""+bugurl+"""\"
 EOF
 """))
