@@ -75,6 +75,7 @@ Requires(pre):	bash
 
 # cf mdvbz#32631
 Provides:	arch(%_target_cpu)
+Provides:	%arch_tagged %{_vendor}-release-common
 
 %description	common
 Common files for %{distribution} release packages.
