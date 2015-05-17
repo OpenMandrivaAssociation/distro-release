@@ -235,7 +235,7 @@ Desktop
 
 Xorg
 
-   We've upgraded Xorg to version 1.15.2, and Mesa to 10.3.7, which brings
+   We've upgraded Xorg to version 1.15.2, and Mesa to 10.4.7, which brings
    the latest free drivers for the best performance. A Compose cache is
    now incorporated which speeds up application startup time and reduces
    memory usage especially in locales with large Compose tables (e.g. all
