@@ -62,8 +62,8 @@
 Summary:	%{distribution} release file
 Name:		distro-release
 Version:	%{version}
-Release:	0.21
-Epoch:		2
+Release:	0.22
+Epoch:		1
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
