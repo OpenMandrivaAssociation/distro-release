@@ -179,7 +179,7 @@ New Features and Major Changes
 
 Kernel
 
-   A new Kernel 3.18.12 NRJQL â a powerful variant of the 3.18.12 kernel
+   A new Kernel 3.18.16 NRJQL â a powerful variant of the 3.18.16 kernel
    that has been configured with desktop system performance,
    responsiveness, and realtime capabilities, in mind.
    The new NRJ mode adds CPU and RCU full Preemption and Boost mode, the
