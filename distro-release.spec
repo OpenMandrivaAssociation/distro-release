@@ -38,7 +38,7 @@ Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2015.0
 DistEpoch:	%{version}
-Release:	0.26
+Release:	0.27
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -87,7 +87,7 @@ Common files for %{distribution} release packages.
 # we'll bump Moondrake prio to higher priority to get around it
 # don't remove unless you're a zealot completely oblivious about this issue
 # and rather wait for a better solution to be implemented in ABF
-#%{python:distro.release_package("Moondrake GNU/Linux", "Moondrake", Prio=11)}
+## %{python:distro.release_package("Moondrake GNU/Linux", "Moondrake", Prio=11)}
 %{python:distro.release_package("OpenMandriva Lx", "OpenMandriva", Prio=12)}
 
 %prep
@@ -150,7 +150,7 @@ fi
 EOF
 
 # (tpg) distribution,product,Vendor,codename,disturl,bugurl,disttag,ansiColor
-#%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Alpha (Pink elephant in the room)", "http://moondrake.org", "http://moondrake.org", "mdk",ansiColor="1;35;4;44")}
+##%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Alpha (Pink elephant in the room)", "http://moondrake.org", "http://moondrake.org", "mdk",ansiColor="1;35;4;44")}
 
 # (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
 %{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "Beta (Einsteinium)", "http://openmandriva.org", "https://issues.openmandriva.org", "omv")}
