@@ -38,7 +38,7 @@ Summary:	%{distribution} release file
 Name:		distro-release
 Version:	2015.0
 DistEpoch:	%{version}
-Release:	0.28
+Release:	0.29
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -129,19 +129,19 @@ ln -sf release %{buildroot}%{_sysconfdir}/system-release
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 cat > %{buildroot}%{_sysconfdir}/profile.d/10distro-release.csh << EOF
 if ( -r %{_sysconfdir}/sysconfig/system ) then
-	eval `sed 's|^#.*||' %{_sysconfdir}/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
-	setenv META_CLASS $META_CLASS
+    eval `sed 's|^#.*||' %{_sysconfdir}/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
+    setenv META_CLASS $META_CLASS
 else
-	setenv META_CLASS unknown
+    setenv META_CLASS unknown
 endif
 EOF
 
 cat > %{buildroot}%{_sysconfdir}/profile.d/10distro-release.sh << EOF
 if [ -r %{_sysconfdir}/sysconfig/system ]; then
-	. %{_sysconfdir}/sysconfig/system
-	export META_CLASS
+    . %{_sysconfdir}/sysconfig/system
+    export META_CLASS
 else
-	export META_CLASS=unknown
+    export META_CLASS=unknown
 fi
 EOF
 
