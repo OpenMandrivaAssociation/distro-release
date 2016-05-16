@@ -91,7 +91,7 @@ META_CLASS=download
 EOF
 
 cat > %{buildroot}%{_sysconfdir}/"""+vendor+"""-release << EOF
-"""+distribution+""" release %{distepoch} """+codename+""" for %{_target_cpu}
+"""+distribution+""" release %{version} """+codename+""" for %{_target_cpu}
 EOF
 cat > %{buildroot}%{_sysconfdir}/version."""+vendor+""" << EOF
 %{distepoch} %{release} """+codename+"""
@@ -100,11 +100,11 @@ EOF
 # (tpg) follow standard specifications http://www.freedesktop.org/software/systemd/man/os-release.html
 cat > %{buildroot}%{_sysconfdir}/os-release."""+vendor+""" << EOF
 NAME=\""""+distribution+"""\"
-VERSION=\"%{distepoch} """+codename+"""\"
+VERSION=\"%{version} """+codename+"""\"
 ID=\""""+vendor+"""\"
 VERSION_ID=\"%{distepoch}\"
 BUILD_ID=\"%(echo `date +"%Y%m%d.%H"`)\"
-PRETTY_NAME=\""""+distribution+""" %{distepoch} """+codename+"""\"
+PRETTY_NAME=\""""+distribution+""" %{version} """+codename+"""\"
 ANSI_COLOR=\""""+ansiColor+"""\"
 CPE_NAME=\"cpe:/o:"""+vendor+":"+_distribution+""":%{distepoch}\"
 HOME_URL=\""""+disturl+"""\"

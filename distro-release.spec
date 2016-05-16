@@ -36,9 +36,11 @@
 
 Summary:	%{distribution} release file
 Name:		distro-release
-Version:	2015.0
-DistEpoch:	%{version}
-Release:	0.29
+# Ugly, but needed for 2015.0 -> 3.0 transition
+Epoch:		1
+Version:	3.0
+DistEpoch:	2015.0
+Release:	0.1
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
