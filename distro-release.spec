@@ -40,7 +40,7 @@ Name:		distro-release
 Epoch:		1
 Version:	3.0
 DistEpoch:	2015.0
-Release:	0.1
+Release:	0.2
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other

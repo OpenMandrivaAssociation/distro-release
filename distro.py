@@ -47,7 +47,7 @@ def release_install(distribution,product,Vendor,codename,disturl,bugurl,disttag,
 
     print(rpm.expandMacro("""
 cat > %{buildroot}%{_sysconfdir}/product.id."""+product+""" << EOF
-vendor="""+Vendor+""",distribution="""+distribution+""",type=%{product_type},version=%{distepoch},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product="""+product+"""
+vendor="""+Vendor+""",distribution="""+distribution+""",type=%{product_type},version=%{version},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product="""+product+"""
 EOF
 
 mkdir -p %{buildroot}%{_sys_macros_dir}
@@ -63,7 +63,7 @@ cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
 %%mdvver            %%mdkver
 
 # productid variable
-%%product_id vendor="""+vendor+",distribution="+distribution+",type=%product_type,version=%{distepoch},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product="+product+"""
+%%product_id vendor="""+vendor+",distribution="+distribution+",type=%product_type,version=%{version},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product="+product+"""
 
 %%product_vendor        """+vendor+"""
 %%product_distribution  """+distribution+"""
@@ -80,6 +80,7 @@ cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
 %%vendor		"""+Vendor+"""
 %%_vendor		"""+vendor+"""
 %%disttag		"""+disttag+"""
+%%distepoch            %distepoch
 EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
@@ -94,7 +95,7 @@ cat > %{buildroot}%{_sysconfdir}/"""+vendor+"""-release << EOF
 """+distribution+""" release %{version} """+codename+""" for %{_target_cpu}
 EOF
 cat > %{buildroot}%{_sysconfdir}/version."""+vendor+""" << EOF
-%{distepoch} %{release} """+codename+"""
+%{version} %{release} """+codename+"""
 EOF
 
 # (tpg) follow standard specifications http://www.freedesktop.org/software/systemd/man/os-release.html
@@ -102,11 +103,11 @@ cat > %{buildroot}%{_sysconfdir}/os-release."""+vendor+""" << EOF
 NAME=\""""+distribution+"""\"
 VERSION=\"%{version} """+codename+"""\"
 ID=\""""+vendor+"""\"
-VERSION_ID=\"%{distepoch}\"
+VERSION_ID=\"%{version}\"
 BUILD_ID=\"%(echo `date +"%Y%m%d.%H"`)\"
 PRETTY_NAME=\""""+distribution+""" %{version} """+codename+"""\"
 ANSI_COLOR=\""""+ansiColor+"""\"
-CPE_NAME=\"cpe:/o:"""+vendor+":"+_distribution+""":%{distepoch}\"
+CPE_NAME=\"cpe:/o:"""+vendor+":"+_distribution+""":%{version}\"
 HOME_URL=\""""+disturl+"""\"
 BUG_REPORT_URL=\""""+bugurl+"""\"
 EOF
