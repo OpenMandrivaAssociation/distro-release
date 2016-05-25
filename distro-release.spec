@@ -32,7 +32,10 @@
 # distro_arch => the distribution we are using
 %define distro_arch %{_target_cpu}
 
-%define mdkver %(echo %{version} | sed 's/\\.//')0
+%define major %(printf %u 0%(echo %{version}|cut -d. -f1))
+%define minor %(printf %u 0%(echo %{version}|cut -d. -f2))
+%define subminor %(printf %u 0%(echo %{version}|cut -d. -f3))
+%define mdkver %(echo $((%{major}*1000000+%{minor}*1000+%{subminor})))
 
 Summary:	%{distribution} release file
 Name:		distro-release
@@ -40,7 +43,7 @@ Name:		distro-release
 Epoch:		1
 Version:	3.0
 DistEpoch:	2015.0
-Release:	0.2
+Release:	0.3
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -90,7 +93,6 @@ Common files for %{distribution} release packages.
 
 %prep
 %setup -q -n %{name}
-
 cp -a %{SOURCE3} CREDITS
 cp -a %{SOURCE4} release-notes.txt
 cp -a %{SOURCE5} release-notes.html
