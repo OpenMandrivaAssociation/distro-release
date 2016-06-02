@@ -52,12 +52,13 @@ EOF
 
 mkdir -p %{buildroot}%{_sys_macros_dir}
 cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
-%%distro_release  %{distepoch}
+%%distro_release  %{version}
 %%distro_branch   %distro_branch
 %%distro_class    %%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)
 
 # (tpg) legacy stuff should be removed after all packages do not use macros begining with %%mandriva\
-%%mandriva_release  %{distepoch}
+
+%%mandriva_release  %{version}
 %%mandriva_branch   %mandriva_branch
 %%mdkver            %mdkver
 %%mdvver            %%mdkver
@@ -68,7 +69,7 @@ cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
 %%product_vendor        """+vendor+"""
 %%product_distribution  """+distribution+"""
 %%product_type          %product_type
-%%product_version       %distepoch
+%%product_version       %version
 %%product_branch        %product_branch
 %%product_release       %product_release
 %%product_arch          %product_arch
