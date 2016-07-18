@@ -1,24 +1,24 @@
    #[1]Wiki [en] OpenMandriva (en) [2]alternate [3]copyright [4]Wiki [en]
    OpenMandriva Atom feed
 
-Release 3/Release Notes
+3.0/Release Notes
 
    From Wiki [en] OpenMandriva
-   < [5]Release 3
+   < [5]3.0
    Jump to: [6]navigation, [7]search
-   [8]G3403.png
+   [8]G4458.png
 
    [9]Draft36.png
    This article is currently in a draft stage
 
-   It is recommended that you read the latest release notes [10]on our
+   It is recommended that you read the latest [10]release notes on our
    wiki.
 
-Release 3
+Release 3.0
 
        Contents
 
-            * [11]1 Release 3
+            * [11]1 Release 3.0
             * [12]2 Available Media
                  + [13]2.1 Recommended Hardware
                  + [14]2.2 Virtual Machines
@@ -35,17 +35,17 @@ Release 3
                  + [25]3.5 Wayland
                  + [26]3.6 libinput
                  + [27]3.7 Desktop
-                 + [28]3.8 KDE Plasma 5.6.1
-                 + [29]3.9 KF 5.20.0
-                 + [30]3.10 Calligra Suite 2.9.11
+                 + [28]3.8 KDE Plasma 5.6.5
+                 + [29]3.9 KF 5.23.0
+                 + [30]3.10 Calligra Suite 2.9.11, Krita 3.0
                  + [31]3.11 SDDM
                  + [32]3.12 LXQt 0.10.0
                  + [33]3.13 xfce4 4.12.0
-                 + [34]3.14 LibreOffice 5.1.1
+                 + [34]3.14 LibreOffice 5.1.3
                  + [35]3.15 Web browsing
-                      o [36]3.15.1 Qupzilla 1.9.9
-                      o [37]3.15.2 Firefox 45.0.11
-                      o [38]3.15.3 Chromium 49.0.2623.87
+                      o [36]3.15.1 Qupzilla 2.0.1
+                      o [37]3.15.2 Firefox 47.0
+                      o [38]3.15.3 Chromium 51.0.2704.79
                  + [39]3.16 Java 8
                  + [40]3.17 Printing
                  + [41]3.18 Sound
@@ -58,7 +58,7 @@ Release 3
                  + [48]3.25 Virtualization
                  + [49]3.26 Games
                  + [50]3.27 ISO build tools
-                 + [51]3.28 Upgrading to 3
+                 + [51]3.28 Upgrading to OpenMandriva Lx 3.0
                       o [52]3.28.1 Upgrading from previous OpenMandriva Lx
                         Releases
                       o [53]3.28.2 Upgrading from 2011.0
@@ -90,15 +90,17 @@ Release 3
                  + [79]8.2 Local Network Sharing
                  + [80]8.3 Parental Controls
                  + [81]8.4 Partitioning: General Information
-                 + [82]8.5 Admin Privelidges: The wheel group
+                 + [82]8.5 Admin Privileges: The wheel group
                  + [83]8.6 Black Screen at Boot
-                 + [84]8.7 Backlight Issues
-                 + [85]8.8 Boot to a dracut prompt
-            * [86]9 Contact, Bug Reporting, Discussion
-            * [87]10 Helping the Project
+                 + [84]8.7 Other Graphical Boot Issues
+                 + [85]8.8 Backlight Issues
+                 + [86]8.9 Boot to a dracut prompt
+                 + [87]8.10 Calamares Installer
+            * [88]9 Contact, Bug Reporting, Discussion
+            * [89]10 Helping the Project
 
    The OpenMandriva Lx teams are pleased to announce the availability of
-   the release 3!
+   the release 3.0!
 
    Detailed below are some of the advances that the distribution has
    incorporated since OpenMandriva Lx 2014.1. Apart from the enhancements
@@ -107,28 +109,32 @@ Release 3
 Available Media
 
    This release is available as a live media DVD, downloadable in ISO
-   format. These are available on our [88]downloads page.
+   format. These are available on our [90]downloads page.
 
-   Live media means you're able to run OpenMandriva Lx straight from a DVD
-   or memory stick (See Below) and try it before installing it. You may
-   also install the system to hard disk either from the running live image
-   or from the boot manager.
+   Live media means you are able to run OpenMandriva Lx straight from a
+   DVD or memory stick (See Below) and try it before installing it. You
+   may also install the system to hard disk either from the running live
+   image or from the boot manager.
 
 Recommended Hardware
 
-   OpenMandriva Lx 3 requires at least 1,5 GB of memory (min 1GB), at
+   OpenMandriva Lx 3.0 requires at least 1.5 GB of memory (min 1GB), at
    least 10 GB of hard drive space (see below for known issues with
-   partitioning), and for best compositing performance a suitable
-   accelerated 3D graphics card.
+   partitioning).
 
    If you wish to run the live distribution (the option to Start
-   OpenMandriva 3 at the CD boot screen), you must have at minimum 1.5 GB
+   OpenMandriva Lx at the CD boot screen), you must have at minimum 1.5 GB
    of memory. At least 2 GB of memory is recommended for optimal
    performance.
 
-   Releases are available for i586 and x86_64 architectures. ARM
-   architectures are being worked on, but not yet available for this
+   Release is available for x86_64 architecture, The i586 and ARM
+   architectures are being worked on, but are not yet available for this
    release.
+
+   Important Note
+
+   KDE Plasma Desktop requires a 3D graphics card that supports OpenGL 2.0
+   or above
 
 Virtual Machines
 
@@ -149,9 +155,9 @@ Virtual Machines
 Installer and EFI Support
 
    This release of OpenMandriva Lx supports booting and installation with
-   and without [89]UEFI.
+   and without [91]UEFI.
 
-   Best system installation experience is provided by [90]Calamares 2.1
+   Best system installation experience is provided by [92]Calamares 2.3
    installer.
 
 What is Calamares ?
@@ -161,13 +167,13 @@ What is Calamares ?
    aims to be easy, usable, beautiful, pragmatic, inclusive and
    distribution-agnostic. Calamares includes an advanced partitioning
    feature, with support for both manual and automated partitioning
-   operations. It is the first installer with an automated "Replace
-   Partition" option, which makes it easy to reuse a partition over and
+   operations. It is the first installer with an automated “Replace
+   Partition” option, which makes it easy to reuse a partition over and
    over for distribution testing.
      __________________________________________________________________
 
-   Where it is seen you should be able to boot and install OpenMandriva LX
-   on [91]UEFI machines.
+   You should be able to boot and install OpenMandriva LX on [93]UEFI
+   machines.
 
    Note that secure boot is NOT supported.
 
@@ -176,6 +182,8 @@ What is Calamares ?
    backed up any important data. Our testing has been limited with this
    configuration but successful installs have been performed with no
    issues. We would welcome any feedback in this area.
+
+   Please see the notes on partitioning [94]here and [95]here
 
 EFI Partitioning
 
@@ -213,10 +221,10 @@ Booting from USB
 urpmi rosa-imagewriter
 
    Or, if you do not have OpenMandriva Lx:
-   [92]Windows (32-bit)
-   [93]Linux x86 (32 bit)
-   [94]Linux x86_64 (64 bit)
-   [95]Mac OS
+   [96]Windows (32-bit)
+   [97]Linux x86 (32 bit)
+   [98]Linux x86_64 (64 bit)
+   [99]Mac OS
 
    At least 2GB of flash drive capacity is recommended. Persistent storage
    is not necessary. Note that this will erase everything on your USB!
@@ -231,7 +239,7 @@ dd if=<iso_name> of=<usb_drive> bs=4M
 
 New Features and Major Changes
 
-   OpenMandriva Lx 3 is a new release.
+   OpenMandriva Lx 3.0 is a new release.
 
 LLVM/clang
 
@@ -246,19 +254,24 @@ LLVM/clang
      * Better object code generation compared to others
      * Object code is optimized for its size
 
-   More information can be found [96]here.
+   More information can be found [100]here.
 
 Kernel
 
-   A new Kernel 4.1.18 nrJQL - a powerful variant of the 4.1.18 kernel
-   that has been configured with desktop system performance,
-   responsiveness, and realtime capabilities, in mind.
+   OpenMandriva Lx uses the latest stable kernel, 4.6.4, by default.
+   An even more current version, 4.7-rc3, is available in the repositories
+   (kernel-desktop-rc-latest package) for people who want to test upcoming
+   releases and/or who have hardware not yet supported in the stable
+   release.
+   OpenMandriva Lx also features kernel 4.1.18 nrJQL – a powerful variant
+   of the 4.1.18 kernel that has been configured with desktop system
+   performance, responsiveness, and realtime capabilities, in mind.
    The new NRJ mode adds CPU and RCU full Preemption and Boost mode, the
    QL mode adds patchsets which combine to provide further optimisations,
    including BFS CPU task scheduler, BFQ disk I/O scheduler, UKSM memory
    management, TOI for suspension and hibernation.
    This kernel version is enabled with kernel keys necessary to use the
-   "EDID ovverride" feature, with this we should be able to override an
+   “EDID ovverride” feature, with this we should be able to override an
    incorrect screen EDID with boot time options, we have included EDIDBINS
    in the ISOs, a package containing 5 basic firmwares for the most common
    resolutions so that users may force different resolutions than the ones
@@ -274,15 +287,12 @@ Kernel
    folding@home, mprime, seti@home etc.
    A more effective and precise control on the nice levels of server apps
    for its proper balancing and tuneups.
-   Please, see: [97]https://wiki.openmandriva.org/en/Kernel for more
+   Please, see: [101]https://wiki.openmandriva.org/en/Kernel for more
    information.
-   For people with hardware not yet supported by 4.1.x kernels, a version
-   of kernel 4.5 is also included (without the additional patches from the
-   nrjQL patchset).
 
 systemd
 
-   Default init system is [98]systemd with version 229. By default are
+   Default init system is [102]systemd with version 230. By default are
    enabled:
      * systemd-networkd
      * systemd-timedated
@@ -291,18 +301,18 @@ systemd
 
 Xorg
 
-   We've upgraded Xorg to version 1.18.2, and Mesa to 11.2, which brings
-   the latest free drivers for the best performance. A Compose cache is
-   now incorporated which speeds up application startup time and reduces
-   memory usage especially in locales with large Compose tables (e.g. all
-   UTF-8 locales).
+   We have upgraded Xorg to version 1.18.3, and Mesa to 12.0.1, which
+   brings the latest free drivers for the best performance. A Compose
+   cache is now incorporated which speeds up application startup time and
+   reduces memory usage especially in locales with large Compose tables
+   (e.g. all UTF-8 locales).
 
 Wayland
 
    We are working on many new and interesting shells using new display
-   technology based on [99]Wayland 1.10.0 version. Currently planned are:
-     * [100]hawaii-desktop
-     * [101]papyros-shell
+   technology based on [103]Wayland 1.10.0 version. Currently planned are:
+     * [104]hawaii-desktop
+     * [105]papyros-shell
 
    For now Weston and KDE Plasma 5 are working out of box. KDE Plasma 5
    running on wayland is still experimental and not recommended for daily
@@ -311,39 +321,44 @@ Wayland
 libinput
 
    All the input devices like keyboard, mouse, touchpad and others are now
-   handled though [102]libinput 1.2.2 version library by default.
+   handled though [106]libinput 1.2.2 version library by default.
 
 Desktop
 
-   The oma-welcome oma-welcome, or Welcome to OpenMandriva Lx has been
-   updated to reflect the new version. This application introduces users
-   to OpenMandriva Lx and shows them some of the features we have, as well
-   as providing quick links to common tasks such as updating, installing
-   new software, and configuring a desktop.
+   The oma-welcome, or Welcome to OpenMandriva Lx has been updated to
+   reflect the new version. This application introduces users to
+   OpenMandriva Lx and shows them some of the features we have, as well as
+   providing quick links to common tasks such as updating, installing new
+   software, and configuring a desktop.
 
-KDE Plasma 5.6.1
+KDE Plasma 5.6.5
 
-   We've upgraded to the latest and greatest version of the KDE Plasma
-   desktop. If you don't know what KDE Plasma is, [103]learn more at their
-   website.
-
-   KDE Applications are updated to 15.12.3 version.
-
+   We have ve upgraded to the latest and greatest version of the KDE
+   Plasma desktop. If you don't know what KDE Plasma is, [107]learn more
+   at their website.
+   KDE Frameworks are updated to [108]5.23.0 version.
+   KDE Applications are updated to [109]16.04.2 version.
    We are using Plasma-discover as a main tool for updating distibution.
    Plasma-discover is a Qt5 frontend for PackageKit.
+   Our distribution is running with Qt [110]5.6.1 version.
+   Important notice!
+   Plasma 5 heavily uses Qt5 OpenGL. This means a minimal system
+   requirements is to have a graphics card that support OpenGL 2.0 or
+   newer version.
 
-KF 5.20.0
+KF 5.23.0
 
    We have implemented full KDE Framework that allows user to get all of
    benefits of Plasma 5 desktop.
 
-Calligra Suite 2.9.11
+Calligra Suite 2.9.11, Krita 3.0
 
-   [104]Calligra Suite is a graphic art and office suite written in Qt4
+   [111]Calligra Suite is a graphic art and office suite written in Qt4
    and supports KDE Plasma 5. (A port to Qt5 is currently in progress, but
-   not yet included in the 3 release). By default we are shipping on ISO a
-   [105]Krita, a raster graphics editor. It is possible to install whole
-   calligra suite after installation is finished.
+   not yet included in the 3.0 release). It is possible to install whole
+   calligra suite after installation is finished. [112]Krita, a raster
+   graphics editor that is part of Calligra, has already been ported to
+   Qt5 and is included in the install image.
 
 SDDM
 
@@ -362,32 +377,32 @@ xfce4 4.12.0
    xfce4 is very lightweight environment based on GTK+2.0 and GTK+3.0,
    featuring speed, low request on resources combined with great look.
 
-LibreOffice 5.1.1
+LibreOffice 5.1.3
 
-   The latest [106]LibreOffice featuring much faster load times and many
+   The latest [113]LibreOffice featuring much faster load times and many
    bug fixes.
 
 Web browsing
 
-Qupzilla 1.9.9
+Qupzilla 2.0.1
 
-   [107]Qupzilla is a full featured web browser using Qt5WebEngine as a
-   rendering engine. More information can be found [108]here.
+   [114]Qupzilla is a full featured web browser using Qt5WebEngine as a
+   rendering engine. More information can be found [115]here.
 
    We encourage to give qupzilla a try as a new experience in web browsers
    world.
 
-Firefox 45.0.11
+Firefox 47.0
 
-   The latest [109]firefox with it's new graphical interface and all the
+   The latest [116]firefox with its new graphical interface and all the
    latest features.
 
    You may wish to suspend desktop effects when running Firefox is in full
    screen mode, as it speeds up scrolling.
 
-Chromium 49.0.2623.87
+Chromium 51.0.2704.79
 
-   A [110]Chromium web browser is available to install it on running
+   A [117]Chromium web browser is available to install it on running
    system either by using urpmi or discover or rpmdrake.
 urpmi chromium-browser-stable
 
@@ -407,19 +422,19 @@ Java 8
 Printing
 
    Improved support for printing, with an emphasis on the latest HP
-   printers. Printing support is based on [111]Cups 2.0.3 and ghostscript
+   printers. Printing support is based on [118]Cups 2.0.3 and ghostscript
    9.18.
 
 Sound
 
-   [112]ALSA is updated to version 1.1.0
+   [119]ALSA is updated to version 1.1.1
 
    Pulseaudio version is 8.0, you can find more information about features
-   [113]here.
+   [120]here.
 
 Multimedia
 
-   The [114]SMPlayer media player is now included, using [115]MPV as its
+   The [121]SMPlayer media player is now included, using [122]MPV as its
    default backend. If you live in a country that allows it, you may want
    to install the various codecs from the restricted repository for
    improved codec support.
@@ -435,21 +450,21 @@ LCMS
 
 libarchive
 
-   We have decided to make better use of [116]libarchive, and starting
+   We have decided to make better use of [123]libarchive, and starting
    from this release by default we use:
      * bsdtar as a default tar program
      * bsdcpio as a default cpio program
 
-   Detailed features and benefits can be found [117]here.
+   Detailed features and benefits can be found [124]here.
 
 Perl
 
-   Perl base package has been updated to 5.20.2 version. All perl related
+   Perl base package has been updated to 5.20.3 version. All perl related
    software in main repository has been rebuilt to meet new version.
 
 Python
 
-   Python has been updated to 3.4.3 version and starting from now it
+   Python has been updated to 3.4.4 version and starting from now it
    became default python interpreter over python 2.x.
 
 Virtualization
@@ -464,12 +479,14 @@ Virtualization
 Games
 
    We are providing many games which has been ported to Linux. With use of
-   [118]PlayOnLinux you can play games available only on Windows(tm)
-   platform. Ofcourse [119]Steam package is available and can be installed
-   using urpmi, rpmdrake or plasma-discover.
+   [125]PlayOnLinux you can play games available only on Windows(tm)
+   platform. Of course [126]Steam package is available and can be
+   installed using urpmi, rpmdrake or plasma-discover.
+
+   To give it a go, enable the non-free repositories, and
 urpmi steam
 
-   More information can be found on our page dedicated to [120]games.
+   More information can be found on our page dedicated to [127]games.
 
 ISO build tools
 
@@ -477,10 +494,10 @@ ISO build tools
    to code complication and its limits, we moved to build own ISO image
    build tool.
 
-   [121]omdv-build-iso is written as a bash shell script, which works out
-   of box on [122]ABF and in userland.
+   [128]omdv-build-iso is written as a bash shell script, which works out
+   of box on [129]ABF and in userland.
 
-Upgrading to 3
+Upgrading to OpenMandriva Lx 3.0
 
    Upgrading between releases always has the potential to cause some
    problems. Upgrading is supported and we do test upgrades, but due to
@@ -511,7 +528,7 @@ Upgrading from previous OpenMandriva Lx Releases
 urpmi.removemedia -a
 
 urpmi.addmedia --distrib --mirrorlist 'http://downloads.openmandriva.org/mirrors
-/openmandriva.2015.0.ARCH.list'
+/openmandriva.3.0.ARCH.list'
 
    Substitute ARCH with your architecture, e.g. i586 or x86_64.
 
@@ -523,7 +540,7 @@ urpmi --auto --auto-select --replacefiles 2>&1 | tee /root/upgrade.log
 Upgrading from 2011.0
 
    Please upgrade to 2013.0 first by following the procedures outlined in
-   the [123]2013.0 release notes before upgrading to 3.
+   the [130]2013.0 release notes before upgrading to 3.0.
 
 Changes to Hardware Support
 
@@ -567,11 +584,10 @@ xorg.blacklist=ati
 
 Intel Graphics Chips
 
-   Intel graphics chips are supported with the latest kernel we have,
-   including newer 4th and 5th generation Intel graphics chips.
+   Intel graphics chips are fully supported.
 
-   For 6th generation Skylake GPUs, you should use kernel 4.5 instead of
-   4.1.18-nrjQL.
+   For 6th generation Skylake GPUs, you should use kernel 4.6 or 4.7-rc
+   instead of 4.1.18-nrjQL.
 
 Miscellaneous Graphic Cards .
 
@@ -587,7 +603,7 @@ Changes to Installation
 
 Installer
 
-   We are using [124]Calamares as our default installer.
+   We are using [131]Calamares as our default installer.
 
    Calamares is an installer framework. By design it is very customizable,
    in order to satisfy a wide variety of needs and use cases.
@@ -659,7 +675,7 @@ restricted
 non-free
 
    non-free contains applications and drivers that are distributable, but
-   do not meet the definitions of [125]Free Software. While we can adjust
+   do not meet the definitions of [132]Free Software. While we can adjust
    the packaging of such applications, we do not have the source code and
    therefore can not fix problems caused by anything in this repository.
 
@@ -738,10 +754,10 @@ Partitioning: General Information
    smaller that this the partition manager will not function correctly.
 
    Due to the adoption of systemd the use of a separate /usr partition is
-   [126]no longer possible. It is still permissible to have a separate
+   [133]no longer possible. It is still permissible to have a separate
    /usr/local partition.
 
-Admin Privelidges: The wheel group
+Admin Privileges: The wheel group
 
    Please note that the first user created on the system is part of the
    wheel group, which allocates special privileges that are usually only
@@ -790,7 +806,7 @@ nokmsboot
    /etc/default/grub at the GRUB_CMDLINE_LINUX_DEFAULT label and adding
    the required command. Then run update-grub2
 
-   If you're using the internal GPU of an Intel Skylake processor, you
+   If you are using the internal GPU of an Intel Skylake processor, you
    should use kernel 4.5 (rather than 4.1.18-nrjQL) and/or specify
 i915.preliminary_hw_support=1
 
@@ -811,6 +827,31 @@ i915.preliminary_hw_support=1
    graphics driver will be listed here. It will be typically nouveau,
    radeon or i915 (there may be others). The name used here will be the
    name to add to the xorg.blacklist= parameter
+
+Other Graphical Boot Issues
+
+   ATI There are a number of graphical boot issues which may result in a
+   black screen or a low resolution graphics screen. The ATI X600 based
+   adapters currently suffer from a segfault in the driver making
+   graphical boot impossible this may extend extend to other ATI based
+   hardware which we have not tested. We recommend installing the fglrx
+   drivers in text mode you may have to compile these manually until
+   updates to the dkms package are available. Intel Users with older
+   motherboard based Intel graphics hardware which may find issues when
+   trying to use alternative graphics hardware. It is known that nVidia
+   hardware does not start up properly in this configuration. Usually the
+   result is a black screen. There are a number of things that can be
+   tried but the best combination so far is to disable the Intel card from
+   the command line using "i915.disable_display=true" and pre-loading the
+   nouveau driver with "rd.driver.pre=nouveau" and adding "nomodeset".
+   This may give a low res graphical screen. If you do no get a graphical
+   screen use all the above options and boot into text mode (see above)
+   buy adding systemd.unit=multi-user.target to the end of the grub boot
+   line. Once in text mode as root add the nouveau driver to
+   /etc/modprobe.preload.d/modprobe-preload.conf. You will still need
+   "i915.disable_display=true" and "nomodeset" on the grub command line
+   but this should give a graphical boot but still at low res. Hopefully
+   updates will bring a resolution to this problem.
 
 Backlight Issues
 
@@ -837,14 +878,45 @@ Boot to a dracut prompt
    trouble to report this type of problem as receiving these reports is
    the only way we can improve our distribution.
 
+Calamares Installer
+
+   On some systems the standalone versions of Calamares do not start; if
+   you experience this issue please report a bug. The problem does not
+   seem to occur if Calamares is launched from the live system. Also
+   please note that the selections for disk and bootloader installation
+   are not sticky. If the screen is re-written they will return to the
+   defaults. This is a known issue and will be fixed in the next released
+   iso.
+
+   UEFI Installs
+
+   The Calamares installer supports EFI installs but not secure boot. If
+   your system has an existing fat32 partition that is under 330MB
+   Calamares will give and error message and warn that installation might
+   fail. The reason for this is that the theoretical minimum size for
+   creating a FAT32 partition is around 330Mb. If you wish to keep your
+   existing partion then mark it FAT16 instead and the error message will
+   go away and the install and boot proceed normally. Alternatively you
+   can increase the size of the partition to >330Mb and the install should
+   proceed normally with FAT32 selected as the filesystem.
+
+   Dual Installs (EFI and BIOS booting on the same disk) and BIOS install
+   on GPT partitioned disks.
+
+   Please be aware that if you wish to perform a BIOS install on a GPT
+   formatted disk you must ensure that the disk contains a small partition
+   => 2Mb for grub to install the bootloader into. This partition can be
+   located before or after the EFI partition. It does not need to be
+   formatted but must have the "bios-grub" flag set.
+
 Contact, Bug Reporting, Discussion
 
    You are invited to discuss this release on our:
-     * [127]Forum
-     * [128]Mailing Lists
-     * [129]IRC
+     * [134]Forum
+     * [135]Mailing Lists
+     * [136]IRC
 
-   Please report bugs to our [130]bugtracker.
+   Please report bugs to our [137]bugtracker.
 
    For us to get the most information about your situation, it is a wise
    idea to install omv-bug-report:
@@ -871,7 +943,279 @@ Helping the Project
    the submissions of artwork and translations. New contributors who would
    like to help with these wide-ranging tasks should see our wiki
    (wiki.openmandriva.org) for more details, and to learn how to join!.
-   Alternatively you may sign up to the mailing lists available [131]here.
+   Alternatively you may sign up to the mailing lists available [138]here.
 
    It also costs time and money to keep our servers up and running. If you
-   can, please [132]donate to keep the lights on!
+   can, please [139]donate to keep the lights on!
+   Retrieved from
+   "[140]http://wiki.openmandriva.org/en/index.php?title=3.0/Release_Notes
+   &oldid=8894"
+   [141]Categories:
+     * [142]3.0
+     * [143]Release 3
+
+Navigation menu
+
+Personal tools
+
+     * [144]Log in
+
+Namespaces
+
+     * [145]Page
+     * [146]Discussion
+
+Variants
+
+Views
+
+     * [147]Read
+     * [148]View source
+     * [149]View history
+
+More
+
+Search
+
+   ____________________ Search Go
+
+Navigation
+
+     * [150]Wiki Home
+     * [151]Main Site
+     * [152]Recent changes
+     * [153]Random page
+     * [154]Help
+
+Users
+
+     * [155]Community portal
+     * [156]First Time
+
+Contributors
+
+     * [157]Cooker
+     * [158]Localization
+     * [159]Moderation
+     * [160]Quality Assurance
+
+Workshop
+
+     * [161]Artwork
+     * [162]Communication
+     * [163]Documentation
+     * [164]Infrastructure
+
+Association
+
+     * [165]Council
+     * [166]Technical
+     * [167]Membership
+
+Tools
+
+     * [168]What links here
+     * [169]Related changes
+     * [170]Special pages
+     * [171]Printable version
+     * [172]Permanent link
+     * [173]Page information
+
+     * This page was last modified on 18 July 2016, at 18:47.
+     * Content is available under [174]Attribution-ShareAlike 3.0 Unported
+       (CC BY-SA 3.0) unless otherwise noted.
+
+     * [175]Privacy policy
+     * [176]About Wiki [en] OpenMandriva
+     * [177]Disclaimers
+
+     * [178]Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+     * [179]Powered by MediaWiki
+
+References
+
+   Visible links
+   1. https://wiki.openmandriva.org/en/opensearch_desc.php
+   2. https://wiki.openmandriva.org/en/3.0/Release_Notes
+   3. http://creativecommons.org/licenses/by-sa/3.0/
+   4. https://wiki.openmandriva.org/en/index.php?title=Special:RecentChanges&feed=atom
+   5. https://wiki.openmandriva.org/en/3.0
+   6. https://wiki.openmandriva.org/en/3.0/Release_Notes#mw-head
+   7. https://wiki.openmandriva.org/en/3.0/Release_Notes#p-search
+   8. https://wiki.openmandriva.org/en/File:G4458.png
+   9. https://wiki.openmandriva.org/en/File:Draft36.png
+  10. https://wiki.openmandriva.org/en/3.0/Release_Notes
+  11. https://wiki.openmandriva.org/en/3.0/Release_Notes#Release_3.0
+  12. https://wiki.openmandriva.org/en/3.0/Release_Notes#Available_Media
+  13. https://wiki.openmandriva.org/en/3.0/Release_Notes#Recommended_Hardware
+  14. https://wiki.openmandriva.org/en/3.0/Release_Notes#Virtual_Machines
+  15. https://wiki.openmandriva.org/en/3.0/Release_Notes#Installer_and_EFI_Support
+  16. https://wiki.openmandriva.org/en/3.0/Release_Notes#What_is_Calamares_.3F
+  17. https://wiki.openmandriva.org/en/3.0/Release_Notes#EFI_Partitioning
+  18. https://wiki.openmandriva.org/en/3.0/Release_Notes#Booting_from_USB
+  19. https://wiki.openmandriva.org/en/3.0/Release_Notes#via_dd
+  20. https://wiki.openmandriva.org/en/3.0/Release_Notes#New_Features_and_Major_Changes
+  21. https://wiki.openmandriva.org/en/3.0/Release_Notes#LLVM.2Fclang
+  22. https://wiki.openmandriva.org/en/3.0/Release_Notes#Kernel
+  23. https://wiki.openmandriva.org/en/3.0/Release_Notes#systemd
+  24. https://wiki.openmandriva.org/en/3.0/Release_Notes#Xorg
+  25. https://wiki.openmandriva.org/en/3.0/Release_Notes#Wayland
+  26. https://wiki.openmandriva.org/en/3.0/Release_Notes#libinput
+  27. https://wiki.openmandriva.org/en/3.0/Release_Notes#Desktop
+  28. https://wiki.openmandriva.org/en/3.0/Release_Notes#KDE_Plasma_5.6.5
+  29. https://wiki.openmandriva.org/en/3.0/Release_Notes#KF_5.23.0
+  30. https://wiki.openmandriva.org/en/3.0/Release_Notes#Calligra_Suite_2.9.11.2C_Krita_3.0
+  31. https://wiki.openmandriva.org/en/3.0/Release_Notes#SDDM
+  32. https://wiki.openmandriva.org/en/3.0/Release_Notes#LXQt_0.10.0
+  33. https://wiki.openmandriva.org/en/3.0/Release_Notes#xfce4_4.12.0
+  34. https://wiki.openmandriva.org/en/3.0/Release_Notes#LibreOffice_5.1.3
+  35. https://wiki.openmandriva.org/en/3.0/Release_Notes#Web_browsing
+  36. https://wiki.openmandriva.org/en/3.0/Release_Notes#Qupzilla_2.0.1
+  37. https://wiki.openmandriva.org/en/3.0/Release_Notes#Firefox_47.0
+  38. https://wiki.openmandriva.org/en/3.0/Release_Notes#Chromium_51.0.2704.79
+  39. https://wiki.openmandriva.org/en/3.0/Release_Notes#Java_8
+  40. https://wiki.openmandriva.org/en/3.0/Release_Notes#Printing
+  41. https://wiki.openmandriva.org/en/3.0/Release_Notes#Sound
+  42. https://wiki.openmandriva.org/en/3.0/Release_Notes#Multimedia
+  43. https://wiki.openmandriva.org/en/3.0/Release_Notes#Cloud_service
+  44. https://wiki.openmandriva.org/en/3.0/Release_Notes#LCMS
+  45. https://wiki.openmandriva.org/en/3.0/Release_Notes#libarchive
+  46. https://wiki.openmandriva.org/en/3.0/Release_Notes#Perl
+  47. https://wiki.openmandriva.org/en/3.0/Release_Notes#Python
+  48. https://wiki.openmandriva.org/en/3.0/Release_Notes#Virtualization
+  49. https://wiki.openmandriva.org/en/3.0/Release_Notes#Games
+  50. https://wiki.openmandriva.org/en/3.0/Release_Notes#ISO_build_tools
+  51. https://wiki.openmandriva.org/en/3.0/Release_Notes#Upgrading_to_OpenMandriva_Lx_3.0
+  52. https://wiki.openmandriva.org/en/3.0/Release_Notes#Upgrading_from_previous_OpenMandriva_Lx_Releases
+  53. https://wiki.openmandriva.org/en/3.0/Release_Notes#Upgrading_from_2011.0
+  54. https://wiki.openmandriva.org/en/3.0/Release_Notes#Changes_to_Hardware_Support
+  55. https://wiki.openmandriva.org/en/3.0/Release_Notes#Graphics_Support
+  56. https://wiki.openmandriva.org/en/3.0/Release_Notes#NVIDIA_Graphics_Cards
+  57. https://wiki.openmandriva.org/en/3.0/Release_Notes#ATI_Graphics_Cards
+  58. https://wiki.openmandriva.org/en/3.0/Release_Notes#Intel_Graphics_Chips
+  59. https://wiki.openmandriva.org/en/3.0/Release_Notes#Miscellaneous_Graphic_Cards_.
+  60. https://wiki.openmandriva.org/en/3.0/Release_Notes#Laptops_with_dual_graphics_cards_.
+  61. https://wiki.openmandriva.org/en/3.0/Release_Notes#Changes_to_Installation
+  62. https://wiki.openmandriva.org/en/3.0/Release_Notes#Installer
+  63. https://wiki.openmandriva.org/en/3.0/Release_Notes#Unused_Hardware_.26_Language_Removal
+  64. https://wiki.openmandriva.org/en/3.0/Release_Notes#Changes_to_the_DrakX_suite_of_tools
+  65. https://wiki.openmandriva.org/en/3.0/Release_Notes#Boot_Configuration
+  66. https://wiki.openmandriva.org/en/3.0/Release_Notes#Proprietary_Drivers
+  67. https://wiki.openmandriva.org/en/3.0/Release_Notes#Firewall
+  68. https://wiki.openmandriva.org/en/3.0/Release_Notes#Booting_with_systemd
+  69. https://wiki.openmandriva.org/en/3.0/Release_Notes#Desktop_Environments
+  70. https://wiki.openmandriva.org/en/3.0/Release_Notes#Media_Sources
+  71. https://wiki.openmandriva.org/en/3.0/Release_Notes#main
+  72. https://wiki.openmandriva.org/en/3.0/Release_Notes#contrib
+  73. https://wiki.openmandriva.org/en/3.0/Release_Notes#restricted
+  74. https://wiki.openmandriva.org/en/3.0/Release_Notes#non-free
+  75. https://wiki.openmandriva.org/en/3.0/Release_Notes#Other_Changes
+  76. https://wiki.openmandriva.org/en/3.0/Release_Notes#Monitor_EDID_Loading
+  77. https://wiki.openmandriva.org/en/3.0/Release_Notes#Errata
+  78. https://wiki.openmandriva.org/en/3.0/Release_Notes#Booting_Live_DVD.2FUSB
+  79. https://wiki.openmandriva.org/en/3.0/Release_Notes#Local_Network_Sharing
+  80. https://wiki.openmandriva.org/en/3.0/Release_Notes#Parental_Controls
+  81. https://wiki.openmandriva.org/en/3.0/Release_Notes#Partitioning:_General_Information
+  82. https://wiki.openmandriva.org/en/3.0/Release_Notes#Admin_Privileges:_The_wheel_group
+  83. https://wiki.openmandriva.org/en/3.0/Release_Notes#Black_Screen_at_Boot
+  84. https://wiki.openmandriva.org/en/3.0/Release_Notes#Other_Graphical_Boot_Issues
+  85. https://wiki.openmandriva.org/en/3.0/Release_Notes#Backlight_Issues
+  86. https://wiki.openmandriva.org/en/3.0/Release_Notes#Boot_to_a_dracut_prompt
+  87. https://wiki.openmandriva.org/en/3.0/Release_Notes#Calamares_Installer
+  88. https://wiki.openmandriva.org/en/3.0/Release_Notes#Contact.2C_Bug_Reporting.2C_Discussion
+  89. https://wiki.openmandriva.org/en/3.0/Release_Notes#Helping_the_Project
+  90. https://www.openmandriva.org/Downloads
+  91. https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface
+  92. https://calamares.io/
+  93. https://wiki.openmandriva.org/en/UEFI
+  94. https://wiki.openmandriva.org/en/3.0/Release_Notes#Partitioning:_General_Information
+  95. https://wiki.openmandriva.org/en/3.0/Release_Notes#Calamares_Installer
+  96. http://wiki.rosalab.ru/en/images/6/65/RosaImageWriter-2.6.1-win.zip
+  97. http://wiki.rosalab.ru/en/images/b/bd/RosaImageWriter-2.6.1-lin-i686.txz
+  98. http://wiki.rosalab.ru/en/images/2/24/RosaImageWriter-2.6.1-lin-x86_64.txz
+  99. http://wiki.rosalab.ru/en/images/e/ea/RosaImageWriter-2.6.1-osx.dmg
+ 100. http://clang.llvm.org/features.html
+ 101. https://wiki.openmandriva.org/en/Kernel
+ 102. https://www.freedesktop.org/wiki/Software/systemd/
+ 103. https://wayland.freedesktop.org/
+ 104. http://hawaiios.org/
+ 105. http://papyros.io/
+ 106. https://freedesktop.org/wiki/Software/libinput/
+ 107. https://www.kde.org/announcements/plasma-5.6.5.php
+ 108. https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+ 109. https://www.kde.org/announcements/announce-applications-16.04.2.php
+ 110. http://blog.qt.io/blog/2016/06/08/qt-5-6-1-released/
+ 111. https://www.calligra.org/
+ 112. https://www.calligra.org/krita
+ 113. http://www.libreoffice.org/
+ 114. http://www.qupzilla.com/
+ 115. http://www.qupzilla.com/about
+ 116. https://www.mozilla.org/en-US/firefox/47.0/releasenotes/
+ 117. https://www.chromium.org/Home
+ 118. http://cups.org/
+ 119. http://www.alsa-project.org/
+ 120. http://www.freedesktop.org/wiki/Software/PulseAudio/Notes/8.0/
+ 121. http://smplayer.org/
+ 122. http://mpv.io/
+ 123. http://www.libarchive.org/
+ 124. http://www.libarchive.org/
+ 125. https://www.playonlinux.com/
+ 126. http://store.steampowered.com/browse/linux
+ 127. https://games.openmandriva.org/
+ 128. https://github.com/OpenMandrivaAssociation/omdv-build-iso
+ 129. https://abf.openmandriva.org/
+ 130. https://wiki.openmandriva.org/en/2013.0/Release_Notes#Upgrading_from_2011.0
+ 131. http://calamares.io/
+ 132. https://en.wikipedia.org/wiki/The_Free_Software_Definition
+ 133. http://freedesktop.org/wiki/Software/systemd/separate-usr-is-broken/
+ 134. http://forum.openmandriva.org/
+ 135. http://ml.openmandriva.org/mailman/listinfo
+ 136. https://wiki.openmandriva.org/en/Openmandriva_on_IRC
+ 137. http://issues.openmandriva.org/
+ 138. http://ml.openmandriva.org/mailman/listinfo
+ 139. https://openmandriva.org/en/donate
+ 140. http://wiki.openmandriva.org/en/index.php?title=3.0/Release_Notes&oldid=8894
+ 141. https://wiki.openmandriva.org/en/Special:Categories
+ 142. https://wiki.openmandriva.org/en/Category:3.0
+ 143. https://wiki.openmandriva.org/en/Category:Release_3
+ 144. https://wiki.openmandriva.org/en/index.php?title=Special:UserLogin&returnto=3.0/Release+Notes
+ 145. https://wiki.openmandriva.org/en/3.0/Release_Notes
+ 146. https://wiki.openmandriva.org/en/index.php?title=Talk:3.0/Release_Notes&action=edit&redlink=1
+ 147. https://wiki.openmandriva.org/en/3.0/Release_Notes
+ 148. https://wiki.openmandriva.org/en/index.php?title=3.0/Release_Notes&action=edit
+ 149. https://wiki.openmandriva.org/en/index.php?title=3.0/Release_Notes&action=history
+ 150. https://wiki.openmandriva.org/en/Welcome
+ 151. http://www.openmandriva.org/
+ 152. https://wiki.openmandriva.org/en/Special:RecentChanges
+ 153. https://wiki.openmandriva.org/en/Special:Random
+ 154. https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents
+ 155. https://wiki.openmandriva.org/en/Users
+ 156. https://wiki.openmandriva.org/en/Users/First_Time
+ 157. https://wiki.openmandriva.org/en/Cooker
+ 158. https://wiki.openmandriva.org/en/L10n
+ 159. https://wiki.openmandriva.org/en/Mod
+ 160. https://wiki.openmandriva.org/en/QA
+ 161. https://wiki.openmandriva.org/en/Artwork
+ 162. https://wiki.openmandriva.org/en/Com
+ 163. https://wiki.openmandriva.org/en/Doc
+ 164. https://wiki.openmandriva.org/en/Infra
+ 165. https://wiki.openmandriva.org/en/OpenMandriva:Council
+ 166. https://wiki.openmandriva.org/en/OpenMandriva:Technical
+ 167. https://wiki.openmandriva.org/en/OpenMandriva:Membership
+ 168. https://wiki.openmandriva.org/en/Special:WhatLinksHere/3.0/Release_Notes
+ 169. https://wiki.openmandriva.org/en/Special:RecentChangesLinked/3.0/Release_Notes
+ 170. https://wiki.openmandriva.org/en/Special:SpecialPages
+ 171. https://wiki.openmandriva.org/en/index.php?title=3.0/Release_Notes&printable=yes
+ 172. https://wiki.openmandriva.org/en/index.php?title=3.0/Release_Notes&oldid=8894
+ 173. https://wiki.openmandriva.org/en/index.php?title=3.0/Release_Notes&action=info
+ 174. http://creativecommons.org/licenses/by-sa/3.0/
+ 175. https://wiki.openmandriva.org/en/Wiki_OpenMandriva:Privacy_policy
+ 176. https://wiki.openmandriva.org/en/Wiki_OpenMandriva:About
+ 177. https://wiki.openmandriva.org/en/Wiki_OpenMandriva:General_disclaimer
+ 178. http://creativecommons.org/licenses/by-sa/3.0/
+ 179. https://www.mediawiki.org/
+
+   Hidden links:
+ 181. https://wiki.openmandriva.org/en/3.0/Release_Notes
+ 182. https://wiki.openmandriva.org/en/3.0/Release_Notes
+ 183. https://wiki.openmandriva.org/en/Welcome
