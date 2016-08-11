@@ -43,7 +43,7 @@ Name:		distro-release
 Epoch:		1
 Version:	3.0
 DistEpoch:	2015.0
-Release:	0.6
+Release:	0.7
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -150,7 +150,7 @@ fi
 EOF
 
 # (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
-%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "RC1 (Einsteinium)", "http://openmandriva.org", "https://issues.openmandriva.org", "omv", ansiColor="1;43")}
+%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "(Einsteinium)", "http://openmandriva.org", "https://issues.openmandriva.org", "omv", ansiColor="1;43")}
 
 %check
 %if %{am_i_cooker}
