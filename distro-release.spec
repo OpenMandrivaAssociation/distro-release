@@ -41,9 +41,10 @@ Summary:	%{distribution} release file
 Name:		distro-release
 # Ugly, but needed for 2015.0 -> 3.0 transition
 Epoch:		2
-Version:	3.0
+Version:	3.1
+# (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 DistEpoch:	2015.0
-Release:	0.8
+Release:	0.1
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -150,7 +151,7 @@ fi
 EOF
 
 # (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
-%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "(Einsteinium)", "http://openmandriva.org", "https://issues.openmandriva.org", "omv", ansiColor="1;43")}
+%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "(Nitrogen)", "http://openmandriva.org", "https://issues.openmandriva.org", "omv", ansiColor="1;43")}
 
 %check
 %if %{am_i_cooker}

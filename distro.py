@@ -62,6 +62,7 @@ cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
 %%mandriva_branch   %mandriva_branch
 %%mdkver            %mdkver
 %%mdvver            %%mdkver
+%%omvver            %%mdkver
 
 # productid variable
 %%product_id vendor="""+vendor+",distribution="+distribution+",type=%product_type,version=%{version},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product="+product+"""
