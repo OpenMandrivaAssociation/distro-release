@@ -43,8 +43,10 @@ Name:		distro-release
 Epoch:		2
 Version:	3.1
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
-DistEpoch:	2015.0
-Release:	0.1
+# 3001 = 3.1
+# 3001 = 3.2 etc.
+DistEpoch:	3001
+Release:	0.2
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
