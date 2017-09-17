@@ -14,6 +14,7 @@ Requires(post,postun): update-alternatives
 Requires(pre):	%{name}-common
 Provides:	mandriva-release = %{EVRD}
 Provides:	distro-release = %{EVRD}
+Provides:	system-release
 Provides:	system-release(%{version})
 Provides:	system-release(releasever) = %{version}
 
