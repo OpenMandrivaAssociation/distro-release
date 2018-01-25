@@ -46,7 +46,7 @@ Version:	3.1
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistEpoch:	3001
-Release:	0.4
+Release:	0.5
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
