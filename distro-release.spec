@@ -46,7 +46,7 @@ Version:	3.1
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistEpoch:	3001
-Release:	0.5
+Release:	0.6
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -78,8 +78,9 @@ Group:		System/Configuration/Other
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
 Requires(pre):	util-linux
+Requires(pre):	coreutils
 # (cb) attempt workaround to prevent problems with chroot ordering
-Requires(pre):	bash
+Requires(pre):	/bin/sh
 
 # cf mdvbz#32631
 Provides:	arch(%{_target_cpu})

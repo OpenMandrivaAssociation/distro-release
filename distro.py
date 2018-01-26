@@ -9,9 +9,9 @@ Summary:	"""+Vendor+""" release file
 Group:		System/Configuration/Other
 Requires:	%{name}-common = %{EVRD}
 Requires:	%{arch_tagged distro-release-common}
-Requires(post):	coreutils  bash
+Requires(post,postun):	coreutils  bash
 Requires(post,postun): chkconfig >= 1.10
-Requires(pre):	%{name}-common
+Requires(post,postun):	%{name}-common
 Provides:	mandriva-release = %{EVRD}
 Provides:	distro-release = %{EVRD}
 Provides:	system-release
