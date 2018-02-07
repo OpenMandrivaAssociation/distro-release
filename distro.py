@@ -29,7 +29,6 @@ update-alternatives --install /etc/release release /etc/"""+vendor+"""-release "
 update-alternatives --install /etc/product.id product.id /etc/product.id."""+Vendor+" "+prio+"""
 update-alternatives --install /etc/version version /etc/version."""+vendor+" "+prio+"""
 
-
 %%postun	"""+Vendor+"""
 if [ "$1" = "0" ]; then
 update-alternatives --remove os-release /etc/os-release."""+vendor+"""

@@ -46,7 +46,7 @@ Version:	3.1
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistEpoch:	3001
-Release:	0.7
+Release:	0.8
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -77,10 +77,10 @@ Group:		System/Configuration/Other
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
-Requires(pre):	util-linux
-Requires(pre):	coreutils
+Requires(post):	util-linux
+Requires(post):	coreutils
 # (cb) attempt workaround to prevent problems with chroot ordering
-Requires(pre):	/bin/sh
+Requires(post):	/bin/sh
 
 # cf mdvbz#32631
 Provides:	arch(%{_target_cpu})
@@ -167,12 +167,12 @@ case %{release} in
 esac
 %endif
 
-%pre common
+%post common
 if [ $1 -ge 2 ]; then
-    [ -f %{_sysconfdir}/product.id ] && rm %{_sysconfdir}/product.id
-    [ -f %{_sysconfdir}/os-release ] && rm %{_sysconfdir}/os-release
-    [ -f %{_sysconfdir}/release ] && rm %{_sysconfdir}/release
-    [ -f %{_sysconfdir}/version ] && rm %{_sysconfdir}/version
+    [ -f %{_sysconfdir}/product.id ] && rm %{_sysconfdir}/product.id ||:
+    [ -f %{_sysconfdir}/os-release ] && rm %{_sysconfdir}/os-release ||:
+    [ -f %{_sysconfdir}/release ] && rm %{_sysconfdir}/release ||:
+    [ -f %{_sysconfdir}/version ] && rm %{_sysconfdir}/version ||:
     exit 0
 fi
 
