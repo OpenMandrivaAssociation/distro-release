@@ -56,7 +56,7 @@ Version:	4.0
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistEpoch:	%{distro_tag}
-Release:	0.1
+Release:	0.2
 License:	GPLv2+
 URL:		%{new_disturl}
 Group:		System/Configuration/Other
@@ -85,11 +85,8 @@ Group:		System/Configuration/Other
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
-Requires(post):	util-linux
-Requires(post):	coreutils
-# (cb) attempt workaround to prevent problems with chroot ordering
-Requires(post):	/bin/sh
-
+Requires:	setup
+Requires:	filesystem
 # cf mdvbz#32631
 Provides:	arch(%{_target_cpu})
 Provides:	%{arch_tagged distro-release-common}
@@ -106,10 +103,7 @@ Summary:	%{new_vendor} release file
 Group:		System/Configuration/Other
 Requires:	%{name}-common = %{EVRD}
 Requires:	%{arch_tagged distro-release-common}
-Requires(post,postun):	coreutils
-Requires(post,postun):	util-linux
-Requires(post,postun):	/bin/sh
-Requires(post,postun):	%{name}-common
+Requires:	%{name}-common >= %{version}
 Provides:	mandriva-release = %{EVRD}
 Provides:	distro-release = %{EVRD}
 Provides:	system-release
