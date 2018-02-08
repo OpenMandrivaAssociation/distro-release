@@ -2,15 +2,25 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
-%{python:import sys; sys.path.append(rpm.expandMacro("%{_sourcedir}"))}
-%{python:import distro}
+%define new_distribution OpenMandriva Lx
+%define new_vendor OpenMandriva
+%define new_product OpenMandriva Lx
+# (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
+%define new_codename Nitrogen
+%define vendor_tag %(echo %{new_vendor} |tr A-Z a-z)
+%define distribution_tag %(echo %{new_distribution} |tr A-Z a-z |sed -e 's,[ /!?],_,g')
+%define product_tag %(echo %{new_product} |tr A-Z a-z |sed -e 's,[ /!?],_,g')
+%define shorttag omv
+%define new_disturl http://openmandriva.org/
+%define new_bugurl http://issues.openmandriva.org/
+
 %define am_i_cooker 1
 %if %am_i_cooker
 %define distrib Cooker
 %else
 %define distrib Official
 %endif
-%define _distribution %(echo %{distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
+%define _distribution %(echo %{new_distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
 %define product_type Basic
 %if %am_i_cooker
 %define product_branch Devel
@@ -35,24 +45,22 @@
 %define major %(printf %u 0%(echo %{version}|cut -d. -f1))
 %define minor %(printf %u 0%(echo %{version}|cut -d. -f2))
 %define subminor %(printf %u 0%(echo %{version}|cut -d. -f3))
-%define mdkver %(echo $((%{major}*1000000+%{minor}*1000+%{subminor})))
+%define distro_tag %(echo $((%{major}*1000+%{minor})))
+%define version_tag %(echo $((%{major}*1000000+%{minor}*1000+%{subminor})))
+%define mdkver %{version_tag}
 
-Summary:	%{distribution} release file
+Summary:	%{new_distribution} release file
 Name:		distro-release
-# Ugly, but needed for 2015.0 -> 3.0 transition
-Epoch:		2
-Version:	3.1
+Version:	4.0
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 # 3001 = 3.1
 # 3001 = 3.2 etc.
-DistEpoch:	3001
-Release:	0.8
+DistEpoch:	%{distro_tag}
+Release:	0.1
 License:	GPLv2+
-URL:		%{disturl}
+URL:		%{new_disturl}
 Group:		System/Configuration/Other
 Source0:	%{name}.tar.xz
-Source1:	distro.py
-Source2:	%{name}.rpmlintrc
 Source3:	CREDITS
 # edited lynx -dump of wiki:
 Source4:	release-notes.txt
@@ -63,7 +71,7 @@ Source5:	release-notes.html
 %{distribution} release file.
 
 %package	common
-Summary:	%{distribution} release common files
+Summary:	%{new_distribution} release common files
 Group:		System/Configuration/Other
 %rename		rosa-release-common
 %rename		mandriva-release-common
@@ -90,10 +98,39 @@ Provides:	%{arch_tagged distro-release-common}
 Obsoletes:	distro-release-Moondrake
 
 %description	common
-Common files for %{distribution} release packages.
+Common files for %{new_distribution} release packages.
 
 # build release flavour rpm
-%{python:distro.release_package("OpenMandriva Lx", "OpenMandriva", Prio=12)}
+%package 	%{new_vendor}
+Summary:	%{new_vendor} release file
+Group:		System/Configuration/Other
+Requires:	%{name}-common = %{EVRD}
+Requires:	%{arch_tagged distro-release-common}
+Requires(post,postun):	coreutils
+Requires(post,postun):	util-linux
+Requires(post,postun):	/bin/sh
+Requires(post,postun):	chkconfig >= 1.10
+Requires(post,postun):	%{name}-common
+Provides:	mandriva-release = %{EVRD}
+Provides:	distro-release = %{EVRD}
+Provides:	system-release
+Provides:	system-release(%{version})
+Provides:	system-release(releasever) = %{version}
+
+%description %{new_vendor}
+%{new_distribution} release file for %{new_vendor} flavor.
+
+%files %{new_vendor}
+%{_sys_macros_dir}/%{new_vendor}.macros
+%{_sysconfdir}/os-release.%{vendor_tag}
+%{_sysconfdir}/%{vendor_tag}-release
+%{_sysconfdir}/product.id.%{new_vendor}
+%{_sysconfdir}/version.%{vendor_tag}
+
+%{_sysconfdir}/os-release
+%{_sysconfdir}/release
+%{_sysconfdir}/product.id
+%{_sysconfdir}/version
 
 %prep
 %setup -q -n %{name}
@@ -102,11 +139,11 @@ cp -a %{SOURCE4} release-notes.txt
 cp -a %{SOURCE5} release-notes.html
 
 cat > README.urpmi << EOF
-This is %{distribution} %{version}
+This is %{new_distribution} %{version}
 
 You can find the release notes in %{_docdir}/%{name}-common/release-notes.txt
 
-or on the web at %{disturl}
+or on the web at %{new_disturl}
 EOF
 
 # check that CREDITS file is in UTF-8, fail otherwise
@@ -121,11 +158,6 @@ fi
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}
-touch %{buildroot}%{_sysconfdir}/product.id
-touch %{buildroot}%{_sysconfdir}/os-release
-touch %{buildroot}%{_sysconfdir}/release
-touch %{buildroot}%{_sysconfdir}/version
-
 ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/redhat-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandrake-release
@@ -137,51 +169,111 @@ ln -sf release %{buildroot}%{_sysconfdir}/system-release
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 cat > %{buildroot}%{_sysconfdir}/profile.d/10distro-release.csh << EOF
 if ( -r %{_sysconfdir}/sysconfig/system ) then
-    eval `sed 's|^#.*||' %{_sysconfdir}/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
-    setenv META_CLASS $META_CLASS
+	eval `sed 's|^#.*||' %{_sysconfdir}/sysconfig/system | sed 's|\([^=]*\)=\([^=]*\)|set \1=\2|g' | sed 's|$|;|' `
+	setenv META_CLASS $META_CLASS
 else
-    setenv META_CLASS unknown
+	setenv META_CLASS unknown
 endif
 EOF
 
 cat > %{buildroot}%{_sysconfdir}/profile.d/10distro-release.sh << EOF
 if [ -r %{_sysconfdir}/sysconfig/system ]; then
-    . %{_sysconfdir}/sysconfig/system
-    export META_CLASS
+	. %{_sysconfdir}/sysconfig/system
+	export META_CLASS
 else
-    export META_CLASS=unknown
+	export META_CLASS=unknown
 fi
 EOF
 
-# (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
-%{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "(Nitrogen)", "http://openmandriva.org", "https://issues.openmandriva.org", "omv", ansiColor="1;43")}
+echo %{buildroot}%{_sysconfdir}/product.id.%{new_vendor}
+cat >%{buildroot}%{_sysconfdir}/product.id.%{new_vendor} <<EOF
+vendor=%{new_vendor},distribution=%{new_distribution},type=%{product_type},version=%{version},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product=%{new_distribution}
+EOF
+
+mkdir -p %{buildroot}%{_sys_macros_dir}
+cat >%{buildroot}%{_sys_macros_dir}/%{new_vendor}.macros <<EOF
+%%distro_release	%{version}
+%%distro_branch		%distro_branch
+%%distro_class		%%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)
+
+# (tpg) legacy stuff should be removed after all packages do not use macros begining with %%mandriva\
+
+%%mandriva_release	%{version}
+%%mandriva_branch	%mandriva_branch
+%%mdkver		%mdkver
+%%mdvver		%%mdkver
+%%omvver		%%mdkver
+
+# productid variable
+%%product_id vendor=%{vendor_tag},distribution=%{new_distribution},type=%{product_type},version=%{version},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product=%{new_distribution}
+
+%%product_vendor	%{vendor_tag}
+%%product_distribution	%{new_distribution}
+%%product_type		%{product_type}
+%%product_version	%{version}
+%%product_branch	%{product_branch}
+%%product_release	%{product_release}
+%%product_arch		%{product_arch}
+%%product_product	%{new_product}
+%%distribution		%{new_distribution}
+%%_distribution		%{distribution_tag}
+%%disturl		%{new_disturl}
+%%bugurl		%{new_bugurl}
+%%vendor		%{new_vendor}
+%%_vendor		%{vendor_tag}
+%%disttag		%{shorttag}
+%%distepoch		%{distro_tag}
+EOF
+
+mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
+cat > %{buildroot}%{_sysconfdir}/sysconfig/system <<EOF
+SECURITY=3
+CLASS=beginner
+LIBSAFE=no
+META_CLASS=download
+EOF
+
+cat >%{buildroot}%{_sysconfdir}/%{vendor_tag}-release <<EOF
+%{new_distribution} release %{version} (%{new_codename}) for %{_target_cpu}
+EOF
+cat >%{buildroot}%{_sysconfdir}/version.%{vendor_tag} <<EOF
+%{version} %{release} (%{new_codename})
+EOF
+
+# (tpg) follow standard specifications http://www.freedesktop.org/software/systemd/man/os-release.html
+cat >%{buildroot}%{_sysconfdir}/os-release.%{vendor_tag} <<EOF
+NAME="%{new_distribution}"
+VERSION="%{version} (%{new_codename})"
+ID="%{vendor_tag}"
+VERSION_ID="%{version}"
+BUILD_ID="%(echo `date +"%Y%m%d.%H"`)"
+PRETTY_NAME="%{new_distribution} %{version} (%{new_codename})"
+VERSION_CODENAME="(%{new_codename})"
+ANSI_COLOR="1;43"
+CPE_NAME="cpe:/o:%{vendor_tag}:%{distribution_tag}:%{version}"
+HOME_URL="%{new_disturl}"
+BUG_REPORT_URL="%{new_bugurl}"
+EOF
+
+ln -s os-release.%{vendor_tag} %{buildroot}%{_sysconfdir}/os-release
+ln -s %{vendor_tag}-release %{buildroot}%{_sysconfdir}/release
+ln -s product.id.%{new_vendor} %{buildroot}%{_sysconfdir}/product.id
+ln -s version.%{vendor_tag} %{buildroot}%{_sysconfdir}/version
 
 %check
 %if %{am_i_cooker}
 case %{release} in
-    0.*) ;;
-    *)
-    echo "Cooker distro should have this package with release < %{mkrel 1}"
-    exit 1
-    ;;
+0.*)
+	;;
+*)
+	echo "Cooker distro should have this package with release < %{mkrel 1}"
+	exit 1
+	;;
 esac
 %endif
 
-%post common
-if [ $1 -ge 2 ]; then
-    [ -f %{_sysconfdir}/product.id ] && rm %{_sysconfdir}/product.id ||:
-    [ -f %{_sysconfdir}/os-release ] && rm %{_sysconfdir}/os-release ||:
-    [ -f %{_sysconfdir}/release ] && rm %{_sysconfdir}/release ||:
-    [ -f %{_sysconfdir}/version ] && rm %{_sysconfdir}/version ||:
-    exit 0
-fi
-
 %files common
 %doc CREDITS distro.txt README.urpmi release-notes.*
-%ghost %{_sysconfdir}/product.id
-%ghost %{_sysconfdir}/os-release
-%ghost %{_sysconfdir}/release
-%ghost %{_sysconfdir}/version
 %{_sysconfdir}/redhat-release
 %{_sysconfdir}/mandrake-release
 %{_sysconfdir}/mandriva-release
