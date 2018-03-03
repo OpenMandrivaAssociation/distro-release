@@ -49,14 +49,17 @@
 %define version_tag %(echo $((%{major}*1000000+%{minor}*1000+%{subminor})))
 %define mdkver %{version_tag}
 
+# Temporary...
+%{!?_rpmmacrodir: %define _rpmmacrodir %{_prefix}/lib/rpm/macros.d}
+
 Summary:	%{new_distribution} release file
 Name:		distro-release
 Version:	4.0
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 # 3001 = 3.1
 # 3001 = 3.2 etc.
-DistEpoch:	%{distro_tag}
-Release:	0.2
+DistTag:	%{shorttag}%{distro_tag}
+Release:	0.3
 License:	GPLv2+
 URL:		%{new_disturl}
 Group:		System/Configuration/Other
@@ -114,7 +117,7 @@ Provides:	system-release(releasever) = %{version}
 %{new_distribution} release file for %{new_vendor} flavor.
 
 %files %{new_vendor}
-%{_sys_macros_dir}/%{new_vendor}.macros
+%{_rpmmacrodir}/macros.%{new_vendor}
 %{_sysconfdir}/os-release.%{vendor_tag}
 %{_sysconfdir}/%{vendor_tag}-release
 %{_sysconfdir}/product.id.%{new_vendor}
@@ -183,8 +186,8 @@ cat >%{buildroot}%{_sysconfdir}/product.id.%{new_vendor} <<EOF
 vendor=%{new_vendor},distribution=%{new_distribution},type=%{product_type},version=%{version},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product=%{new_distribution}
 EOF
 
-mkdir -p %{buildroot}%{_sys_macros_dir}
-cat >%{buildroot}%{_sys_macros_dir}/%{new_vendor}.macros <<EOF
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cat >%{buildroot}%{_rpmmacrodir}/macros.%{new_vendor} <<EOF
 %%distro_release	%{version}
 %%distro_branch		%distro_branch
 %%distro_class		%%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)
@@ -214,8 +217,9 @@ cat >%{buildroot}%{_sys_macros_dir}/%{new_vendor}.macros <<EOF
 %%bugurl		%{new_bugurl}
 %%vendor		%{new_vendor}
 %%_vendor		%{vendor_tag}
-%%disttag		%{shorttag}
-%%distepoch		%{distro_tag}
+%%distsuffix		%{shorttag}
+
+%%distrelease		%{distro_tag}
 EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
