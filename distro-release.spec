@@ -2,6 +2,12 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
+# (tpg) disable rpmlint for rpm5->rpm4. After switch remove these
+%undefine _build_pkgcheck_set
+%undefine _build_pkgcheck_srpm
+%undefine _nonzero_exit_pkgcheck_terminate_build
+###
+
 %define new_distribution OpenMandriva Lx
 %define new_vendor OpenMandriva
 %define new_product OpenMandriva Lx
