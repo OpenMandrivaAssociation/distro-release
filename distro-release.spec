@@ -99,7 +99,9 @@ Requires:	filesystem
 # cf mdvbz#32631
 Provides:	arch(%{_target_cpu})
 Provides:	%{arch_tagged distro-release-common}
-
+# (tpg) remove after rpm5 to rpmv4 migration
+BuildRequires:	spec-helper
+Requires:	spec-helper
 # (tpg) get rid of it
 Obsoletes:	distro-release-Moondrake
 
