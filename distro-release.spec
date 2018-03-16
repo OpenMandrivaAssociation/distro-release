@@ -65,7 +65,7 @@ Version:	4.0
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	0.3
+Release:	0.4
 License:	GPLv2+
 URL:		%{new_disturl}
 Group:		System/Configuration/Other
@@ -100,8 +100,10 @@ Requires:	filesystem
 Provides:	arch(%{_target_cpu})
 Provides:	%{arch_tagged distro-release-common}
 # (tpg) remove after rpm5 to rpmv4 migration
+%ifnarch x86_64
 BuildRequires:	spec-helper
 Requires:	spec-helper
+%endif
 # (tpg) get rid of it
 Obsoletes:	distro-release-Moondrake
 
