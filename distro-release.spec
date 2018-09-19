@@ -2,12 +2,6 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
-# (tpg) disable rpmlint for rpm5->rpm4. After switch remove these
-%undefine _build_pkgcheck_set
-%undefine _build_pkgcheck_srpm
-%undefine _nonzero_exit_pkgcheck_terminate_build
-###
-
 %define new_distribution OpenMandriva Lx
 %define new_vendor OpenMandriva
 %define new_product OpenMandriva Lx
@@ -65,7 +59,7 @@ Version:	4.0
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	0.4
+Release:	0.5
 License:	GPLv2+
 URL:		%{new_disturl}
 Group:		System/Configuration/Other
@@ -144,14 +138,6 @@ cp -a %{SOURCE3} CREDITS
 cp -a %{SOURCE4} release-notes.txt
 cp -a %{SOURCE5} release-notes.html
 
-cat > README.urpmi << EOF
-This is %{new_distribution} %{version}
-
-You can find the release notes in %{_docdir}/%{name}-common/release-notes.txt
-
-or on the web at %{new_disturl}
-EOF
-
 # check that CREDITS file is in UTF-8, fail otherwise
 if iconv -f utf-8 -t utf-8 < CREDITS > /dev/null
 then
@@ -167,7 +153,6 @@ mkdir -p %{buildroot}%{_sysconfdir}
 ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/redhat-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandrake-release
-ln -sf release %{buildroot}%{_sysconfdir}/mandriva-release
 ln -sf release %{buildroot}%{_sysconfdir}/mandrakelinux-release
 ln -sf release %{buildroot}%{_sysconfdir}/rosa-release
 ln -sf release %{buildroot}%{_sysconfdir}/system-release
@@ -260,6 +245,8 @@ ANSI_COLOR="1;43"
 CPE_NAME="cpe:/o:%{vendor_tag}:%{distribution_tag}:%{version}"
 HOME_URL="%{new_disturl}"
 BUG_REPORT_URL="%{new_bugurl}"
+SUPPORT_URL="https://forum.openmandriva.org"
+PRIVACY_POLICY_URL="https://www.openmandriva.org/tos"
 EOF
 
 ln -s os-release.%{vendor_tag} %{buildroot}%{_sysconfdir}/os-release
@@ -280,7 +267,7 @@ esac
 %endif
 
 %files common
-%doc CREDITS distro.txt README.urpmi release-notes.*
+%doc CREDITS distro.txt release-notes.*
 %{_sysconfdir}/redhat-release
 %{_sysconfdir}/mandrake-release
 %{_sysconfdir}/mandriva-release
