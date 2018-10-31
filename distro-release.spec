@@ -59,7 +59,7 @@ Version:	4.0
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	0.5
+Release:	0.6
 License:	GPLv2+
 URL:		%{new_disturl}
 Group:		System/Configuration/Other
