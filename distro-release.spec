@@ -15,10 +15,15 @@
 %define new_bugurl http://issues.openmandriva.org/
 
 %define am_i_cooker 1
+%define am_i_rolling 0
 %if %am_i_cooker
 %define distrib Cooker
 %else
+%if %am_i_rolling
+%define distrib Rolling
+%else
 %define distrib Official
+%endif
 %endif
 %define _distribution %(echo %{new_distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
 %define product_type Basic
@@ -54,12 +59,12 @@
 
 Summary:	%{new_distribution} release file
 Name:		distro-release
-Version:	4.0
+Version:	4.0.1
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	0.6
+Release:	0.1
 License:	GPLv2+
 URL:		%{new_disturl}
 Group:		System/Configuration/Other
