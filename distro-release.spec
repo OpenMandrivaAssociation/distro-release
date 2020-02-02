@@ -59,16 +59,16 @@
 
 Summary:	%{new_distribution} release file
 Name:		distro-release
-Version:	4.1
+Version:	2019.1
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
 %if 0%am_i_cooker
-Release:	0.2
+Release:	1
 %else
 %if 0%am_i_rolling
-Release:	0.1
+Release:	1
 %else
 Release:	1
 %endif
