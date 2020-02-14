@@ -6,7 +6,7 @@
 %define new_vendor OpenMandriva
 %define new_product OpenMandriva Lx
 # (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
-%define new_codename Mercury
+%define new_codename Argon
 %define vendor_tag %(echo %{new_vendor} |tr A-Z a-z)
 %define distribution_tag %(echo %{new_distribution} |tr A-Z a-z |sed -e 's,[ /!?],_,g')
 %define product_tag %(echo %{new_product} |tr A-Z a-z |sed -e 's,[ /!?],_,g')
@@ -65,7 +65,7 @@ Version:	4.2
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
 %if 0%am_i_cooker
-Release:	0.2
+Release:	0.2.1
 %else
 %if 0%am_i_rolling
 Release:	0.1
