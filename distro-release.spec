@@ -65,7 +65,7 @@ Version:	4.2
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
 %if 0%am_i_cooker
-Release:	0.2.1
+Release:	0.3
 %else
 %if 0%am_i_rolling
 Release:	0.1
@@ -199,18 +199,14 @@ cat >%{buildroot}%{_rpmmacrodir}/macros.%{new_vendor} <<EOF
 %%distro_release	%{version}
 %%distro_branch		%distro_branch
 %%distro_class		%%(. %{_sysconfdir}/sysconfig/system; echo \\\$META_CLASS)
-
 # (tpg) legacy stuff should be removed after all packages do not use macros begining with %%mandriva\
-
 %%mandriva_release	%{version}
 %%mandriva_branch	%mandriva_branch
 %%mdkver		%mdkver
 %%mdvver		%%mdkver
 %%omvver		%%mdkver
-
 # productid variable
 %%product_id vendor=%{vendor_tag},distribution=%{new_distribution},type=%{product_type},version=%{version},branch=%{product_branch},release=%{product_release},arch=%{product_arch},product=%{new_distribution}
-
 %%product_vendor	%{vendor_tag}
 %%product_distribution	%{new_distribution}
 %%product_type		%{product_type}
@@ -226,7 +222,6 @@ cat >%{buildroot}%{_rpmmacrodir}/macros.%{new_vendor} <<EOF
 %%vendor		%{new_vendor}
 %%_vendor		%{vendor_tag}
 %%distsuffix		%{shorttag}
-
 %%distrelease		%{distro_tag}
 EOF
 

@@ -28,8 +28,15 @@ title-font: "Unifont Regular 14"
 message-font: "Unifont Regular 14"
 message-color: "#7f8c8d"
 message-bg-color: "#4d4d4d" # TODO: whatever is this for?
-# use black png file to fix error with entering submenus
-desktop-image: "black.png" # black
+desktop-color: "#000000" # black
+desktop-image: "black.png"
+desktop-image-scale-method: "stretch"
+terminal-font: "Unifont Regular 14"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "0"
 
 # title
 # NOTE: can't put this in a vbox because GRUB is crap and item highlighting

@@ -4,8 +4,8 @@ Description=A OpenMandriva spinner theme.
 ModuleName=two-step
 
 [two-step]
-Font=Cantarell 12
-TitleFont=Cantarell Light 30
+Font=Noto Serif 12
+TitleFont=Noto Serif Light 28
 ImageDir=/usr/share/plymouth/themes/OpenMandriva
 DialogHorizontalAlignment=.5
 DialogVerticalAlignment=.382
@@ -14,7 +14,7 @@ TitleVerticalAlignment=.382
 HorizontalAlignment=.5
 VerticalAlignment=.7
 WatermarkHorizontalAlignment=.5
-WatermarkVerticalAlignment=.96
+WatermarkVerticalAlignment=.5
 Transition=none
 TransitionDuration=0.0
 BackgroundStartColor=0x000000
