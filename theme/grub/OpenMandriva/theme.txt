@@ -55,7 +55,7 @@ terminal-border: "0"
 # Show the boot menu
 + boot_menu {
     left = 50%-200
-    width = 400
+    width = 80%
     # NB: this is scooped upwards from the middle.
     #     effectively 50px are below and the remaining 150 above
     top = 50%-150
@@ -77,7 +77,7 @@ terminal-border: "0"
 + vbox {
     left = 50%-200 # same as menu
     top = 50%+113 # (50+16+19+28) half menu + spacer + progress + spacer
-    width = 400 # same as menu
+    width = 80% # same as menu
     + label { width = 400 align = "center" color = "#7f8c8d" font = "Unifont Regular 14" text = "[Enter] Boot the selected OS" }
     + label { width = 400 align = "center" color = "#7f8c8d" font = "Unifont Regular 14" text = "[Up and Down Key] navigation" }
     + label { width = 400 align = "center" color = "#7f8c8d" font = "Unifont Regular 14" text = "[E] Edit Selection" }
