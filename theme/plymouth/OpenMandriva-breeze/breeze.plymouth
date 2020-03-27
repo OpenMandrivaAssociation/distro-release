@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=OpenMandriva Breeze
+Description=A OpenMandriva Breeze Splash screen
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/OpenMandriva-breeze
+ScriptFile=/usr/share/plymouth/themes/OpenMandriva-breeze/breeze.script
