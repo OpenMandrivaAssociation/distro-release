@@ -5,7 +5,7 @@ Here is a basic layout:
 
 - docs
 
-    varius documentation, including release-notes
+    various documentation, including release-notes
 
 - installator
 
