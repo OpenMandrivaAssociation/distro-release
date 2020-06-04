@@ -170,6 +170,53 @@ Obsoletes:	desktop-common-data < 1:4.2-4
 This package contains useful icons, menu structure and others goodies for the
 %{distribution} desktop.
 
+%package desktop-Plasma
+Summary:	Plasma desktop configuration
+Group:		Graphical desktop/KDE
+BuildRequires:	cmake(ECM)
+Requires:	distro-theme >= 1.4.41-4
+Requires:	breeze
+Requires:	breeze-gtk
+Requires:	breeze-icons
+Requires:	noto-sans-fonts
+Provides:	kde4-config-file
+Provides:	distro-kde4-config-OpenMandriva = 2015.0
+Provides:	distro-kde4-config-OpenMandriva-common = 2015.0
+Obsoletes:	distro-kde4-config-OpenMandriva < 2015.0
+Obsoletes:	distro-kde4-config-OpenMandriva-common < 2015.0
+Provides:	mandriva-kde4-config = 2014.0
+Obsoletes:	mandriva-kde4-config < 2014.0
+Provides:	distro-kde4-config-common = 2015.0
+Obsoletes:	distro-kde4-config-common < 2015.0
+BuildArch:	noarch
+
+
+%description desktop-Plasma
+KDE Plasma desktop configuration.
+
+#package desktop-Xfce
+#description desktop-Xfce
+
+%if 0
+%package theme
+%description theme
+
+%package repos
+%description repos
+
+%package repos-keys
+%description repos-keys
+
+%package repos-pkgprefs
+%description repos-pkgprefs
+
+%package rpm-setup
+%description rpm-setup
+
+%package rpm-setup-build
+%description rpm-setup-build
+%endif
+
 %prep
 cp -a %{_topdir}/doc/CREDITS CREDITS
 cp -a %{_topdir}/doc/distro.txt distro.txt
@@ -342,7 +389,39 @@ mkdir -p %{buildroot}%{_sysconfdir}/xdg/menus
 ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/applications.menu
 ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/kde-applications.menu
 ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/gnome-applications.menu
-### DESKTOP ###
+### DESKTOP END ###
+
+
+### DESKTOP PLASMA ###
+
+mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg
+mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg/KDE
+mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg/QtProject
+mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/env
+mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/shutdown
+mkdir -p %{buildroot}%{_kde5_datadir}/kservices5
+mkdir -p %{buildroot}%{_kde5_datadir}/plasma/shells/org.kde.plasma.desktop/contents
+mkdir -p %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents
+mkdir -p %{buildroot}%{_datadir}/konsole
+
+for i in kcmdisplayrc kcmfonts kcminputrc kdeglobals kscreenlockerrc ksplashrc kwinrc plasmarc startupconfig startupconfigfiles kcm-about-distrorc ksmserverrc kiorc dolphinrc konsolerc klaunchrc discoverabstractnotifier.notifyrc plasma_workspace.notifyrc powermanagementprofilesrc; do
+    install -m 0644 %{_topdir}/desktops/Plasma/$i %{buildroot}%{_kde5_sysconfdir}/xdg/$i
+done
+
+install -m 0644 %{_topdir}/desktops/Plasma/metadata.desktop %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/metadata.desktop
+install -m 0644 %{_topdir}/desktops/Plasma/metadata.desktop %{buildroot}%{_kde5_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
+install -m 0644 %{_topdir}/desktops/Plasma/org.kde.plasma.desktop-layout.js %{buildroot}%{_kde5_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
+install -m 0644 %{_topdir}/desktops/Plasma/org.openmandriva.plasma.desktop.defaultPanel-layout.js %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents/layout.js
+install -m 0644 %{_topdir}/desktops/Plasma/plasma-firstsetup.sh %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/env/plasma-firstsetup.sh
+install -m 0644 %{_topdir}/desktops/Plasma/Sonnet.conf %{buildroot}%{_kde5_sysconfdir}/xdg/KDE/Sonnet.conf
+install -m 0644 %{_topdir}/desktops/Plasma/kdeglobals.sh %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/env/kdeglobals.sh
+install -m 0644 %{_topdir}/desktops/Plasma/qtlogging.ini %{buildroot}%{_kde5_sysconfdir}/xdg/QtProject/qtlogging.ini
+install -m 0644 %{_topdir}/desktops/Plasma/OMV.profile %{buildroot}%{_datadir}/konsole/OMV.profile
+mkdir -p %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents
+install -m 0644 %{_topdir}/desktops/Plasma/org.openmandriva.plasma.desktop.globalMenuPanel-layout.js %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents/layout.js
+install -m 0644 %{_topdir}/desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/metadata.desktop
+
+### DESKTOP PLASMA END ###
 
 %check
 %if %{am_i_cooker}
@@ -390,3 +469,10 @@ esac
 %{_datadir}/mdk/dm
 %{_iconsdir}/hicolor/scalable/apps/*.svg
 
+%files desktop-Plasma
+%{_kde5_sysconfdir}/xdg/*
+%{_datadir}/konsole/OMV.profile
+%{_kde5_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
+%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
+%{_kde5_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
+%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
