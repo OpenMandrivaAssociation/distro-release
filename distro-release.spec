@@ -157,7 +157,7 @@ Conflicts:	kdebase-kdm-config-file < 1:3.2-62mdk
 Requires(post):	etcskel
 Requires(post):	run-parts
 Requires:	shared-mime-info
-Obsoletes:	menu-messages
+Obsoletes:	menu-messages <= 2011.1
 Obsoletes:	desktop-common-data < 1:4.2-4
 %rename		mandrake_desk
 %rename		menu
@@ -174,7 +174,8 @@ This package contains useful icons, menu structure and others goodies for the
 Summary:	Plasma desktop configuration
 Group:		Graphical desktop/KDE
 BuildRequires:	cmake(ECM)
-Requires:	distro-theme >= 1.4.41-4
+Requires:	%{name}-desktop >= %{version}
+Requires:	%{name}-theme >= %{version}
 Requires:	breeze
 Requires:	breeze-gtk
 Requires:	breeze-icons
@@ -188,6 +189,7 @@ Provides:	mandriva-kde4-config = 2014.0
 Obsoletes:	mandriva-kde4-config < 2014.0
 Provides:	distro-kde4-config-common = 2015.0
 Obsoletes:	distro-kde4-config-common < 2015.0
+%rename		distro-plasma-config
 BuildArch:	noarch
 
 
