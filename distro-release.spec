@@ -54,9 +54,6 @@
 %define version_tag %(echo $((%{major}*1000000+%{minor}*1000+%{subminor})))
 %define mdkver %{version_tag}
 
-# Temporary...
-%{!?_rpmmacrodir: %define _rpmmacrodir %{_prefix}/lib/rpm/macros.d}
-
 Summary:	%{new_distribution} release file
 Name:		distro-release
 Version:	4.2
@@ -68,7 +65,7 @@ DistTag:	%{shorttag}%{distro_tag}
 Release:	0.4
 %else
 %if 0%am_i_rolling
-Release:	0.1
+Release:	0.2
 %else
 Release:	1
 %endif
@@ -199,10 +196,38 @@ KDE Plasma desktop configuration.
 #package desktop-Xfce
 #description desktop-Xfce
 
-%if 0
 %package theme
-%description theme
+Summary:	Themes for %{distribution}
+Group:		Graphics
+Provides:	plymouth(system-theme)
+Requires:	distro-theme-common
+%ifnarch %{arm}
+Requires:	plymouth-plugin-script
+Requires:	grub2
+%endif
+%rename		grub2-OpenMandriva-theme
+%rename		grub2-Moondrake-theme
+%rename		distro-theme-common
+%rename		distro-theme-extra
+%rename		distro-theme-screensaver
+%rename		distro-theme-OpenMandriva-screensaver
+%rename		distro-theme-OpenMandriva-grub2
+%rename		mandriva-theme-common
+%rename		mandriva-theme-extra
+%rename		mandriva-theme-Rosa-screensaver
+%rename		mandriva-screensaver
+%rename		mandriva-theme-screensave
+%rename		mandriva-theme-Moondrake
+%rename		mandriva-theme-OpenMandriva
 
+%description theme
+This package provides default themes for %{distribution}'s components:
+grub
+screensaver
+plymouth.
+
+
+%if 0
 %package repos
 %description repos
 
@@ -337,6 +362,7 @@ ln -s product.id.%{new_vendor} %{buildroot}%{_sysconfdir}/product.id
 ln -s version.%{vendor_tag} %{buildroot}%{_sysconfdir}/version
 
 ### DESKTOP ###
+
 ## Install backgrounds
 # User & root's backgrounds
 install -d -m 0755 %{buildroot}%{_datadir}/mdk/backgrounds/
@@ -393,7 +419,6 @@ ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/k
 ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/gnome-applications.menu
 ### DESKTOP END ###
 
-
 ### DESKTOP PLASMA ###
 
 mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg
@@ -422,8 +447,59 @@ install -m 0644 %{_topdir}/desktops/Plasma/OMV.profile %{buildroot}%{_datadir}/k
 mkdir -p %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents
 install -m 0644 %{_topdir}/desktops/Plasma/org.openmandriva.plasma.desktop.globalMenuPanel-layout.js %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents/layout.js
 install -m 0644 %{_topdir}/desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/metadata.desktop
+mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
+cp -a %{_topdir}/desktops/Plasma/org.openmandriva4.desktop %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop
 
 ### DESKTOP PLASMA END ###
+
+### THEME ###
+
+# Make sure the logo can be found where modern applications expect it
+mkdir -p %{buildroot}%{_iconsdir}/hicolor/scalable/apps
+cp %{_topdir}/theme/icons/openmandriva.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/
+for i in 16 22 24 32 36 48 64 72 96 128 192 256 512; do
+    mkdir -p %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps
+    convert -background none %{_topdir}/theme/icons/openmandriva.svg %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps/openmandriva.png
+done
+
+# Default wallpaper should be available without browsing file system
+mkdir -p %{buildroot}%{_datadir}/wallpapers
+cp -a %{_topdir}/theme/backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
+cp -a %{_topdir}/theme/extra-backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
+# (tpg) add falvour name on the wallapaer
+convert -fill white -pointsize 20 -gravity center -draw "text 565,560 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png
+convert -fill white -pointsize 20 -gravity center -draw "text 300,410 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png
+convert -fill white -pointsize 20 -gravity center -draw "text 700,500 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-4x3.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-4x3.png
+convert -fill white -pointsize 20 -gravity center -draw "text 500,370 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-5x4.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-5x4.png
+ln -sf /usr/share/mdk/backgrounds/OpenMandriva-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/default.png
+ln -sf /usr/share/mdk/backgrounds/default.png %{buildroot}%{_datadir}/wallpapers/default.png
+ln -sf /usr/share/mdk/backgrounds/default.png %{buildroot}%{_datadir}/wallpapers/default.jpg
+
+mkdir -p %{buildroot}%{_datadir}/mdk/screensaver
+cp -a %{_topdir}/theme/screensaver/*.jpg %{buildroot}%{_datadir}/mdk/screensaver
+
+mkdir -p %{buildroot}%{_datadir}/pixmaps
+cp -a %{_topdir}/theme/pixmaps/*.*g %{buildroot}%{_datadir}/pixmaps
+
+mkdir -p %{buildroot}%{_datadir}/plymouth/themes
+cp -a %{_topdir}/theme/plymouth/%{vendor} %{buildroot}%{_datadir}/plymouth/themes/
+
+# (tpg) arm does not uses grub, but aarch64 does
+%ifnarch %{arm}
+mkdir -p %{buildroot}/boot/grub2/themes/%{vendor}
+cp -a %{_topdir}/theme/grub/%{vendor}/* %{buildroot}/boot/grub2/themes/%{vendor}
+rm -rf %{buildroot}/boot/grub2/themes/%{vendor}/05_theme
+mkdir -p %{buildroot}%{_sysconfdir}/grub.d
+install -m755 %{_topdir}/theme/grub/%{vendor}/05_theme %{buildroot}%{_sysconfdir}/grub.d/05_theme
+mkdir -p %{buildroot}%{_sysconfdir}/default/
+cat > %{buildroot}%{_sysconfdir}/default/grub.%{vendor} << EOF
+GRUB_THEME=/boot/grub2/themes/%{vendor}/theme.txt
+GRUB_BACKGROUND=/boot/grub2/themes/%{vendor}/terminal_background.png
+GRUB_DISTRIBUTOR="%{distribution}"
+EOF
+%endif
+
+### THEME END ###
 
 %check
 %if %{am_i_cooker}
@@ -435,6 +511,31 @@ case %{release} in
     exit 1
     ;;
 esac
+%endif
+
+%post theme
+%ifnarch %{arm}
+%{_sbindir}/plymouth-set-default-theme %{vendor}
+
+if test -f %{_sysconfdir}/default/grub ; then
+    . %{_sysconfdir}/default/grub
+    if [ "x\${GRUB_DISABLE_VENDOR_CONF}" = "x" ] || [ "x\${GRUB_DISABLE_VENDOR_CONF}" = "xfalse" ]; then
+	sed -e '/GRUB_DISTRIBUTOR/d' -e '/GRUB_THEME/d' -e '/GRUB_BACKGROUND/d' -i %{_sysconfdir}/default/grub
+	if [ "x\${GRUB_DISABLE_VENDOR_CONF}" = "x" ]; then
+	    echo -e "\n" >> %{_sysconfdir}/default/grub
+	    echo "GRUB_DISABLE_VENDOR_CONF=false" >> %{_sysconfdir}/default/grub
+	fi
+    fi
+fi
+
+update-alternatives --install %{_sysconfdir}/default/grub.vendor grub.vendor %{_sysconfdir}/default/grub.%{vendor} 10
+%endif
+
+%postun theme
+%ifnarch %{arm}
+if [ "$1" = "0" ]; then
+    update-alternatives --remove grub.vendor %{_sysconfdir}/default/grub.%{vendor}
+fi
 %endif
 
 %files common
@@ -478,3 +579,22 @@ esac
 %{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
 %{_kde5_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 %{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
+%{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop
+
+%files theme
+%{_datadir}/mdk/backgrounds/*.*g
+%{_datadir}/wallpapers/default.*g
+%{_iconsdir}/hicolor/scalable/apps/openmandriva.svg
+%{_iconsdir}/hicolor/*/apps/openmandriva.png
+%dir %{_datadir}/mdk/screensaver
+%{_datadir}/mdk/screensaver/*.jpg
+%{_datadir}/plymouth/themes/%{vendor}
+%optional %{_datadir}/pixmaps/system-logo-white.png
+
+%ifnarch %{arm}
+%{_sysconfdir}/grub.d/05_theme
+%{_sysconfdir}/default/grub.%{vendor}
+%dir /boot/grub2/themes/%{vendor}
+/boot/grub2/themes/%{vendor}/*
+%{_sysconfdir}/grub.d/*
+%endif
