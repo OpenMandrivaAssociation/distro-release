@@ -207,6 +207,7 @@ KDE Plasma desktop configuration.
 %package theme
 Summary:	Themes for %{distribution}
 Group:		Graphics
+BuildRequires:	imagemagick
 Provides:	plymouth(system-theme)
 Requires:	distro-theme-common
 %ifnarch %{arm}
@@ -654,7 +655,7 @@ done
 mkdir -p %{buildroot}%{_datadir}/wallpapers
 cp -a %{_sourcedir}/theme/backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
 cp -a %{_sourcedir}/theme/extra-backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
-# (tpg) add falvour name on the wallapaer
+# (tpg) add flavour name on the wallapaer
 convert -fill white -pointsize 20 -gravity center -draw "text 565,560 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png
 convert -fill white -pointsize 20 -gravity center -draw "text 300,410 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png
 convert -fill white -pointsize 20 -gravity center -draw "text 700,500 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-4x3.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-4x3.png
