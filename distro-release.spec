@@ -245,8 +245,8 @@ Group:		System/Base
 License:	MIT
 Provides:	openmandriva-repos(%{version})
 Requires:	system-release(%{version})
-Requires:	openmandriva-repos-pkgprefs = %{version}-%{release}
-Requires:	openmandriva-repos-keys = %{version}-%{release}
+Requires:	%{name}-repos-pkgprefs = %{version}-%{release}
+Requires:	%{name}-repos-keys = %{version}-%{release}
 Obsoletes:	openmandriva-repos-cooker < %{version}-%{release}
 
 %description repos
@@ -256,6 +256,7 @@ with GPG public keys.
 %package repos-keys
 Summary:	OpenMandriva repository GPG keys
 Group:		System/Base
+%rename	openmandriva-repos-keys
 # GPG keys are architecture independent
 BuildArch:	noarch
 
@@ -268,6 +269,7 @@ DNF and PackageKit.
 # https://fedoraproject.org/wiki/PackagingDrafts/ProvidesPreferences#Distribution_preference
 Summary:	OpenMandriva repository package preferences
 Group:		System/Base
+%rename	openmandriva-repos-pkgprefs
 # Preferences list is architecture independent
 BuildArch:	noarch
 
