@@ -147,7 +147,6 @@ Provides:	system-release(releasever) = %{version}
 %package desktop
 Summary:	Desktop common files
 Group:		System/Configuration/Other
-Epoch:		2
 BuildArch:	noarch
 Requires:	distro-release
 #XDG stuff
