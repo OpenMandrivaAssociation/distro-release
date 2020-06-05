@@ -149,6 +149,7 @@ Summary:	Desktop common files
 Group:		System/Configuration/Other
 Epoch:		2
 BuildArch:	noarch
+Requires:	distro-release
 #XDG stuff
 Requires:	libxdg-basedir
 Requires:	xdg-compliance
@@ -420,10 +421,16 @@ preferences for packages in which multiple options are possible.
 
 %package rpm-setup-build
 %description rpm-setup-build
+%endif
 
 %package installer
+Summary:	Installer configuration for %{distribution}
+Group:		Graphics
+Conflicts:	calamares < 3.2.20-5
+Requires:	%{name} = %{EVRD}
+
 %description installer
-%endif
+Installer configuration files for %{distribution}.
 
 %prep
 cp -a %{_topdir}/doc/CREDITS CREDITS
@@ -526,7 +533,7 @@ NAME="%{new_distribution}"
 VERSION="%{version} (%{new_codename})"
 ID="%{vendor_tag}"
 VERSION_ID="%{version}"
-BUILD_ID="%(echo `date +"%Y%m%d.%H"`)"
+BUILD_ID="%(echo %(date +"%Y%m%d.%H"))"
 PRETTY_NAME="%{new_distribution} %{version} (%{new_codename})"
 VERSION_CODENAME="(%{new_codename})"
 ANSI_COLOR="1;43"
@@ -888,6 +895,51 @@ chmod 0644 %{buildroot}%{_sysconfdir}/yum.repos.d/*.repo
 
 ### REPOS END ###
 
+### INSTALLER ###
+mkdir -p %{buildroot}%{_sysconfdir}/calamares/modules
+install -m644 %{_topdir}/installer/settings.conf %{buildroot}%{_sysconfdir}/calamares/settings.conf
+for i in bootloader.conf displaymanager.conf finished.conf fstab.conf grubcfg.conf keyboard.conf locale.conf machineid.conf mount.conf packages.conf partition.conf removeuser.conf services-systemd.conf shellprocess.conf umout.conf unpackfs.conf users.conf webview.conf welcome.conf ; do
+    install -m644 %{_topdir}/installer/$i %{buildroot}%{_sysconfdir}/calamares/modules/$i
+done
+
+mkdir -p %{buildroot}%{_sysconfdir}/calamares/branding/auto
+for i in 2015-ads_01.png 2015-ads_02.png 2015-ads_03.png 2015-ads_04.png 2015-ads_05.png 2015-ads_06.png 2015-ads_07.png adverts.qml ; do
+    install -m644 %{_topdir}/installer/$i %{buildroot}%{_sysconfdir}/calamares/branding/auto/$i
+done
+
+cat > %{buildroot}%{_sysconfdir}/calamares/branding/auto/branding.desc <<EOF
+---
+componentName:  auto
+
+strings:
+    productName:         "%{new_distribution}"
+    shortProductName:    "%{new_distribution}"
+    version:             "%{version} (%{new_codename})"
+    shortVersion:        "%{version} (%{new_codename})"
+    versionedName:       "%{new_distribution} %{version} (%{new_codename})"
+    shortVersionedName:  "%{new_distribution} %{version} (%{new_codename})"
+    bootloaderEntryName: "openmandriva"
+    productUrl:          "%{new_disturl}"
+    supportUrl:          "%{new_bugurl}"
+    knownIssuesUrl:      "https://wiki.openmandriva.org/en/%{version}/Errata"
+    releaseNotesUrl:     "https://wiki.openmandriva.org/en/%{version}/Release_Notes"
+
+images:
+    productLogo:         "%{_iconsdir}/openmandriva.svg"
+    productIcon:         "%{_iconsdir}/openmandriva.svg"
+# (tpg) need to decide what show here
+#    productWelcome:      "languages.png"
+
+slideshow:               "adverts.qml"
+
+style:
+   sidebarBackground:    "#263039"
+   sidebarText:          "#FFFFFF"
+   sidebarTextSelect:    "#292F34"
+EOF
+
+### INSTALLER END ###
+
 %check
 %if %{am_i_cooker}
 case %{release} in
@@ -995,3 +1047,8 @@ fi
 %{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
 
 %files repos-pkgprefs
+
+%files installer
+%{_sysconfdir}/calamares/*.conf
+%{_sysconfdir}/calamares/modules/*.conf
+%{_sysconfdir}/calamares/branding/auto/*

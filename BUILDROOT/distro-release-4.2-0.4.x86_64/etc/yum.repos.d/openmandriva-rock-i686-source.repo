@@ -1,0 +1,131 @@
+[rock-i686-source]
+name="OpenMandriva Rock - i686 - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/main/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=main&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-updates-i686-source]
+name="OpenMandriva Rock - i686 - Updates - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/main/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=main&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-testing-i686-source]
+name="OpenMandriva Rock - i686 - Testing - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/main/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=main&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-i686-unsupported-source]
+name="OpenMandriva Rock - Unsupported - i686 - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/unsupported/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=unsupported&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-updates-i686-unsupported-source]
+name="OpenMandriva Rock - Unsupported - i686 - Updates - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/unsupported/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=unsupported&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-testing-i686-unsupported-source]
+name="OpenMandriva Rock - Unsupported - i686 - Testing - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/unsupported/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=unsupported&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-i686-restricted-source]
+name="OpenMandriva Rock - Restricted - i686 - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/restricted/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=restricted&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-updates-i686-restricted-source]
+name="OpenMandriva Rock - Restricted - i686 - Updates - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/restricted/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=restricted&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-testing-i686-restricted-source]
+name="OpenMandriva Rock - Restricted - i686 - Testing - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/restricted/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=restricted&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-i686-non-free-source]
+name="OpenMandriva Rock - Non-free - i686 - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/non-free/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=non-free&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-updates-i686-non-free-source]
+name="OpenMandriva Rock - Non-free - i686 - Updates - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/non-free/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=non-free&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rock-testing-i686-non-free-source]
+name="OpenMandriva Rock - Non-free - i686 - Testing - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rock/repository/SRPMS/non-free/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rock&arch=SRPMS&repo=non-free&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md

@@ -1,0 +1,87 @@
+[rolling-x86_64-source]
+name="OpenMandriva Rolling - x86_64 - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rolling/repository/SRPMS/main/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rolling&arch=SRPMS&repo=main&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rolling-testing-x86_64-source]
+name="OpenMandriva Rolling - x86_64 - Testing - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rolling/repository/SRPMS/main/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rolling&arch=SRPMS&repo=main&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rolling-x86_64-unsupported-source]
+name="OpenMandriva Rolling - Unsupported - x86_64 - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rolling/repository/SRPMS/unsupported/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rolling&arch=SRPMS&repo=unsupported&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rolling-testing-x86_64-unsupported-source]
+name="OpenMandriva Rolling - Unsupported - x86_64 - Testing - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rolling/repository/SRPMS/unsupported/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rolling&arch=SRPMS&repo=unsupported&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rolling-x86_64-restricted-source]
+name="OpenMandriva Rolling - Restricted - x86_64 - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rolling/repository/SRPMS/restricted/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rolling&arch=SRPMS&repo=restricted&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rolling-testing-x86_64-restricted-source]
+name="OpenMandriva Rolling - Restricted - x86_64 - Testing - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rolling/repository/SRPMS/restricted/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rolling&arch=SRPMS&repo=restricted&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rolling-x86_64-non-free-source]
+name="OpenMandriva Rolling - Non-free - x86_64 - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rolling/repository/SRPMS/non-free/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rolling&arch=SRPMS&repo=non-free&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[rolling-testing-x86_64-non-free-source]
+name="OpenMandriva Rolling - Non-free - x86_64 - Testing - Source"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/rolling/repository/SRPMS/non-free/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=rolling&arch=SRPMS&repo=non-free&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md

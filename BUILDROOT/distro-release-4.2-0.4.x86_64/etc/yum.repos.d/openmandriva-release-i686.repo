@@ -1,0 +1,263 @@
+[release-i686]
+name="OpenMandriva $releasever - i686"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/main/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=main&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+type=rpm-md
+enabled=0
+
+[release-updates-i686]
+name="OpenMandriva $releasever - i686 - Updates"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/main/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=main&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-testing-i686]
+name="OpenMandriva $releasever - i686 - Testing"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/main/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=main&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-i686-debuginfo]
+name="OpenMandriva $releasever - i686 - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_main/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_main&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-updates-i686-debuginfo]
+name="OpenMandriva $releasever - i686 - Updates - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_main/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_main&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-testing-i686-debuginfo]
+name="OpenMandriva $releasever - i686 - Testing - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_main/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_main&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-i686-unsupported]
+name="OpenMandriva $releasever - Unsupported - i686"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/unsupported/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=unsupported&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+type=rpm-md
+enabled=0
+
+[release-updates-i686-unsupported]
+name="OpenMandriva $releasever - Unsupported - i686 - Updates"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/unsupported/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=unsupported&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-testing-i686-unsupported]
+name="OpenMandriva $releasever - Unsupported - i686 - Testing"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/unsupported/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=unsupported&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-i686-unsupported-debuginfo]
+name="OpenMandriva $releasever - Unsupported - i686 - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_unsupported/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_unsupported&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-updates-i686-unsupported-debuginfo]
+name="OpenMandriva $releasever - Unsupported - i686 - Updates - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_unsupported/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_unsupported&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-testing-i686-unsupported-debuginfo]
+name="OpenMandriva $releasever - Unsupported - i686 - Testing - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_unsupported/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_unsupported&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-i686-restricted]
+name="OpenMandriva $releasever - Restricted - i686"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/restricted/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=restricted&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+type=rpm-md
+enabled=0
+
+[release-updates-i686-restricted]
+name="OpenMandriva $releasever - Restricted - i686 - Updates"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/restricted/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=restricted&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-testing-i686-restricted]
+name="OpenMandriva $releasever - Restricted - i686 - Testing"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/restricted/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=restricted&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-i686-restricted-debuginfo]
+name="OpenMandriva $releasever - Restricted - i686 - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_restricted/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_restricted&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-updates-i686-restricted-debuginfo]
+name="OpenMandriva $releasever - Restricted - i686 - Updates - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_restricted/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_restricted&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-testing-i686-restricted-debuginfo]
+name="OpenMandriva $releasever - Restricted - i686 - Testing - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_restricted/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_restricted&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-i686-non-free]
+name="OpenMandriva $releasever - Non-free - i686"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/non-free/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=non-free&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+type=rpm-md
+enabled=0
+
+[release-updates-i686-non-free]
+name="OpenMandriva $releasever - Non-free - i686 - Updates"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/non-free/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=non-free&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-testing-i686-non-free]
+name="OpenMandriva $releasever - Non-free - i686 - Testing"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/non-free/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=non-free&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-i686-non-free-debuginfo]
+name="OpenMandriva $releasever - Non-free - i686 - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_non-free/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_non-free&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-updates-i686-non-free-debuginfo]
+name="OpenMandriva $releasever - Non-free - i686 - Updates - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_non-free/updates/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_non-free&release=updates
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[release-testing-i686-non-free-debuginfo]
+name="OpenMandriva $releasever - Non-free - i686 - Testing - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/$releasever/repository/i686/debug_non-free/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$releasever&arch=i686&repo=debug_non-free&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md

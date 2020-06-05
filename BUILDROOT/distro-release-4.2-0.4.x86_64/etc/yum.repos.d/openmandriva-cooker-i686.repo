@@ -1,0 +1,175 @@
+[cooker-i686]
+name="OpenMandriva Cooker - i686"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/main/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=main&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+type=rpm-md
+enabled=0
+
+[cooker-testing-i686]
+name="OpenMandriva Cooker - i686 - Testing"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/main/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=main&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-i686-debuginfo]
+name="OpenMandriva Cooker - i686 - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/debug_main/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=debug_main&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-testing-i686-debuginfo]
+name="OpenMandriva Cooker - i686 - Testing - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/debug_main/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=debug_main&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-i686-unsupported]
+name="OpenMandriva Cooker - Unsupported - i686"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/unsupported/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=unsupported&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+type=rpm-md
+enabled=0
+
+[cooker-testing-i686-unsupported]
+name="OpenMandriva Cooker - Unsupported - i686 - Testing"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/unsupported/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=unsupported&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-i686-unsupported-debuginfo]
+name="OpenMandriva Cooker - Unsupported - i686 - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/debug_unsupported/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=debug_unsupported&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-testing-i686-unsupported-debuginfo]
+name="OpenMandriva Cooker - Unsupported - i686 - Testing - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/debug_unsupported/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=debug_unsupported&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-i686-restricted]
+name="OpenMandriva Cooker - Restricted - i686"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/restricted/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=restricted&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+type=rpm-md
+enabled=0
+
+[cooker-testing-i686-restricted]
+name="OpenMandriva Cooker - Restricted - i686 - Testing"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/restricted/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=restricted&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-i686-restricted-debuginfo]
+name="OpenMandriva Cooker - Restricted - i686 - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/debug_restricted/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=debug_restricted&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-testing-i686-restricted-debuginfo]
+name="OpenMandriva Cooker - Restricted - i686 - Testing - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/debug_restricted/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=debug_restricted&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-i686-non-free]
+name="OpenMandriva Cooker - Non-free - i686"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/non-free/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=non-free&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+type=rpm-md
+enabled=0
+
+[cooker-testing-i686-non-free]
+name="OpenMandriva Cooker - Non-free - i686 - Testing"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/non-free/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=non-free&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-i686-non-free-debuginfo]
+name="OpenMandriva Cooker - Non-free - i686 - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/debug_non-free/release/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=debug_non-free&release=release
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
+
+[cooker-testing-i686-non-free-debuginfo]
+name="OpenMandriva Cooker - Non-free - i686 - Testing - Debug"
+# Master repository:
+# baseurl=http://abf-downloads.openmandriva.org/cooker/repository/i686/debug_non-free/testing/
+mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=cooker&arch=i686&repo=debug_non-free&release=testing
+fastestmirror=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
+enabled=0
+type=rpm-md
