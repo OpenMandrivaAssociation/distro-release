@@ -217,6 +217,7 @@ Requires:	distro-theme-common
 Requires:	plymouth-plugin-script
 Requires:	grub2
 %endif
+Conflicts:	distro-theme-OpenMandriva-grub2 < 1.4.46.2-2
 %rename		grub2-OpenMandriva-theme
 %rename		grub2-Moondrake-theme
 %rename		distro-theme-common
