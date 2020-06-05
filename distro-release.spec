@@ -212,19 +212,22 @@ BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
 BuildRequires:	urw-fonts
 Provides:	plymouth(system-theme)
+Requires:	%{name} = %{version}-%{release}
 %ifnarch %{arm}
 Requires:	plymouth-plugin-script
 Requires:	grub2
 %endif
-Conflicts:	distro-theme-OpenMandriva-grub2 < 1.4.46.2-2
+%rename		grub2-theme
+%rename		grub2-theme-common
+%rename		grub2-openmandriva-theme
 %rename		grub2-OpenMandriva-theme
 %rename		grub2-Moondrake-theme
 %rename		distro-theme-common
 %rename		distro-theme-extra
 %rename		distro-theme-screensaver
 %rename		distro-theme-OpenMandriva-screensaver
-%rename		distro-theme-OpenMandriva-grub2
 %rename		distro-theme-OpenMandriva
+%rename		distro-theme-OpenMandriva-grub2
 %rename		mandriva-theme-common
 %rename		mandriva-theme-extra
 %rename		mandriva-theme-Rosa-screensaver
@@ -248,7 +251,8 @@ Provides:	openmandriva-repos(%{version})
 Requires:	system-release(%{version})
 Requires:	%{name}-repos-pkgprefs = %{version}-%{release}
 Requires:	%{name}-repos-keys = %{version}-%{release}
-Obsoletes:	openmandriva-repos-cooker < %{version}-%{release}
+%rename		openmandriva-repos-cooker
+%rename		openmandriva-repos
 
 %description repos
 OpenMandriva package repository files for DNF and PackageKit
