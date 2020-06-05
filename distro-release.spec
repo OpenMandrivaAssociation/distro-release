@@ -210,6 +210,7 @@ Group:		Graphics
 BuildRequires:	imagemagick
 BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
+BuildRequires:	urw-fonts
 Provides:	plymouth(system-theme)
 Requires:	distro-theme-common
 %ifnarch %{arm}
