@@ -120,11 +120,11 @@ Common files for %{new_distribution} release packages.
 %package %{new_vendor}
 Summary:	%{new_vendor} release file
 Group:		System/Configuration/Other
-Requires:	%{name}-common = %{EVRD}
+Requires:	%{name}-common = %{version}-%{release}
 Requires:	%{arch_tagged distro-release-common}
 Requires:	%{name}-common >= %{version}
-Provides:	mandriva-release = %{EVRD}
-Provides:	distro-release = %{EVRD}
+Provides:	mandriva-release = %{version}-%{release}
+Provides:	distro-release = %{version}-%{release}
 Provides:	system-release
 Provides:	system-release(%{version})
 Provides:	system-release(releasever) = %{version}
@@ -147,6 +147,7 @@ Provides:	system-release(releasever) = %{version}
 %package desktop
 Summary:	Desktop common files
 Group:		System/Configuration/Other
+Epoch:		2
 BuildArch:	noarch
 Requires:	distro-release
 #XDG stuff
@@ -244,9 +245,9 @@ Group:		System/Base
 License:	MIT
 Provides:	openmandriva-repos(%{version})
 Requires:	system-release(%{version})
-Requires:	openmandriva-repos-pkgprefs = %{EVRD}
-Requires:	openmandriva-repos-keys = %{EVRD}
-Obsoletes:	openmandriva-repos-cooker < %{EVRD}
+Requires:	openmandriva-repos-pkgprefs = %{version}-%{release}
+Requires:	openmandriva-repos-keys = %{version}-%{release}
+Obsoletes:	openmandriva-repos-cooker < %{version}-%{release}
 
 %description repos
 OpenMandriva package repository files for DNF and PackageKit
@@ -430,7 +431,7 @@ preferences for packages in which multiple options are possible.
 Summary:	Installer configuration for %{distribution}
 Group:		Graphics
 Conflicts:	calamares < 3.2.20-5
-Requires:	%{name} = %{EVRD}
+Requires:	%{name} = %{version}-%{release}
 
 %description installer
 Installer configuration files for %{distribution}.
