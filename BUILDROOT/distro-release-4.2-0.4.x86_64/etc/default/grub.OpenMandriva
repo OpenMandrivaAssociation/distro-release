@@ -1,3 +1,0 @@
-GRUB_THEME=/boot/grub2/themes/OpenMandriva/theme.txt
-GRUB_BACKGROUND=/boot/grub2/themes/OpenMandriva/terminal_background.png
-GRUB_DISTRIBUTOR="OpenMandriva Lx"
