@@ -433,10 +433,10 @@ Requires:	%{name} = %{EVRD}
 Installer configuration files for %{distribution}.
 
 %prep
-cp -a %{_topdir}/doc/CREDITS CREDITS
-cp -a %{_topdir}/doc/distro.txt distro.txt
-cp -a %{_topdir}/doc/release-notes.txt release-notes.txt
-cp -a %{_topdir}/doc/release-notes.html release-notes.html
+cp -a %{_sourcedir}/doc/CREDITS CREDITS
+cp -a %{_sourcedir}/doc/distro.txt distro.txt
+cp -a %{_sourcedir}/doc/release-notes.txt release-notes.txt
+cp -a %{_sourcedir}/doc/release-notes.html release-notes.html
 
 # check that CREDITS file is in UTF-8, fail otherwise
 if iconv -f utf-8 -t utf-8 < CREDITS > /dev/null
@@ -561,14 +561,14 @@ ln -sr %{buildroot}%{_datadir}/mdk/backgrounds %{buildroot}%{_datadir}/wallpaper
 
 ## Install scripts
 install -d -m 0755 %{buildroot}/%{_bindir}/
-install -m 0755 %{_topdir}/desktops/bin/editor %{buildroot}/%{_bindir}/
-install -m 0755 %{_topdir}/desktops/bin/www-browser %{buildroot}/%{_bindir}/
-install -m 0755 %{_topdir}/desktops/bin/xvt %{buildroot}/%{_bindir}/
+install -m 0755 %{_sourcedir}/desktops/bin/editor %{buildroot}/%{_bindir}/
+install -m 0755 %{_sourcedir}/desktops/bin/www-browser %{buildroot}/%{_bindir}/
+install -m 0755 %{_sourcedir}/desktops/bin/xvt %{buildroot}/%{_bindir}/
 
 ## Install faces
 install -d -m 0755 %{buildroot}/%{_datadir}/mdk/faces/
 install -d -m 0755 %{buildroot}/%{_datadir}/faces/
-cp -a %{_topdir}/desktops/faces/*.png %{buildroot}/%{_datadir}/mdk/faces/
+cp -a %{_sourcedir}/desktops/faces/*.png %{buildroot}/%{_datadir}/mdk/faces/
 
 # David - 9.0-5mdk - For KDE
 ln -s %{_datadir}/mdk/faces/default.png %{buildroot}%{_datadir}/faces/default.png
@@ -578,26 +578,26 @@ ln -s %{_datadir}/mdk/faces/default.png %{buildroot}%{_datadir}/faces/user-defau
 
 # (tpg) default desktop files (do not place them in /etc/skel/Desktop !)
 install -d -m 0755 %{buildroot}%{_datadir}/applications
-install -m 0644 %{_topdir}/desktops/applications/*.desktop %{buildroot}%{_datadir}/applications
+install -m 0644 %{_sourcedir}/desktops/applications/*.desktop %{buildroot}%{_datadir}/applications
 
 # icons
 install -d -m 0755 %{buildroot}%{_iconsdir}/hicolor/scalable/apps
-cp -a %{_topdir}/theme/icons/*.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/
+cp -a %{_sourcedir}/theme/icons/*.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/
 
 #install theme for GDM/KDM
 install -d -m 0755 %{buildroot}/%{_datadir}/mdk/dm
-for i in %{_topdir}/desktops/dm/*.png %{_topdir}/desktops/dm/*.desktop %{_topdir}/desktops/dm/*.xml ; do
+for i in %{_sourcedir}/desktops/dm/*.png %{_sourcedir}/desktops/dm/*.desktop %{_sourcedir}/desktops/dm/*.xml ; do
   install -m 0644 $i %{buildroot}/%{_datadir}/mdk/dm/
 done
 
 # install bookmarks
 install -d -m 0755 %{buildroot}%{_datadir}/mdk/bookmarks/konqueror
-for i in %{_topdir}/desktops/bookmarks/konqueror/*.html ; do
+for i in %{_sourcedir}/desktops/bookmarks/konqueror/*.html ; do
   install -m 0644 $i %{buildroot}%{_datadir}/mdk/bookmarks/konqueror
 done
 
 install -d -m 0755 %{buildroot}%{_datadir}/mdk/bookmarks/mozilla
-for i in %{_topdir}/desktops/bookmarks/mozilla/*.html ; do
+for i in %{_sourcedir}/desktops/bookmarks/mozilla/*.html ; do
     install -m 0644 $i %{buildroot}%{_datadir}/mdk/bookmarks/mozilla
 done
 
@@ -620,23 +620,23 @@ mkdir -p %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.p
 mkdir -p %{buildroot}%{_datadir}/konsole
 
 for i in kcmdisplayrc kcmfonts kcminputrc kdeglobals kscreenlockerrc ksplashrc kwinrc plasmarc startupconfig startupconfigfiles kcm-about-distrorc ksmserverrc kiorc dolphinrc konsolerc klaunchrc discoverabstractnotifier.notifyrc plasma_workspace.notifyrc powermanagementprofilesrc; do
-    install -m 0644 %{_topdir}/desktops/Plasma/$i %{buildroot}%{_kde5_sysconfdir}/xdg/$i
+    install -m 0644 %{_sourcedir}/desktops/Plasma/$i %{buildroot}%{_kde5_sysconfdir}/xdg/$i
 done
 
-install -m 0644 %{_topdir}/desktops/Plasma/metadata.desktop %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/metadata.desktop
-install -m 0644 %{_topdir}/desktops/Plasma/metadata.desktop %{buildroot}%{_kde5_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
-install -m 0644 %{_topdir}/desktops/Plasma/org.kde.plasma.desktop-layout.js %{buildroot}%{_kde5_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
-install -m 0644 %{_topdir}/desktops/Plasma/org.openmandriva.plasma.desktop.defaultPanel-layout.js %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents/layout.js
-install -m 0644 %{_topdir}/desktops/Plasma/plasma-firstsetup.sh %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/env/plasma-firstsetup.sh
-install -m 0644 %{_topdir}/desktops/Plasma/Sonnet.conf %{buildroot}%{_kde5_sysconfdir}/xdg/KDE/Sonnet.conf
-install -m 0644 %{_topdir}/desktops/Plasma/kdeglobals.sh %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/env/kdeglobals.sh
-install -m 0644 %{_topdir}/desktops/Plasma/qtlogging.ini %{buildroot}%{_kde5_sysconfdir}/xdg/QtProject/qtlogging.ini
-install -m 0644 %{_topdir}/desktops/Plasma/OMV.profile %{buildroot}%{_datadir}/konsole/OMV.profile
+install -m 0644 %{_sourcedir}/desktops/Plasma/metadata.desktop %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/metadata.desktop
+install -m 0644 %{_sourcedir}/desktops/Plasma/metadata.desktop %{buildroot}%{_kde5_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
+install -m 0644 %{_sourcedir}/desktops/Plasma/org.kde.plasma.desktop-layout.js %{buildroot}%{_kde5_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
+install -m 0644 %{_sourcedir}/desktops/Plasma/org.openmandriva.plasma.desktop.defaultPanel-layout.js %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents/layout.js
+install -m 0644 %{_sourcedir}/desktops/Plasma/plasma-firstsetup.sh %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/env/plasma-firstsetup.sh
+install -m 0644 %{_sourcedir}/desktops/Plasma/Sonnet.conf %{buildroot}%{_kde5_sysconfdir}/xdg/KDE/Sonnet.conf
+install -m 0644 %{_sourcedir}/desktops/Plasma/kdeglobals.sh %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/env/kdeglobals.sh
+install -m 0644 %{_sourcedir}/desktops/Plasma/qtlogging.ini %{buildroot}%{_kde5_sysconfdir}/xdg/QtProject/qtlogging.ini
+install -m 0644 %{_sourcedir}/desktops/Plasma/OMV.profile %{buildroot}%{_datadir}/konsole/OMV.profile
 mkdir -p %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents
-install -m 0644 %{_topdir}/desktops/Plasma/org.openmandriva.plasma.desktop.globalMenuPanel-layout.js %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents/layout.js
-install -m 0644 %{_topdir}/desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/metadata.desktop
+install -m 0644 %{_sourcedir}/desktops/Plasma/org.openmandriva.plasma.desktop.globalMenuPanel-layout.js %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents/layout.js
+install -m 0644 %{_sourcedir}/desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/metadata.desktop
 mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
-cp -a %{_topdir}/desktops/Plasma/org.openmandriva4.desktop %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop
+cp -a %{_sourcedir}/desktops/Plasma/org.openmandriva4.desktop %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop
 
 ### DESKTOP PLASMA END ###
 
@@ -644,16 +644,16 @@ cp -a %{_topdir}/desktops/Plasma/org.openmandriva4.desktop %{buildroot}%{_datadi
 
 # Make sure the logo can be found where modern applications expect it
 mkdir -p %{buildroot}%{_iconsdir}/hicolor/scalable/apps
-cp %{_topdir}/theme/icons/openmandriva.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/
+cp %{_sourcedir}/theme/icons/openmandriva.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/
 for i in 16 22 24 32 36 48 64 72 96 128 192 256 512; do
     mkdir -p %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps
-    convert -background none %{_topdir}/theme/icons/openmandriva.svg %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps/openmandriva.png
+    convert -background none %{_sourcedir}/theme/icons/openmandriva.svg %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps/openmandriva.png
 done
 
 # Default wallpaper should be available without browsing file system
 mkdir -p %{buildroot}%{_datadir}/wallpapers
-cp -a %{_topdir}/theme/backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
-cp -a %{_topdir}/theme/extra-backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
+cp -a %{_sourcedir}/theme/backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
+cp -a %{_sourcedir}/theme/extra-backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
 # (tpg) add falvour name on the wallapaer
 convert -fill white -pointsize 20 -gravity center -draw "text 565,560 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png
 convert -fill white -pointsize 20 -gravity center -draw "text 300,410 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png
@@ -664,21 +664,21 @@ ln -sf /usr/share/mdk/backgrounds/default.png %{buildroot}%{_datadir}/wallpapers
 ln -sf /usr/share/mdk/backgrounds/default.png %{buildroot}%{_datadir}/wallpapers/default.jpg
 
 mkdir -p %{buildroot}%{_datadir}/mdk/screensaver
-cp -a %{_topdir}/theme/screensaver/*.jpg %{buildroot}%{_datadir}/mdk/screensaver
+cp -a %{_sourcedir}/theme/screensaver/*.jpg %{buildroot}%{_datadir}/mdk/screensaver
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
-cp -a %{_topdir}/theme/pixmaps/*.*g %{buildroot}%{_datadir}/pixmaps
+cp -a %{_sourcedir}/theme/pixmaps/*.*g %{buildroot}%{_datadir}/pixmaps
 
 mkdir -p %{buildroot}%{_datadir}/plymouth/themes
-cp -a %{_topdir}/theme/plymouth/%{vendor} %{buildroot}%{_datadir}/plymouth/themes/
+cp -a %{_sourcedir}/theme/plymouth/%{vendor} %{buildroot}%{_datadir}/plymouth/themes/
 
 # (tpg) arm does not uses grub, but aarch64 does
 %ifnarch %{arm}
 mkdir -p %{buildroot}/boot/grub2/themes/%{vendor}
-cp -a %{_topdir}/theme/grub/%{vendor}/* %{buildroot}/boot/grub2/themes/%{vendor}
+cp -a %{_sourcedir}/theme/grub/%{vendor}/* %{buildroot}/boot/grub2/themes/%{vendor}
 rm -rf %{buildroot}/boot/grub2/themes/%{vendor}/05_theme
 mkdir -p %{buildroot}%{_sysconfdir}/grub.d
-install -m755 %{_topdir}/theme/grub/%{vendor}/05_theme %{buildroot}%{_sysconfdir}/grub.d/05_theme
+install -m755 %{_sourcedir}/theme/grub/%{vendor}/05_theme %{buildroot}%{_sysconfdir}/grub.d/05_theme
 mkdir -p %{buildroot}%{_sysconfdir}/default/
 cat > %{buildroot}%{_sysconfdir}/default/grub.%{vendor} << EOF
 GRUB_THEME=/boot/grub2/themes/%{vendor}/theme.txt
@@ -697,7 +697,7 @@ echo $ARCH |grep -q arm && ARCH=armv7hnl
 
 # Install the GPG key
 mkdir -p %{buildroot}%{_sysconfdir}/pki/rpm-gpg
-install %{_topdir}/rpm/RPM-GPG-KEY-%{vendor} -pm 0644 %{buildroot}%{_sysconfdir}/pki/rpm-gpg
+install %{_sourcedir}/rpm/RPM-GPG-KEY-%{vendor} -pm 0644 %{buildroot}%{_sysconfdir}/pki/rpm-gpg
 
 # Install the repositories
 mkdir -p %{buildroot}%{_sysconfdir}/yum.repos.d
@@ -897,14 +897,14 @@ chmod 0644 %{buildroot}%{_sysconfdir}/yum.repos.d/*.repo
 
 ### INSTALLER ###
 mkdir -p %{buildroot}%{_sysconfdir}/calamares/modules
-install -m644 %{_topdir}/installer/settings.conf %{buildroot}%{_sysconfdir}/calamares/settings.conf
+install -m644 %{_sourcedir}/installer/settings.conf %{buildroot}%{_sysconfdir}/calamares/settings.conf
 for i in bootloader.conf displaymanager.conf finished.conf fstab.conf grubcfg.conf keyboard.conf locale.conf machineid.conf mount.conf packages.conf partition.conf removeuser.conf services-systemd.conf shellprocess.conf umout.conf unpackfs.conf users.conf webview.conf welcome.conf ; do
-    install -m644 %{_topdir}/installer/$i %{buildroot}%{_sysconfdir}/calamares/modules/$i
+    install -m644 %{_sourcedir}/installer/$i %{buildroot}%{_sysconfdir}/calamares/modules/$i
 done
 
 mkdir -p %{buildroot}%{_sysconfdir}/calamares/branding/auto
 for i in 2015-ads_01.png 2015-ads_02.png 2015-ads_03.png 2015-ads_04.png 2015-ads_05.png 2015-ads_06.png 2015-ads_07.png adverts.qml ; do
-    install -m644 %{_topdir}/installer/$i %{buildroot}%{_sysconfdir}/calamares/branding/auto/$i
+    install -m644 %{_sourcedir}/installer/$i %{buildroot}%{_sysconfdir}/calamares/branding/auto/$i
 done
 
 cat > %{buildroot}%{_sysconfdir}/calamares/branding/auto/branding.desc <<EOF
