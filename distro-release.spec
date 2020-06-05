@@ -224,6 +224,7 @@ Requires:	grub2
 %rename		distro-theme-screensaver
 %rename		distro-theme-OpenMandriva-screensaver
 %rename		distro-theme-OpenMandriva-grub2
+%rename		distro-theme-OpenMandriva
 %rename		mandriva-theme-common
 %rename		mandriva-theme-extra
 %rename		mandriva-theme-Rosa-screensaver
