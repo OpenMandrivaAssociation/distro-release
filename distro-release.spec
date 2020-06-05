@@ -208,6 +208,8 @@ KDE Plasma desktop configuration.
 Summary:	Themes for %{distribution}
 Group:		Graphics
 BuildRequires:	imagemagick
+BuildRequires:	fontconfig
+BuildRequires:	fonts-ttf-dejavu
 Provides:	plymouth(system-theme)
 Requires:	distro-theme-common
 %ifnarch %{arm}
