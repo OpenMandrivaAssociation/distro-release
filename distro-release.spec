@@ -427,13 +427,42 @@ Suggests:	lib64qt5gui-x11
 This package supplies DNF and PackageKit with global
 preferences for packages in which multiple options are possible.
 
-%if 0
 %package rpm-setup
+Summary:	Macros and scripts for %{new_vendor} specific rpm behavior
+Group:		System/Configuration/Packaging
+License:	MIT
+Requires:	rpm >= 2:4.14.2-0
+Recommends:	systemd-macros
+BuildArch:	noarch
+%rename rpm-openmandriva-setup
+
 %description rpm-setup
+Macros and scripts for OpenMandriva specific rpm behavior.
 
 %package rpm-setup-build
+Summary:	Macros and scripts for OpenMandriva specific rpmbuild behavior
+Group:		System/Configuration/Packaging
+Requires:	rpm-build >= 2:4.14.0-0
+# (tpg) do not use %%EVRD here, as it does not exist yet
+Requires:	%{name}-rpm-setup = %{version}-%{release}
+# Required for package builds to work
+Requires:	dwz
+Requires:	rpmlint
+Requires:	rpmlint-openmandriva-policy
+Requires:	spec-helper >= 0.31.12
+Requires:	binutils
+Requires:	systemd-macros
+Requires:	rpm-helper
+# go and rust srpm macros are needed by mock/dnf builddep to
+# prevent unexpanded macros
+Requires:	go-srpm-macros
+Requires:	rust-srpm-macros
+# Ensure this exists in the build environment
+Requires:	/usr/bin/gdb-add-index
+%rename rpm-openmandriva-setup-build
+
 %description rpm-setup-build
-%endif
+Macros and scripts for %{new_vendor} specific rpmbuild behavior.
 
 %package installer
 Summary:	Installer configuration for %{distribution}
@@ -903,6 +932,18 @@ chmod 0644 %{buildroot}%{_sysconfdir}/yum.repos.d/*.repo
 
 ### REPOS END ###
 
+### RPM SETUP ###
+mkdir -p %{buildroot}%{_rpmconfigdir}/{openmandriva,macros.d}
+cp -a rpm/user/openmandriva/* %{buildroot}%{_rpmconfigdir}/openmandriva
+cp -a rpm/build/openmandriva/* %{buildroot}%{_rpmconfigdir}/openmandriva
+cp -a rpm/build/macros.d/* %{buildroot}%{_rpmconfigdir}/macros.d
+
+mkdir -p %{buildroot}%{_rpmluadir}/fedora/srpm
+cp -a rpm/build/fedora/common.lua %{buildroot}%{_rpmluadir}/fedora
+cp -a rpm/build/fedora/forge.lua %{buildroot}%{_rpmluadir}/fedora/srpm
+
+### RPM SETUP END ###
+
 ### INSTALLER ###
 mkdir -p %{buildroot}%{_sysconfdir}/calamares/modules
 install -m644 installer/settings.conf %{buildroot}%{_sysconfdir}/calamares/settings.conf
@@ -1039,7 +1080,6 @@ fi
 %optional %{_datadir}/pixmaps/system-logo-white.png
 
 %ifnarch %{arm}
-%{_sysconfdir}/grub.d/05_theme
 %{_sysconfdir}/default/grub.%{vendor}
 %dir /boot/grub2/themes/%{vendor}
 /boot/grub2/themes/%{vendor}/*
@@ -1055,6 +1095,25 @@ fi
 %{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
 
 %files repos-pkgprefs
+
+%files rpm-setup
+# We should own this directory
+%dir %{_rpmconfigdir}/openmandriva
+%{_rpmconfigdir}/openmandriva/macros
+%{_rpmconfigdir}/openmandriva/rpmrc
+
+%files rpm-setup-build
+%attr(4755,root,root) %{_rpmconfigdir}/openmandriva/devel.prov
+%attr(4755,root,root) %{_rpmconfigdir}/openmandriva/devel.req
+%attr(4755,root,root) %{_rpmconfigdir}/openmandriva/kmod-deps.sh
+%{_rpmluadir}/fedora/common.lua
+%{_rpmluadir}/fedora/srpm/forge.lua
+%{_rpmconfigdir}/macros.d/macros.forge
+%{_rpmconfigdir}/macros.d/macros.dwz
+%{_rpmconfigdir}/macros.d/macros.kernel
+%{_rpmconfigdir}/macros.d/macros.perl
+%{_rpmconfigdir}/macros.d/macros.python
+%{_rpmconfigdir}/macros.d/macros.selinux
 
 %files installer
 %{_sysconfdir}/calamares/*.conf
