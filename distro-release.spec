@@ -144,38 +144,7 @@ Provides:	system-release(releasever) = %{version}
 %{_sysconfdir}/product.id
 %{_sysconfdir}/version
 
-# desktop-common-data
-%package desktop
-Summary:	Desktop common files
-Group:		System/Configuration/Other
-Epoch:		2
-BuildArch:	noarch
-Requires:	distro-release
-#XDG stuff
-Requires:	libxdg-basedir
-Requires:	xdg-compliance
-Requires:	xdg-user-dirs
-Requires:	xdg-utils
-Requires:	run-parts
-Requires(post):	hicolor-icon-theme
-Requires:	hicolor-icon-theme
-Conflicts:	kdelibs-common < 30000000:3.5.2
-Conflicts:	kdebase-kdm-config-file < 1:3.2-62mdk
-Requires(post):	etcskel
-Requires(post):	run-parts
-Requires:	shared-mime-info
-Obsoletes:	menu-messages <= 2011.1
-Obsoletes:	desktop-common-data < 1:4.2-4
-%rename		mandrake_desk
-%rename		menu
-%rename		menu-xdg
-%rename		faces-openmandriva
-%rename		faces-icons
-%rename		desktop-common-data
 
-%description desktop
-This package contains useful icons, menu structure and others goodies for the
-%{distribution} desktop.
 
 %package desktop-Plasma
 Summary:	Plasma desktop configuration
@@ -213,11 +182,12 @@ BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
 BuildRequires:	urw-fonts
 Provides:	plymouth(system-theme)
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}
 %ifnarch %{arm}
 Requires:	plymouth-plugin-script
 Requires:	grub2
 %endif
+%rename		distro-theme
 %rename		grub2-theme
 %rename		grub2-theme-common
 %rename		grub2-openmandriva-theme
@@ -459,7 +429,7 @@ Requires:	go-srpm-macros
 Requires:	rust-srpm-macros
 # Ensure this exists in the build environment
 Requires:	/usr/bin/gdb-add-index
-%rename rpm-openmandriva-setup-build
+%rename		rpm-openmandriva-setup-build
 
 %description rpm-setup-build
 Macros and scripts for %{new_vendor} specific rpmbuild behavior.
@@ -473,6 +443,40 @@ Requires:	%{name} = %{version}-%{release}
 %description installer
 Installer configuration files for %{distribution}.
 
+# WARNING !!!
+# Keep it as last one as it sets EPOCH 
+# desktop-common-data
+%package desktop
+Summary:	Desktop common files
+Group:		System/Configuration/Other
+Epoch:		2
+BuildArch:	noarch
+Requires:	distro-release
+#XDG stuff
+Requires:	libxdg-basedir
+Requires:	xdg-compliance
+Requires:	xdg-user-dirs
+Requires:	xdg-utils
+Requires:	run-parts
+Requires(post):	hicolor-icon-theme
+Requires:	hicolor-icon-theme
+Conflicts:	kdelibs-common < 30000000:3.5.2
+Conflicts:	kdebase-kdm-config-file < 1:3.2-62mdk
+Requires(post):	etcskel
+Requires(post):	run-parts
+Requires:	shared-mime-info
+Obsoletes:	menu-messages <= 2011.1
+Obsoletes:	desktop-common-data < 1:4.2-4
+%rename		mandrake_desk
+%rename		menu
+%rename		menu-xdg
+%rename		faces-openmandriva
+%rename		faces-icons
+%rename		desktop-common-data
+
+%description desktop
+This package contains useful icons, menu structure and others goodies for the
+%{distribution} desktop.
 %prep
 %autosetup -p1
 # check that CREDITS file is in UTF-8, fail otherwise
