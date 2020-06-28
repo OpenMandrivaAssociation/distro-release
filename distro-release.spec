@@ -70,10 +70,10 @@ Version:	4.2
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
 %if 0%am_i_cooker
-Release:	0.4
+Release:	0.5
 %else
 %if 0%am_i_rolling
-Release:	0.2
+Release:	0.3
 %else
 Release:	1
 %endif
@@ -937,9 +937,10 @@ chmod 0644 %{buildroot}%{_sysconfdir}/yum.repos.d/*.repo
 ### REPOS END ###
 
 ### RPM SETUP ###
-mkdir -p %{buildroot}%{_rpmconfigdir}/{openmandriva,macros.d}
+mkdir -p %{buildroot}%{_rpmconfigdir}/{openmandriva,fileattrs,macros.d}
 cp -a rpm/user/openmandriva/* %{buildroot}%{_rpmconfigdir}/openmandriva
 cp -a rpm/build/openmandriva/* %{buildroot}%{_rpmconfigdir}/openmandriva
+cp -a rpm/build/fileattrs/* %{buildroot}%{_rpmconfigdir}/fileattrs
 cp -a rpm/build/macros.d/* %{buildroot}%{_rpmconfigdir}/macros.d
 
 mkdir -p %{buildroot}%{_rpmluadir}/fedora/srpm
@@ -1107,9 +1108,9 @@ fi
 %{_rpmconfigdir}/openmandriva/rpmrc
 
 %files rpm-setup-build
-%attr(4755,root,root) %{_rpmconfigdir}/openmandriva/devel.prov
-%attr(4755,root,root) %{_rpmconfigdir}/openmandriva/devel.req
-%attr(4755,root,root) %{_rpmconfigdir}/openmandriva/kmod-deps.sh
+%attr(755,root,root) %{_rpmconfigdir}/openmandriva/devel.prov
+%attr(755,root,root) %{_rpmconfigdir}/openmandriva/devel.req
+%attr(755,root,root) %{_rpmconfigdir}/openmandriva/kmod-deps.sh
 %{_rpmluadir}/fedora/common.lua
 %{_rpmluadir}/fedora/srpm/forge.lua
 %{_rpmconfigdir}/macros.d/macros.forge
@@ -1118,6 +1119,8 @@ fi
 %{_rpmconfigdir}/macros.d/macros.perl
 %{_rpmconfigdir}/macros.d/macros.python
 %{_rpmconfigdir}/macros.d/macros.selinux
+%{_rpmconfigdir}/fileattrs/devel.attr
+%{_rpmconfigdir}/fileattrs/kmod.attr
 
 %files installer
 %{_sysconfdir}/calamares/*.conf
