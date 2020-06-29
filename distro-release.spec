@@ -1009,20 +1009,20 @@ EOF
 ### INSTALLER END ###
 
 ### INDEXHTML ###
-cd about
+cd doc/indexhtml/about
 ./create_html.sh
-cd ..
+cd -
 
 install -d -m755 %{buildroot}%{_datadir}/mdk/indexhtml/
-cp -a HTML/* %{buildroot}%{_datadir}/mdk/indexhtml/
+cp -a doc/indexhtml/HTML/* %{buildroot}%{_datadir}/mdk/indexhtml/
 
 install -d -m755 %{buildroot}%{_datadir}/mdk/mail/text/
 install -d -m755 %{buildroot}%{_datadir}/mdk/mail/html/
-for lang in $(find mail/header-* -type f | sed "s|mail/header-||" ); do
-    cat mail/header-$lang &> tmpfile
-    cat mail/mail-$lang.txt >> tmpfile
+for lang in $(find doc/indexhtml/mail/header-* -type f | sed "s|mail/header-||" ); do
+    cat doc/indexhtml/mail/header-$lang &> tmpfile
+    cat doc/indexhtml/mail/mail-$lang.txt >> tmpfile
     install -m 0644 tmpfile %{buildroot}%{_datadir}/mdk/mail/text/mail-$lang
-    cat mail/header-$lang &> tmpfile
+    cat doc/indexhtml/mail/header-$lang &> tmpfile
     printf "%s\n" "Content-Type: multipart/related; type=\"multipart/alternative\";" >>tmpfile
     printf "%s\n" "   boundary=\"=-tThpx1YEZqL4gn53WjQ1\"" >> tmpfile
     printf "%s\n" "" >> tmpfile
@@ -1030,9 +1030,9 @@ for lang in $(find mail/header-* -type f | sed "s|mail/header-||" ); do
     printf "%s\n" "Content-Type: multipart/alternative; boundary=\"=-aFPGjTr5jUHhXPWxbLcT\"" >>tmpfile
     printf "%s\n" "" >> tmpfile
     printf "%s\n" "--=-aFPGjTr5jUHhXPWxbLcT" >> tmpfile
-    cat mail/mail-$lang.txt >> tmpfile
-    cat mail/mail-$lang.html >> tmpfile
-#    cat mail/mail-images >> tmpfile
+    cat doc/indexhtml/mail/mail-$lang.txt >> tmpfile
+    cat doc/indexhtml/mail/mail-$lang.html >> tmpfile
+#    cat doc/indexhtml/mail/mail-images >> tmpfile
     install -m 0644 tmpfile %{buildroot}%{_datadir}/mdk/mail/html/mail-$lang
 done
 
@@ -1040,10 +1040,10 @@ done
 install -d -m755 %{buildroot}%{_datadir}/mdk/about
 install -d -m755 %{buildroot}%{_datadir}/applications
 install -d -m755 %{buildroot}%{_bindir}
-cp about/html/* %{buildroot}%{_datadir}/mdk/about
-cp -r about/style %{buildroot}%{_datadir}/mdk/about/
-cp about/about-openmandriva-lx.desktop %{buildroot}%{_datadir}/applications
-cp about/about-openmandriva-lx %{buildroot}%{_bindir}
+cp doc/indexhtml/about/html/* %{buildroot}%{_datadir}/mdk/about
+cp -r doc/indexhtml/about/style %{buildroot}%{_datadir}/mdk/about/
+cp doc/indexhtml/about/about-openmandriva-lx.desktop %{buildroot}%{_datadir}/applications
+cp doc/indexhtml/about/about-openmandriva-lx %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}/doc/HTML/
 ln -s %{_datadir}/mdk/indexhtml/index.html %{buildroot}%{_datadir}/doc/HTML/index.html
 
