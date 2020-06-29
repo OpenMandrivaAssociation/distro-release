@@ -70,7 +70,7 @@ Version:	4.2
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
 %if 0%am_i_cooker
-Release:	0.5
+Release:	0.6
 %else
 %if 0%am_i_rolling
 Release:	0.3
@@ -144,8 +144,6 @@ Provides:	system-release(releasever) = %{version}
 %{_sysconfdir}/product.id
 %{_sysconfdir}/version
 
-
-
 %package desktop-Plasma
 Summary:	Plasma desktop configuration
 Group:		Graphical desktop/KDE
@@ -215,7 +213,7 @@ screensaver
 plymouth.
 
 %package repos
-Summary:	OpenMandriva package repositories
+Summary:	%{new_vendor} package repositories
 Group:		System/Base
 License:	MIT
 Provides:	openmandriva-repos(%{version})
@@ -226,24 +224,24 @@ Requires:	%{name}-repos-keys = %{version}-%{release}
 %rename		openmandriva-repos
 
 %description repos
-OpenMandriva package repository files for DNF and PackageKit
+%{new_vendor} package repository files for DNF and PackageKit
 with GPG public keys.
 
 %package repos-keys
-Summary:	OpenMandriva repository GPG keys
+Summary:	%{new_vendor} repository GPG keys
 Group:		System/Base
 %rename	openmandriva-repos-keys
 # GPG keys are architecture independent
 BuildArch:	noarch
 
 %description repos-keys
-OpenMandriva GPG keys for validating packages from OpenMandriva repositories by
+%{new_vendor} GPG keys for validating packages from %{new_vendor} repositories by
 DNF and PackageKit.
 
 %package repos-pkgprefs
 # (ngompa): See the following page on why this exists:
 # https://fedoraproject.org/wiki/PackagingDrafts/ProvidesPreferences#Distribution_preference
-Summary:	OpenMandriva repository package preferences
+Summary:	%{new_vendor} repository package preferences
 Group:		System/Base
 %rename	openmandriva-repos-pkgprefs
 # Preferences list is architecture independent
@@ -407,10 +405,10 @@ BuildArch:	noarch
 %rename rpm-openmandriva-setup
 
 %description rpm-setup
-Macros and scripts for OpenMandriva specific rpm behavior.
+Macros and scripts for %{new_vendor} specific rpm behavior.
 
 %package rpm-setup-build
-Summary:	Macros and scripts for OpenMandriva specific rpmbuild behavior
+Summary:	Macros and scripts for %{new_vendor} specific rpmbuild behavior
 Group:		System/Configuration/Packaging
 Requires:	rpm-build >= 2:4.14.0-0
 # (tpg) do not use %%EVRD here, as it does not exist yet
@@ -442,6 +440,22 @@ Requires:	%{name} = %{version}-%{release}
 
 %description installer
 Installer configuration files for %{distribution}.
+
+%package indexhtml
+Summary:	%{new_vendor} html welcome page
+Group:		System/Base
+%rename indexhtml
+BuildArch:	noarch
+BuildRequires:	intltool
+Requires(pre):	distro-release
+Requires(post):	gawk
+Requires(post):	coreutils
+Requires(post):	sed
+
+%description indexhtml
+%{new_vendor} index.html welcome page displayed by web browsers
+when they are launched, first mail displayed on mail clients
+after installation and "about" information.
 
 # WARNING !!!
 # Keep it as last one as it sets EPOCH 
@@ -723,7 +737,7 @@ install -m755 theme/grub/%{vendor}/05_theme %{buildroot}%{_sysconfdir}/grub.d/05
 mkdir -p %{buildroot}%{_sysconfdir}/default/
 cat > %{buildroot}%{_sysconfdir}/default/grub.%{vendor} << EOF
 GRUB_THEME=/boot/grub2/themes/%{vendor}/theme.txt
-GRUB_BACKGROUND=/boot/grub2/themes/%{vendor}/terminal_background.png
+GRUB_BACKGROUND=/boot/grub2/themes/%{vendor}/background.png
 GRUB_DISTRIBUTOR="%{distribution}"
 EOF
 %endif
@@ -994,6 +1008,46 @@ EOF
 
 ### INSTALLER END ###
 
+### INDEXHTML ###
+cd about
+./create_html.sh
+cd ..
+
+install -d -m755 %{buildroot}%{_datadir}/mdk/indexhtml/
+cp -a HTML/* %{buildroot}%{_datadir}/mdk/indexhtml/
+
+install -d -m755 %{buildroot}%{_datadir}/mdk/mail/text/
+install -d -m755 %{buildroot}%{_datadir}/mdk/mail/html/
+for lang in $(find mail/header-* -type f | sed "s|mail/header-||" ); do
+    cat mail/header-$lang &> tmpfile
+    cat mail/mail-$lang.txt >> tmpfile
+    install -m 0644 tmpfile %{buildroot}%{_datadir}/mdk/mail/text/mail-$lang
+    cat mail/header-$lang &> tmpfile
+    printf "%s\n" "Content-Type: multipart/related; type=\"multipart/alternative\";" >>tmpfile
+    printf "%s\n" "   boundary=\"=-tThpx1YEZqL4gn53WjQ1\"" >> tmpfile
+    printf "%s\n" "" >> tmpfile
+    printf "%s\n" "--=-tThpx1YEZqL4gn53WjQ1" >> tmpfile
+    printf "%s\n" "Content-Type: multipart/alternative; boundary=\"=-aFPGjTr5jUHhXPWxbLcT\"" >>tmpfile
+    printf "%s\n" "" >> tmpfile
+    printf "%s\n" "--=-aFPGjTr5jUHhXPWxbLcT" >> tmpfile
+    cat mail/mail-$lang.txt >> tmpfile
+    cat mail/mail-$lang.html >> tmpfile
+#    cat mail/mail-images >> tmpfile
+    install -m 0644 tmpfile %{buildroot}%{_datadir}/mdk/mail/html/mail-$lang
+done
+
+# about OpenMandriva
+install -d -m755 %{buildroot}%{_datadir}/mdk/about
+install -d -m755 %{buildroot}%{_datadir}/applications
+install -d -m755 %{buildroot}%{_bindir}
+cp about/html/* %{buildroot}%{_datadir}/mdk/about
+cp -r about/style %{buildroot}%{_datadir}/mdk/about/
+cp about/about-openmandriva-lx.desktop %{buildroot}%{_datadir}/applications
+cp about/about-openmandriva-lx %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_datadir}/doc/HTML/
+ln -s %{_datadir}/mdk/indexhtml/index.html %{buildroot}%{_datadir}/doc/HTML/index.html
+
+### INDEXHTML END ###
 %check
 %if %{am_i_cooker}
 case %{release} in
@@ -1030,6 +1084,11 @@ if [ "$1" = "0" ]; then
     update-alternatives --remove grub.vendor %{_sysconfdir}/default/grub.%{vendor}
 fi
 %endif
+
+%post indexhtml
+# done to prevent excludedocs to ignore the doc/HTML
+mkdir -p %{_datadir}/doc/HTML
+sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g" %{_datadir}/mdk/indexhtml/index.html ||:
 
 %files common
 %doc doc/CREDITS doc/distro.txt doc/release-notes.*
@@ -1126,3 +1185,15 @@ fi
 %{_sysconfdir}/calamares/*.conf
 %{_sysconfdir}/calamares/modules/*.conf
 %{_sysconfdir}/calamares/branding/auto/*
+
+%files indexhtml
+%dir %{_datadir}/mdk/about
+%dir %{_datadir}/mdk/indexhtml
+%dir %{_datadir}/mdk/mail
+%{_datadir}/mdk/about/*
+%{_datadir}/mdk/indexhtml/*
+%{_datadir}/mdk/mail/*
+%dir %{_datadir}/doc/HTML/
+%{_datadir}/doc/HTML/index.html
+%{_datadir}/applications/about-openmandriva-lx.desktop
+%{_bindir}/about-openmandriva-lx
