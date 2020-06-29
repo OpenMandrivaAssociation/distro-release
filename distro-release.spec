@@ -89,6 +89,7 @@ Group:		System/Configuration/Other
 %package common
 Summary:	%{new_distribution} release common files
 Group:		System/Configuration/Other
+BuildArch:	noarch
 %rename		rosa-release-common
 %rename		mandriva-release-common
 %rename		opemandriva-release-common
@@ -112,8 +113,8 @@ BuildRequires:	spec-helper
 Requires:	spec-helper
 %endif
 # (tpg) get rid of it
-%rename distro-release-Moondrake
-
+%rename		distro-release-Moondrake
+%rename		common-licenses
 %description common
 Common files for %{new_distribution} release packages.
 
@@ -604,6 +605,9 @@ ln -s %{vendor_tag}-release %{buildroot}%{_sysconfdir}/release
 ln -s product.id.%{new_vendor} %{buildroot}%{_sysconfdir}/product.id
 ln -s version.%{vendor_tag} %{buildroot}%{_sysconfdir}/version
 
+mkdir -p %{buildroot}%{_datadir}/common-licenses/*
+cp -a common-licenses %{buildroot}%{_datadir}/
+
 ### DESKTOP ###
 
 ## Install backgrounds
@@ -1018,7 +1022,7 @@ cp -a doc/indexhtml/HTML/* %{buildroot}%{_datadir}/mdk/indexhtml/
 
 install -d -m755 %{buildroot}%{_datadir}/mdk/mail/text/
 install -d -m755 %{buildroot}%{_datadir}/mdk/mail/html/
-for lang in $(find doc/indexhtml/mail/header-* -type f | sed "s|mail/header-||" ); do
+for lang in $(find doc/indexhtml/mail/header-* -type f | sed "s|doc/indexhtml/mail/header-||" ); do
     cat doc/indexhtml/mail/header-$lang &> tmpfile
     cat doc/indexhtml/mail/mail-$lang.txt >> tmpfile
     install -m 0644 tmpfile %{buildroot}%{_datadir}/mdk/mail/text/mail-$lang
@@ -1101,6 +1105,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_sysconfdir}/profile.d/10distro-release.sh
 %{_sysconfdir}/profile.d/10distro-release.csh
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sysconfig/system
+%{_datadir}/common-licenses
 
 %files desktop
 %{_bindir}/*
