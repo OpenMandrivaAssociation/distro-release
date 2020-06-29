@@ -70,7 +70,7 @@ Version:	4.2
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
 %if 0%am_i_cooker
-Release:	0.6
+Release:	0.7
 %else
 %if 0%am_i_rolling
 Release:	0.3
@@ -1115,8 +1115,8 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %dir %{_datadir}/faces/
 %{_datadir}/faces/default.png
 %{_datadir}/faces/user-default-mdk.png
-%dir %{_datadir}/mdk/
-%dir %{_datadir}/mdk/faces/
+%dir %{_datadir}/mdk
+%dir %{_datadir}/mdk/faces
 %{_datadir}/mdk/faces/*.png
 %{_datadir}/applications/*.desktop
 %dir %{_datadir}/mdk/backgrounds
