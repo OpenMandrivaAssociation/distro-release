@@ -445,13 +445,14 @@ Installer configuration files for %{distribution}.
 %package indexhtml
 Summary:	%{new_vendor} html welcome page
 Group:		System/Base
-%rename indexhtml
 BuildArch:	noarch
 BuildRequires:	intltool
 Requires(pre):	distro-release
 Requires(post):	gawk
 Requires(post):	coreutils
 Requires(post):	sed
+Obsoletes:	indexhtml < 1:0
+Provides:	indexhtml = 1:%{version}-%{release}
 
 %description indexhtml
 %{new_vendor} index.html welcome page displayed by web browsers
