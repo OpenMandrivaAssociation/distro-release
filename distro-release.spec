@@ -70,7 +70,7 @@ Version:	4.2
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
 %if 0%am_i_cooker
-Release:	0.7
+Release:	0.8
 %else
 %if 0%am_i_rolling
 Release:	0.3
@@ -709,6 +709,7 @@ for i in 16 22 24 32 36 48 64 72 96 128 192 256 512; do
     mkdir -p %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps
     convert -background none theme/icons/openmandriva.svg %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps/openmandriva.png
 done
+ln -s hicolor/scalable/apps/openmandriva.svg %{buildroot}%{_iconsdir}/
 
 # Default wallpaper should be available without browsing file system
 mkdir -p %{buildroot}%{_datadir}/wallpapers
@@ -998,8 +999,8 @@ strings:
     releaseNotesUrl:     "https://wiki.openmandriva.org/en/%{version}/Release_Notes"
 
 images:
-    productLogo:         "%{_iconsdir}/openmandriva.svg"
-    productIcon:         "%{_iconsdir}/openmandriva.svg"
+    productLogo:         "%{_iconsdir}/hicolor/scalable/apps/openmandriva.svg"
+    productIcon:         "%{_iconsdir}/hicolor/scalable/apps/openmandriva.svg"
 # (tpg) need to decide what show here
 #    productWelcome:      "languages.png"
 
@@ -1129,6 +1130,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_datadir}/mdk/bookmarks/mozilla/*.html
 %{_datadir}/mdk/dm
 %{_iconsdir}/hicolor/scalable/apps/*.svg
+%{_iconsdir}/openmandriva.svg
 
 %files desktop-Plasma
 %{_kde5_sysconfdir}/xdg/*
