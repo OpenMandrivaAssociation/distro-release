@@ -69,8 +69,16 @@ Version:	4.2
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
+# For the release number, make sure:
+# * Release/rock has Release: 1
+# * Cooker and rolling have numbers smaller than 1 (but a version number
+#   higher than latest rock)
+# * Cooker outnumbers rolling
+# Preferably, use 0.1.x for rolling, 0.2.x for cooker
+# (can't be done for 4.2 because already were at 0.8/0.3 before adding this
+# comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.8
+Release:	0.9
 %else
 %if 0%am_i_rolling
 Release:	0.3
@@ -80,7 +88,7 @@ Release:	1
 %endif
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
-Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{name}-%{version}.tar.gz
+Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{version}/%{name}-%{version}.tar.gz
 Group:		System/Configuration/Other
 
 %description
