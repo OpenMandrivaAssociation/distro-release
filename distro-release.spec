@@ -1013,6 +1013,7 @@ images:
 #    productWelcome:      "languages.png"
 
 slideshow:               "adverts.qml"
+slideshowAPI: 2
 
 style:
    sidebarBackground:    "#263039"
