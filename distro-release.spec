@@ -78,7 +78,7 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.10
+Release:	0.11
 %else
 %if 0%am_i_rolling
 Release:	0.3
@@ -586,22 +586,23 @@ META_CLASS=download
 EOF
 
 cat >%{buildroot}%{_sysconfdir}/%{vendor_tag}-release <<EOF
-%{new_distribution} release %{version} (%{new_codename}) for %{_target_cpu}
+%{new_distribution} release %{version} (%{new_codename}) %{distrib} for %{_target_cpu}
 EOF
 cat >%{buildroot}%{_sysconfdir}/version.%{vendor_tag} <<EOF
-%{version} %{release} (%{new_codename})
+%{version} %{release} (%{new_codename}) %{distrib}
 EOF
 
 # (tpg) follow standard specifications http://www.freedesktop.org/software/systemd/man/os-release.html
 cat >%{buildroot}%{_sysconfdir}/os-release <<EOF
 NAME="%{new_distribution}"
-VERSION="%{version} (%{new_codename})"
+VERSION="%{version} (%{new_codename}) %{distrib}"
 ID="%{vendor_tag}"
 VERSION_ID="%{version}"
-BUILD_ID="%(echo %(date +"%Y%m%d.%H"))"
-PRETTY_NAME="%{new_distribution} %{version} (%{new_codename})"
-VERSION_CODENAME="(%{new_codename})"
+PRETTY_NAME="%{new_distribution} %{version} (%{new_codename}) %{distrib}"
+BUILD_ID="%(printf "%s\n" %(date +"%Y%m%d.%H"))"
+VERSION_CODENAME="%(printf "%s\n" %{new_codename} |tr A-Z a-z)"
 ANSI_COLOR="1;43"
+LOGO="%{vendor_tag}"
 CPE_NAME="cpe:/o:%{vendor_tag}:%{distribution_tag}:%{version}"
 HOME_URL="%{new_disturl}"
 BUG_REPORT_URL="%{new_bugurl}"
