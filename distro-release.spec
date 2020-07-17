@@ -78,7 +78,7 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.9
+Release:	0.10
 %else
 %if 0%am_i_rolling
 Release:	0.3
@@ -593,7 +593,7 @@ cat >%{buildroot}%{_sysconfdir}/version.%{vendor_tag} <<EOF
 EOF
 
 # (tpg) follow standard specifications http://www.freedesktop.org/software/systemd/man/os-release.html
-cat >%{buildroot}%{_sysconfdir}/os-release.%{vendor_tag} <<EOF
+cat >%{buildroot}%{_sysconfdir}/os-release <<EOF
 NAME="%{new_distribution}"
 VERSION="%{version} (%{new_codename})"
 ID="%{vendor_tag}"
@@ -609,7 +609,7 @@ SUPPORT_URL="https://forum.openmandriva.org"
 PRIVACY_POLICY_URL="https://www.openmandriva.org/tos"
 EOF
 
-ln -s os-release.%{vendor_tag} %{buildroot}%{_sysconfdir}/os-release
+ln -s os-release %{buildroot}%{_sysconfdir}/os-release.%{vendor_tag}
 ln -s %{vendor_tag}-release %{buildroot}%{_sysconfdir}/release
 ln -s product.id.%{new_vendor} %{buildroot}%{_sysconfdir}/product.id
 ln -s version.%{vendor_tag} %{buildroot}%{_sysconfdir}/version
