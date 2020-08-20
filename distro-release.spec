@@ -425,7 +425,7 @@ Requires:	%{name}-rpm-setup = %{version}-%{release}
 # Required for package builds to work
 Requires:	dwz
 Requires:	rpmlint
-Requires:	rpmlint-openmandriva-policy
+Requires:	%{name}-rpmlint--policy
 Requires:	spec-helper >= 0.31.12
 Requires:	binutils
 Requires:	systemd-macros
