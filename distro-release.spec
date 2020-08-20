@@ -425,7 +425,7 @@ Requires:	%{name}-rpm-setup = %{version}-%{release}
 # Required for package builds to work
 Requires:	dwz
 Requires:	rpmlint
-Requires:	%{name}-rpmlint--policy
+Requires:	%{name}-rpmlint-policy
 Requires:	spec-helper >= 0.31.12
 Requires:	binutils
 Requires:	systemd-macros
@@ -468,7 +468,7 @@ when they are launched, first mail displayed on mail clients
 after installation and "about" information.
 
 %package rpmlint-policy
-Summary:	Rpmlint %{_target_vendor} policy
+Summary:	Rpmlint %{new_vendor} policy
 Group:		Development/Other
 License:	GPLv2+
 URL:		%{disturl}
