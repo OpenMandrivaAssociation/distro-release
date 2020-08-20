@@ -78,10 +78,10 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.11
+Release:	0.12
 %else
 %if 0%am_i_rolling
-Release:	0.3
+Release:	0.4
 %else
 Release:	1
 %endif
@@ -467,6 +467,23 @@ Provides:	indexhtml = 1:%{version}-%{release}
 when they are launched, first mail displayed on mail clients
 after installation and "about" information.
 
+%package rpmlint-policy
+Summary:	Rpmlint %{_target_vendor} policy
+Group:		Development/Other
+License:	GPLv2+
+URL:		%{disturl}
+BuildArch:	noarch
+BuildRequires:	rpmlint >= 1.10
+BuildRequires:	python >= 3
+Requires:	rpmlint >= 1.10
+Provides:	rpmlint-%{_target_vendor}-policy = %{EVRD}
+%rename		rpmlint-mandriva-policy
+%rename		rpmlint-distro-policy
+
+%description rpmlint-policy
+Official rpmlint %{new_vendor} policy, install this if you
+want to produce RPMs for %{new_vendor}.
+
 # WARNING !!!
 # Keep it as last one as it sets EPOCH 
 # desktop-common-data
@@ -501,6 +518,7 @@ Obsoletes:	desktop-common-data < 1:4.2-4
 %description desktop
 This package contains useful icons, menu structure and others goodies for the
 %{distribution} desktop.
+
 %prep
 %autosetup -p1
 # check that CREDITS file is in UTF-8, fail otherwise
@@ -1064,6 +1082,15 @@ mkdir -p %{buildroot}%{_datadir}/doc/HTML/
 ln -s %{_datadir}/mdk/indexhtml/index.html %{buildroot}%{_datadir}/doc/HTML/index.html
 
 ### INDEXHTML END ###
+
+### RPMLINT POLICY ###
+install -d -m755 %{buildroot}%{_datadir}/rpmlint/config.d
+cp -f rpm/rpmlint/distribution.error.conf %{buildroot}%{_datadir}/rpmlint/config.d/
+cp -f rpm/rpmlint/distribution.error.list %{buildroot}%{_datadir}/rpmlint/config.d/
+cp -f rpm/rpmlint/distribution.exceptions.conf %{buildroot}%{_datadir}/rpmlint/config.d/
+
+## RPMLINT POLICY END
+
 %check
 %if %{am_i_cooker}
 case %{release} in
@@ -1215,3 +1242,6 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_datadir}/doc/HTML/index.html
 %{_datadir}/applications/about-openmandriva-lx.desktop
 %{_bindir}/about-openmandriva-lx
+
+%files rpmlint-policy
+%{_datadir}/rpmlint/config.d/*
