@@ -81,7 +81,7 @@ DistTag:	%{shorttag}%{distro_tag}
 Release:	0.14
 %else
 %if 0%am_i_rolling
-Release:	0.4
+Release:	0.5
 %else
 Release:	1
 %endif
