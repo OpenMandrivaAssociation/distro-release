@@ -155,7 +155,7 @@ Provides:	system-release(releasever) = %{version}
 %{_sysconfdir}/product.id
 %{_sysconfdir}/version
 
-%if %{with bootstrap}
+%if %{without bootstrap}
 %package desktop-Plasma
 Summary:	Plasma desktop configuration
 Group:		Graphical desktop/KDE
@@ -700,7 +700,7 @@ ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/k
 ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/gnome-applications.menu
 ### DESKTOP END ###
 
-%if %{with bootstrap}
+%if %{without bootstrap}
 ### DESKTOP PLASMA ###
 
 mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg
@@ -1177,7 +1177,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_iconsdir}/openmandriva.svg
 
-%if %{with bootstrap}
+%if %{without bootstrap}
 %files desktop-Plasma
 %{_kde5_sysconfdir}/xdg/*
 %{_datadir}/konsole/OMV.profile
