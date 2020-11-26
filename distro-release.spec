@@ -2,7 +2,7 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
-%bcond_without bootstrap
+%bcond_with bootstrap
 
 %define new_distribution OpenMandriva Lx
 %define new_vendor OpenMandriva
