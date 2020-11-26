@@ -2,6 +2,8 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 
+%bcond_without bootstrap
+
 %define new_distribution OpenMandriva Lx
 %define new_vendor OpenMandriva
 %define new_product OpenMandriva Lx
@@ -153,6 +155,7 @@ Provides:	system-release(releasever) = %{version}
 %{_sysconfdir}/product.id
 %{_sysconfdir}/version
 
+%if %{with bootstrap}
 %package desktop-Plasma
 Summary:	Plasma desktop configuration
 Group:		Graphical desktop/KDE
@@ -177,6 +180,7 @@ BuildArch:	noarch
 
 %description desktop-Plasma
 KDE Plasma desktop configuration.
+%endif
 
 #package desktop-Xfce
 #description desktop-Xfce
@@ -696,6 +700,7 @@ ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/k
 ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/gnome-applications.menu
 ### DESKTOP END ###
 
+%if %{with bootstrap}
 ### DESKTOP PLASMA ###
 
 mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg
@@ -728,6 +733,7 @@ mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
 cp -a desktops/Plasma/org.openmandriva4.desktop %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop
 
 ### DESKTOP PLASMA END ###
+%endif
 
 ### THEME ###
 
@@ -1171,6 +1177,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_iconsdir}/openmandriva.svg
 
+%if %{with bootstrap}
 %files desktop-Plasma
 %{_kde5_sysconfdir}/xdg/*
 %{_datadir}/konsole/OMV.profile
@@ -1179,6 +1186,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_kde5_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 %{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
 %{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop
+%endif
 
 %files theme
 %{_datadir}/mdk/backgrounds/*.*g
