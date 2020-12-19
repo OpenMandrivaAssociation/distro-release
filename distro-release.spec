@@ -80,10 +80,10 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.19
+Release:	0.20
 %else
 %if 0%am_i_rolling
-Release:	0.5
+Release:	0.6
 %else
 Release:	1
 %endif
