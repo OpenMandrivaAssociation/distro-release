@@ -1048,8 +1048,8 @@ strings:
     bootloaderEntryName: "openmandriva"
     productUrl:          "%{new_disturl}"
     supportUrl:          "%{new_bugurl}"
-    knownIssuesUrl:      "https://wiki.openmandriva.org/en/%{version}/Errata"
-    releaseNotesUrl:     "https://wiki.openmandriva.org/en/%{version}/Release_Notes"
+    knownIssuesUrl:      "https://wiki.openmandriva.org/en/releases/omlx42/beta/errata"
+    releaseNotesUrl:     "https://wiki.openmandriva.org/en/releases/omlx42/beta/notes"
 
 images:
     productLogo:         "%{_iconsdir}/hicolor/scalable/apps/openmandriva.svg"
