@@ -80,10 +80,10 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.25
+Release:	0.26
 %else
 %if 0%am_i_rolling
-Release:	0.11
+Release:	0.12
 %else
 Release:	1
 %endif
@@ -1025,7 +1025,7 @@ cp -a rpm/build/fedora/forge.lua %{buildroot}%{_rpmluadir}/fedora/srpm
 ### INSTALLER ###
 mkdir -p %{buildroot}%{_sysconfdir}/calamares/modules
 install -m644 installer/settings.conf %{buildroot}%{_sysconfdir}/calamares/settings.conf
-for i in bootloader.conf displaymanager.conf finished.conf fstab.conf grubcfg.conf keyboard.conf locale.conf machineid.conf mount.conf packages.conf partition.conf removeuser.conf services-systemd.conf shellprocess.conf umout.conf unpackfs.conf users.conf webview.conf welcome.conf ; do
+for i in bootloader.conf displaymanager.conf finished.conf fstab.conf grubcfg.conf keyboard.conf locale.conf machineid.conf mount.conf packages.conf partition.conf removeuser.conf services-systemd.conf shellprocess.conf umount.conf unpackfs.conf users.conf webview.conf welcome.conf ; do
     install -m644 installer/$i %{buildroot}%{_sysconfdir}/calamares/modules/$i
 done
 
