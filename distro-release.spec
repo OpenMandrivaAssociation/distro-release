@@ -80,10 +80,10 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.27
+Release:	0.29
 %else
 %if 0%am_i_rolling
-Release:	0.13
+Release:	0.15
 %else
 Release:	1
 %endif
@@ -703,32 +703,32 @@ ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/g
 %if %{without bootstrap}
 ### DESKTOP PLASMA ###
 
-mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg
-mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg/KDE
-mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg/QtProject
-mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/env
-mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/shutdown
-mkdir -p %{buildroot}%{_kde5_datadir}/kservices5
-mkdir -p %{buildroot}%{_kde5_datadir}/plasma/shells/org.kde.plasma.desktop/contents
-mkdir -p %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents
+mkdir -p %{buildroot}%{_sysconfdir}/xdg
+mkdir -p %{buildroot}%{_sysconfdir}/xdg/KDE
+mkdir -p %{buildroot}%{_sysconfdir}/xdg/QtProject
+mkdir -p %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/env
+mkdir -p %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/shutdown
+mkdir -p %{buildroot}%{_datadir}/kservices5
+mkdir -p %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents
+mkdir -p %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents
 mkdir -p %{buildroot}%{_datadir}/konsole
 
 for i in kcmdisplayrc kcmfonts kcminputrc kdeglobals kscreenlockerrc ksplashrc kwinrc plasmarc startupconfig startupconfigfiles kcm-about-distrorc ksmserverrc kiorc dolphinrc konsolerc klaunchrc discoverabstractnotifier.notifyrc plasma_workspace.notifyrc powermanagementprofilesrc; do
-    install -m 0644 desktops/Plasma/$i %{buildroot}%{_kde5_sysconfdir}/xdg/$i
+    install -m 0644 desktops/Plasma/$i %{buildroot}%{_sysconfdir}/xdg/$i
 done
 
-install -m 0644 desktops/Plasma/metadata.desktop %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/metadata.desktop
-install -m 0644 desktops/Plasma/metadata.desktop %{buildroot}%{_kde5_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
-install -m 0644 desktops/Plasma/org.kde.plasma.desktop-layout.js %{buildroot}%{_kde5_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
-install -m 0644 desktops/Plasma/org.openmandriva.plasma.desktop.defaultPanel-layout.js %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents/layout.js
-install -m 0644 desktops/Plasma/plasma-firstsetup.sh %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/env/plasma-firstsetup.sh
-install -m 0644 desktops/Plasma/Sonnet.conf %{buildroot}%{_kde5_sysconfdir}/xdg/KDE/Sonnet.conf
-install -m 0644 desktops/Plasma/kdeglobals.sh %{buildroot}%{_kde5_sysconfdir}/xdg/plasma-workspace/env/kdeglobals.sh
-install -m 0644 desktops/Plasma/qtlogging.ini %{buildroot}%{_kde5_sysconfdir}/xdg/QtProject/qtlogging.ini
+install -m 0644 desktops/Plasma/metadata.desktop %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/metadata.desktop
+install -m 0644 desktops/Plasma/metadata.desktop %{buildroot}%{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
+install -m 0644 desktops/Plasma/org.kde.plasma.desktop-layout.js %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
+install -m 0644 desktops/Plasma/org.openmandriva.plasma.desktop.defaultPanel-layout.js %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents/layout.js
+install -m 0644 desktops/Plasma/plasma-firstsetup.sh %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/env/plasma-firstsetup.sh
+install -m 0644 desktops/Plasma/Sonnet.conf %{buildroot}%{_sysconfdir}/xdg/KDE/Sonnet.conf
+install -m 0644 desktops/Plasma/kdeglobals.sh %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/env/kdeglobals.sh
+install -m 0644 desktops/Plasma/qtlogging.ini %{buildroot}%{_sysconfdir}/xdg/QtProject/qtlogging.ini
 install -m 0644 desktops/Plasma/OMV.profile %{buildroot}%{_datadir}/konsole/OMV.profile
-mkdir -p %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents
-install -m 0644 desktops/Plasma/org.openmandriva.plasma.desktop.globalMenuPanel-layout.js %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents/layout.js
-install -m 0644 desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/metadata.desktop
+mkdir -p %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents
+install -m 0644 desktops/Plasma/org.openmandriva.plasma.desktop.globalMenuPanel-layout.js %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents/layout.js
+install -m 0644 desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/metadata.desktop
 mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
 cp -a desktops/Plasma/org.openmandriva4.desktop %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop
 
@@ -841,7 +841,8 @@ for arch in ${ARCH} ${SECONDARY_ARCH}; do
                         cat >>%{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-$release-$arch.repo <<EOF
 [$release-$arch$REPO]
 name="$NAME"
-baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/${repo}/release/, http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/${repo}/release/
+baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/${repo}/release/
+	http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/${repo}/release/
 # Alternative if mirror.openmandriva.org is down
 # mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$vertag&arch=${arch}&repo=${repo}&release=release
 # fastestmirror=1
@@ -856,7 +857,8 @@ if $HAS_UPDATES; then
     cat >>%{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-$release-$arch.repo <<EOF
 [$release-updates-$arch$REPO]
 name="$NAME - Updates"
-baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/${repo}/updates/, http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/${repo}/updates/
+baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/${repo}/updates/
+	http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/${repo}/updates/
 # Alternative if mirror.openmandriva.org is down
 #mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$vertag&arch=${arch}&repo=${repo}&release=updates
 #fastestmirror=1
@@ -871,7 +873,8 @@ fi
     cat >>%{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-$release-$arch.repo <<EOF
 [$release-testing-$arch$REPO]
 name="$NAME - Testing"
-baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/${repo}/testing/, http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/${repo}/testing/
+baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/${repo}/testing/
+	http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/${repo}/testing/
 # Alternative if mirror.openmandriva.org is down
 #mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$vertag&arch=${arch}&repo=${repo}&release=testing
 #fastestmirror=1
@@ -885,7 +888,8 @@ EOF
     cat >>%{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-$release-$arch.repo <<EOF
 [$release-$arch$REPO-debuginfo]
 name="$NAME - Debug"
-baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/release/, http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/release/
+baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/release/
+	http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/release/
 # Alternative if mirror.openmandriva.org is down
 #mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$vertag&arch=${arch}&repo=debug_${repo}&release=release
 #fastestmirror=1
@@ -900,7 +904,8 @@ if $HAS_UPDATES; then
     cat >>%{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-$release-$arch.repo <<EOF
 [$release-updates-$arch$REPO-debuginfo]
 name="$NAME - Updates - Debug"
-baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/updates/, http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/updates/
+baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/updates/
+	http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/updates/
 # Alternative if mirror.openmandriva.org is down
 #mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$vertag&arch=${arch}&repo=debug_${repo}&release=updates
 #fastestmirror=1
@@ -915,7 +920,8 @@ fi
 cat >>%{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-$release-$arch.repo <<EOF
 [$release-testing-$arch$REPO-debuginfo]
 name="$NAME - Testing - Debug"
-baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/testing/, http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/testing/
+baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/testing/
+	http://abf-downloads.openmandriva.org/${vertag}/repository/${arch}/debug_${repo}/testing/
 # Alternative if mirror.openmandriva.org is down
 #mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$vertag&arch=${arch}&repo=debug_${repo}&release=testing
 #fastestmirror=1
@@ -929,7 +935,8 @@ EOF
 cat >>%{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-$release-$arch-source.repo <<EOF
 [$release-$arch$REPO-source]
 name="$NAME - Source"
-baseurl=http://mirror.openmandriva.org/${vertag}/repository/SRPMS/${repo}/release/, http://abf-downloads.openmandriva.org/${vertag}/repository/SRPMS/${repo}/release/
+baseurl=http://mirror.openmandriva.org/${vertag}/repository/SRPMS/${repo}/release/
+	http://abf-downloads.openmandriva.org/${vertag}/repository/SRPMS/${repo}/release/
 # Alternative if mirror.openmandriva.org is down
 #mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$vertag&arch=SRPMS&repo=${repo}&release=release
 #fastestmirror=1
@@ -944,7 +951,8 @@ if $HAS_UPDATES; then
     cat >>%{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-$release-$arch-source.repo <<EOF
 [$release-updates-$arch$REPO-source]
 name="$NAME - Updates - Source"
-baseurl=http://mirror.openmandriva.org/${vertag}/repository/SRPMS/${repo}/updates/, http://abf-downloads.openmandriva.org/${vertag}/repository/SRPMS/${repo}/updates/
+baseurl=http://mirror.openmandriva.org/${vertag}/repository/SRPMS/${repo}/updates/
+	http://abf-downloads.openmandriva.org/${vertag}/repository/SRPMS/${repo}/updates/
 # Alternative if mirror.openmandriva.org is down
 #mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$vertag&arch=SRPMS&repo=${repo}&release=updates
 #fastestmirror=1
@@ -959,7 +967,8 @@ fi
 cat >>%{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-$release-$arch-source.repo <<EOF
 [$release-testing-$arch$REPO-source]
 name="$NAME - Testing - Source"
-baseurl=http://mirror.openmandriva.org/${vertag}/repository/SRPMS/${repo}/testing/, http://abf-downloads.openmandriva.org/${vertag}/repository/SRPMS/${repo}/testing/
+baseurl=http://mirror.openmandriva.org/${vertag}/repository/SRPMS/${repo}/testing/
+	http://abf-downloads.openmandriva.org/${vertag}/repository/SRPMS/${repo}/testing/
 # Alternative if mirror.openmandriva.org is down
 #mirrorlist=http://mirrors.openmandriva.org/mirrors.php?platform=$vertag&arch=SRPMS&repo=${repo}&release=testing
 #fastestmirror=1
@@ -1179,11 +1188,11 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 
 %if %{without bootstrap}
 %files desktop-Plasma
-%{_kde5_sysconfdir}/xdg/*
+%{_sysconfdir}/xdg/*
 %{_datadir}/konsole/OMV.profile
-%{_kde5_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
-%{_kde5_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
-%{_kde5_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
+%{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
+%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
+%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 %{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
 %{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop
 %endif
