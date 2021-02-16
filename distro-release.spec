@@ -66,7 +66,7 @@
 
 Summary:	%{new_distribution} release file
 Name:		distro-release
-Version:	4.2
+Version:	4.50
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 # 3001 = 3.1
 # 3001 = 3.2 etc.
@@ -80,10 +80,10 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.29
+Release:	0.2.1
 %else
 %if 0%am_i_rolling
-Release:	0.15
+Release:	0.1.1
 %else
 Release:	1
 %endif
@@ -782,6 +782,24 @@ GRUB_BACKGROUND=/boot/grub2/themes/%{vendor}/background.png
 GRUB_DISTRIBUTOR="%{distribution}"
 EOF
 %endif
+
+%if %am_i_cooker
+THEMEVER=cooker
+[ -d theme-$THEMEVER ] || THEMEVER=rolling
+%endif
+%if %am_i_rolling
+THEMEVER=rolling
+%endif
+%if ! %am_i_cooker && ! %am_i_rolling
+THEMEVER=$(echo %{version} |sed -e 's,\.,,g')
+%endif
+if [ -d theme-$THEMEVER ]; then
+	# Overwrite some stuff with version/branch specific artwork
+	cp -f theme-$THEMEVER/plymouth/* %{buildroot}%{_datadir}/plymouth/themes/%{vendor}/
+	cp -f theme-$THEMEVER/wallpapers/* %{buildroot}%{_datadir}/mdk/backgrounds/
+	cp -f theme-$THEMEVER/grub/* %{buildroot}/boot/grub2/themes/%{vendor}/
+	cp -f theme-$THEMEVER/splash-contents-previews/* %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop/contents/previews/
+fi
 
 ### THEME END ###
 
