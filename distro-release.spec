@@ -358,9 +358,6 @@ Suggests:	proftpd
 Suggests:	libpq5
 Suggests:	lib64pq5
 
-# syslog-daemon
-Suggests:	systemd
-
 # vnc
 Suggests:	tigervnc
 
