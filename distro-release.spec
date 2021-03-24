@@ -49,9 +49,9 @@
 # distro_arch => the distribution we are using
 %define distro_arch %{_target_cpu}
 
-%define major %(printf %u 0%(echo %{version}|cut -d. -f1))
-%define minor %(printf %u 0%(echo %{version}|cut -d. -f2))
-%define subminor %(printf %u 0%(echo %{version}|cut -d. -f3))
+%define major %(printf %u %(echo %{version}|cut -d. -f1))
+%define minor %([ -z "%(echo %{version}|cut -d. -f2)" ] && echo 0 || printf %u %(echo %{version}|cut -d. -f2))
+%define subminor %([ -z "%(echo %{version}|cut -d. -f3)" ] && echo 0 || printf %u %(echo %{version}|cut -d. -f3))
 %define distro_tag %(echo $((%{major}*1000+%{minor})))
 %define version_tag %(echo $((%{major}*1000000+%{minor}*1000+%{subminor})))
 %define mdkver %{version_tag}
@@ -80,10 +80,10 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.2.1
+Release:	0.2.5
 %else
 %if 0%am_i_rolling
-Release:	0.1.1
+Release:	0.1.2
 %else
 Release:	1
 %endif
@@ -194,7 +194,7 @@ BuildRequires:	fonts-ttf-dejavu
 BuildRequires:	urw-fonts
 Provides:	plymouth(system-theme)
 Requires:	%{name}
-%ifnarch %{arm}
+%ifnarch %{arm} %{riscv}
 Requires:	plymouth-plugin-script
 Requires(post):	plymouth-scripts
 Requires:	grub2
@@ -223,9 +223,9 @@ BuildArch:	noarch
 
 %description theme
 This package provides default themes for %{distribution}'s components:
-grub
-screensaver
-plymouth.
+ - grub
+ - screensaver
+ - plymouth.
 
 %package repos
 Summary:	%{new_vendor} package repositories
@@ -270,8 +270,10 @@ Suggests:	curl
 # webclient
 Suggests:	lynx
 
+%ifnarch %{armx} %{riscv}
 # bootloader
 Suggests:	grub2
+%endif
 
 # vim
 Suggests:	vim-enhanced
@@ -357,9 +359,6 @@ Suggests:	proftpd
 # postgresql
 Suggests:	libpq5
 Suggests:	lib64pq5
-
-# syslog-daemon
-Suggests:	systemd
 
 # vnc
 Suggests:	tigervnc
@@ -768,7 +767,7 @@ cp -a theme/pixmaps/*.*g %{buildroot}%{_datadir}/pixmaps
 mkdir -p %{buildroot}%{_datadir}/plymouth/themes
 cp -a theme/plymouth/%{vendor} %{buildroot}%{_datadir}/plymouth/themes/
 
-# (tpg) arm does not uses grub, but aarch64 does
+# (tpg) arm does not uses grub, but some aarch64 boards do
 %ifnarch %{arm}
 mkdir -p %{buildroot}/boot/grub2/themes/%{vendor}
 cp -a theme/grub/%{vendor}/* %{buildroot}/boot/grub2/themes/%{vendor}
