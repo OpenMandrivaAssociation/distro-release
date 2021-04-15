@@ -198,6 +198,8 @@ Requires:	%{name}
 Requires:	plymouth-plugin-script
 Requires(post):	plymouth-scripts
 Requires:	grub2
+%else
+Requires:	plymouth-theme-bgrt
 %endif
 %rename		distro-theme
 %rename		grub2-theme
@@ -749,6 +751,7 @@ ln -s hicolor/scalable/apps/openmandriva.svg %{buildroot}%{_iconsdir}/
 mkdir -p %{buildroot}%{_datadir}/wallpapers
 cp -a theme/backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
 cp -a theme/extra-backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
+
 # (tpg) add flavour name on the wallapaer
 convert -fill white -pointsize 20 -gravity center -draw "text 565,560 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png
 convert -fill white -pointsize 20 -gravity center -draw "text 300,410 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png
@@ -764,11 +767,17 @@ cp -a theme/screensaver/*.jpg %{buildroot}%{_datadir}/mdk/screensaver
 mkdir -p %{buildroot}%{_datadir}/pixmaps
 cp -a theme/pixmaps/*.*g %{buildroot}%{_datadir}/pixmaps
 
+# (tpg) we are using bgrt plymouth theme
+%ifnarch %{armx} %{riscv}
 mkdir -p %{buildroot}%{_datadir}/plymouth/themes
 cp -a theme/plymouth/%{vendor} %{buildroot}%{_datadir}/plymouth/themes/
+%endif
 
-# (tpg) arm does not uses grub, but some aarch64 boards do
-%ifnarch %{arm}
+# (tpg) currently our os-image-builder tool supports:
+# uboot with extlinux
+# systemd-boot
+
+%ifnarch %{armx} %{riscv}
 mkdir -p %{buildroot}/boot/grub2/themes/%{vendor}
 cp -a theme/grub/%{vendor}/* %{buildroot}/boot/grub2/themes/%{vendor}
 rm -rf %{buildroot}/boot/grub2/themes/%{vendor}/05_theme
