@@ -80,7 +80,7 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.2.7
+Release:	0.2.8
 %else
 %if 0%am_i_rolling
 Release:	0.1.3
@@ -803,9 +803,11 @@ THEMEVER=$(echo %{version} |sed -e 's,\.,,g')
 %endif
 if [ -d theme-$THEMEVER ]; then
 	# Overwrite some stuff with version/branch specific artwork
-	cp -f theme-$THEMEVER/plymouth/* %{buildroot}%{_datadir}/plymouth/themes/%{vendor}/
 	cp -f theme-$THEMEVER/wallpapers/* %{buildroot}%{_datadir}/mdk/backgrounds/
+%ifnarch %{armx} %{riscv}
+	cp -f theme-$THEMEVER/plymouth/* %{buildroot}%{_datadir}/plymouth/themes/%{vendor}/
 	cp -f theme-$THEMEVER/grub/* %{buildroot}/boot/grub2/themes/%{vendor}/
+%endif
 	cp -f theme-$THEMEVER/splash-contents-previews/* %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop/contents/previews/
 fi
 
@@ -1230,10 +1232,10 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_iconsdir}/hicolor/*/apps/openmandriva.png
 %dir %{_datadir}/mdk/screensaver
 %{_datadir}/mdk/screensaver/*.jpg
-%{_datadir}/plymouth/themes/%{vendor}
 %optional %{_datadir}/pixmaps/system-logo-white.png
 
-%ifnarch %{arm}
+%ifnarch %{armx} %{riscv}
+%{_datadir}/plymouth/themes/%{vendor}
 %{_sysconfdir}/default/grub.%{vendor}
 %dir /boot/grub2/themes/%{vendor}
 /boot/grub2/themes/%{vendor}/*
