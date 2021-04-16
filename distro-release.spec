@@ -80,7 +80,7 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.2.8
+Release:	0.2.9
 %else
 %if 0%am_i_rolling
 Release:	0.1.3
@@ -1149,7 +1149,7 @@ esac
 %endif
 
 %post theme
-%ifnarch %{arm}
+%ifnarch %{armx} %{riscv}
 %{_sbindir}/plymouth-set-default-theme %{vendor}
 
 if test -f %{_sysconfdir}/default/grub ; then
@@ -1167,7 +1167,7 @@ update-alternatives --install %{_sysconfdir}/default/grub.vendor grub.vendor %{_
 %endif
 
 %postun theme
-%ifnarch %{arm}
+%ifnarch %{armx} %{riscv}
 if [ "$1" = "0" ]; then
     update-alternatives --remove grub.vendor %{_sysconfdir}/default/grub.%{vendor}
 fi
