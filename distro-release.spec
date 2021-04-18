@@ -80,7 +80,7 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.2.9
+Release:	0.2.10
 %else
 %if 0%am_i_rolling
 Release:	0.1.3
@@ -755,11 +755,13 @@ mkdir -p %{buildroot}%{_datadir}/wallpapers
 cp -a theme/backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
 cp -a theme/extra-backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
 
+%if %am_i_cooker || %am_i_rolling
 # (tpg) add flavour name on the wallapaer
 convert -fill white -pointsize 20 -gravity center -draw "text 565,560 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png
 convert -fill white -pointsize 20 -gravity center -draw "text 300,410 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png
 convert -fill white -pointsize 20 -gravity center -draw "text 700,500 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-4x3.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-4x3.png
 convert -fill white -pointsize 20 -gravity center -draw "text 500,370 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-5x4.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-5x4.png
+%endif
 ln -sf /usr/share/mdk/backgrounds/OpenMandriva-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/default.png
 ln -sf /usr/share/mdk/backgrounds/default.png %{buildroot}%{_datadir}/wallpapers/default.png
 ln -sf /usr/share/mdk/backgrounds/default.png %{buildroot}%{_datadir}/wallpapers/default.jpg
