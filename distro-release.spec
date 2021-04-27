@@ -500,6 +500,7 @@ Group:		System/Configuration/Other
 Epoch:		2
 BuildArch:	noarch
 Requires:	distro-release
+Requires:	filesystem
 #XDG stuff
 Requires:	libxdg-basedir
 Requires:	xdg-compliance
@@ -1198,7 +1199,6 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 
 %files desktop
 %{_bindir}/*
-%dir %{_sysconfdir}/xdg
 %dir %{_sysconfdir}/xdg/menus
 %config(noreplace) %{_sysconfdir}/xdg/menus/*.menu
 %dir %{_datadir}/faces/
