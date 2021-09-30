@@ -80,7 +80,7 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.2.12
+Release:	0.2.13
 %else
 %if 0%am_i_rolling
 Release:	0.1.3
@@ -117,11 +117,6 @@ Requires:	filesystem
 # cf mdvbz#32631
 Provides:	arch(%{_target_cpu})
 Provides:	%{arch_tagged distro-release-common}
-# (tpg) remove after rpm5 to rpmv4 migration
-%ifnarch x86_64
-BuildRequires:	spec-helper
-Requires:	spec-helper
-%endif
 # (tpg) get rid of it
 %rename		distro-release-Moondrake
 %rename		common-licenses
