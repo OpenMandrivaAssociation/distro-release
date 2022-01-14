@@ -17,7 +17,7 @@
 %define new_bugurl http://issues.openmandriva.org/
 
 %define am_i_cooker 0
-%define am_i_rolling 1
+%define am_i_rolling 0
 %if %am_i_cooker
 %define distrib Cooker
 %else
