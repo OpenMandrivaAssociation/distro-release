@@ -1068,8 +1068,8 @@ strings:
     bootloaderEntryName: "openmandriva"
     productUrl:          "%{new_disturl}"
     supportUrl:          "%{new_bugurl}"
-    knownIssuesUrl:      "https://wiki.openmandriva.org/en/releases/current"
-    releaseNotesUrl:     "https://wiki.openmandriva.org/en/releases/current"
+    knownIssuesUrl:      "https://wiki.openmandriva.org/en/distribution/releases/current"
+    releaseNotesUrl:     "https://wiki.openmandriva.org/en/distribution/releases/current"
 
 images:
     productLogo:         "%{_iconsdir}/hicolor/scalable/apps/openmandriva.svg"
