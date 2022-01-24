@@ -90,7 +90,7 @@ Release:	1
 %endif
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
-Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/refs/heads/%{version}/%{name}-%{version}.tar.gz
 Group:		System/Configuration/Other
 
 %description
