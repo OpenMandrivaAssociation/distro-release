@@ -80,7 +80,7 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.2.13
+Release:	0.2.14
 %else
 %if 0%am_i_rolling
 Release:	0.1.3
@@ -120,6 +120,7 @@ Provides:	%{arch_tagged distro-release-common}
 # (tpg) get rid of it
 %rename		distro-release-Moondrake
 %rename		common-licenses
+
 %description common
 Common files for %{new_distribution} release packages.
 
@@ -1260,7 +1261,6 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 
 %files rpm-setup-build
 %attr(755,root,root) %{_rpmconfigdir}/openmandriva/devel.prov
-%attr(755,root,root) %{_rpmconfigdir}/openmandriva/devel.req
 %attr(755,root,root) %{_rpmconfigdir}/openmandriva/kmod-deps.sh
 %{_rpmluadir}/fedora/common.lua
 %{_rpmluadir}/fedora/srpm/forge.lua
