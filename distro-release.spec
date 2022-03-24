@@ -412,7 +412,7 @@ Summary:	Macros and scripts for %{new_vendor} specific rpm behavior
 Group:		System/Configuration/Packaging
 License:	MIT
 Requires:	rpm >= 2:4.14.2-0
-Recommends:	systemd-macros
+Recommends:	systemd-rpm-macros
 BuildArch:	noarch
 %rename rpm-openmandriva-setup
 
@@ -431,8 +431,6 @@ Requires:	rpmlint
 Requires:	%{name}-rpmlint-policy
 Requires:	spec-helper >= 0.31.12
 Requires:	binutils
-Requires:	systemd-macros
-Requires:	rpm-helper
 # go and rust srpm macros are needed by mock/dnf builddep to
 # prevent unexpanded macros
 Requires:	go-srpm-macros
