@@ -80,7 +80,7 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.2.15
+Release:	0.2.16
 %else
 %if 0%am_i_rolling
 Release:	0.1.3
@@ -673,12 +673,6 @@ install -m 0644 desktops/applications/*.desktop %{buildroot}%{_datadir}/applicat
 install -d -m 0755 %{buildroot}%{_iconsdir}/hicolor/scalable/apps
 cp -a theme/icons/*.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/
 
-#install theme for GDM/KDM
-install -d -m 0755 %{buildroot}/%{_datadir}/mdk/dm
-for i in desktops/dm/*.png desktops/dm/*.desktop desktops/dm/*.xml ; do
-  install -m 0644 $i %{buildroot}/%{_datadir}/mdk/dm/
-done
-
 # install bookmarks
 install -d -m 0755 %{buildroot}%{_datadir}/mdk/bookmarks/konqueror
 for i in desktops/bookmarks/konqueror/*.html ; do
@@ -1209,7 +1203,6 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_datadir}/mdk/bookmarks/konqueror/*.html
 %dir %{_datadir}/mdk/bookmarks/mozilla
 %{_datadir}/mdk/bookmarks/mozilla/*.html
-%{_datadir}/mdk/dm
 %{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_iconsdir}/openmandriva.svg
 
