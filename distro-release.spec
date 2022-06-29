@@ -718,7 +718,7 @@ install -m 0644 desktops/Plasma/Sonnet.conf %{buildroot}%{_sysconfdir}/xdg/KDE/S
 install -m 0644 desktops/Plasma/kdeglobals.sh %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/env/kdeglobals.sh
 ln -sf %{_sysconfdir}/xdg/plasma-workspace/env/kdeglobals.sh %{buildroot}%{_sysconfdir}/xdg/autostart-scripts/kdeglobals.sh
 install -m 0644 desktops/Plasma/qtlogging.ini %{buildroot}%{_sysconfdir}/xdg/QtProject/qtlogging.ini
-install -m 0644 desktops/Plasma/OMV.profile %{buildroot}%{_datadir}/konsole/OMV.profile
+install -m 0644 desktops/Plasma/OM.profile %{buildroot}%{_datadir}/konsole/OM.profile
 mkdir -p %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents
 install -m 0644 desktops/Plasma/org.openmandriva.plasma.desktop.globalMenuPanel-layout.js %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents/layout.js
 install -m 0644 desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/metadata.desktop
@@ -1209,7 +1209,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %if %{without bootstrap}
 %files desktop-Plasma
 %{_sysconfdir}/xdg/*
-%{_datadir}/konsole/OMV.profile
+%{_datadir}/konsole/OM.profile
 %{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
 %{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
 %{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
