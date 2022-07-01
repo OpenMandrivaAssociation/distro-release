@@ -642,11 +642,14 @@ cp -a common-licenses %{buildroot}%{_datadir}/
 
 ## Install backgrounds
 # User & root's backgrounds
-install -d -m 0755 %{buildroot}%{_datadir}/mdk/backgrounds/
+install -d -m 0755 %{buildroot}%{_datadir}/mdk/backgrounds
 
 # for easy access for users looking for wallpapers at expected location
-install -d %{buildroot}%{_datadir}/wallpapers
+install -d -m 0755 %{buildroot}%{_datadir}/wallpapers
 ln -sr %{buildroot}%{_datadir}/mdk/backgrounds %{buildroot}%{_datadir}/wallpapers/mdk
+ln -s %{buildroot}%{_datadir}/wallpapers/OpenMandriva/contents/images/default.jpg %{buildroot}%{_datadir}/wallpapers/default.jpg
+ln -s %{buildroot}%{_datadir}/wallpapers/OpenMandriva/contents/images/default.jpg %{buildroot}%{_datadir}/wallpapers/default.png
+ln -s %{buildroot}%{_datadir}/wallpapers/default.png %{buildroot}%{_datadir}/mdk/backgrounds
 
 ## Install scripts
 install -d -m 0755 %{buildroot}/%{_bindir}/
@@ -742,18 +745,19 @@ ln -s hicolor/scalable/apps/openmandriva.svg %{buildroot}%{_iconsdir}/
 # Default wallpaper should be available without browsing file system
 mkdir -p %{buildroot}%{_datadir}/wallpapers
 cp -a theme/backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
+cp -r theme/theme/wallpapers/OpenMandriva %{buildroot}%{_datadir}/wallpapers
 cp -a theme/extra-backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
 
-%if %am_i_cooker || %am_i_rolling
+#%if %am_i_cooker || %am_i_rolling
 # (tpg) add flavour name on the wallapaer
-convert -fill white -pointsize 20 -gravity center -draw "text 565,560 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png
-convert -fill white -pointsize 20 -gravity center -draw "text 300,410 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png
-convert -fill white -pointsize 20 -gravity center -draw "text 700,500 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-4x3.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-4x3.png
-convert -fill white -pointsize 20 -gravity center -draw "text 500,370 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-5x4.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-5x4.png
-%endif
-ln -sf /usr/share/mdk/backgrounds/OpenMandriva-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/default.png
-ln -sf /usr/share/mdk/backgrounds/default.png %{buildroot}%{_datadir}/wallpapers/default.png
-ln -sf /usr/share/mdk/backgrounds/default.png %{buildroot}%{_datadir}/wallpapers/default.jpg
+#convert -fill white -pointsize 20 -gravity center -draw "text 565,560 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x10.png
+#convert -fill white -pointsize 20 -gravity center -draw "text 300,410 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-16x9.png
+#convert -fill white -pointsize 20 -gravity center -draw "text 700,500 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-4x3.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-4x3.png
+#convert -fill white -pointsize 20 -gravity center -draw "text 500,370 '%{distrib}'" %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-5x4.png %{buildroot}%{_datadir}/mdk/backgrounds/%{vendor}-5x4.png
+#%endif
+#ln -sf /usr/share/mdk/backgrounds/OpenMandriva-16x9.png %{buildroot}%{_datadir}/mdk/backgrounds/default.png
+#ln -sf /usr/share/mdk/backgrounds/default.png %{buildroot}%{_datadir}/wallpapers/default.png
+#ln -sf /usr/share/mdk/backgrounds/default.png %{buildroot}%{_datadir}/wallpapers/default.jpg
 
 mkdir -p %{buildroot}%{_datadir}/mdk/screensaver
 cp -a theme/screensaver/*.jpg %{buildroot}%{_datadir}/mdk/screensaver
@@ -797,7 +801,7 @@ THEMEVER=$(echo %{version} |sed -e 's,\.,,g')
 %endif
 if [ -d theme-$THEMEVER ]; then
 	# Overwrite some stuff with version/branch specific artwork
-	cp -f theme-$THEMEVER/wallpapers/* %{buildroot}%{_datadir}/mdk/backgrounds/
+	cp -f theme-$THEMEVER/wallpapers/* %{buildroot}%{_datadir}/wallpapers/
 %ifnarch %{armx} %{riscv}
 	cp -f theme-$THEMEVER/plymouth/* %{buildroot}%{_datadir}/plymouth/themes/%{vendor}/
 	cp -f theme-$THEMEVER/grub/* %{buildroot}/boot/grub2/themes/%{vendor}/
@@ -1219,6 +1223,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 
 %files theme
 %{_datadir}/mdk/backgrounds/*.*g
+%{_datadir}/wallpapers
 %{_datadir}/wallpapers/default.*g
 %{_iconsdir}/hicolor/scalable/apps/openmandriva.svg
 %{_iconsdir}/hicolor/*/apps/openmandriva.png
