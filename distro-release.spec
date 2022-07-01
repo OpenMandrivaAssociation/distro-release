@@ -745,7 +745,7 @@ ln -s hicolor/scalable/apps/openmandriva.svg %{buildroot}%{_iconsdir}/
 # Default wallpaper should be available without browsing file system
 mkdir -p %{buildroot}%{_datadir}/wallpapers
 cp -a theme/backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
-cp -r theme/theme/wallpapers/OpenMandriva %{buildroot}%{_datadir}/wallpapers
+cp -r theme/wallpapers/OpenMandriva %{buildroot}%{_datadir}/wallpapers
 cp -a theme/extra-backgrounds/*.*g %{buildroot}%{_datadir}/mdk/backgrounds
 
 #%if %am_i_cooker || %am_i_rolling
