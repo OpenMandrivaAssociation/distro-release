@@ -661,7 +661,7 @@ cp -r theme/wallpapers/OpenMandriva %{buildroot}%{_datadir}/wallpapers
 
 %if %am_i_cooker || %am_i_rolling
 # (tpg) add flavour name on the wallapaer
-convert -font /usr/share/fonts/TTF/dejavu/DejaVuSerif.ttf -fill white -pointsize 20 -gravity center -draw "text 565,560 '%{distrib}'" %{buildroot}%{_datadir}/wallpapers/OpenMandriva/contents/images/2560x1600.png %{buildroot}%{_datadir}/wallpapers/OpenMandriva/contents/images/2560x1600.png
+convert -font /usr/share/fonts/TTF/dejavu/DejaVuSans.ttf -fill white -pointsize 20 -gravity center -draw "text 565,560 '%{distrib}'" %{buildroot}%{_datadir}/wallpapers/OpenMandriva/contents/images/2560x1600.png %{buildroot}%{_datadir}/wallpapers/OpenMandriva/contents/images/2560x1600.png
 %endif
 
 ln -s %{_datadir}/wallpapers/OpenMandriva/contents/images/2560x1600.png %{buildroot}%{_datadir}/wallpapers/default.jpg
