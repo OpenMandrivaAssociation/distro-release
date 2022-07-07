@@ -79,7 +79,7 @@ DistTag:	%{shorttag}%{distro_tag}
 # (can't be done for 4.2 because already were at 0.8/0.3 before adding this
 # comment -- but it's something to keep in mind for 5.0)
 %if 0%am_i_cooker
-Release:	0.2.18
+Release:	0.2.19
 %else
 %if 0%am_i_rolling
 Release:	0.1.3
@@ -136,6 +136,7 @@ Provides:	system-release(releasever) = %{version}
 %{_sysconfdir}/product.id.%{new_vendor}
 %{_sysconfdir}/version.%{vendor_tag}
 %{_sysconfdir}/os-release
+%{_prefix}/lib/os-release
 %{_sysconfdir}/release
 %{_sysconfdir}/product.id
 %{_sysconfdir}/version
@@ -511,6 +512,7 @@ cat >%{buildroot}%{_rpmmacrodir}/macros.%{new_vendor} <<EOF
 EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
+mkdir -p %{buildroot}%{_prefix}/lib
 cat > %{buildroot}%{_sysconfdir}/sysconfig/system <<EOF
 SECURITY=3
 CLASS=beginner
@@ -526,7 +528,7 @@ cat >%{buildroot}%{_sysconfdir}/version.%{vendor_tag} <<EOF
 EOF
 
 # (tpg) follow standard specifications http://www.freedesktop.org/software/systemd/man/os-release.html
-cat >%{buildroot}%{_sysconfdir}/os-release <<EOF
+cat >%{buildroot}%{_prefix}/lib/os-release <<EOF
 NAME="%{new_distribution}"
 VERSION="%{version} (%{new_codename}) %{distrib}"
 ID="%{vendor_tag}"
@@ -543,7 +545,8 @@ SUPPORT_URL="https://forum.openmandriva.org"
 PRIVACY_POLICY_URL="https://www.openmandriva.org/tos"
 EOF
 
-ln -s os-release %{buildroot}%{_sysconfdir}/os-release.%{vendor_tag}
+ln -s %{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
+ln -s %{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release.%{vendor_tag}
 ln -s %{vendor_tag}-release %{buildroot}%{_sysconfdir}/release
 ln -s product.id.%{new_vendor} %{buildroot}%{_sysconfdir}/product.id
 ln -s version.%{vendor_tag} %{buildroot}%{_sysconfdir}/version
