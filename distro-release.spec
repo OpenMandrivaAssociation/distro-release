@@ -640,7 +640,7 @@ mkdir -p %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma
 install -m 0644 desktops/Plasma/org.openmandriva.plasma.desktop.globalMenuPanel-layout.js %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents/layout.js
 install -m 0644 desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/metadata.desktop
 mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
-cp -a desktops/Plasma/org.openmandriva4.desktop %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop
+cp -a desktops/Plasma/org.openmandriva5.desktop %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
 
 ### DESKTOP PLASMA END ###
 %endif
@@ -1111,7 +1111,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
 %{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 %{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
-%{_datadir}/plasma/look-and-feel/org.openmandriva4.desktop
+%{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
 %endif
 
 %files theme
