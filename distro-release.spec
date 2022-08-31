@@ -14,7 +14,7 @@
 %define product_tag %(echo %{new_product} |tr A-Z a-z |sed -e 's,[ /!?],_,g')
 %define shorttag omv
 %define new_disturl http://openmandriva.org/
-%define new_bugurl http://issues.openmandriva.org/
+%define new_bugurl https://github.com/OpenMandrivaAssociation/distribution/issues
 
 %define am_i_cooker 0
 %define am_i_rolling 1
