@@ -51,8 +51,14 @@
 %define major %(printf %u %(echo %{version}|cut -d. -f1))
 %define minor %([ -z "%(echo %{version}|cut -d. -f2)" ] && echo 0 || printf %u %(echo %{version}|cut -d. -f2))
 %define subminor %([ -z "%(echo %{version}|cut -d. -f3)" ] && echo 0 || printf %u %(echo %{version}|cut -d. -f3))
+%if %am_i_cooker || %am_i_rolling
+# 22.12 looks better as omv2212 than omv22012...
+%define distro_tag %(echo $((%{major}*100+%{minor})))
+%define version_tag %(echo $((%{major}*1000000+%{minor}*1000+%{subminor})))
+%else
 %define distro_tag %(echo $((%{major}*1000+%{minor})))
 %define version_tag %(echo $((%{major}*1000000+%{minor}*1000+%{subminor})))
+%endif
 %define mdkver %{version_tag}
 
 %ifarch %{x86_64}
@@ -70,23 +76,7 @@ Version:	22.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-# For the release number, make sure:
-# * Release/rock has Release: 1
-# * Cooker and rolling have numbers smaller than 1 (but a version number
-#   higher than latest rock)
-# * Cooker outnumbers rolling
-# Preferably, use 0.1.x for rolling, 0.2.x for cooker
-# (can't be done for 4.2 because already were at 0.8/0.3 before adding this
-# comment -- but it's something to keep in mind for 5.0)
-%if 0%am_i_cooker
-Release:	0.2.27
-%else
-%if 0%am_i_rolling
-Release:	0.1.16
-%else
 Release:	1
-%endif
-%endif
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{version}/%{name}-%{version}.tar.gz
@@ -1021,18 +1011,6 @@ cp -f rpm/rpmlint/distribution.error.list %{buildroot}%{_datadir}/rpmlint/config
 cp -f rpm/rpmlint/distribution.exceptions.conf %{buildroot}%{_datadir}/rpmlint/config.d/
 
 ## RPMLINT POLICY END
-
-%check
-%if %{am_i_cooker}
-case %{release} in
-0.*)
-    ;;
-*)
-    printf '%s\n' "Cooker distro should have this package with release < %{mkrel 1}"
-    exit 1
-    ;;
-esac
-%endif
 
 %post theme
 %ifnarch %{armx} %{riscv}
