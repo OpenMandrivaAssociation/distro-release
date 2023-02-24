@@ -24,7 +24,7 @@
 %if %am_i_rolling
 %define distrib Rolling
 %else
-%define distrib Official
+%define distrib Rock
 %endif
 %endif
 %define _distribution %(echo %{new_distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
@@ -32,7 +32,7 @@
 %if %am_i_cooker
 %define product_branch Devel
 %else
-%define product_branch Official
+%define product_branch Rock
 %endif
 %define product_release 1
 %define product_arch %{_target_cpu}
@@ -40,7 +40,7 @@
 # The Distribution release, what is written on box
 %define distro_release %{version}
 
-# The distro branch: Cooker, Community or Official
+# The distro branch: Cooker, Rolling or Rock
 %define distro_branch %{distrib}
 
 # The distro arch, notice: using %_target_cpu is bad
