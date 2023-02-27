@@ -76,10 +76,10 @@ Version:	23.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	1
+Release:	2
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
-Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
 Group:		System/Configuration/Other
 
 %description
@@ -427,7 +427,7 @@ This package contains useful icons, menu structure and others goodies for the
 %{distribution} desktop.
 
 %prep
-%autosetup -p1
+%autosetup -p1 %{?am_i_cooker:-n distro-release-master}
 # check that CREDITS file is in UTF-8, fail otherwise
 if iconv -f utf-8 -t utf-8 < doc/CREDITS > /dev/null
 then
