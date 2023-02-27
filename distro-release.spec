@@ -15,12 +15,12 @@
 %define new_disturl http://openmandriva.org/
 %define new_bugurl https://github.com/OpenMandrivaAssociation/distribution/issues
 
-%define am_i_cooker 0
+%undefine am_i_cooker
 %define am_i_rolling 1
-%if %am_i_cooker
+%if 0%?am_i_cooker
 %define distrib Cooker
 %else
-%if %am_i_rolling
+%if 0%?am_i_rolling
 %define distrib Rolling
 %else
 %define distrib Rock
@@ -28,7 +28,7 @@
 %endif
 %define _distribution %(echo %{new_distribution} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')
 %define product_type Basic
-%if %am_i_cooker
+%if 0%?am_i_cooker
 %define product_branch Devel
 %else
 %define product_branch Rock
@@ -51,7 +51,7 @@
 %define major %(printf %u %(echo %{version}|cut -d. -f1))
 %define minor %([ -z "%(echo %{version}|cut -d. -f2)" ] && echo 0 || printf %u %(echo %{version}|cut -d. -f2))
 %define subminor %([ -z "%(echo %{version}|cut -d. -f3)" ] && echo 0 || printf %u %(echo %{version}|cut -d. -f3))
-%if %am_i_cooker || %am_i_rolling
+%if 0%?am_i_cooker || 0%?am_i_rolling
 # 22.12 looks better as omv2212 than omv22012...
 %define distro_tag %(echo $((%{major}*100+%{minor})))
 %define version_tag %(echo $((%{major}*1000000+%{minor}*1000+%{subminor})))
@@ -76,7 +76,7 @@ Version:	23.03
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	2
+Release:	1
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
@@ -887,10 +887,10 @@ done
 sed -i '$ d' %{buildroot}%{_sysconfdir}/yum.repos.d/*.repo
 
 ## And enable the one we're installing from
-%if %am_i_cooker
+%if 0%?am_i_cooker
 sed -e '0,/enabled=0/s//enabled=1/' -i %{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-cooker-${ARCH}.repo
 %else
-%if %am_i_rolling
+%if 0%?am_i_rolling
 sed -e '0,/enabled=0/s//enabled=1/' -i %{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-rolling-${ARCH}.repo
 %else
 # Second occurence in $RELEASE and Rock is updates/
