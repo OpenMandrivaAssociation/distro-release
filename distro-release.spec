@@ -76,7 +76,7 @@ Version:	23.03
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	1
+Release:	2
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
@@ -543,6 +543,40 @@ ln -s version.%{vendor_tag} %{buildroot}%{_sysconfdir}/version
 
 mkdir -p %{buildroot}%{_datadir}/common-licenses/*
 cp -a common-licenses %{buildroot}%{_datadir}/
+
+# (tpg) generate XML for appstream
+mkdir -p %{buildroot}%{_datadir}/metainfo
+cat >%{buildroot}%{_datadir}/metainfo/org.openmandriva.openmandriva.metainfo.xml <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="operating-system">
+  <id>org.openmandriva.openmandriva</id>
+  <name>%{new_distribution}</name>
+  <summary>A community driven Linux distribution</summary>
+  <description>
+    <p>The OpenMandriva distribution is a full-featured Linux desktop and server, sponsored by the OpenMandriva Association.</p>
+  </description>
+  <url type="homepage">%{new_disturl}</url>
+  <metadata_license>GPL</metadata_license>
+  <developer_name>OpenMandriva Association</developer_name>
+  <releases>
+    <release version="cooker" type="development" date="" date_eol="">
+      <description>
+        <p>Development release</p>
+      </description>
+    </release>
+    <release version="rolling" type="stable" date="" date_eol="">
+      <description>
+        <p>Rolling release</p>
+      </description>
+    </release>
+    <release version="rock" type="stable" date="2023-01-01" date_eol="">
+      <description>
+        <p>Rock release</p>
+      </description>
+    </release>
+  </releases>
+</component>
+EOF
 
 ### DESKTOP ###
 
@@ -1052,6 +1086,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_sysconfdir}/profile.d/10distro-release.csh
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sysconfig/system
 %{_datadir}/common-licenses
+%{_datadir}/metainfo/org.openmandriva.openmandriva.metainfo.xml
 
 %files desktop
 %{_bindir}/*
