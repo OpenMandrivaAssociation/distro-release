@@ -48,9 +48,9 @@
 # distro_arch => the distribution we are using
 %define distro_arch %{_target_cpu}
 
-%define major %(printf %u %(echo %{version}|cut -d. -f1))
-%define minor %([ -z "%(echo %{version}|cut -d. -f2)" ] && echo 0 || printf %u %(echo %{version}|cut -d. -f2))
-%define subminor %([ -z "%(echo %{version}|cut -d. -f3)" ] && echo 0 || printf %u %(echo %{version}|cut -d. -f3))
+%define major %(printf %u %(echo %{version}|cut -d. -f1 |sed -e 's,^0*,,'))
+%define minor %([ -z "%(echo %{version}|cut -d. -f2)" ] && echo 0 || printf %u %(echo %{version}|cut -d. -f2 |sed -e 's,^0*,,'))
+%define subminor %([ -z "%(echo %{version}|cut -d. -f3)" ] && echo 0 || printf %u %(echo %{version}|cut -d. -f3 |sed -e 's,^0*,,'))
 %if 0%?am_i_cooker || 0%?am_i_rolling
 # 22.12 looks better as omv2212 than omv22012...
 %define distro_tag %(echo $((%{major}*100+%{minor})))
