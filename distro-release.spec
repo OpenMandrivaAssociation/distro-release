@@ -1142,11 +1142,6 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %files desktop-Plasma6
 %{_sysconfdir}/xdg/*
 %{_datadir}/konsole/OM.profile
-%{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
-%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
-%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
-%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
-%{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
 %endif
 
 %files theme
