@@ -76,7 +76,7 @@ Version:	23.08
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	3
+Release:	4
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
@@ -147,6 +147,22 @@ BuildArch:	noarch
 
 %description desktop-Plasma
 KDE Plasma desktop configuration.
+
+%package desktop-Plasma6
+Summary:	Plasma 6 desktop configuration
+Group:		Graphical desktop/KDE
+BuildRequires:	cmake(ECM)
+Requires:	%{name}-desktop >= %{version}
+Requires:	%{name}-theme >= %{version}
+Requires:	plasma6-breeze
+Requires:	plasma6-breeze-gtk
+Requires:	kf6-breeze-icons
+Requires:	noto-sans-fonts
+%rename		distro-plasma-config
+BuildArch:	noarch
+
+%description desktop-Plasma6
+KDE Plasma 6 desktop configuration.
 %endif
 
 #package desktop-Xfce
@@ -1112,6 +1128,15 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 
 %if %{without bootstrap}
 %files desktop-Plasma
+%{_sysconfdir}/xdg/*
+%{_datadir}/konsole/OM.profile
+%{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
+%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
+%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
+%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
+%{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
+
+%files desktop-Plasma6
 %{_sysconfdir}/xdg/*
 %{_datadir}/konsole/OM.profile
 %{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
