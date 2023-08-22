@@ -239,13 +239,21 @@ Suggests:	lynx
 Suggests:	grub2
 %endif
 # vim
-Suggests:	vim-enhanced
+Suggests:	neovim
 # libEGL.so.1 (also provided by proprietary drivers)
 Suggests:	libegl1
+%if "%{_lib}" == "lib64"
 Suggests:	lib64egl1
+%endif
 # libGL.so.1 (also provided by proprietary drivers)
 Suggests:	libgl1
+%if "%{_lib}" == "lib64"
 Suggests:	lib64gl1
+%endif
+%if "%{_lib}" == "lib64"
+# 32-bit libc (also provided by cross-i686-openmandriva-linux-gnu-libc)
+Suggests:	libc6
+%endif
 # Prefer openssh-askpass over openssh-askpass-gnome (for keychain)
 Suggests:	openssh-askpass
 # Python 3.x
@@ -265,9 +273,8 @@ Suggests:	packagekit-gstreamer-plugin
 Suggests:	libbaconvideowidget-gstreamer0
 Suggests:	lib64baconvideowidget-gstreamer0
 # phonon-backend: prefer phonon-vlc over phonon-gstreamer
-Suggests:	phonon-gstreamer
-# phonon4qt5-backend: prefer phonon4qt5-vlc over phonon4qt5-gstreamer
-Suggests:	phonon4qt5-gstreamer
+Suggests:	phonon4qt5-vlc
+Suggests:	phonon4qt6-vlc
 # mate backends
 Suggests:	mate-settings-daemon-pulse
 Suggests:	mate-media-pulse
@@ -276,7 +283,9 @@ Suggests:	mate-media-pulse
 Suggests:	ctags
 # prefer openssl-devel over libressl-devel
 Suggests:	libopenssl-devel
+%if "%{_lib}" == "lib64"
 Suggests:	lib64openssl-devel
+%endif
 # preferred compiler(s)
 Suggests:	clang
 ## Servers
@@ -285,14 +294,16 @@ Suggests:	postfix
 # imap-server
 Suggests:	dovecot
 # webserver
-Suggests:	apache
+Suggests:	nginx
 # nfs-server
 Suggests:	nfs-utils
 # ftpserver
 Suggests:	proftpd
 # postgresql
 Suggests:	libpq5
+%if "%{_lib}" == "lib64"
 Suggests:	lib64pq5
+%endif
 # vnc
 Suggests:	tigervnc
 # x2goserver database backend
@@ -325,6 +336,12 @@ Suggests:	pinentry-qt5
 Suggests:	libqt5gui-eglfs
 # xdg-desktop-portal-implementation
 Suggests:	xdg-desktop-portal-kde
+# x11 vs. wayland for various backends
+Suggests:	kwindowsystem-x11
+Suggests:	kwin-x11
+Suggests:	plasma6-kwin-x11
+Suggests:	plasma-workspace-x11
+Suggests:	plasma6-workspace-x11
 
 %description repos-pkgprefs
 This package supplies DNF and PackageKit with global
