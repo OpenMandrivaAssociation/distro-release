@@ -99,6 +99,12 @@ Requires:	filesystem
 # cf mdvbz#32631
 Provides:	arch(%{_target_cpu})
 Provides:	%{arch_tagged distro-release-common}
+# Causes the PackageKit DNF backend to use distro-sync rather than upgrade
+# Always preferable at least for rolling and cooker because we may delete
+# old Epochs to clean up...
+%if 0%?am_i_cooker || 0%?am_i_rolling
+Provides:	system-upgrade(dsync)
+%endif
 
 %description common
 Common files for %{new_distribution} release packages.
