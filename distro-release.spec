@@ -13,7 +13,7 @@
 %define product_tag %(echo %{new_product} |tr A-Z a-z |sed -e 's,[ /!?],_,g')
 %define shorttag omv
 %define new_disturl http://openmandriva.org/
-%define new_bugurl https://github.com/OpenMandrivaAssociation/distribution/issues
+%define new_bugurl https://github.com/OpenMandrivaAssociation/distribution/issues/
 
 %undefine am_i_cooker
 %define am_i_rolling 1
@@ -153,22 +153,6 @@ BuildArch:	noarch
 
 %description desktop-Plasma
 KDE Plasma desktop configuration.
-
-%package desktop-Plasma6
-Summary:	Plasma 6 desktop configuration
-Group:		Graphical desktop/KDE
-BuildRequires:	cmake(ECM)
-Requires:	%{name}-desktop >= %{version}
-Requires:	%{name}-theme >= %{version}
-Requires:	plasma6-breeze
-Requires:	plasma6-breeze-gtk
-Requires:	kf6-breeze-icons
-Requires:	noto-sans-fonts
-%rename		distro-plasma-config
-BuildArch:	noarch
-
-%description desktop-Plasma6
-KDE Plasma 6 desktop configuration.
 %endif
 
 #package desktop-Xfce
@@ -1153,15 +1137,6 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 
 %if %{without bootstrap}
 %files desktop-Plasma
-%{_sysconfdir}/xdg/*
-%{_datadir}/konsole/OM.profile
-%{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
-%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
-%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
-%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
-%{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
-
-%files desktop-Plasma6
 %{_sysconfdir}/xdg/*
 %{_datadir}/konsole/OM.profile
 %{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
