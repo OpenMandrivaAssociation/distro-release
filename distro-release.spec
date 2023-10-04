@@ -7,7 +7,7 @@
 %define new_vendor OpenMandriva
 %define new_product OpenMandriva Lx
 # (tpg) use codename from here https://wiki.openmandriva.org/en/policies/codename
-%define new_codename ROME
+%define new_codename Iodine
 %define vendor_tag %(echo %{new_vendor} |tr A-Z a-z)
 %define distribution_tag %(echo %{new_distribution} |tr A-Z a-z |sed -e 's,[ /!?],_,g')
 %define product_tag %(echo %{new_product} |tr A-Z a-z |sed -e 's,[ /!?],_,g')
@@ -16,7 +16,7 @@
 %define new_bugurl https://github.com/OpenMandrivaAssociation/distribution/issues/
 
 %undefine am_i_cooker
-%define am_i_rolling 1
+%undefine am_i_rolling
 %if 0%?am_i_cooker
 %define distrib Cooker
 %else
@@ -71,12 +71,12 @@
 
 Summary:	%{new_distribution} release file
 Name:		distro-release
-Version:	23.10
+Version:	5.0
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	2
+Release:	1
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
