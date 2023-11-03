@@ -209,6 +209,7 @@ Provides:	openmandriva-repos(%{version})
 Requires:	system-release(%{version})
 Requires:	%{name}-repos-pkgprefs = %{version}-%{release}
 Requires:	%{name}-repos-keys = %{version}-%{release}
+Provides:	%{_sysconfdir}/dnf/dnf.conf
 %rename		openmandriva-repos-cooker
 %rename		openmandriva-repos
 
@@ -758,8 +759,22 @@ echo $ARCH |grep -q arm && ARCH=armv7hnl
 mkdir -p %{buildroot}%{_sysconfdir}/pki/rpm-gpg
 install rpm/RPM-GPG-KEY-%{vendor} -pm 0644 %{buildroot}%{_sysconfdir}/pki/rpm-gpg
 
-# Install the repositories
-mkdir -p %{buildroot}%{_sysconfdir}/yum.repos.d
+# Install the repositories and dnf config
+mkdir -p %{buildroot}%{_sysconfdir}/yum.repos.d %{buildroot}%{_sysconfdir}/dnf
+
+cat >%{buildroot}%{_sysconfdir}/dnf/dnf.conf <<"EOF"
+# see `man dnf.conf` for defaults and possible options
+
+[main]
+gpgcheck=True
+installonly_limit=3
+clean_requirements_on_remove=True
+best=False
+skip_if_unavailable=True
+%if 0%{?am_i_cooker:1}%{?am_i_rolling:1} == 0
+releasever=%{version}
+%endif
+EOF
 
 %if %{defined secondary_distarch}
 SECONDARY_ARCH=%{secondary_distarch}
@@ -1168,6 +1183,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 
 %files repos
 %dir %{_sysconfdir}/yum.repos.d
+%{_sysconfdir}/dnf/dnf.conf
 %config(noreplace) %{_sysconfdir}/yum.repos.d/openmandriva*.repo
 
 %files repos-keys
