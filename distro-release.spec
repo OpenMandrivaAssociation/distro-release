@@ -76,7 +76,7 @@ Version:	23.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	20
+Release:	21
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
@@ -358,7 +358,7 @@ preferences for packages in which multiple options are possible.
 Summary:	Macros and scripts for %{new_vendor} specific rpm behavior
 Group:		System/Configuration/Packaging
 License:	MIT
-Requires:	rpm >= 2:4.14.2-0
+Requires:	rpm
 BuildArch:	noarch
 %rename rpm-openmandriva-setup
 
