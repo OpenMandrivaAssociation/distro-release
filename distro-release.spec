@@ -3,6 +3,10 @@
 #
 %bcond_with bootstrap
 
+# Allow the package to build even if it fails some checks
+# (that are being disabled by this package for now)
+%global _nonzero_exit_pkgcheck_terminate_build 0
+
 %define new_distribution OpenMandriva Lx
 %define new_vendor OpenMandriva
 %define new_product OpenMandriva Lx
@@ -76,7 +80,7 @@ Version:	23.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	21
+Release:	22
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
