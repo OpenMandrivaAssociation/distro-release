@@ -80,7 +80,7 @@ Version:	24.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	6
+Release:	7
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
@@ -345,6 +345,8 @@ Suggests:	lxsession-lite
 Suggests:	pinentry-qt5
 # %{_lib}qt5-output-driver
 Suggests:	libqt5gui-eglfs
+# mpv vs. mplayer
+Suggests:	mpv
 # xdg-desktop-portal-implementation
 Suggests:	xdg-desktop-portal-kde
 # x11 vs. wayland for various backends
@@ -674,10 +676,12 @@ mkdir -p %{buildroot}%{_datadir}/kservices5
 mkdir -p %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents
 mkdir -p %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents
 mkdir -p %{buildroot}%{_datadir}/konsole
+mkdir -p %{buildroot}%{_datadir}/applications
 
 for i in kcmdisplayrc kcmfonts kcminputrc kdeglobals kscreenlockerrc ksplashrc kwinrc plasmarc startupconfig startupconfigfiles kcm-about-distrorc ksmserverrc kiorc dolphinrc konsolerc klaunchrc discoverabstractnotifier.notifyrc plasma_workspace.notifyrc powermanagementprofilesrc; do
     install -m 0644 desktops/Plasma/$i %{buildroot}%{_sysconfdir}/xdg/$i
 done
+install -m 0644 desktops/Plasma6/mimeapps.list %{buildroot}%{_datadir}/applications/mimeapps.list
 
 install -m 0644 desktops/Plasma/metadata.desktop %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/metadata.desktop
 install -m 0644 desktops/Plasma/metadata.desktop %{buildroot}%{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
@@ -1164,6 +1168,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 %{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
 %{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
+%{_datadir}/applications/mimeapps.list
 %endif
 
 %files theme
