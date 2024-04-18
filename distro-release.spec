@@ -2,6 +2,7 @@
 # make -C SOURCES release-notes.{html,txt}
 #
 %bcond_with bootstrap
+%undefine _debugsource_packages
 
 # Allow the package to build even if it fails some checks
 # (that are being disabled by this package for now)
@@ -80,7 +81,7 @@ Version:	24.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	8
+Release:	9
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
