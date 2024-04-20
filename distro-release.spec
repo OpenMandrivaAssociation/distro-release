@@ -882,7 +882,7 @@ baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/debug_${repo
 #fastestmirror=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
-enabled=0
+enabled=1
 type=rpm-md
 
 EOF
