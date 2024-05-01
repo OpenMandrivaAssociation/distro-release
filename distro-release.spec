@@ -670,7 +670,7 @@ cp -a desktops/Plasma/org.openmandriva5.desktop %{buildroot}%{_datadir}/plasma/l
 ### DESKTOP PLASMA END ###
 %endif
 
-### DESKTOP MATE END ###
+### DESKTOP MATE ###
 # MATE appearence
 install -dm 0755 %{buildroot}%{_datadir}/glib-2.0/schemas/
 install -pm 0644 desktops/Mate/mate-openmandriva.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/
