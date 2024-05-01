@@ -81,7 +81,7 @@ Version:	24.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	9
+Release:	10
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
@@ -159,6 +159,19 @@ BuildArch:	noarch
 %description desktop-Plasma
 KDE Plasma desktop configuration.
 %endif
+
+%package desktop-LXQt
+Summary:	LXQt desktop configuration
+Group:		Graphical desktop/LXQt
+Requires:	%{name}-desktop >= %{version}
+Suggests:	plasma6-breeze
+Suggests:	plasma6-kwin-x11
+Suggests:	kf6-breeze-icons
+Suggests:	noto-sans-fonts
+BuildArch:	noarch
+
+%description desktop-LXQt
+LXQt desktop configuration
 
 #package desktop-Xfce
 #description desktop-Xfce
@@ -704,6 +717,11 @@ cp -a desktops/Plasma/org.openmandriva5.desktop %{buildroot}%{_datadir}/plasma/l
 ### DESKTOP PLASMA END ###
 %endif
 
+### DESKTOP LXQT ###
+mkdir -p %{buildroot}%{_sysconfdir}/xdg
+cp -a desktops/LXQt/* %{buildroot}%{_sysconfdir}/xdg
+### DESKTOP LXQT END ###
+
 ### THEME ###
 
 # Make sure the logo can be found where modern applications expect it
@@ -1163,6 +1181,8 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %if %{without bootstrap}
 %files desktop-Plasma
 %{_sysconfdir}/xdg/*
+%exclude %{_sysconfdir}/xdg/lxqt
+%exclude %{_sysconfdir}/xdg/pcmanfm-qt
 %{_datadir}/konsole/OM.profile
 %{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
 %{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
@@ -1171,6 +1191,10 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
 %{_datadir}/applications/mimeapps.list
 %endif
+
+%files desktop-LXQt
+%{_sysconfdir}/xdg/lxqt
+%{_sysconfdir}/xdg/pcmanfm-qt
 
 %files theme
 %{_datadir}/mdk/backgrounds/*.*g
