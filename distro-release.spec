@@ -4,6 +4,12 @@
 %bcond_with bootstrap
 %undefine _debugsource_packages
 
+# Additional desktops
+%bcond_with budgie
+%bcond_with mate
+%bcond_with gnome
+%bcond_with xfce
+
 # Allow the package to build even if it fails some checks
 # (that are being disabled by this package for now)
 %global _nonzero_exit_pkgcheck_terminate_build 0
@@ -160,8 +166,57 @@ BuildArch:	noarch
 KDE Plasma desktop configuration.
 %endif
 
-#package desktop-Xfce
-#description desktop-Xfce
+%if %{with budgie}
+%package desktop-Budgie
+Summary:	Budgie desktop configuration
+Group:		Graphical desktop/Other
+Requires:	%{name}-desktop >= %{version}
+Requires:	%{name}-theme >= %{version}
+%rename		distro-budgie-config
+BuildArch:	noarch
+
+%description desktop-Budgie
+Budgie desktop configuration.
+%endif
+
+%if %{with mate}
+%package desktop-MATE
+Summary:	MATE desktop configuration
+Group:		Graphical desktop/Other
+Requires:	%{name}-desktop >= %{version}
+Requires:	%{name}-theme >= %{version}
+%rename		distro-mate-config
+BuildArch:	noarch
+
+%description desktop-MATE
+Budgie desktop configuration.
+%endif
+
+%if %{with gnome}
+%package desktop-GNOME
+Summary:	GNOME desktop configuration
+Group:		Graphical desktop/GNOME
+Requires:	%{name}-desktop >= %{version}
+Requires:	%{name}-theme >= %{version}
+%rename		distro-gnome-config
+BuildArch:	noarch
+
+%description desktop-GNOME
+GNOME desktop configuration.
+%endif
+
+%if %{with xfce}
+%package desktop-Xfce
+Summary:	Xfce desktop configuration
+Group:		Graphical desktop/Xfce
+Requires:	%{name}-desktop >= %{version}
+Requires:	%{name}-theme >= %{version}
+%rename		distro-xfce-config
+BuildArch:	noarch
+
+%description desktop-Xfce
+Xfce desktop configuration.
+%endif
 
 %package theme
 Summary:	Themes for %{distribution}
@@ -704,6 +759,39 @@ cp -a desktops/Plasma/org.openmandriva5.desktop %{buildroot}%{_datadir}/plasma/l
 ### DESKTOP PLASMA END ###
 %endif
 
+### DESKTOP Budgie ###
+%if %{with budgie}
+# Budgie appearence
+install -dm 0755 %{buildroot}%{_datadir}/glib-2.0/schemas/
+install -pm 0644 desktops/Budgie/50_budgie-openmandriva.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/
+%endif
+### DESKTOP Budgie END ###
+
+### DESKTOP GNOME ###
+%if %{with gnome}
+# GNOME appearence
+install -dm 0755 %{buildroot}%{_datadir}/glib-2.0/schemas/
+install -pm 0644 desktops/GNOME/50_gnome-openmandriva.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/
+%endif
+### DESKTOP GNOME END ###
+
+### DESKTOP MATE ###
+%if %{with mate}
+# MATE appearence
+install -dm 0755 %{buildroot}%{_datadir}/glib-2.0/schemas/
+install -pm 0644 desktops/Mate/50_mate-openmandriva.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/
+
+# MATE panel layout
+install -dm 0755 %{buildroot}%{_datadir}/mate-panel/layouts/
+install -pm 0644 desktops/Mate/openmandriva.layout %{buildroot}%{_datadir}/mate-panel/layouts/
+### DESKTOP MATE END ###
+%endif
+
+### DESKTOP Xfce ###
+%if %{with xfce}
+%endif
+### DESKTOP Xfce END ###
+
 ### THEME ###
 
 # Make sure the logo can be found where modern applications expect it
@@ -1170,6 +1258,27 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
 %{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
 %{_datadir}/applications/mimeapps.list
+%endif
+
+%if %{with budgie}
+%files desktop-Budgie
+%{_datadir}/glib-2.0/schemas/50_budgie-openmandriva.gschema.override
+%endif
+
+%if %{with gnome}
+%files desktop-GNOME
+%{_datadir}/glib-2.0/schemas/50_gnome-openmandriva.gschema.override
+%endif
+
+%if %{with mate}
+%files desktop-MATE
+%{_datadir}/glib-2.0/schemas/50_mate-openmandriva.gschema.override
+%{_datadir}/mate-panel/layouts/openmandriva.layout
+%endif
+
+%if %{with xfce}
+%files desktop-Xfce
+%{_datadir}/glib-2.0/schemas/50-xfce-openmandriva.gschema.override
 %endif
 
 %files theme
