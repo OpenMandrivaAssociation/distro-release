@@ -700,9 +700,18 @@ install -m 0644 desktops/Plasma/org.openmandriva.plasma.desktop.globalMenuPanel-
 install -m 0644 desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/metadata.desktop
 mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
 cp -a desktops/Plasma/org.openmandriva5.desktop %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
-
 ### DESKTOP PLASMA END ###
 %endif
+
+### DESKTOP MATE ###
+# MATE appearence
+install -dm 0755 %{buildroot}%{_datadir}/glib-2.0/schemas/
+install -pm 0644 desktops/Mate/mate-openmandriva.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/
+
+# MATE panel layout
+install -dm 0755 %{buildroot}%{_datadir}/mate-panel/layouts/
+install -pm 0644 desktops/Mate/openmandriva.layout %{buildroot}%{_datadir}/mate-panel/layouts/
+### DESKTOP MATE END ###
 
 ### THEME ###
 
@@ -1095,6 +1104,12 @@ cp -f rpm/rpmlint/distribution.exceptions.conf %{buildroot}%{_datadir}/rpmlint/c
 
 ## RPMLINT POLICY END
 
+%posttrans desktop
+glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
+
+%postun desktop
+glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
+
 %post theme
 %ifnarch %{armx} %{riscv}
 %{_sbindir}/plymouth-set-default-theme %{vendor}
@@ -1159,6 +1174,8 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_datadir}/mdk/bookmarks/mozilla/*.html
 %{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_iconsdir}/openmandriva.svg
+%{_datadir}/glib-2.0/schemas/mate-openmandriva.gschema.override
+%{_datadir}/mate-panel/layouts/openmandriva.layout
 
 %if %{without bootstrap}
 %files desktop-Plasma
