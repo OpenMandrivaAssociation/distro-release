@@ -81,7 +81,7 @@ Version:	24.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	10
+Release:	11
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
@@ -719,6 +719,10 @@ cp -a desktops/Plasma/org.openmandriva5.desktop %{buildroot}%{_datadir}/plasma/l
 
 ### DESKTOP LXQT ###
 mkdir -p %{buildroot}%{_sysconfdir}/xdg
+# We no longer use openbox with LXQt, so let's not package
+# its configs - but let's keep them around in the source
+# just in case we'll ever switch back to openbox
+rm -rf desktops/LXQt/openbox
 cp -a desktops/LXQt/* %{buildroot}%{_sysconfdir}/xdg
 ### DESKTOP LXQT END ###
 
@@ -900,7 +904,7 @@ baseurl=http://mirror.openmandriva.org/${vertag}/repository/${arch}/debug_${repo
 #fastestmirror=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OpenMandriva
-enabled=1
+enabled=0
 type=rpm-md
 
 EOF
@@ -1181,8 +1185,11 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %if %{without bootstrap}
 %files desktop-Plasma
 %{_sysconfdir}/xdg/*
+%exclude %{_sysconfdir}/xdg/featherpad
+%exclude %{_sysconfdir}/xdg/gtk-3.0
 %exclude %{_sysconfdir}/xdg/lxqt
 %exclude %{_sysconfdir}/xdg/pcmanfm-qt
+%exclude %{_sysconfdir}/xdg/qterminal.org
 %{_datadir}/konsole/OM.profile
 %{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
 %{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
@@ -1193,8 +1200,11 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %endif
 
 %files desktop-LXQt
+%{_sysconfdir}/xdg/featherpad
+%{_sysconfdir}/xdg/gtk-3.0
 %{_sysconfdir}/xdg/lxqt
 %{_sysconfdir}/xdg/pcmanfm-qt
+%{_sysconfdir}/xdg/qterminal.org
 
 %files theme
 %{_datadir}/mdk/backgrounds/*.*g
