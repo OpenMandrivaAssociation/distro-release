@@ -1061,9 +1061,10 @@ slideshow:               "adverts.qml"
 slideshowAPI: 2
 
 style:
-   sidebarBackground:    "#263039"
-   sidebarText:          "#FFFFFF"
-   sidebarTextSelect:    "#292F34"
+   SidebarBackground:    "#263039"
+   SidebarText:          "#FFFFFF"
+   SidebarTextCurrent:   "#292F34"
+   SidebarBackgroundCurrent: "#EFF0F1"
 EOF
 
 ### INSTALLER END ###
