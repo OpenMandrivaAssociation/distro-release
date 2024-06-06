@@ -419,8 +419,7 @@ Provides:	indexhtml = 1:%{version}-%{release}
 
 %description indexhtml
 %{new_vendor} index.html welcome page displayed by web browsers
-when they are launched, first mail displayed on mail clients
-after installation and "about" information.
+when they are launched, and "about" information.
 
 %package rpmlint-policy
 Summary:	Rpmlint %{new_vendor} policy
@@ -1077,24 +1076,6 @@ cd -
 install -d -m755 %{buildroot}%{_datadir}/mdk/indexhtml/
 cp -a doc/indexhtml/HTML/* %{buildroot}%{_datadir}/mdk/indexhtml/
 
-install -d -m755 %{buildroot}%{_datadir}/mdk/mail/text/
-install -d -m755 %{buildroot}%{_datadir}/mdk/mail/html/
-for lang in $(find doc/indexhtml/mail/header-* -type f | sed "s|doc/indexhtml/mail/header-||" ); do
-    cat doc/indexhtml/mail/header-$lang &> tmpfile
-    cat doc/indexhtml/mail/mail-$lang.txt >> tmpfile
-    install -m 0644 tmpfile %{buildroot}%{_datadir}/mdk/mail/text/mail-$lang
-    cat doc/indexhtml/mail/header-$lang &> tmpfile
-    printf "%s\n" "Content-Type: multipart/related; type=\"multipart/alternative\";" >>tmpfile
-    printf "%s\n" "   boundary=\"=-tThpx1YEZqL4gn53WjQ1\"" >> tmpfile
-    printf "%s\n" "" >> tmpfile
-    printf "%s\n" "--=-tThpx1YEZqL4gn53WjQ1" >> tmpfile
-    printf "%s\n" "Content-Type: multipart/alternative; boundary=\"=-aFPGjTr5jUHhXPWxbLcT\"" >>tmpfile
-    printf "%s\n" "" >> tmpfile
-    printf "%s\n" "--=-aFPGjTr5jUHhXPWxbLcT" >> tmpfile
-    cat doc/indexhtml/mail/mail-$lang.txt >> tmpfile
-    cat doc/indexhtml/mail/mail-$lang.html >> tmpfile
-#    cat doc/indexhtml/mail/mail-images >> tmpfile
-    install -m 0644 tmpfile %{buildroot}%{_datadir}/mdk/mail/html/mail-$lang
 done
 
 # about OpenMandriva
@@ -1267,10 +1248,8 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %files indexhtml
 %dir %{_datadir}/mdk/about
 %dir %{_datadir}/mdk/indexhtml
-%dir %{_datadir}/mdk/mail
 %{_datadir}/mdk/about/*
 %{_datadir}/mdk/indexhtml/*
-%{_datadir}/mdk/mail/*
 %dir %{_datadir}/doc/HTML/
 %{_datadir}/doc/HTML/index.html
 %{_datadir}/applications/about-openmandriva-lx.desktop
