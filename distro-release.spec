@@ -1076,8 +1076,6 @@ cd -
 install -d -m755 %{buildroot}%{_datadir}/mdk/indexhtml/
 cp -a doc/indexhtml/HTML/* %{buildroot}%{_datadir}/mdk/indexhtml/
 
-done
-
 # about OpenMandriva
 install -d -m755 %{buildroot}%{_datadir}/mdk/about
 install -d -m755 %{buildroot}%{_datadir}/applications
