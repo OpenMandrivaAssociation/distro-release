@@ -814,7 +814,7 @@ SECONDARY_ARCH=""
 
 for arch in ${ARCH} ${SECONDARY_ARCH}; do
     for release in release rock rolling cooker; do
-	for repo in main unsupported restricted non-free; do
+	for repo in main extra restricted non-free; do
 	    case "$repo" in
 			main)
 				REPO=""
