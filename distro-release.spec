@@ -81,7 +81,7 @@ Version:	24.09
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	1
+Release:	2
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
@@ -814,7 +814,7 @@ SECONDARY_ARCH=""
 
 for arch in ${ARCH} ${SECONDARY_ARCH}; do
     for release in release rock rolling cooker; do
-	for repo in main unsupported restricted non-free; do
+	for repo in main extra restricted non-free; do
 	    case "$repo" in
 			main)
 				REPO=""
