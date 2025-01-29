@@ -66,14 +66,6 @@
 %endif
 %define mdkver %{version_tag}
 
-%ifarch %{x86_64}
-%global secondary_distarch i686
-%else
-%ifarch %{aarch64}
-%global secondary_distarch armv7hnl
-%endif
-%endif
-
 Summary:	%{new_distribution} release file
 Name:		distro-release
 Version:	25.90
@@ -81,7 +73,7 @@ Version:	25.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	1
+Release:	2
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
