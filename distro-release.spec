@@ -1231,8 +1231,8 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_rpmconfigdir}/fileattrs/kmod.attr
 
 %files installer
-%{_sysconfdir}/calamares/*.conf
-%{_sysconfdir}/calamares/modules/*.conf
+%config %{_sysconfdir}/calamares/*.conf
+%config %{_sysconfdir}/calamares/modules/*.conf
 %{_sysconfdir}/calamares/branding/auto/*
 
 %files indexhtml
