@@ -68,12 +68,12 @@
 
 Summary:	%{new_distribution} release file
 Name:		distro-release
-Version:	25.04
+Version:	25.06
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	5
+Release:	1
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{?am_i_rolling:refs/tags/%{version}}%{!?am_i_rolling:%{!?am_i_cooker:%{version}/%{name}-%{version}}}.tar.gz
@@ -1199,7 +1199,7 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 
 %files repos
 %dir %{_sysconfdir}/yum.repos.d
-%{_sysconfdir}/dnf/dnf.conf
+%config(noreplace) %{_sysconfdir}/dnf/dnf.conf
 %config(noreplace) %{_sysconfdir}/yum.repos.d/openmandriva*.repo
 
 %files repos-keys
@@ -1231,8 +1231,8 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_rpmconfigdir}/fileattrs/kmod.attr
 
 %files installer
-%{_sysconfdir}/calamares/*.conf
-%{_sysconfdir}/calamares/modules/*.conf
+%config %{_sysconfdir}/calamares/*.conf
+%config %{_sysconfdir}/calamares/modules/*.conf
 %{_sysconfdir}/calamares/branding/auto/*
 
 %files indexhtml
