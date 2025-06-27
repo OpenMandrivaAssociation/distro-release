@@ -931,7 +931,7 @@ fi
 #enabled=0
 #type=rpm-md
 
-EOF
+#EOF
 
 cat >>%{buildroot}%{_sysconfdir}/yum.repos.d/openmandriva-$release-$arch-source.repo <<EOF
 [$release-$arch$REPO-source]
