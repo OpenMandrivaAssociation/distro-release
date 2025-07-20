@@ -170,7 +170,6 @@ Summary:	LXQt Wayland desktop configuration
 Group:		Graphical desktop/LXQt
 Requires:	%{name}-desktop >= %{version}
 Suggests:	plasma6-breeze
-Suggests:	plasma6-kwin-x11
 Suggests:	kf6-breeze-icons
 Suggests:	noto-sans-fonts
 BuildArch:	noarch
