@@ -73,7 +73,7 @@ Version:	25.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	11
+Release:	12
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
@@ -164,18 +164,6 @@ BuildArch:	noarch
 
 %description desktop-LXQt
 LXQt desktop configuration
-
-%package desktop-LXQt-Wayland
-Summary:	LXQt Wayland desktop configuration
-Group:		Graphical desktop/LXQt
-Requires:	%{name}-desktop >= %{version}
-Suggests:	plasma6-breeze
-Suggests:	kf6-breeze-icons
-Suggests:	noto-sans-fonts
-BuildArch:	noarch
-
-%description desktop-LXQt-Wayland
-LXQt-Wayland desktop configuration
 
 #package desktop-Xfce
 #description desktop-Xfce
@@ -1189,13 +1177,6 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %endif
 
 %files desktop-LXQt
-%{_sysconfdir}/xdg/featherpad
-%{_sysconfdir}/xdg/gtk-3.0
-%{_sysconfdir}/xdg/lxqt
-%{_sysconfdir}/xdg/pcmanfm-qt
-%{_sysconfdir}/xdg/qterminal.org
-
-%files desktop-LXQt-Wayland
 %{_sysconfdir}/xdg/featherpad
 %{_sysconfdir}/xdg/gtk-3.0
 %{_sysconfdir}/xdg/lxqt
