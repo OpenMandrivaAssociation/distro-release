@@ -717,11 +717,6 @@ rm -rf desktops/LXQt/openbox
 cp -a desktops/LXQt/* %{buildroot}%{_sysconfdir}/xdg
 ### DESKTOP LXQT END ###
 
-### DESKTOP LXQT-Wayland ###
-mkdir -p %{buildroot}%{_sysconfdir}/xdg
-cp -a desktops/LXQt-Wayland/* %{buildroot}%{_sysconfdir}/xdg
-### DESKTOP LXQT-Wayland END ###
-
 ### THEME ###
 
 # Make sure the logo can be found where modern applications expect it
