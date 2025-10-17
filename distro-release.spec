@@ -68,7 +68,7 @@
 
 Summary:	%{new_distribution} release file
 Name:		distro-release
-Version:	25.06
+Version:	25.11
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 # 3001 = 3.1
 # 3001 = 3.2 etc.
@@ -142,11 +142,13 @@ BuildRequires:	cmake(ECM)
 Requires:	%{name}-desktop >= %{version}
 Requires:	%{name}-theme >= %{version}
 Requires:	breeze
-Requires:	breeze-gtk
-Requires:	breeze-icons
+Recommends:	(breeze-gtk if %{_lib}gtk3_0)
+Recommends:	(breeze-gtk if %{_lib}gtk4_1)
+Requires:	kf6-breeze-icons
 Requires:	noto-sans-fonts
 %rename		distro-plasma-config
 BuildArch:	noarch
+%rename distro-release-desktop-Plasma6
 
 %description desktop-Plasma
 KDE Plasma desktop configuration.
@@ -156,8 +158,10 @@ KDE Plasma desktop configuration.
 Summary:	LXQt desktop configuration
 Group:		Graphical desktop/LXQt
 Requires:	%{name}-desktop >= %{version}
-Suggests:	plasma6-breeze
-Suggests:	plasma6-kwin-x11
+Suggests:	breeze
+Suggests:	(breeze-gtk if %{_lib}gtk3_0)
+Suggests:	(breeze-gtk if %{_lib}gtk4_1)
+Suggests:	kwin-x11
 Suggests:	kf6-breeze-icons
 Suggests:	noto-sans-fonts
 BuildArch:	noarch
@@ -670,7 +674,6 @@ ln -s ../kde5/menus/kde-applications.menu %{buildroot}%{_sysconfdir}/xdg/menus/g
 
 %if %{without bootstrap}
 ### DESKTOP PLASMA ###
-
 mkdir -p %{buildroot}%{_sysconfdir}/xdg
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/KDE
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/QtProject
@@ -679,19 +682,17 @@ mkdir -p %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/env
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/shutdown
 mkdir -p %{buildroot}%{_datadir}/kservices5
 mkdir -p %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents
-mkdir -p %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents
+mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
+mkdir -p %{buildroot}%{_datadir}/plasma/layout-templates/org.om.plasma.desktop.defaultPanel/contents
+mkdir -p %{buildroot}%{_datadir}/plasma/layout-templates/org.om.plasma.desktop.globalMenuPanel/contents
 mkdir -p %{buildroot}%{_datadir}/konsole
 mkdir -p %{buildroot}%{_datadir}/applications
 
-for i in kcmdisplayrc kcmfonts kcminputrc kdeglobals kscreenlockerrc ksplashrc kwinrc plasmarc startupconfig startupconfigfiles kcm-about-distrorc ksmserverrc kiorc dolphinrc konsolerc klaunchrc discoverabstractnotifier.notifyrc plasma_workspace.notifyrc powermanagementprofilesrc; do
+for i in kcmdisplayrc kcmfonts kcminputrc kdeglobals kscreenlockerrc ksplashrc kwinrc startupconfig startupconfigfiles kcm-about-distrorc ksmserverrc kiorc dolphinrc konsolerc klaunchrc plasmashellrc plasma_workspace.notifyrc powermanagementprofilesrc PlasmaUserFeedback plasma-org.kde.plasma.desktop-appletsrc startupconfigkeys; do
     install -m 0644 desktops/Plasma/$i %{buildroot}%{_sysconfdir}/xdg/$i
 done
-install -m 0644 desktops/Plasma6/mimeapps.list %{buildroot}%{_datadir}/applications/mimeapps.list
+install -m 0644 desktops/Plasma/mimeapps.list %{buildroot}%{_datadir}/applications/mimeapps.list
 
-install -m 0644 desktops/Plasma/metadata.desktop %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/metadata.desktop
-install -m 0644 desktops/Plasma/metadata.desktop %{buildroot}%{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
-install -m 0644 desktops/Plasma/org.kde.plasma.desktop-layout.js %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
-install -m 0644 desktops/Plasma/org.openmandriva.plasma.desktop.defaultPanel-layout.js %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel/contents/layout.js
 install -m 0644 desktops/Plasma/plasma-firstsetup.sh %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/env/plasma-firstsetup.sh
 ln -sf %{_sysconfdir}/xdg/plasma-workspace/env/plasma-firstsetup.sh %{buildroot}%{_sysconfdir}/xdg/autostart-scripts/plasma-firstsetup.sh
 install -m 0644 desktops/Plasma/Sonnet.conf %{buildroot}%{_sysconfdir}/xdg/KDE/Sonnet.conf
@@ -699,12 +700,18 @@ install -m 0644 desktops/Plasma/kdeglobals.sh %{buildroot}%{_sysconfdir}/xdg/pla
 ln -sf %{_sysconfdir}/xdg/plasma-workspace/env/kdeglobals.sh %{buildroot}%{_sysconfdir}/xdg/autostart-scripts/kdeglobals.sh
 install -m 0644 desktops/Plasma/qtlogging.ini %{buildroot}%{_sysconfdir}/xdg/QtProject/qtlogging.ini
 install -m 0644 desktops/Plasma/OM.profile %{buildroot}%{_datadir}/konsole/OM.profile
-mkdir -p %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents
-install -m 0644 desktops/Plasma/org.openmandriva.plasma.desktop.globalMenuPanel-layout.js %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/contents/layout.js
-install -m 0644 desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel/metadata.desktop
-mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
-cp -a desktops/Plasma/org.openmandriva5.desktop %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
-
+install -m 0644 desktops/Plasma/om-colors.colorscheme %{buildroot}%{_datadir}/konsole/om-colors.colorscheme
+cp -a desktops/Plasma/org.openmandriva.desktop %{buildroot}%{_datadir}/plasma/look-and-feel/org.openmandriva.desktop
+# (rugyada)
+install -m 0644 desktops/Plasma/metadata-ompanel.desktop %{buildroot}%{_datadir}/plasma/layout-templates/org.om.plasma.desktop.defaultPanel/metadata.desktop
+install -m 0644 desktops/Plasma/metadata-ompanel.json %{buildroot}%{_datadir}/plasma/layout-templates/org.om.plasma.desktop.defaultPanel/metadata.json
+install -m 0644 desktops/Plasma/metadata-ompanel.desktop %{buildroot}%{_datadir}/kservices5/plasma-layout-template-org.om.plasma.desktop.defaultPanel.desktop
+install -m 0644 desktops/Plasma/metadata-ompanel.json %{buildroot}%{_datadir}/kservices5/plasma-layout-template-org.om.plasma.desktop.defaultPanel.json
+install -m 0644 desktops/Plasma/org.kde.plasma.desktop-layout.js %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
+install -m 0644 desktops/Plasma/org.om.plasma.desktop.defaultPanel-layout.js %{buildroot}%{_datadir}/plasma/layout-templates/org.om.plasma.desktop.defaultPanel/contents/layout.js
+install -m 0644 desktops/Plasma/org.om.plasma.desktop.globalMenuPanel-layout.js %{buildroot}%{_datadir}/plasma/layout-templates/org.om.plasma.desktop.globalMenuPanel/contents/layout.js
+install -m 0644 desktops/Plasma/metadata-globalMenu.desktop %{buildroot}%{_datadir}/plasma/layout-templates/org.om.plasma.desktop.globalMenuPanel/metadata.desktop
+install -m 0644 desktops/Plasma/metadata-globalMenu.json %{buildroot}%{_datadir}/plasma/layout-templates/org.om.plasma.desktop.globalMenuPanel/metadata.json
 ### DESKTOP PLASMA END ###
 %endif
 
@@ -1157,17 +1164,14 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %if %{without bootstrap}
 %files desktop-Plasma
 %{_sysconfdir}/xdg/*
-%exclude %{_sysconfdir}/xdg/featherpad
-%exclude %{_sysconfdir}/xdg/gtk-3.0
-%exclude %{_sysconfdir}/xdg/lxqt
-%exclude %{_sysconfdir}/xdg/pcmanfm-qt
-%exclude %{_sysconfdir}/xdg/qterminal.org
 %{_datadir}/konsole/OM.profile
-%{_datadir}/kservices5/plasma-layout-template-org.openmandriva.plasma.desktop.defaultPanel.desktop
-%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.defaultPanel
+%{_datadir}/konsole/om-colors.colorscheme
+%{_datadir}/kservices5/plasma-layout-template-org.om.plasma.desktop.defaultPanel.desktop
+%{_datadir}/kservices5/plasma-layout-template-org.om.plasma.desktop.defaultPanel.json
+%{_datadir}/plasma/layout-templates/org.om.plasma.desktop.defaultPanel
+%{_datadir}/plasma/layout-templates/org.om.plasma.desktop.globalMenuPanel
+%{_datadir}/plasma/look-and-feel/org.openmandriva.desktop
 %{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
-%{_datadir}/plasma/layout-templates/org.openmandriva.plasma.desktop.globalMenuPanel
-%{_datadir}/plasma/look-and-feel/org.openmandriva5.desktop
 %{_datadir}/applications/mimeapps.list
 %endif
 
