@@ -73,7 +73,7 @@ Version:	26.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	1
+Release:	2
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
@@ -1008,7 +1008,8 @@ chmod 0644 %{buildroot}%{_sysconfdir}/yum.repos.d/*.repo
 ### REPOS END ###
 
 ### RPM SETUP ###
-mkdir -p %{buildroot}%{_rpmconfigdir}/{openmandriva,fileattrs,macros.d}
+mkdir -p %{buildroot}%{_rpmconfigdir}/{openmandriva,fileattrs,macros.d} %{buildroot}%{_rpmluadir}/
+mv rpm/build/openmandriva/*.lua %{buildroot}%{_rpmluadir}/
 cp -a rpm/user/openmandriva/* %{buildroot}%{_rpmconfigdir}/openmandriva
 cp -a rpm/build/openmandriva/* %{buildroot}%{_rpmconfigdir}/openmandriva
 cp -a rpm/build/fileattrs/* %{buildroot}%{_rpmconfigdir}/fileattrs
@@ -1221,8 +1222,11 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %files rpm-setup-build
 %attr(755,root,root) %{_rpmconfigdir}/openmandriva/devel.prov
 %attr(755,root,root) %{_rpmconfigdir}/openmandriva/kmod-deps.sh
+%dir %{_rpmluadir}/fedora
 %{_rpmluadir}/fedora/common.lua
+%dir %{_rpmluadir}/fedora/srpm
 %{_rpmluadir}/fedora/srpm/forge.lua
+%{_rpmluadir}/omv.lua
 %{_rpmconfigdir}/macros.d/macros.buildsys.*
 %{_rpmconfigdir}/macros.d/macros.dwz
 %{_rpmconfigdir}/macros.d/macros.forge
@@ -1235,8 +1239,12 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_rpmconfigdir}/fileattrs/kmod.attr
 
 %files installer
+%dir %{_sysconfdir}/calamares
 %config %{_sysconfdir}/calamares/*.conf
+%dir %{_sysconfdir}/calamares/modules
 %config %{_sysconfdir}/calamares/modules/*.conf
+%dir %{_sysconfdir}/calamares/branding
+%dir %{_sysconfdir}/calamares/branding/auto
 %{_sysconfdir}/calamares/branding/auto/*
 
 %files indexhtml
