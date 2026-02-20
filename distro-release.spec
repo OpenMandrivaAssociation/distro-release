@@ -73,7 +73,7 @@ Version:	26.02
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	2
+Release:	3
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{?am_i_rolling:refs/tags/%{version}}%{!?am_i_rolling:%{!?am_i_cooker:%{version}/%{name}-%{version}}}.tar.gz
@@ -1218,6 +1218,10 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %dir %{_rpmconfigdir}/openmandriva
 %{_rpmconfigdir}/openmandriva/macros
 %{_rpmconfigdir}/openmandriva/rpmrc
+# omv.lua includes functionality like replacing a directory
+# with a symlink. It must be present on the target system,
+# not only on developer machines.
+%{_rpmluadir}/omv.lua
 
 %files rpm-setup-build
 %attr(755,root,root) %{_rpmconfigdir}/openmandriva/devel.prov
@@ -1226,7 +1230,6 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_rpmluadir}/fedora/common.lua
 %dir %{_rpmluadir}/fedora/srpm
 %{_rpmluadir}/fedora/srpm/forge.lua
-%{_rpmluadir}/omv.lua
 %{_rpmconfigdir}/macros.d/macros.buildsys.*
 %{_rpmconfigdir}/macros.d/macros.dwz
 %{_rpmconfigdir}/macros.d/macros.forge
