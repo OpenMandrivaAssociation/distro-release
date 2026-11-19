@@ -73,12 +73,10 @@ Version:	26.90
 # 3001 = 3.1
 # 3001 = 3.2 etc.
 DistTag:	%{shorttag}%{distro_tag}
-Release:	7
+Release:	6
 License:	GPLv2+
 URL:		https://github.com/OpenMandrivaSoftware/distro-release
 Source0:	https://github.com/OpenMandrivaSoftware/distro-release/archive/%{?am_i_cooker:refs/heads/master}%{!?am_i_cooker:%{version}/%{name}-%{version}}.tar.gz
-Source1:	starship.toml
-Patch0:		distro-release-konsole-om-theme.patch
 Group:		System/Configuration/Other
 
 %description
@@ -148,8 +146,6 @@ Recommends:	(breeze-gtk if %{_lib}gtk3_0)
 Recommends:	(breeze-gtk if %{_lib}gtk4_1)
 Requires:	kf6-breeze-icons
 Requires:	noto-sans-fonts
-Recommends:	fonts-ttf-nerd-hack
-Recommends:	starship
 %rename		distro-plasma-config
 BuildArch:	noarch
 %rename distro-release-desktop-Plasma6
@@ -509,7 +505,6 @@ else
     export META_CLASS=unknown
 fi
 EOF
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/starship.toml
 
 echo %{buildroot}%{_sysconfdir}/product.id.%{new_vendor}
 cat >%{buildroot}%{_sysconfdir}/product.id.%{new_vendor} <<EOF
@@ -1141,7 +1136,6 @@ sed -i -e "s/#PRODUCT_ID/$(cat /etc/product.id)/" -e "s/#LANG/${LC_NAME/[-_]*}/g
 %{_sysconfdir}/system-release
 %{_sysconfdir}/profile.d/10distro-release.sh
 %{_sysconfdir}/profile.d/10distro-release.csh
-%config(noreplace) %{_sysconfdir}/starship.toml
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sysconfig/system
 %{_datadir}/common-licenses
 %{_datadir}/metainfo/org.openmandriva.openmandriva.metainfo.xml
